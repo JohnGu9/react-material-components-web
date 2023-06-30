@@ -109,12 +109,6 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
       }
     }, [checked]);
 
-    React.useEffect(()=>{
-      const current = input.current!;
-      current.checked = (checked===true);
-      current.indeterminate = (checked==="mixed");
-    },[checked]);
-
     return (
       <div ref={composeRefs(innerRef, ref)}
         className={injector.toClassName()}
