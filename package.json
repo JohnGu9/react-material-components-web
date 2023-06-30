@@ -1,6 +1,6 @@
 {
   "name": "rmcw",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This library provide react wrapped material design components for web. ",
   "private": false,
   "main": "dist/index.js",
@@ -64,7 +64,8 @@
     "@material/typography": "^14.0.0",
     "animated-size": "*",
     "react-ref-composer": "*",
-    "uuid": "*"
+    "uuid": "*",
+    "sass": "*"
   },
   "scripts": {
     "start": "react-scripts start",
