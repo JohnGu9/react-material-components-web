@@ -109,6 +109,12 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
       }
     }, [checked]);
 
+    React.useEffect(()=>{
+      const current = input.current!;
+      current.checked = (checked===true);
+      current.indeterminate = (checked==="mixed");
+    },[checked]);
+
     return (
       <div ref={composeRefs(innerRef, ref)}
         className={injector.toClassName()}
@@ -116,7 +122,6 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
         <input ref={input}
           id={finalId}
           disabled={disabled}
-          checked={checked === "mixed" ? false : checked}
           aria-checked={checked}
           aria-disabled={disabled}
           data-checked={checked === true}

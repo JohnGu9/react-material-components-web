@@ -54,6 +54,10 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
       }
     }, [finalId, formField]);
 
+    React.useEffect(()=>{
+      input.current!.checked = checked;
+    },[checked]);
+
     return (
       <div ref={composeRefs(innerRef, ref)}
         className={injector.toClassName()}
@@ -61,7 +65,7 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
         aria-disabled={disabled}
         {...props}>
         <input ref={input} id={finalId} className="mdc-radio__native-control" type="radio" name="radios"
-          disabled={disabled} checked={checked} onChange={onChange} readOnly={onChange === undefined} />
+          disabled={disabled} onChange={onChange} readOnly={onChange === undefined} />
         <div className="mdc-radio__background" aria-hidden>
           <div className="mdc-radio__outer-circle"></div>
           <div className="mdc-radio__inner-circle"></div>

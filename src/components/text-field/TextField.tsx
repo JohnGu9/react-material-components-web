@@ -137,6 +137,7 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
               setInFocus(false);
               onBlur?.(e);
             }}
+            value={value}
             onChange={onChange} />
           {isDefined(suffix)
             ? <span className="mdc-text-field__affix mdc-text-field__affix--suffix">{suffix}</span>
