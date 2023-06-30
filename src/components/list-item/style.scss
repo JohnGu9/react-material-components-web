@@ -4,15 +4,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-@use "@material/list";
-@use "@material/theme/theme";
-@use "@material/theme/theme-color";
-@use "@material/rtl";
-@use "@material/typography";
+@use "~@material/list";
+@use "~@material/theme/theme";
+@use "~@material/theme/theme-color";
+@use "~@material/rtl";
+@use "~@material/typography";
 // name is transformed by copybara so `as` is needed
-@use "@material/feature-targeting" as featuretargeting;
-@use "@material/density";
-@use "@material/ripple";
+@use "~@material/feature-targeting" as featuretargeting;
+@use "~@material/density";
+@use "~@material/ripple";
 @use "sass:map";
 
 $query: featuretargeting.all();
