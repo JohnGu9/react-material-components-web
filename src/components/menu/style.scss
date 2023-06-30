@@ -1,0 +1,72 @@
+@use "@material/menu-surface/mdc-menu-surface";
+@use "@material/animation/variables" as animation-variables;
+
+.mdc-menu-surface--anchor {
+  display: inline-block;
+}
+
+.mdc-menu-surface {
+  &.mdc-menu-surface--no-fullwidth {
+    @keyframes no-fullwidth--transform-animation {
+      from {
+        transform: scale(0.8);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    &.open-animation {
+      animation: no-fullwidth--transform-animation 0.12s animation-variables.$deceleration-curve-timing-function;
+    }
+    &.close-animation {
+      transition: opacity 0.075s linear;
+      display: inline-block;
+      opacity: 0;
+    }
+  }
+
+  &.mdc-menu-surface--fullwidth {
+    @keyframes fullwidth--transform-animation-down {
+      from {
+        transform: translateY(16px);
+      }
+      to {
+        transform: translateY(0px);
+      }
+    }
+
+    @keyframes fullwidth--transform-animation-up {
+      from {
+        transform: translateY(-16px);
+      }
+      to {
+        transform: translateY(0px);
+      }
+    }
+    &[data-quadrant="bottom-left"],
+    &[data-quadrant="bottom-right"] {
+      &.open-animation {
+        animation: fullwidth--transform-animation-up 0.12s animation-variables.$deceleration-curve-timing-function;
+      }
+      &.close-animation {
+        transition: opacity 0.075s linear, transform 0.12s animation-variables.$deceleration-curve-timing-function;
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(-16px);
+      }
+    }
+
+    &[data-quadrant="top-left"],
+    &[data-quadrant="top-right"] {
+      &.open-animation {
+        animation: fullwidth--transform-animation-down 0.12s animation-variables.$deceleration-curve-timing-function;
+      }
+      &.close-animation {
+        transition: opacity 0.075s linear, transform 0.12s animation-variables.$deceleration-curve-timing-function;
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(16px);
+      }
+    }
+  }
+}

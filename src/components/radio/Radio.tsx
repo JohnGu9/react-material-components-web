@@ -1,0 +1,74 @@
+import React from "react";
+import { useRefComposer } from "react-ref-composer";
+import { createComponent, useClassInjector } from "../common/Common";
+import { useUuidV4 } from "../common/Uuid";
+import { FormFieldContext } from "../form-field/FormField";
+import "@material/radio/mdc-radio.scss";
+import { RippleComponent } from "../ripple/RippleComponent";
+
+export type RadioProps = {
+  checked?: boolean,
+  disabled?: boolean,
+  touch?: boolean,
+  focusRing?: boolean,
+  inputId?: string,
+  onChange?: React.ChangeEventHandler<HTMLInputElement>,
+};
+
+export const Radio = createComponent<HTMLDivElement, RadioProps>(
+  function Radio({
+    checked = false,
+    disabled = false,
+    touch = true,
+    focusRing = true,
+    inputId,
+    onChange,
+    className,
+    ...props }, ref) {
+    const uuid = useUuidV4();
+    const composeRefs = useRefComposer();
+    const innerRef = React.useRef<HTMLDivElement>(null);
+    const injector = useClassInjector(innerRef);
+    const input = React.useRef<HTMLInputElement>(null);
+    const formField = React.useContext(FormFieldContext);
+    const finalId = inputId ?? uuid;
+
+    injector.with('mdc-radio', true);
+    injector.with('mdc-radio--disabled', disabled);
+    injector.with('mdc-radio--touch', touch);
+    injector.withClassName('0', className);
+
+    React.useEffect(() => {
+      const component = new RippleComponent(innerRef.current!, injector);
+      component.init();
+      component.unbounded = true;
+      return () => component.destroy();
+    }, [injector]);
+
+    React.useEffect(() => {
+      const current = formField?.current;
+      if (current) {
+        if (current.htmlFor !== "") throw Error();
+        current.htmlFor = finalId;
+        return () => { current.htmlFor = ""; }
+      }
+    }, [finalId, formField]);
+
+    return (
+      <div ref={composeRefs(innerRef, ref)}
+        className={injector.toClassName()}
+        aria-checked={checked}
+        aria-disabled={disabled}
+        {...props}>
+        <input ref={input} id={finalId} className="mdc-radio__native-control" type="radio" name="radios"
+          disabled={disabled} checked={checked} onChange={onChange} readOnly={onChange === undefined} />
+        <div className="mdc-radio__background" aria-hidden>
+          <div className="mdc-radio__outer-circle"></div>
+          <div className="mdc-radio__inner-circle"></div>
+        </div>
+        <div className="mdc-radio__ripple" aria-hidden></div>
+        {focusRing ? <div className="mdc-radio__focus-ring" aria-hidden></div> : undefined}
+      </div>
+    );
+  }
+);

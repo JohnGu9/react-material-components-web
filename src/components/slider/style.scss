@@ -1,0 +1,28 @@
+@use "@material/slider/styles";
+
+.mdc-slider__tick-marks,
+.mdc-slider__tick-mark--active {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.mdc-slider--discrete .mdc-slider__thumb {
+    transition: left 80ms ease;
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
+}
+
+.mdc-slider__thumb {
+    transform: translateX(-50%);
+    --slider-value-indicator-caret-left: 50%;
+    --slider-value-indicator-caret-right: auto;
+    --slider-value-indicator-caret-transform: translateX(-50%);
+    --slider-value-indicator-container-left: 50%;
+    --slider-value-indicator-container-right: auto;
+    --slider-value-indicator-container-transform: translateX(-50%);
+}
+
+.mdc-slider__track--active_fill{
+    transform-origin: left;
+}

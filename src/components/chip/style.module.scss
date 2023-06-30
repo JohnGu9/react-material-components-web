@@ -1,0 +1,13 @@
+.mdc-evolution-chip--enter-override {
+    width: auto;
+    max-width: none;
+    opacity: 1;
+    transition: opacity 75ms linear 150ms;
+}
+
+.mdc-evolution-chip--exit-override {
+    max-width: none;
+    opacity: 0;
+    transition: opacity 75ms linear;
+    pointer-events: none;
+}

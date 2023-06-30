@@ -1,0 +1,29 @@
+.nested-open {
+    opacity: 1;
+    transition: opacity 150ms linear 200ms;
+}
+.nested-close {
+    opacity: 0;
+    transition: opacity 150ms linear;
+}
+
+.nested-open-icon {
+    transform: rotate(90deg);
+    transition: transform 150ms ease;
+}
+.nested-close-icon {
+    transform: rotate(0deg);
+    transition: transform 150ms ease;
+}
+
+@media (prefers-reduced-motion) {
+    .nested-open,
+    .nested-close {
+        transition: none;
+    }
+
+    .nested-open-icon,
+    .nested-close-icon {
+        transition: none;
+    }
+}

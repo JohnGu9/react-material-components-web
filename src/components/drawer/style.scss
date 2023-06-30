@@ -1,0 +1,96 @@
+@use "sass:map";
+@use "@material/drawer/mdc-drawer";
+@use "@material/drawer" as variables;
+@use "@material/theme/theme";
+@use "@material/theme/theme-color";
+@use "@material/rtl";
+@use "@material/typography";
+@use "@material/density";
+@use "@material/ripple";
+@use "@material/feature-targeting" as feature-targeting;
+@use "@material/elevation/mixins" as elevation-mixins;
+
+$query: feature-targeting.all();
+$feat-structure: feature-targeting.create-target($query, structure);
+$feat-animation: feature-targeting.create-target($query, animation);
+
+.mdc-drawer {
+  @include feature-targeting.targets($feat-structure) {
+    pointer-events: none;
+    transform: translateX(-100%);
+
+    @include rtl.rtl {
+      transform: translateX(100%);
+    }
+  }
+
+  @include feature-targeting.targets($feat-animation) {
+    transition-property: transform, box-shadow;
+    transition-duration: variables.$animation-exit;
+  }
+
+  &.mdc-drawer--modal {
+    @include feature-targeting.targets($feat-structure) {
+      display: flex;
+    }
+    &:not(.mdc-drawer--open-override) {
+      @include elevation-mixins.elevation(0, $query: $query);
+    }
+  }
+
+  &.mdc-drawer--dismissible {
+    @include feature-targeting.targets($feat-structure) {
+      display: flex;
+    }
+  }
+
+  &.mdc-drawer--open-override {
+    @include feature-targeting.targets($feat-structure) {
+      pointer-events: inherit;
+      transform: translateX(0);
+
+      // Required to level the specificity with animate class.
+      @include rtl.rtl {
+        transform: translateX(0);
+      }
+    }
+
+    @include feature-targeting.targets($feat-animation) {
+      transition-duration: variables.$animation-enter;
+    }
+  }
+
+  &.mdc-drawer--hidden {
+    @include feature-targeting.targets($feat-structure) {
+      visibility: hidden;
+    }
+  }
+
+  &.mdc-drawer--open-override + .mdc-drawer-app-content {
+    @include feature-targeting.targets($feat-structure) {
+      @include rtl.reflexive-box(margin, left, variables.$width);
+    }
+  }
+}
+
+.mdc-drawer-scrim {
+  @include feature-targeting.targets($feat-structure) {
+    pointer-events: none;
+    display: block;
+    opacity: 0;
+  }
+  @include feature-targeting.targets($feat-animation) {
+    transition-duration: variables.$animation-exit;
+  }
+
+  .mdc-drawer--open-override + & {
+    @include feature-targeting.targets($feat-animation) {
+      transition-duration: variables.$animation-enter;
+    }
+    @include feature-targeting.targets($feat-structure) {
+      pointer-events: inherit;
+      display: block;
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@use "@material/banner/styles";
+@use "@material/feature-targeting" as feature-targeting;
+
+$query: feature-targeting.all();
+$feat-structure: feature-targeting.create-target($query, structure);
+$feat-animation: feature-targeting.create-target($query, animation);
+
+.mdc-banner {
+    .mdc-banner__content {
+        @include feature-targeting.targets($feat-animation) {
+            transform: none;
+            transition: none;
+        }
+        @include feature-targeting.targets($feat-structure) {
+            position: absolute;
+            bottom: 0;
+        }
+    }
+}
