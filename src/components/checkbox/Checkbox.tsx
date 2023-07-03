@@ -118,11 +118,13 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
           disabled={disabled}
           aria-checked={checked}
           aria-disabled={disabled}
-          data-checked={checked === true}
-          data-indeterminate={checked === "mixed"}
           type="checkbox"
           className="mdc-checkbox__native-control"
-          onChange={onChange}
+          onChange={(e) => {
+            e.target.checked = checked === true;
+            e.target.indeterminate = checked === "mixed";
+            onChange?.(e);
+          }}
           readOnly={onChange === undefined} />
         <div className="mdc-checkbox__background" aria-hidden>
           <svg className="mdc-checkbox__checkmark" viewBox="0 0 24 24">

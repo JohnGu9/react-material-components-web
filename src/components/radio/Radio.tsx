@@ -58,7 +58,6 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
       const { current } = input;
       if (current) {
         current.checked = checked;
-        current.indeterminate = false;
       }
     }, [checked]);
 
@@ -73,7 +72,10 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
           ref={input}
           id={finalId}
           disabled={disabled}
-          onChange={onChange}
+          onChange={(e) => {
+            e.target.checked = checked;
+            onChange?.(e);
+          }}
           readOnly={onChange === undefined} />
         <div className="mdc-radio__background" aria-hidden>
           <div className="mdc-radio__outer-circle"></div>

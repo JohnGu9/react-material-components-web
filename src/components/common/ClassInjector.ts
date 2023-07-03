@@ -35,7 +35,7 @@ export class ClassInjector {
   add(className: string) {
     if (!this.cache.has(className)) {
       this.cache.add(className);
-      this.ref.current!.classList.add(className);
+      this.ref.current?.classList.add(className);
       this._isDirty = true;
     }
   }
