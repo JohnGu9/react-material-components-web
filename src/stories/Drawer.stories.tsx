@@ -24,11 +24,11 @@ const Template: StoryFn<typeof Drawer> = (args) =>
 
 export const Standard = Template.bind({});
 Standard.args = {
-  opened: true,
+  open: true,
 };
 
 export const Model = Template.bind({});
 Model.args = {
   type: 'modal',
-  opened: true,
+  open: true,
 };

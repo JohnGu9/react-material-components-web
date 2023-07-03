@@ -5,7 +5,7 @@ import { TextField } from "../text-field/TextField";
 import { useRefComposer } from "react-ref-composer";
 
 export type SelectProps = {
-  opened?: boolean,
+  open?: boolean,
   activated?: boolean,
   onOpen?: () => any,
   onClose?: () => any,
@@ -28,7 +28,7 @@ export type SelectProps = {
 
 export const Select = createComponent<HTMLDivElement, SelectProps>(
   function Select({
-    opened,
+    open: opened,
     activated,
     onOpen,
     onClose,
@@ -112,7 +112,7 @@ export const Select = createComponent<HTMLDivElement, SelectProps>(
     return (
       <Menu fullWidth
         surface={children}
-        opened={opened}
+        open={opened}
         value={value}
         onKeyDown={e => {
           const { keyCode, key } = e;

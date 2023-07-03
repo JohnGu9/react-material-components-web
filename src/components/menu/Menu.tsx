@@ -3,7 +3,7 @@ import { classMap, createComponent, useSizeObserver } from "../common/Common";
 import "./style.scss";
 
 export type MenuProps = {
-  opened?: boolean,
+  open?: boolean,
   anchorCorner?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right',
   anchorQuadrant?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right',
   quick?: boolean,
@@ -13,7 +13,7 @@ export type MenuProps = {
 
 export const Menu = createComponent<HTMLDivElement, MenuProps>(
   function Menu({
-    opened,
+    open,
     anchorCorner,
     anchorQuadrant,
     quick,
@@ -28,7 +28,7 @@ export const Menu = createComponent<HTMLDivElement, MenuProps>(
       <div ref={ref}
         className={classMap(classes, className)} {...props}>
         {children}
-        <MenuSurface opened={opened}
+        <MenuSurface open={open}
           fullWidth={fullWidth}
           quick={quick}
           anchorCorner={anchorCorner}
@@ -49,14 +49,14 @@ type BodyProps = {
 
 function MenuSurface({
   quick = false,
-  opened = false,
+  open = false,
   fullWidth = false,
   anchorCorner = 'bottom-left',
   anchorQuadrant = 'bottom-right',
   children,
 }: MenuProps & BodyProps) {
   const [element, setElement] = React.useState<HTMLDivElement | null>(null);
-  const [closed, setClosed] = React.useState(!opened);
+  const [closed, setClosed] = React.useState(!open);
   const size = useSizeObserver(element);
 
   const hasSize =
@@ -68,23 +68,23 @@ function MenuSurface({
     'mdc-menu-surface--fixed': false,
     'mdc-menu-surface--no-fullwidth': !fullWidth,
     'mdc-menu-surface--fullwidth': fullWidth,
-    'mdc-menu-surface--open': opened,
-    'open-animation': !quick && opened && hasSize,
-    'close-animation': !quick && !opened && !closed,
+    'mdc-menu-surface--open': open,
+    'open-animation': !quick && open && hasSize,
+    'close-animation': !quick && !open && !closed,
   };
 
   React.useEffect(() => {
-    if (!opened) {
+    if (!open) {
       if (quick) {
         setClosed(true);
       } else {
         const timer = setTimeout(() => setClosed(true), 75);
         return () => clearTimeout(timer);
       }
-    } else if (opened) {
+    } else if (open) {
       setClosed(false);
     }
-  }, [opened, quick]);
+  }, [open, quick]);
 
   const [verticalAlignment, horizontalAlignment] = ((): [VerticalAlignment, HorizontalAlignment] => {
     switch (anchorCorner) {
@@ -167,7 +167,7 @@ function MenuSurface({
     <div ref={setElement}
       className={classMap(classes)}
       style={{
-        opacity: opened ? (hasSize ? undefined : 0) : undefined,
+        opacity: open ? (hasSize ? undefined : 0) : undefined,
         transformOrigin,
         [verticalAlignment]: vertical,
         [horizontalAlignment]: horizontal,

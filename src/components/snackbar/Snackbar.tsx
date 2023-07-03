@@ -7,7 +7,7 @@ import { IconButtonContext } from "../icon-button/IconButton";
 import { SnackbarComponent } from "./Component";
 
 export type SnackbarProps = {
-  opened?: boolean,
+  open?: boolean,
   leading?: boolean,
   stacked?: boolean,
   action?: React.ReactNode,
@@ -17,7 +17,7 @@ export type SnackbarProps = {
 
 export const Snackbar = createComponent<HTMLElement, SnackbarProps>(
   function Snackbar({
-    opened,
+    open,
     leading = false,
     stacked = false,
     action,
@@ -45,9 +45,9 @@ export const Snackbar = createComponent<HTMLElement, SnackbarProps>(
 
     React.useEffect(() => {
       if (component)
-        if (opened) component.open();
+        if (open) component.open();
         else component.close();
-    }, [component, opened]);
+    }, [component, open]);
 
     return (
       <aside ref={composeRefs(innerRef, ref)} className={injector.toClassName()} {...props}>

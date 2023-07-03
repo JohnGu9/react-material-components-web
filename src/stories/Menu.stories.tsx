@@ -15,11 +15,11 @@ const Template: StoryFn<typeof Menu> = (args) =>
 
 export const Primary = Template.bind({});
 Primary.args = {
-  opened: true,
+  open: true,
 };
 
 export const FullWidth = Template.bind({});
 FullWidth.args = {
   fullWidth: true,
-  opened: true,
+  open: true,
 };

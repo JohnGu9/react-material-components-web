@@ -6,7 +6,7 @@ import { useUuidV4 } from "../common/Uuid";
 import { DialogComponent, State } from "./Component";
 
 export type DialogProps = {
-  opened?: boolean,
+  open?: boolean,
   title?: React.ReactNode,
   header?: React.ReactNode,
   actions?: React.ReactNode,
@@ -19,7 +19,7 @@ export type DialogProps = {
 
 export const Dialog = createComponent<HTMLDivElement, DialogProps>(
   function Dialog({
-    opened,
+    open,
     title,
     header,
     actions,
@@ -54,21 +54,21 @@ export const Dialog = createComponent<HTMLDivElement, DialogProps>(
 
     React.useEffect(() => {
       if (component)
-        if (opened) component.open();
+        if (open) component.open();
         else component.close();
-    }, [component, opened]);
+    }, [component, open]);
 
     return (
       <div ref={composeRefs(innerRef, ref)}
         className={injector.toClassName()}
+        aria-hidden={!open}
         {...props}>
         <div className="mdc-dialog__container">
           <div className="mdc-dialog__surface"
             role="alertdialog"
             aria-modal="true"
             aria-labelledby={titleUuid}
-            aria-describedby={bodyUuid}
-            aria-hidden={!opened}>
+            aria-describedby={bodyUuid}>
             {isDefined(title) || isDefined(header)
               ? <div className="mdc-dialog__header">
                 {isDefined(title)

@@ -6,7 +6,7 @@ import { IconContext } from "../icon/Icon";
 import "./style.scss";
 
 export type BannerProps = {
-  opened?: boolean,
+  open?: boolean,
   graphic?: React.ReactNode,
   primaryAction?: React.ReactNode,
   secondaryAction?: React.ReactNode,
@@ -16,7 +16,7 @@ export type BannerProps = {
 
 export const Banner = createComponent<HTMLDivElement, BannerProps>(
   function Banner({
-    opened = false,
+    open = false,
     graphic,
     primaryAction,
     secondaryAction,
@@ -29,23 +29,23 @@ export const Banner = createComponent<HTMLDivElement, BannerProps>(
     const composeRefs = useRefComposer();
     const innerRef = React.useRef<HTMLDivElement>(null);
     const [content, setContent] = React.useState<HTMLDivElement | null>(null);
-    const [hidden, setHidden] = React.useState(opened!);
+    const [hidden, setHidden] = React.useState(open);
     const size = useSizeObserver(content);
 
-    const height = hidden && !opened
+    const height = hidden && !open
       ? undefined
-      : opened ? (size.height ?? 0) : 0;
+      : open ? (size.height ?? 0) : 0;
 
     const classes = {
       'mdc-banner': true,
-      'mdc-banner--open': opened,
-      'mdc-banner--closing': !hidden && !opened,
+      'mdc-banner--open': open,
+      'mdc-banner--closing': !hidden && !open,
       'mdc-banner--centered': centered,
       'mdc-banner--mobile-stacked': mobileStacked,
     }
 
     React.useEffect(() => {
-      if (opened) {
+      if (open) {
         setHidden(false);
       } else {
         const current = innerRef.current!;
@@ -58,7 +58,7 @@ export const Banner = createComponent<HTMLDivElement, BannerProps>(
         current.addEventListener('transitionend', listener);
         return () => current.removeEventListener('transitionend', listener);
       }
-    }, [opened]);
+    }, [open]);
 
 
     return (
@@ -66,6 +66,7 @@ export const Banner = createComponent<HTMLDivElement, BannerProps>(
         ref={composeRefs(innerRef, ref)}
         className={classMap(classes, className)}
         style={{ height, ...style }}
+        aria-hidden={!open}
         role="banner"
         {...props}>
         <div ref={setContent} className="mdc-banner__content" role="alertdialog" aria-live="assertive">

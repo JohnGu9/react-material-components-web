@@ -4,7 +4,7 @@ import { classMap, createComponent, isDefined } from "../common/Common";
 import "./style.scss";
 
 export type DrawerProps = {
-  opened?: boolean,
+  open?: boolean,
   type?: 'dismissible' | 'modal',
   content?: React.ReactNode,
   title?: React.ReactNode,
@@ -15,7 +15,7 @@ export type DrawerProps = {
 
 export const Drawer = createComponent<HTMLElement, DrawerProps>(
   function Drawer({
-    opened,
+    open,
     type = 'dismissible',
     title,
     subtitle,
@@ -27,13 +27,13 @@ export const Drawer = createComponent<HTMLElement, DrawerProps>(
     ...props }, ref) {
     const composeRefs = useRefComposer();
     const innerRef = React.useRef<HTMLElement>(null);
-    const [hidden, setHidden] = React.useState(!opened);
+    const [hidden, setHidden] = React.useState(!open);
     const classes = {
       'mdc-drawer': true,
       'mdc-drawer--dismissible': type === 'dismissible',
       'mdc-drawer--modal': type === 'modal',
-      'mdc-drawer--open-override': opened,
-      'mdc-drawer--hidden': hidden && !opened,
+      'mdc-drawer--open-override': open,
+      'mdc-drawer--hidden': hidden && !open,
     };
 
     React.useEffect(() => {
@@ -47,7 +47,7 @@ export const Drawer = createComponent<HTMLElement, DrawerProps>(
 
     React.useEffect(() => {
       const current = innerRef.current!;
-      if (opened) {
+      if (open) {
         setHidden(false);
       } else {
         const listener = (event: TransitionEvent) => {
@@ -59,12 +59,12 @@ export const Drawer = createComponent<HTMLElement, DrawerProps>(
         current.addEventListener('transitionend', listener);
         return () => current.removeEventListener('transitionend', listener);
       }
-    }, [opened]);
+    }, [open]);
 
     return (<>
       <aside ref={composeRefs(innerRef, ref)}
         className={classMap(classes, className)}
-        hidden={hidden && !opened}
+        hidden={hidden && !open}
         {...props}>
         {isDefined(title)
           ? <div className="mdc-drawer__header">

@@ -22,7 +22,7 @@ function App() {
     <TopAppBar
       navigationIcon={<IconButton onClick={() => setOpen(!open)}><Icon>menu</Icon></IconButton>}
       title="React MWC">
-      <Drawer opened={open}
+      <Drawer open={open}
         content={<nav>
           <ListItem
             nonInteractive

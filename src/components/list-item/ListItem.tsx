@@ -108,9 +108,10 @@ function NestedListItem({ props: {
   children,
   ...props
 }, forwardRef }: { props: React.ComponentPropsWithoutRef<typeof ListItem>, forwardRef: React.ForwardedRef<HTMLLIElement> }) {
-  const innerRef = React.useRef<HTMLDivElement>(null);
+  const innerRef = React.useRef<HTMLLIElement>(null);
   const injector = useClassInjector(innerRef);
   const [opened, setOpened] = React.useState(true);
+  const composeRefs = useRefComposer();
 
   injector.with('mdc-deprecated-list-item', true);
   injector.with('mdc-deprecated-list-item--disabled', props.disabled ?? false);
@@ -130,17 +131,16 @@ function NestedListItem({ props: {
 
   return (
     // eslint-disable-next-line jsx-a11y/role-supports-aria-props
-    <li ref={forwardRef}
-      className="mdc-deprecated-list-item__wrapper"
+    <div className="mdc-deprecated-list-item__wrapper"
       role="presentation"
-      aria-expanded={expanded}
-      {...props}>
-      <div ref={innerRef}
+      aria-expanded={expanded}>
+      <li ref={composeRefs(innerRef, forwardRef)}
         onClick={e => { setOpened(!expanded) }}
         className={injector.toClassName()}
         tabIndex={props.disabled ? -1 : 0}
         data-graphic-size={graphicSize}
-        data-lines={isDefined(secondaryText) ? '2' : '1'} >
+        data-lines={isDefined(secondaryText) ? '2' : '1'}
+        {...props}>
         {!nonInteractive ? <span className="mdc-deprecated-list-item__ripple"></span> : undefined}
         {isDefined(graphic)
           ? <span className="mdc-deprecated-list-item__graphic">
@@ -158,7 +158,7 @@ function NestedListItem({ props: {
         <span className="mdc-deprecated-list-item__meta">
           {meta}
         </span>
-      </div>
+      </li>
       <AnimatedSizeBuilder
         heightFactor={expanded ? {} : { size: 0 }}
         axisDirection="column"
@@ -170,6 +170,6 @@ function NestedListItem({ props: {
             className={expanded ? styles['nested-open'] : styles['nested-close']}>
             {children}
           </span>} />
-    </li>
+    </div>
   );
 }

@@ -7,7 +7,7 @@ export default {
 } as Meta<typeof Dialog>;
 
 const Template: StoryFn<typeof Dialog> = (args) =>
-  <Dialog opened title="Title"
+  <Dialog open title="Title"
     actions={<>
       <Button>Cancel</Button>
       <Button>OK</Button>
@@ -18,23 +18,23 @@ const Template: StoryFn<typeof Dialog> = (args) =>
 
 export const Primary = Template.bind({});
 Primary.args = {
-  opened: true,
+  open: true,
 };
 
 export const FullScreen = Template.bind({});
 FullScreen.args = {
   fullscreen: true,
-  opened: true,
+  open: true,
 };
 
 export const NoContentPadding = Template.bind({});
 NoContentPadding.args = {
   noContentPadding: true,
-  opened: true,
+  open: true,
 };
 
 export const Stacked = Template.bind({});
 Stacked.args = {
   stacked: true,
-  opened: true,
+  open: true,
 };

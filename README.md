@@ -11,7 +11,7 @@ For example:
 ```jsx
 const [open, setOpen] = React.useState(false);
 
-<Dialog opened={open}>{children}</Dialog>;
+<Dialog open={open}>{children}</Dialog>;
 ```
 
 The dialog would be opened when [open] is true and closed when [open] is false. And when user click the scrim, this library just only invoke [onScrimClick] callback and do nothing (not to close the dialog). No one force you to close the dialog on fixed callback in the library (for example, in rmwc library if you don't close dialog in [onClose] callback, your react state will out of sync with mwc and component behave will be unpredictable).
@@ -21,7 +21,7 @@ If programmer want to close dialog when user click the scrim, the only way is:
 ```jsx
 const [open, setOpen] = React.useState(false);
 
-<Dialog opened={open} onScrimClick={() => setOpen(false)}>
+<Dialog open={open} onScrimClick={() => setOpen(false)}>
   {children}
 </Dialog>;
 ```

@@ -12,13 +12,13 @@ export default {
 } as Meta<typeof Banner>;
 
 const Template: StoryFn<typeof Banner> = (args) =>
-  <Banner opened {...args} >
+  <Banner open {...args} >
     There was a problem processing a transaction on your credit card.
   </Banner>;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  opened: true,
+  open: true,
   graphic: <Icon>error_outline</Icon>,
   primaryAction: <Button>Primary</Button>
 };

@@ -13,17 +13,17 @@ const Template: StoryFn<typeof Snackbar> = (args) =>
 
 export const Primary = Template.bind({});
 Primary.args = {
-  opened: true,
+  open: true,
 };
 
 export const Leading = Template.bind({});
 Leading.args = {
   leading: true,
-  opened: true,
+  open: true,
 };
 
 export const Stacked = Template.bind({});
 Stacked.args = {
   stacked: true,
-  opened: true,
+  open: true,
 };
