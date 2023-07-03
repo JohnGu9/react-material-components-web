@@ -1,6 +1,6 @@
 {
   "name": "rmcw",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "This library provide react wrapped material design components for web. ",
   "private": false,
   "main": "dist/index.js",
