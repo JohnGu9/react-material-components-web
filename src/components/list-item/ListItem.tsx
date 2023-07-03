@@ -18,6 +18,7 @@ export type ListItemProps = {
   activated?: boolean,
   nonInteractive?: boolean,
   expanded?: boolean,
+  defaultExpanded?: boolean,
 };
 
 export const ListItem = createComponent<HTMLLIElement, ListItemProps>(
@@ -103,6 +104,7 @@ function NestedListItem({ props: {
   activated = false,
   expanded,
   nonInteractive = false,
+  defaultExpanded = true,
   className,
   style,
   children,
@@ -110,7 +112,7 @@ function NestedListItem({ props: {
 }, forwardRef }: { props: React.ComponentPropsWithoutRef<typeof ListItem>, forwardRef: React.ForwardedRef<HTMLLIElement> }) {
   const innerRef = React.useRef<HTMLLIElement>(null);
   const injector = useClassInjector(innerRef);
-  const [opened, setOpened] = React.useState(true);
+  const [opened, setOpened] = React.useState(defaultExpanded);
   const composeRefs = useRefComposer();
 
   injector.with('mdc-deprecated-list-item', true);
