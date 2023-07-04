@@ -4,6 +4,7 @@ import { createComponent, isDefined, useClassInjector } from "../common/Common";
 import { RippleComponent } from "../ripple/RippleComponent";
 import { IconContext } from "../icon/Icon";
 import "./Fab.scss";
+import { RippleEventTarget } from "../ripple/Ripple";
 
 export type FabProps = {
   mini?: boolean,
@@ -27,6 +28,7 @@ export const Fab = createComponent<HTMLButtonElement, FabProps>(
     const composeRefs = useRefComposer();
     const innerRef = React.useRef<HTMLButtonElement>(null);
     const injector = useClassInjector(innerRef);
+    const eventTarget = React.useContext(RippleEventTarget);
 
     injector.with('mdc-fab', true);
     injector.with('mdc-fab--touch', touch);
@@ -36,10 +38,10 @@ export const Fab = createComponent<HTMLButtonElement, FabProps>(
     injector.withClassName('0', className);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector);
+      const component = new RippleComponent(innerRef.current!, injector, eventTarget);
       component.init();
       return () => component.destroy();
-    }, [injector]);
+    }, [eventTarget, injector]);
 
     return (
       <button ref={composeRefs(innerRef, ref)} className={injector.toClassName()} {...props}>

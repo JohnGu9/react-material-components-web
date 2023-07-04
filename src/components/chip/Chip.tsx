@@ -5,6 +5,7 @@ import { RippleComponent } from "../ripple/RippleComponent";
 import { IconContext } from "../icon/Icon";
 import styles from "./style.module.scss";
 import "./style.scss";
+import { RippleEventTarget } from "../ripple/Ripple";
 
 export const ChipSet = createComponent<HTMLSpanElement, { overflow?: boolean }>(
   function ChipSet({ overflow = false, children, className, ...props }, ref) {
@@ -89,14 +90,15 @@ function PrimaryCell({ disabled, graphic, children, onClick }: {
 }) {
   const ref = React.useRef<HTMLButtonElement>(null);
   const injector = useClassInjector(ref);
+  const eventTarget = React.useContext(RippleEventTarget);
   injector.with('mdc-evolution-chip__action', true);
   injector.with('mdc-evolution-chip__action--primary', true);
 
   React.useEffect(() => {
-    const component = new RippleComponent(ref.current!, injector);
+    const component = new RippleComponent(ref.current!, injector, eventTarget);
     component.init();
     return () => component.destroy();
-  }, [injector]);
+  }, [eventTarget, injector]);
 
   return (
     <span className="mdc-evolution-chip__cell mdc-evolution-chip__cell--primary" role="gridcell">
@@ -132,14 +134,15 @@ function TrailingCell({ disabled, trailing, onClick }: {
 }) {
   const ref = React.useRef<HTMLButtonElement>(null);
   const injector = useClassInjector(ref);
+  const eventTarget = React.useContext(RippleEventTarget);
   injector.with('mdc-evolution-chip__action', true);
   injector.with('mdc-evolution-chip__action--trailing', true);
 
   React.useEffect(() => {
-    const component = new RippleComponent(ref.current!, injector);
+    const component = new RippleComponent(ref.current!, injector, eventTarget);
     component.init();
     return () => component.destroy();
-  }, [injector]);
+  }, [eventTarget, injector]);
 
   return (
     <span className="mdc-evolution-chip__cell mdc-evolution-chip__cell--trailing" role="gridcell">

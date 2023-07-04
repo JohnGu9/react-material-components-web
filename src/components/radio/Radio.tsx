@@ -5,6 +5,7 @@ import { useUuidV4 } from "../common/Uuid";
 import { FormFieldContext } from "../form-field/FormField";
 import "@material/radio/mdc-radio.scss";
 import { RippleComponent } from "../ripple/RippleComponent";
+import { RippleEventTarget } from "../ripple/Ripple";
 
 export type RadioProps = {
   checked?: boolean,
@@ -31,6 +32,7 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
     const injector = useClassInjector(innerRef);
     const input = React.useRef<HTMLInputElement>(null);
     const formField = React.useContext(FormFieldContext);
+    const eventTarget = React.useContext(RippleEventTarget);
     const finalId = inputId ?? uuid;
 
     injector.with('mdc-radio', true);
@@ -39,11 +41,10 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
     injector.withClassName('0', className);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector);
+      const component = new RippleComponent(innerRef.current!, injector, eventTarget, undefined, true);
       component.init();
-      component.unbounded = true;
       return () => component.destroy();
-    }, [injector]);
+    }, [eventTarget, injector]);
 
     React.useEffect(() => {
       const current = formField?.current;

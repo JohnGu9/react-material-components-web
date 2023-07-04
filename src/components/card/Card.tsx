@@ -4,6 +4,7 @@ import { ButtonContext } from "../button/Button";
 import { classMap, createComponent, isDefined, useClassInjector } from "../common/Common";
 import { RippleComponent } from "../ripple/RippleComponent";
 import { IconButtonContext } from "../icon-button/IconButton";
+import { RippleEventTarget } from "../ripple/Ripple";
 
 export type CardProps = {
   outlined?: boolean,
@@ -59,13 +60,14 @@ export const Card = createComponent<HTMLDivElement, CardProps>(
 function PrimaryAction({ children }: { children?: React.ReactNode }) {
   const innerRef = React.useRef<HTMLDivElement>(null);
   const injector = useClassInjector(innerRef);
+  const eventTarget = React.useContext(RippleEventTarget);
   injector.with('mdc-card__primary-action', true);
 
   React.useEffect(() => {
-    const component = new RippleComponent(innerRef.current!, injector);
+    const component = new RippleComponent(innerRef.current!, injector, eventTarget);
     component.init();
     return () => component.destroy();
-  }, [injector]);
+  }, [eventTarget, injector]);
 
   return (
     <div ref={innerRef} className={injector.toClassName()}>

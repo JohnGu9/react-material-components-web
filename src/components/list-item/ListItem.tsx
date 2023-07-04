@@ -6,6 +6,7 @@ import { RippleComponent } from "../ripple/RippleComponent";
 import { Icon } from "../icon/Icon";
 import styles from "./style.module.scss";
 import "./style.scss";
+import { RippleEventTarget } from "../ripple/Ripple";
 
 export type ListItemProps = {
   graphic?: React.ReactNode,
@@ -48,6 +49,7 @@ function SimpleListItem({ props: {
   const innerRef = React.useRef<HTMLLIElement>(null);
   const injector = useClassInjector(innerRef);
   const composeRefs = useRefComposer();
+  const eventTarget = React.useContext(RippleEventTarget);
 
   injector.with('mdc-deprecated-list-item', true);
   injector.with('mdc-deprecated-list-item--disabled', props.disabled ?? false);
@@ -58,11 +60,11 @@ function SimpleListItem({ props: {
 
   React.useEffect(() => {
     if (!nonInteractive) {
-      const component = new RippleComponent(innerRef.current!, injector);
+      const component = new RippleComponent(innerRef.current!, injector, eventTarget);
       component.init();
       return () => component.destroy();
     }
-  }, [injector, nonInteractive]);
+  }, [eventTarget, injector, nonInteractive]);
 
   return (
     <li ref={composeRefs(innerRef, forwardRef)}
@@ -107,6 +109,7 @@ function NestedListItem({ props: {
   defaultExpanded = true,
   className,
   style,
+  onClick,
   children,
   ...props
 }, forwardRef }: { props: React.ComponentPropsWithoutRef<typeof ListItem>, forwardRef: React.ForwardedRef<HTMLLIElement> }) {
@@ -114,6 +117,7 @@ function NestedListItem({ props: {
   const injector = useClassInjector(innerRef);
   const [opened, setOpened] = React.useState(defaultExpanded);
   const composeRefs = useRefComposer();
+  const eventTarget = React.useContext(RippleEventTarget);
 
   injector.with('mdc-deprecated-list-item', true);
   injector.with('mdc-deprecated-list-item--disabled', props.disabled ?? false);
@@ -123,10 +127,12 @@ function NestedListItem({ props: {
   injector.withClassName('0', className);
 
   React.useEffect(() => {
-    const component = new RippleComponent(innerRef.current!, injector);
-    component.init();
-    return () => component.destroy();
-  }, [injector]);
+    if (!nonInteractive) {
+      const component = new RippleComponent(innerRef.current!, injector, eventTarget);
+      component.init();
+      return () => component.destroy();
+    }
+  }, [eventTarget, injector, nonInteractive]);
 
   expanded ??= opened;
   meta ??= <Icon className={expanded ? styles['nested-open-icon'] : styles['nested-close-icon']}>chevron_right</Icon>;
@@ -137,7 +143,7 @@ function NestedListItem({ props: {
       role="presentation"
       aria-expanded={expanded}>
       <li ref={composeRefs(innerRef, forwardRef)}
-        onClick={e => { setOpened(!expanded) }}
+        onClick={e => { setOpened(!expanded); onClick?.(e); }}
         className={injector.toClassName()}
         tabIndex={props.disabled ? -1 : 0}
         data-graphic-size={graphicSize}

@@ -4,6 +4,8 @@ import { useRefComposer } from "react-ref-composer";
 import { createComponent, useClassInjector } from "../common/Common";
 import { RippleComponent } from "./RippleComponent";
 
+export const RippleEventTarget = React.createContext(new EventTarget());
+
 export type RippleProps = {
   color?: 'primary' | 'accent' | string,
   unbounded?: boolean,
@@ -16,22 +18,22 @@ export const Ripple = createComponent<HTMLDivElement, RippleProps>(
     const innerRef = React.useRef<HTMLDivElement>(null);
     const injector = useClassInjector(innerRef);
     const [component, setComponent] = React.useState<RippleComponent>();
+    const eventTarget = React.useContext(RippleEventTarget);
 
     injector.with('mdc-ripple-surface', true);
     injector.withClassName('0', className);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector);
+      const component = new RippleComponent(
+        innerRef.current!,
+        injector,
+        eventTarget,
+        undefined,
+        unbounded);
       component.init();
       setComponent(component);
       return () => component.destroy();
-    }, [injector, unbounded]);
-
-    React.useEffect(() => {
-      if (component) {
-        component.unbounded = unbounded;
-      }
-    }, [component, unbounded]);
+    }, [eventTarget, injector, unbounded]);
 
     React.useEffect(() => {
       if (component) {

@@ -4,6 +4,7 @@ import { useRefComposer } from "react-ref-composer";
 import { createComponent, useClassInjector } from "../common/Common";
 import { RippleComponent } from "../ripple/RippleComponent";
 import { IconContext } from "../icon/Icon";
+import { RippleEventTarget } from "../ripple/Ripple";
 
 export const IconButtonContext = React.createContext<React.HTMLProps<HTMLButtonElement>>({});
 
@@ -24,6 +25,7 @@ export const IconButton = createComponent<HTMLButtonElement, IconButtonProps>(
     const innerRef = React.useRef<HTMLButtonElement>(null);
     const injector = useClassInjector(innerRef);
     const { className: c1, ref: r0, type, ...context } = React.useContext(IconButtonContext);
+    const eventTarget = React.useContext(RippleEventTarget);
 
     injector.with('mdc-icon-button', true);
     injector.with('mdc-icon-button--touch', touch);
@@ -31,9 +33,8 @@ export const IconButton = createComponent<HTMLButtonElement, IconButtonProps>(
     injector.withClassName('1', c1);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector);
+      const component = new RippleComponent(innerRef.current!, injector, eventTarget, undefined, true);
       component.init();
-      component.unbounded = true;
       return () => component.destroy();
     });
 

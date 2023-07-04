@@ -2,7 +2,6 @@ import "@material/textfield/mdc-text-field.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { createComponent, isDefined, useClassInjector } from "../common/Common";
-import { RippleComponent } from "../ripple/RippleComponent";
 import { TextBaseProps } from "../common/TextController";
 import { useUuidV4 } from "../common/Uuid";
 import { FloatingLabel } from "../floating-label/FloatingLabel";
@@ -62,12 +61,6 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
     injector.with('mdc-text-field--no-label', !isDefined(label) || label === '');
     injector.with('mdc-text-field--with-internal-counter', charCounter === 'inner');
     injector.with('mdc-text-field--end-aligned', endAligned);
-
-    React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector);
-      component.init();
-      return () => component.destroy();
-    }, [injector]);
 
     return (
       <>

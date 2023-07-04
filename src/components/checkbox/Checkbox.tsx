@@ -6,6 +6,7 @@ import { FormFieldContext } from "../form-field/FormField";
 import "@material/checkbox/mdc-checkbox.scss";
 import { MDCCheckboxFoundation } from "@material/checkbox";
 import { RippleComponent } from "../ripple/RippleComponent";
+import { RippleEventTarget } from "../ripple/Ripple";
 
 export type CheckboxProps = {
   checked?: boolean | "mixed";
@@ -35,6 +36,7 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
     const formField = React.useContext(FormFieldContext);
     const [state, setState] = React.useState(checked);
     const [animationClass, setAnimationClass] = React.useState(";");
+    const eventTarget = React.useContext(RippleEventTarget);
 
     injector.with('mdc-checkbox', true);
     injector.with('mdc-checkbox--touch', touch);
@@ -55,11 +57,10 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
     }, [finalId, formField]);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector);
+      const component = new RippleComponent(innerRef.current!, injector, eventTarget, undefined, true);
       component.init();
-      component.unbounded = true;
       return () => component.destroy();
-    }, [injector]);
+    }, [eventTarget, injector]);
 
     React.useEffect(() => {
       if (state !== checked) {

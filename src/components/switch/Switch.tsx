@@ -4,6 +4,7 @@ import { useRefComposer } from "react-ref-composer";
 import { createComponent, isDefined, useClassInjector } from "../common/Common";
 import { IconContext } from "../icon/Icon";
 import { RippleComponent } from "../ripple/RippleComponent";
+import { RippleEventTarget } from "../ripple/Ripple";
 
 export type SwitchProps = {
   selected?: boolean,
@@ -26,6 +27,7 @@ export const Switch = createComponent<HTMLButtonElement, SwitchProps>(
     const innerRef = React.useRef<HTMLButtonElement>(null);
     const rippleElement = React.useRef<HTMLDivElement>(null);
     const injector = useClassInjector(innerRef);
+    const eventTarget = React.useContext(RippleEventTarget);
 
     injector.with('mdc-switch', true);
     injector.with('mdc-switch--selected', selected);
@@ -33,12 +35,11 @@ export const Switch = createComponent<HTMLButtonElement, SwitchProps>(
     injector.withClassName('0', className);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector,
-        () => rippleElement.current!.getBoundingClientRect());
+      const component = new RippleComponent(innerRef.current!, injector, eventTarget,
+        () => rippleElement.current!.getBoundingClientRect(), true);
       component.init();
-      component.unbounded = true;
       return () => component.destroy();
-    }, [injector]);
+    }, [eventTarget, injector]);
 
     return (
       <button ref={composeRefs(innerRef, ref)}
