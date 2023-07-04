@@ -5,6 +5,8 @@ import { createComponent, useClassInjector } from "../common/Common";
 import { RippleComponent } from "../ripple/RippleComponent";
 import { IconContext } from "../icon/Icon";
 import { RippleEventTarget } from "../ripple/Ripple";
+import { ListItemContext } from "../list-item/ListItem";
+import { CompactWrapper } from "../common/CompactWrapper";
 
 export const IconButtonContext = React.createContext<React.HTMLProps<HTMLButtonElement>>({});
 
@@ -12,6 +14,7 @@ export type IconButtonProps = {
   touch?: boolean,
   focusRing?: boolean,
   type?: "button" | "submit" | "reset",
+  compact?: boolean,
 };
 
 export const IconButton = createComponent<HTMLButtonElement, IconButtonProps>(
@@ -19,6 +22,7 @@ export const IconButton = createComponent<HTMLButtonElement, IconButtonProps>(
     children,
     focusRing = true,
     touch = true,
+    compact,
     className,
     ...props }, ref) {
     const composeRefs = useRefComposer();
@@ -26,6 +30,7 @@ export const IconButton = createComponent<HTMLButtonElement, IconButtonProps>(
     const injector = useClassInjector(innerRef);
     const { className: c1, ref: r0, type, ...context } = React.useContext(IconButtonContext);
     const eventTarget = React.useContext(RippleEventTarget);
+    const isInListItem = React.useContext(ListItemContext);
 
     injector.with('mdc-icon-button', true);
     injector.with('mdc-icon-button--touch', touch);
@@ -39,12 +44,14 @@ export const IconButton = createComponent<HTMLButtonElement, IconButtonProps>(
     });
 
     return (
-      <button ref={composeRefs(innerRef, ref)} className={injector.toClassName()} {...context} {...props}>
-        <div className="mdc-icon-button__ripple" aria-hidden></div>
-        {focusRing ? <span className="mdc-icon-button__focus-ring" aria-hidden></span> : undefined}
-        <IconContext.Provider value={{ className: "mdc-icon-button__icon" }}>{children}</IconContext.Provider>
-        {touch ? <div className="mdc-icon-button__touch" aria-hidden></div> : undefined}
-      </button>
+      <CompactWrapper enable={compact ?? isInListItem}>
+        <button ref={composeRefs(innerRef, ref)} className={injector.toClassName()} {...context} {...props}>
+          <div className="mdc-icon-button__ripple" aria-hidden></div>
+          {focusRing ? <span className="mdc-icon-button__focus-ring" aria-hidden></span> : undefined}
+          <IconContext.Provider value={{ className: "mdc-icon-button__icon" }}>{children}</IconContext.Provider>
+          {touch ? <div className="mdc-icon-button__touch" aria-hidden></div> : undefined}
+        </button>
+      </CompactWrapper>
     );
   }
 );

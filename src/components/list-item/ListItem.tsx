@@ -8,6 +8,8 @@ import styles from "./style.module.scss";
 import "./style.scss";
 import { RippleEventTarget } from "../ripple/Ripple";
 
+export const ListItemContext = React.createContext(false);
+
 export type ListItemProps = {
   graphic?: React.ReactNode,
   graphicSize?: 'small' | 'medium' | 'large',
@@ -89,7 +91,9 @@ function SimpleListItem({ props: {
       </span>
       {isDefined(meta)
         ? <span className="mdc-deprecated-list-item__meta">
-          {meta}
+          <ListItemContext.Provider value={true}>
+            {meta}
+          </ListItemContext.Provider>
         </span>
         : undefined}
     </li>

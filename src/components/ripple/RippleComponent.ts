@@ -52,10 +52,10 @@ export class RippleComponent extends MDCRipple {
       }
       this.resizeListeners.push(listener as () => unknown);
       this.eventTarget.addEventListener('resize', listener as () => unknown);
-      window.addEventListener('resize', listener);
+      // window.addEventListener('resize', listener);
     };
     adapter.deregisterResizeHandler = (listener) => {
-      window.removeEventListener('resize', listener);
+      // window.removeEventListener('resize', listener);
       this.eventTarget.removeEventListener('resize', listener as () => unknown);
       this.resizeListeners = this.resizeListeners.filter(v => v !== listener);
       if (this.resizeListeners.length === 0) {

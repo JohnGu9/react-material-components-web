@@ -6,6 +6,8 @@ import { FormFieldContext } from "../form-field/FormField";
 import "@material/radio/mdc-radio.scss";
 import { RippleComponent } from "../ripple/RippleComponent";
 import { RippleEventTarget } from "../ripple/Ripple";
+import { ListItemContext } from "../list-item/ListItem";
+import { CompactWrapper } from "../common/CompactWrapper";
 
 export type RadioProps = {
   checked?: boolean,
@@ -13,6 +15,7 @@ export type RadioProps = {
   touch?: boolean,
   focusRing?: boolean,
   inputId?: string,
+  compact?: boolean,
   onChange?: React.ChangeEventHandler<HTMLInputElement>,
 };
 
@@ -22,6 +25,7 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
     disabled = false,
     touch = true,
     focusRing = true,
+    compact,
     inputId,
     onChange,
     className,
@@ -33,6 +37,7 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
     const input = React.useRef<HTMLInputElement>(null);
     const formField = React.useContext(FormFieldContext);
     const eventTarget = React.useContext(RippleEventTarget);
+    const isInListItem = React.useContext(ListItemContext);
     const finalId = inputId ?? uuid;
 
     injector.with('mdc-radio', true);
@@ -63,28 +68,30 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
     }, [checked]);
 
     return (
-      <div ref={composeRefs(innerRef, ref)}
-        className={injector.toClassName()}
-        aria-checked={checked}
-        aria-disabled={disabled}
-        {...props}>
-        <input className="mdc-radio__native-control"
-          type="radio"
-          ref={input}
-          id={finalId}
-          disabled={disabled}
-          onChange={(e) => {
-            e.target.checked = checked;
-            onChange?.(e);
-          }}
-          readOnly={onChange === undefined} />
-        <div className="mdc-radio__background" aria-hidden>
-          <div className="mdc-radio__outer-circle"></div>
-          <div className="mdc-radio__inner-circle"></div>
+      <CompactWrapper enable={compact ?? isInListItem}>
+        <div ref={composeRefs(innerRef, ref)}
+          className={injector.toClassName()}
+          aria-checked={checked}
+          aria-disabled={disabled}
+          {...props}>
+          <input className="mdc-radio__native-control"
+            type="radio"
+            ref={input}
+            id={finalId}
+            disabled={disabled}
+            onChange={(e) => {
+              e.target.checked = checked;
+              onChange?.(e);
+            }}
+            readOnly={onChange === undefined} />
+          <div className="mdc-radio__background" aria-hidden>
+            <div className="mdc-radio__outer-circle"></div>
+            <div className="mdc-radio__inner-circle"></div>
+          </div>
+          <div className="mdc-radio__ripple" aria-hidden></div>
+          {focusRing ? <div className="mdc-radio__focus-ring" aria-hidden></div> : undefined}
         </div>
-        <div className="mdc-radio__ripple" aria-hidden></div>
-        {focusRing ? <div className="mdc-radio__focus-ring" aria-hidden></div> : undefined}
-      </div>
+      </CompactWrapper>
     );
   }
 );

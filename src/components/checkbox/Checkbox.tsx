@@ -7,12 +7,15 @@ import "@material/checkbox/mdc-checkbox.scss";
 import { MDCCheckboxFoundation } from "@material/checkbox";
 import { RippleComponent } from "../ripple/RippleComponent";
 import { RippleEventTarget } from "../ripple/Ripple";
+import { ListItemContext } from "../list-item/ListItem";
+import { CompactWrapper } from "../common/CompactWrapper";
 
 export type CheckboxProps = {
   checked?: boolean | "mixed";
   focusRing?: boolean,
   touch?: boolean,
   inputId?: string,
+  compact?: boolean,
   onChange?: React.ChangeEventHandler<HTMLInputElement>,
 };
 
@@ -22,6 +25,7 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
     disabled = false,
     focusRing = true,
     touch = true,
+    compact,
     inputId,
     className,
     onChange,
@@ -37,6 +41,7 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
     const [state, setState] = React.useState(checked);
     const [animationClass, setAnimationClass] = React.useState(";");
     const eventTarget = React.useContext(RippleEventTarget);
+    const isInListItem = React.useContext(ListItemContext);
 
     injector.with('mdc-checkbox', true);
     injector.with('mdc-checkbox--touch', touch);
@@ -111,33 +116,35 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
     }, [checked]);
 
     return (
-      <div ref={composeRefs(innerRef, ref)}
-        className={injector.toClassName()}
-        {...props}>
-        <input ref={input}
-          id={finalId}
-          disabled={disabled}
-          aria-checked={checked}
-          aria-disabled={disabled}
-          type="checkbox"
-          className="mdc-checkbox__native-control"
-          onChange={(e) => {
-            e.target.checked = checked === true;
-            e.target.indeterminate = checked === "mixed";
-            onChange?.(e);
-          }}
-          readOnly={onChange === undefined} />
-        <div className="mdc-checkbox__background" aria-hidden>
-          <svg className="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-            <path className="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-          </svg>
-          <div className="mdc-checkbox__mixedmark"></div>
+      <CompactWrapper enable={compact ?? isInListItem}>
+        <div ref={composeRefs(innerRef, ref)}
+          className={injector.toClassName()}
+          {...props}>
+          <input ref={input}
+            id={finalId}
+            disabled={disabled}
+            aria-checked={checked}
+            aria-disabled={disabled}
+            type="checkbox"
+            className="mdc-checkbox__native-control"
+            onChange={(e) => {
+              e.target.checked = checked === true;
+              e.target.indeterminate = checked === "mixed";
+              onChange?.(e);
+            }}
+            readOnly={onChange === undefined} />
+          <div className="mdc-checkbox__background" aria-hidden>
+            <svg className="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+              <path className="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+            </svg>
+            <div className="mdc-checkbox__mixedmark"></div>
+          </div>
+          <div className="mdc-checkbox__ripple" aria-hidden></div>
+          {touch ? <span className="mdc-checkbox__touch" aria-hidden></span> : undefined}
+          {focusRing ? <div className="mdc-checkbox__focus-ring" aria-hidden></div> : undefined}
+          {children}
         </div>
-        <div className="mdc-checkbox__ripple" aria-hidden></div>
-        {touch ? <span className="mdc-checkbox__touch" aria-hidden></span> : undefined}
-        {focusRing ? <div className="mdc-checkbox__focus-ring" aria-hidden></div> : undefined}
-        {children}
-      </div>
+      </CompactWrapper>
     );
   });
 

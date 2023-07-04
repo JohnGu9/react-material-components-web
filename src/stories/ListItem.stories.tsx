@@ -5,6 +5,7 @@ import { Icon } from '../components/icon/Icon';
 import { ListDivider } from '../components/list-divider/ListDivider';
 import { ListItem } from '../components/list-item/ListItem';
 import { Radio } from '../components/radio/Radio';
+import { IconButton } from '../components/icon-button/IconButton';
 
 export default {
   component: ListItem,
@@ -71,7 +72,7 @@ Full.args = {
   graphic: <Icon>favorite</Icon>,
   primaryText: 'PrimaryText',
   secondaryText: 'SecondaryText',
-  meta: <Checkbox readOnly />,
+  meta: <IconButton><Icon>more</Icon></IconButton>,
 };
 
 const NestedTemplate: StoryFn<typeof ListItem> = (args) =>
