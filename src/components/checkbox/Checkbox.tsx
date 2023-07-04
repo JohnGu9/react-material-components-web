@@ -68,6 +68,29 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
     }, [eventTarget, injector]);
 
     React.useEffect(() => {
+      const { current } = input;
+      if (current) {
+        switch (checked) {
+          case true: {
+            current.checked = true;
+            current.indeterminate = false;
+            break;
+          }
+          case false: {
+            current.checked = false;
+            current.indeterminate = false;
+            break;
+          }
+          case "mixed": {
+            current.checked = false;
+            current.indeterminate = true;
+            break;
+          }
+        }
+      }
+    }, [checked]);
+
+    React.useEffect(() => {
       if (state !== checked) {
         const getTransitionAnimationClass = (oldState: boolean | "mixed", newState: boolean | "mixed") => {
           const {
@@ -92,29 +115,6 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
       }
     }, [checked, state]);
 
-    React.useEffect(() => {
-      const { current } = input;
-      if (current) {
-        switch (checked) {
-          case true: {
-            current.checked = true;
-            current.indeterminate = false;
-            break;
-          }
-          case false: {
-            current.checked = false;
-            current.indeterminate = false;
-            break;
-          }
-          case "mixed": {
-            current.checked = false;
-            current.indeterminate = true;
-            break;
-          }
-        }
-      }
-    }, [checked]);
-
     return (
       <CompactWrapper enable={compact ?? isInListItem}>
         <div ref={composeRefs(innerRef, ref)}
@@ -127,6 +127,7 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
             aria-disabled={disabled}
             type="checkbox"
             className="mdc-checkbox__native-control"
+            defaultChecked={checked === true}
             onChange={(e) => {
               e.target.checked = checked === true;
               e.target.indeterminate = checked === "mixed";

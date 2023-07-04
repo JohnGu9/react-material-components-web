@@ -168,7 +168,9 @@ function NestedListItem({ props: {
             : primaryText}
         </span>
         <span className="mdc-deprecated-list-item__meta">
-          {meta}
+          <ListItemContext.Provider value={true}>
+            {meta}
+          </ListItemContext.Provider>
         </span>
       </li>
       <AnimatedSizeBuilder

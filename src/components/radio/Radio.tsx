@@ -78,6 +78,7 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
             type="radio"
             ref={input}
             id={finalId}
+            defaultChecked={checked}
             disabled={disabled}
             onChange={(e) => {
               e.target.checked = checked;
