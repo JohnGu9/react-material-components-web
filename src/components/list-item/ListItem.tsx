@@ -43,6 +43,7 @@ function SimpleListItem({ props: {
   activated = false,
   nonInteractive = false,
   expanded,
+  defaultExpanded,
   className,
   style,
   children,
