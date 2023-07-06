@@ -75,6 +75,7 @@ function SimpleListItem({ props: {
       tabIndex={props.disabled ? -1 : 0}
       data-graphic-size={graphicSize}
       data-lines={isDefined(secondaryText) ? '2' : '1'}
+      style={style}
       {...props}>
       {!nonInteractive ? <span className="mdc-deprecated-list-item__ripple"></span> : undefined}
       {isDefined(graphic)
@@ -153,6 +154,7 @@ function NestedListItem({ props: {
         tabIndex={props.disabled ? -1 : 0}
         data-graphic-size={graphicSize}
         data-lines={isDefined(secondaryText) ? '2' : '1'}
+        style={style}
         {...props}>
         {!nonInteractive ? <span className="mdc-deprecated-list-item__ripple"></span> : undefined}
         {isDefined(graphic)
