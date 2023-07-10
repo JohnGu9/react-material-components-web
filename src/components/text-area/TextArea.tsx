@@ -1,4 +1,4 @@
-import "@material/textfield/mdc-text-field.scss";
+import "../text-field/style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { createComponent, isDefined, useClassInjector } from "../common/Common";
@@ -94,6 +94,8 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
               readOnly={readOnly}
               name={name}
               placeholder={placeholder}
+              defaultValue={value}
+              value={value}
               onFocus={e => {
                 onFocus?.(e);
                 setInFocus(true)
@@ -102,7 +104,10 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
                 onBlur?.(e);
                 setInFocus(false);
               }}
-              onChange={onChange} />
+              onChange={e => {
+                onChange?.(e);
+                e.target.value = value;
+              }} />
             {charCounter === 'inner'
               ? <span className="mdc-text-field-character-counter">{value.length}{isDefined(maxLength) ? ` / ${maxLength}` : undefined}</span>
               : undefined}
@@ -112,7 +117,7 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
         </label>
         {isDefined(helper)
           ? <div className="mdc-text-field-helper-line">
-            <div className={`mdc-text-field-helper-text${helperPersistent ? ' mdc-text-field-helper-text--persistent' : ''}${invalid ? ' mdc-text-field-helper-text--validation-msg' : ''}`} id="my-helper-id" aria-hidden="true">{helper}</div>
+            <div className={`mdc-text-field-helper-text${helperPersistent ? ' mdc-text-field-helper-text--persistent' : ''}${invalid ? ' mdc-text-field-helper-text--validation-msg' : ''}`} aria-hidden="true">{helper}</div>
             {charCounter === 'helper-line'
               ? <span className="mdc-text-field-character-counter">{value.length}{isDefined(maxLength) ? ` / ${maxLength}` : undefined}</span>
               : undefined}

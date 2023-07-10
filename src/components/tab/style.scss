@@ -1,0 +1,9 @@
+@use "~@material/tab/mdc-tab.scss";
+
+.mdc-tab .mdc-tab__icon {
+    color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54));
+}
+
+.mdc-tab .mdc-tab__text-label {
+    color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54));
+}

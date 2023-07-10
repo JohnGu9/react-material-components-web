@@ -1,3 +1,13 @@
+## Use
+
+```js
+import { Button } from "rmcw";
+
+function MyComponent() {
+  return <Button />;
+}
+```
+
 ## What's the library for?
 
 This library provide react wrapper for material design components.
@@ -26,7 +36,7 @@ const [open, setOpen] = React.useState(false);
 </Dialog>;
 ```
 
-## Compatible with react 18
+## Compatible with React 18
 
 You can enable [StrictMode] without error or warning message whatever you want. No legacy api use.
 
@@ -76,4 +86,4 @@ npm run storybook
 
 ## Development requirement
 
-If you use webpack, require sass loader to pack [.scss] file into project. 
+If you use webpack, require sass loader to pack [.scss] file into project.

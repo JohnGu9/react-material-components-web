@@ -1,4 +1,4 @@
-import "@material/card/mdc-card.scss";
+import "./style.scss";
 import React from "react";
 import { ButtonContext } from "../button/Button";
 import { classMap, createComponent, isDefined, useClassInjector } from "../common/Common";

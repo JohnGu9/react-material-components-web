@@ -24,6 +24,7 @@ export const CircularProgress = createComponent<HTMLDivElement, CircularProgress
     closed,
     className,
     children,
+    style,
     ...props }, ref) {
     const classes = {
       'mdc-circular-progress': true,
@@ -35,7 +36,7 @@ export const CircularProgress = createComponent<HTMLDivElement, CircularProgress
     const halfStrokeDasharray = strokeDasharray / 2;
     const unfilledArcLength = progress ? (1 - progress) * (2 * Math.PI * r) : strokeDasharray;
     return <div className={classMap(classes, className)}
-      style={{ width: size, height: size }} role="progressbar"
+      style={{ width: size, height: size, ...style }} role="progressbar"
       aria-valuemin={0} aria-valuemax={1} aria-valuenow={progress}
       aria-hidden={closed} ref={ref} {...props}>
       <div className="mdc-circular-progress__determinate-container" aria-hidden>

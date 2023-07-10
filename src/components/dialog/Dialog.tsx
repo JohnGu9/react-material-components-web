@@ -1,4 +1,4 @@
-import "@material/dialog/mdc-dialog.scss";
+import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { createComponent, isDefined, useClassInjector } from "../common/Common";

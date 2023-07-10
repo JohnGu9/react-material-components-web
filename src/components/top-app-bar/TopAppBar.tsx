@@ -1,4 +1,4 @@
-import "@material/top-app-bar/mdc-top-app-bar.scss";
+import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { createComponent, isDefined, useClassInjector } from "../common/Common";

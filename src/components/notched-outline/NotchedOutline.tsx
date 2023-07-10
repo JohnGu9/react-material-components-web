@@ -1,5 +1,4 @@
 import { estimateScrollWidth } from "@material/dom/ponyfill";
-import "@material/notched-outline/mdc-notched-outline.scss";
 import React from "react";
 import { classMap, createComponent, isDefined } from "../common/Common";
 import { FloatingLabel } from "../floating-label/FloatingLabel";

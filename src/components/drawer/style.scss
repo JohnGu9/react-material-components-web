@@ -71,6 +71,18 @@ $feat-animation: feature-targeting.create-target($query, animation);
       @include rtl.reflexive-box(margin, left, variables.$width);
     }
   }
+
+  .mdc-drawer__title {
+    color: var(--mdc-theme-text-primary-on-background, var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87)));
+  }
+
+  .mdc-drawer__subtitle {
+    color: var(--mdc-theme-text-secondary-on-background, var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.6)));
+  }
+
+  .mdc-deprecated-list-item {
+    color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
+  }
 }
 
 .mdc-drawer-scrim {

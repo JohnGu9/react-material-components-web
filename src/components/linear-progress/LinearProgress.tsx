@@ -1,4 +1,4 @@
-import "@material/linear-progress/mdc-linear-progress.scss";
+import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { createComponent, useClassInjector } from "../common/Common";

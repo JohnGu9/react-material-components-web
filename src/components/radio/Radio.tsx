@@ -3,7 +3,7 @@ import { useRefComposer } from "react-ref-composer";
 import { createComponent, useClassInjector } from "../common/Common";
 import { useUuidV4 } from "../common/Uuid";
 import { FormFieldContext } from "../form-field/FormField";
-import "@material/radio/mdc-radio.scss";
+import "./style.scss";
 import { RippleComponent } from "../ripple/RippleComponent";
 import { RippleEventTarget } from "../ripple/Ripple";
 import { ListItemContext } from "../list-item/ListItem";

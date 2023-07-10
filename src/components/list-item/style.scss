@@ -243,4 +243,5 @@ $dense-item-primary-text-baseline-height: 24px;
 
 .mdc-deprecated-list-divider {
   list-style-type: none;
+  border-bottom-color: var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.12));
 }

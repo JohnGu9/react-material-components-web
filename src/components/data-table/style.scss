@@ -1,0 +1,28 @@
+@use "~@material/data-table/mdc-data-table.scss";
+
+.mdc-data-table__header-cell {
+    color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
+}
+
+.mdc-data-table__pagination-total,
+.mdc-data-table__pagination-rows-per-page-label,
+.mdc-data-table__cell {
+    color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
+}
+
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+    border-bottom-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.12));
+}
+
+.mdc-data-table {
+    border-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.12));
+}
+
+.mdc-data-table__header-cell--sorted .mdc-data-table__sort-icon-button {
+    color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
+}
+
+.mdc-data-table__sort-icon-button {
+    color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
+}

@@ -1,0 +1,11 @@
+@use "~@material/linear-progress/mdc-linear-progress.scss";
+
+.mdc-linear-progress__buffer-bar {
+    background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
+    opacity: 0.5;
+}
+
+.mdc-linear-progress__buffer-dots {
+    color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
+    opacity: 0.5;
+}

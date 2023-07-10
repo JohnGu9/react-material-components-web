@@ -1,0 +1,9 @@
+@use "~@material/checkbox/mdc-checkbox.scss";
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background .mdc-checkbox__checkmark {
+    color: var(--mdc-theme-on-secondary, #fff);
+}
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background .mdc-checkbox__mixedmark {
+    border-color: var(--mdc-theme-on-secondary, #fff);
+}

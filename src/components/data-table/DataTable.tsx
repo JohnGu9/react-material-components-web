@@ -1,4 +1,4 @@
-import "@material/data-table/mdc-data-table.scss";
+import "./style.scss";
 import React from "react";
 import { Checkbox } from "../checkbox/Checkbox";
 import { classMap, createComponent } from "../common/Common";

@@ -1,0 +1,32 @@
+@use "~@material/switch/styles.scss";
+
+.mdc-switch {
+    &.mdc-switch--selected:enabled {
+        &,
+        &:hover {
+            &:focus,
+            &:not(:focus) {
+                &:not(:active),
+                &:active {
+                    .mdc-switch__handle::after {
+                        background: var(--mdc-theme-primary, #6200ee);
+                    }
+                }
+            }
+        }
+    }
+    &.mdc-switch--unselected:enabled {
+        &,
+        &:hover {
+            &:focus,
+            &:not(:focus) {
+                &:not(:active),
+                &:active {
+                    .mdc-switch__handle::after {
+                        background: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.87));
+                    }
+                }
+            }
+        }
+    }
+}

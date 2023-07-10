@@ -1,4 +1,4 @@
-import "@material/textfield/mdc-text-field.scss";
+import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { createComponent, isDefined, useClassInjector } from "../common/Common";
@@ -122,6 +122,7 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
             multiple={multiple}
             name={name}
             placeholder={placeholder}
+            defaultValue={value}
             onFocus={e => {
               setInFocus(true);
               onFocus?.(e);
@@ -131,7 +132,10 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
               onBlur?.(e);
             }}
             value={value}
-            onChange={onChange} />
+            onChange={e => {
+              onChange?.(e);
+              e.target.value = value;
+            }} />
           {isDefined(suffix)
             ? <span className="mdc-text-field__affix mdc-text-field__affix--suffix">{suffix}</span>
             : undefined}

@@ -3,7 +3,7 @@ import { useRefComposer } from "react-ref-composer";
 import { createComponent, useClassInjector } from "../common/Common";
 import { useUuidV4 } from "../common/Uuid";
 import { FormFieldContext } from "../form-field/FormField";
-import "@material/checkbox/mdc-checkbox.scss";
+import "./style.scss";
 import { MDCCheckboxFoundation } from "@material/checkbox";
 import { RippleComponent } from "../ripple/RippleComponent";
 import { RippleEventTarget } from "../ripple/Ripple";

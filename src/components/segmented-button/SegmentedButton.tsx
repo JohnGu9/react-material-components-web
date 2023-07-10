@@ -64,8 +64,9 @@ const SegmentNoWrapper = createComponent<HTMLButtonElement, SegmentProps>(
     React.useEffect(() => {
       const component = new RippleComponent(innerRef.current!, injector, eventTarget);
       component.init();
+      if (selected) component.activate();
       return () => component.destroy();
-    }, [eventTarget, injector]);
+    }, [eventTarget, injector, selected]);
 
     return (
       <button ref={composeRefs(innerRef, ref)}

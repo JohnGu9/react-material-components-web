@@ -1,0 +1,9 @@
+@use "~@material/dialog/mdc-dialog.scss";
+
+.mdc-dialog .mdc-dialog__title {
+    color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
+}
+
+.mdc-dialog .mdc-dialog__content {
+    color: var(--mdc-theme-text-secondary-on-background, var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87)));
+}

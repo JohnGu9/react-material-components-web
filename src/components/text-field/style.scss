@@ -1,0 +1,50 @@
+@use "~@material/textfield/mdc-text-field.scss";
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.6));
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: var(--mdc-theme-primary, rgba(98, 0, 238, 0.87));
+}
+
+.mdc-text-field--outlined.mdc-text-field--disabled .mdc-floating-label {
+    color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+    border-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+    .mdc-notched-outline
+    .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+    .mdc-notched-outline
+    .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+    .mdc-notched-outline
+    .mdc-notched-outline__trailing {
+    border-color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
+}
+
+.mdc-text-field--disabled .mdc-notched-outline__leading,
+.mdc-text-field--disabled .mdc-notched-outline__notch,
+.mdc-text-field--disabled .mdc-notched-outline__trailing {
+    border-color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38));
+    opacity: 0.16;
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled) + .mdc-text-field-helper-line .mdc-text-field-helper-text {
+    color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.6));
+}
+
+.mdc-text-field.mdc-text-field--outlined .mdc-text-field__input {
+    color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
+}
+
+.mdc-text-field.mdc-text-field--outlined.mdc-text-field--disabled .mdc-text-field__input {
+    color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38));
+}

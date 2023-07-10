@@ -1,1 +1,11 @@
 @use "~@material/chips/styles";
+
+.mdc-evolution-chip__action--primary {
+    .mdc-evolution-chip__ripple {
+        &::before,
+        &::after {
+            background-color: #000;
+            background-color: var(--mdc-ripple-color, #000);
+        }
+    }
+}
