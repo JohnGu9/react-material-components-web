@@ -94,7 +94,6 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
               readOnly={readOnly}
               name={name}
               placeholder={placeholder}
-              defaultValue={value}
               value={value}
               onFocus={e => {
                 onFocus?.(e);

@@ -122,7 +122,7 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
             multiple={multiple}
             name={name}
             placeholder={placeholder}
-            defaultValue={value}
+            value={value}
             onFocus={e => {
               setInFocus(true);
               onFocus?.(e);
@@ -131,7 +131,6 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
               setInFocus(false);
               onBlur?.(e);
             }}
-            value={value}
             onChange={e => {
               onChange?.(e);
               e.target.value = value;
