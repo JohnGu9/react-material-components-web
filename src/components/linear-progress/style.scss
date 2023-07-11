@@ -1,11 +1,12 @@
-@use "~@material/linear-progress/mdc-linear-progress.scss";
+@use "@material/linear-progress/mdc-linear-progress.scss";
 
 .mdc-linear-progress__buffer-bar {
-    background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
-    opacity: 0.5;
+    background-color: var(--mdc-theme-primary, #6200ee);
+    opacity: 0.24;
 }
 
-.mdc-linear-progress__buffer-dots {
-    color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
-    opacity: 0.5;
-}
+// .mdc-linear-progress__buffer-dots {
+//     background-color: var(--mdc-theme-primary, #6200ee);
+//     opacity: 0.24;
+// }
+

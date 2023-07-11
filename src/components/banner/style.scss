@@ -1,5 +1,5 @@
-@use "~@material/banner/styles";
-@use "~@material/feature-targeting" as feature-targeting;
+@use "@material/banner/styles";
+@use "@material/feature-targeting" as feature-targeting;
 
 $query: feature-targeting.all();
 $feat-structure: feature-targeting.create-target($query, structure);

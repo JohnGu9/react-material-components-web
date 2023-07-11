@@ -79,10 +79,23 @@ npm run storybook
 - TabBar
 - TextArea
 - TextField
-- Theme
 - Tooltip
 - TopAppBar
 - Typography
+
+## Additional
+
+- Theme (Unified theme settings)
+
+```tsx
+function ThemeSwitch() {
+  /// false: force light theme
+  /// true: force dark theme
+  /// undefined: automatically (state from 'window.matchMedia('(prefers-color-scheme: dark)')')
+  const [enableDarkTheme, setEnableDarkTheme] = React.useState(undefined);
+  return <Theme enableDarkTheme={enableDarkTheme}>{myComponent}</Theme>;
+}
+```
 
 ## Development requirement
 

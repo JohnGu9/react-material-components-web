@@ -112,25 +112,28 @@ const Template: StoryFn<typeof Theme> = (args) => {
               onClick={() => setMenu(true)} />
           </Menu>
           <div>
-            <FormField input={<Checkbox checked={checkbox} onChange={() => {
-              setCheckbox(v => {
-                switch (v) {
-                  case true:
-                    return "mixed";
-                  case false:
-                    return true;
-                  case "mixed":
-                    return false;
-                }
-                return false;
-              })
-            }} />}>
+            <FormField input={<Checkbox
+              disabled={selected}
+              checked={checkbox}
+              onChange={() => {
+                setCheckbox(v => {
+                  switch (v) {
+                    case true:
+                      return "mixed";
+                    case false:
+                      return true;
+                    case "mixed":
+                      return false;
+                  }
+                  return false;
+                })
+              }} />}>
               Checkbox
             </FormField>
           </div>
           <div><Radio disabled={selected} checked={radio} onChange={() => { }} onClick={() => setRadio(v => !v)} /></div>
-          <div><Fab disabled={selected}><Icon>add</Icon></Fab></div>
-          <ChipSet><Chip>Front</Chip><Chip >Chip</Chip><Chip>Back</Chip></ChipSet>
+          <div><Fab><Icon>add</Icon></Fab></div>
+          <ChipSet><Chip graphic={<Icon>favorite</Icon>}>Front</Chip><Chip selected={selected}>Chip</Chip><Chip trailing={<Icon>favorite</Icon>}>Back</Chip></ChipSet>
           <Slider disabled={selected} value={slider} onChange={v => setSlider(v)} />
           <Typography.Subtitle1>Typography</Typography.Subtitle1>
           <div><Icon>more</Icon></div>
@@ -187,8 +190,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
           <div style={{ height: 32 }} />
           <LinearProgress
             buffer={0.6}
-            progress={0.4}
-          />
+            progress={0.4} />
           <CircularProgress />
           <ListDivider />
           <Ripple style={{ width: 300, height: 300 }} />
@@ -213,7 +215,6 @@ const Template: StoryFn<typeof Theme> = (args) => {
               <DataTableCell>Protein (g)</DataTableCell>
               <DataTableCell>Comments</DataTableCell>
             </DataTableRow>}>
-
             {[
               ['Frozen yogurt', 24, 4.0, 'Super tasty'],
               ['Ice cream sandwich', 37, 4.33333333333, 'I like ice cream more'],
@@ -227,7 +228,6 @@ const Template: StoryFn<typeof Theme> = (args) => {
                   </DataTableRow>
                 );
               })}
-
           </DataTable>
           <div style={{ height: 300 }}></div>
         </TopAppBar>

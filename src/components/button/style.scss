@@ -1,4 +1,4 @@
-@use "~@material/button/styles.scss";
+@use "@material/button/styles.scss";
 
 .mdc-button {
     --mdc-text-button-disabled-label-text-color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38));

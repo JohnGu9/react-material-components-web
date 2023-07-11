@@ -1,9 +1,7 @@
-@use "~@material/checkbox/mdc-checkbox.scss";
+@use "@material/checkbox/mdc-checkbox.scss";
 
-.mdc-checkbox .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background .mdc-checkbox__checkmark {
-    color: var(--mdc-theme-on-secondary, #fff);
-}
-
-.mdc-checkbox .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background .mdc-checkbox__mixedmark {
-    border-color: var(--mdc-theme-on-secondary, #fff);
+.mdc-checkbox {
+    --mdc-checkbox-ink-color: var(--mdc-theme-on-secondary, #fff);
+    --mdc-checkbox-unchecked-color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
+    --mdc-checkbox-disabled-color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38));
 }

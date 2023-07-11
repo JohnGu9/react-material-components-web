@@ -71,6 +71,7 @@ export const Chip = createComponent<HTMLSpanElement, ChipProps>(
           className={classMap(classes, className)}
           role="row"
           {...props}>
+          <span className="mdc-evolution-chip__background" />
           <PrimaryCell selected={selected} graphic={graphic} onClick={onClick} disabled={disabled}>{children}</PrimaryCell>
           {isDefined(trailing) ? <TrailingCell trailing={trailing} onClick={onTrailingClick} disabled={disabled} /> : undefined}
           {focusRing ? <span className="mdc-evolution-chip__focus-ring" aria-hidden></span> : undefined}

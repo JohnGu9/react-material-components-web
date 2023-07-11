@@ -1,14 +1,14 @@
 @use "sass:map";
-@use "~@material/drawer/mdc-drawer";
-@use "~@material/drawer" as variables;
-@use "~@material/theme/theme";
-@use "~@material/theme/theme-color";
-@use "~@material/rtl";
-@use "~@material/typography";
-@use "~@material/density";
-@use "~@material/ripple";
-@use "~@material/feature-targeting" as feature-targeting;
-@use "~@material/elevation/mixins" as elevation-mixins;
+@use "@material/drawer/mdc-drawer";
+@use "@material/drawer" as variables;
+@use "@material/theme/theme";
+@use "@material/theme/theme-color";
+@use "@material/rtl";
+@use "@material/typography";
+@use "@material/density";
+@use "@material/ripple";
+@use "@material/feature-targeting" as feature-targeting;
+@use "@material/elevation/mixins" as elevation-mixins;
 
 $query: feature-targeting.all();
 $feat-structure: feature-targeting.create-target($query, structure);
