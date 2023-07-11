@@ -1,4 +1,4 @@
-import "@material/icon-button/styles.scss";
+import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { createComponent, useClassInjector } from "../common/Common";

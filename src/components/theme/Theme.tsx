@@ -57,7 +57,7 @@ export const oledDarkTheme: ThemeData = {
   primary: '#bb86fc',
   secondary: '#03dac5',
   background: '#000000',
-  surface: '#424242',
+  surface: 'rgb(51,51,51)',
   onPrimary: 'rgba(0,0,0,0.87)',
   onSecondary: 'rgba(0,0,0,0.87)',
   onSurface: 'rgba(255,255,255,.87)',
@@ -91,8 +91,16 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
   }, ref) {
 
     const [mediaDarkMode, setMediaDarkMode] = React.useState(media.matches);
-
     const isDark = enableDarkTheme ?? mediaDarkMode;
+    let snackbarSurface, snackbarOnSurface;
+    if (isDark) {
+      snackbarSurface = surface;
+      snackbarOnSurface = onSurface;
+    } else {
+      snackbarSurface = darkTheme.surface;
+      snackbarOnSurface = darkTheme.onSurface;
+    }
+
     if (isDark) {
       primary = darkTheme.primary ?? primary;
       secondary = darkTheme.secondary ?? secondary;
@@ -135,6 +143,8 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
         '--mdc-ripple-color': onSurface,
         '--mdc-top-app-bar-surface': isDark ? surface : primary,
         '--mdc-top-app-bar-on-surface': isDark ? onSurface : onPrimary,
+        '--mdc-snackbar-surface': snackbarSurface,
+        '--mdc-snackbar-on-surface': snackbarOnSurface,
         backgroundColor: background,
         color: onSurface,
         ...style,

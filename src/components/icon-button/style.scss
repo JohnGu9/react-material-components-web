@@ -1,0 +1,5 @@
+@use "@material/icon-button/styles.scss";
+
+.mdc-icon-button:disabled {
+    color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38));
+}
