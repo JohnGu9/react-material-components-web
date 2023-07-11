@@ -5,11 +5,14 @@ import React from 'react';
 
 export default {
   component: TextArea,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof TextArea>;
 
 const Template: StoryFn<typeof TextArea> = (args) => {
   const [text, setText] = React.useState("");
-  return <TextArea {...args} value={text} onChange={(e)=>setText(e.target.value)}/>;
+  return <TextArea {...args} value={text} onChange={(e) => setText(e.target.value)} />;
 };
 
 export const Primary = Template.bind({});

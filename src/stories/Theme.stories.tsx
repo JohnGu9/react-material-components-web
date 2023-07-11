@@ -3,7 +3,7 @@ import 'material-icons/iconfont/material-icons.css';
 import { Button } from '../components/button/Button';
 import { Icon } from '../components/icon/Icon';
 import { Radio } from '../components/radio/Radio';
-import { Theme, defaultLightTheme } from '../components/theme/Theme';
+import { Theme, defaultDarkTheme, defaultLightTheme, oledDarkTheme } from '../components/theme/Theme';
 import { Typography } from '../components/typography/Typography';
 import { IconButton } from '../components/icon-button/IconButton';
 import { Dialog } from '../components/dialog/Dialog';
@@ -41,6 +41,10 @@ export default {
     onPrimary: { control: { type: 'color', presetColors: [defaultLightTheme.onPrimary] } },
     onSecondary: { control: { type: 'color', presetColors: [defaultLightTheme.onSecondary] } },
     onSurface: { control: { type: 'color', presetColors: [defaultLightTheme.onSurface] } },
+    oled: { control: 'boolean' },
+  },
+  parameters: {
+    layout: 'fullscreen',
   }
 } as Meta<typeof Theme>;
 
@@ -56,6 +60,8 @@ const Template: StoryFn<typeof Theme> = (args) => {
   const [slider, setSlider] = React.useState(50);
   const [textArea, setTextArea] = React.useState("");
   const [textField, setTextField] = React.useState("");
+  const { oled, ...other } = args as { oled?: boolean };
+  const darkTheme = oled ? oledDarkTheme : defaultDarkTheme;
   React.useEffect(() => {
     const listener = ({ target }: MouseEvent) => {
       const button = document.querySelector("#menu-button");
@@ -69,7 +75,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
     return () => { window.removeEventListener('click', listener) }
   }, []);
   return (
-    <Theme {...args} >
+    <Theme darkTheme={darkTheme} {...other} >
       <Drawer
         open={drawer}
         title="Mail"

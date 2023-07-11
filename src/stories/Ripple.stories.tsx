@@ -7,6 +7,9 @@ export default {
     color: {
       control: 'radio', options: [undefined, 'primary', 'accent']
     }
+  },
+  parameters: {
+    layout: 'centered',
   }
 } as Meta<typeof Ripple>;
 

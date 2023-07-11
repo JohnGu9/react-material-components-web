@@ -1,5 +1,9 @@
 @use "@material/slider/styles";
 
+.mdc-slider {
+    --mdc-ripple-color: var(--mdc-theme-primary, #6200ee);
+}
+
 .mdc-slider__tick-marks,
 .mdc-slider__tick-mark--active {
     user-select: none;
@@ -23,6 +27,6 @@
     --slider-value-indicator-container-transform: translateX(-50%);
 }
 
-.mdc-slider__track--active_fill{
+.mdc-slider__track--active_fill {
     transform-origin: left;
 }

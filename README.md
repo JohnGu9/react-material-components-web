@@ -85,7 +85,7 @@ npm run storybook
 
 ## Additional
 
-- Theme (Unified theme settings)
+- Theme (Unified theme settings and better dark theme support)
 
 ```tsx
 function ThemeSwitch() {
@@ -99,4 +99,6 @@ function ThemeSwitch() {
 
 ## Development requirement
 
-If you use webpack, require sass loader to pack [.scss] file into project.
+If you use webpack, require sass loader to pack [.scss] file into project (the project that come from "create-react-app" script already have sass loader).
+
+If you use vite, nothing is required to do.

@@ -4,6 +4,9 @@ import { DataTable, DataTableCell, DataTableRow } from '../components/data-table
 
 export default {
   component: DataTable,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof DataTable>;
 
 const Template: StoryFn<typeof DataTable> = (args) => {

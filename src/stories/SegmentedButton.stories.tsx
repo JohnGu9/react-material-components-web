@@ -5,6 +5,9 @@ import { SegmentedButton, Segment } from '../components/segmented-button/Segment
 
 export default {
   component: SegmentedButton,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof SegmentedButton>;
 
 const Template: StoryFn<typeof SegmentedButton> = (args) =>

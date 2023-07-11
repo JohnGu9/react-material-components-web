@@ -6,11 +6,14 @@ import React from 'react';
 
 export default {
   component: TextField,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof TextField>;
 
 const Template: StoryFn<typeof TextField> = (args) => {
   const [text, setText] = React.useState("");
-  return <TextField {...args} value={text} onChange={(e)=>setText(e.target.value)}/>
+  return <TextField {...args} value={text} onChange={(e) => setText(e.target.value)} />
 };
 
 export const Primary = Template.bind({});

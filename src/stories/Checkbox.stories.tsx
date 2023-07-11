@@ -8,6 +8,9 @@ export default {
       options: [true, false, "mixed"],
       control: { type: 'radio' },
     }
+  },
+  parameters: {
+    layout: 'centered',
   }
 } as Meta<typeof Checkbox>;
 

@@ -5,6 +5,9 @@ import { Select } from '../components/select/Select';
 
 export default {
   component: Select,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof Select>;
 
 const Template: StoryFn<typeof Select> = (args) =>

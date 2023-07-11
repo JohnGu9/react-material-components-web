@@ -7,6 +7,9 @@ export default {
     sizing: {
       control: 'radio', options: ['Large', 'Medium', 'Small']
     }
+  },
+  parameters: {
+    layout: 'centered',
   }
 } as Meta<typeof CircularProgress>;
 

@@ -5,6 +5,9 @@ import { Icon } from '../components/icon/Icon';
 
 export default {
   component: Fab,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof Fab>;
 
 const Template: StoryFn<typeof Fab> = (args) =>

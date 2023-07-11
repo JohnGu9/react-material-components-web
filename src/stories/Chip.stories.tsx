@@ -5,6 +5,9 @@ import { Icon } from '../components/icon/Icon';
 
 export default {
   component: Chip,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof Chip>;
 
 const Template: StoryFn<typeof Chip> = (args) =>

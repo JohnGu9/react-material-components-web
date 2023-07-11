@@ -4,6 +4,9 @@ import { FloatingLabel } from '../components/floating-label/FloatingLabel';
 
 export default {
   component: FloatingLabel,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof FloatingLabel>;
 
 const Template: StoryFn<typeof FloatingLabel> = (args) =>

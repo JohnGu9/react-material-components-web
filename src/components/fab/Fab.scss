@@ -1,3 +1,7 @@
 @use "@material/fab";
 
 @include fab.core-styles;
+
+.mdc-fab {
+    --mdc-ripple-color: var(--mdc-theme-on-secondary, #fff);
+}

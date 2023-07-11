@@ -5,6 +5,9 @@ import { Icon } from '../components/icon/Icon';
 
 export default {
   component: Button,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof Button>;
 
 const Template: StoryFn<typeof Button> = (args) =>

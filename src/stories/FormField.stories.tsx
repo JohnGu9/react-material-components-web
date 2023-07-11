@@ -5,6 +5,9 @@ import { Radio } from '../components/radio/Radio';
 
 export default {
   component: FormField,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof FormField>;
 
 const Template: StoryFn<typeof FormField> = (args) =>

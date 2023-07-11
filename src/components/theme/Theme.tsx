@@ -53,6 +53,21 @@ export const defaultDarkTheme: ThemeData = {
   textIconOnBackground: 'rgba(255, 255, 255, 0.5)',
 }
 
+export const oledDarkTheme: ThemeData = {
+  primary: '#bb86fc',
+  secondary: '#03dac5',
+  background: '#000000',
+  surface: '#424242',
+  onPrimary: 'rgba(0,0,0,0.87)',
+  onSecondary: 'rgba(0,0,0,0.87)',
+  onSurface: 'rgba(255,255,255,.87)',
+  textPrimaryOnBackground: 'rgba(255, 255, 255, 1)',
+  textSecondaryOnBackground: 'rgba(255, 255, 255, 0.7)',
+  textHintOnBackground: 'rgba(255, 255, 255, 0.5)',
+  textDisabledOnBackground: 'rgba(255, 255, 255, 0.5)',
+  textIconOnBackground: 'rgba(255, 255, 255, 0.5)',
+}
+
 const media = window.matchMedia('(prefers-color-scheme: dark)');
 
 export const Theme = createComponent<HTMLDivElement, ThemeProps>(
@@ -117,6 +132,9 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
         '--mdc-theme-text-hint-on-background': textHintOnBackground,
         '--mdc-theme-text-disabled-on-background': textDisabledOnBackground,
         '--mdc-theme-text-icon-on-background': textIconOnBackground,
+        '--mdc-ripple-color': onSurface,
+        '--mdc-top-app-bar-surface': isDark ? surface : primary,
+        '--mdc-top-app-bar-on-surface': isDark ? onSurface : onPrimary,
         backgroundColor: background,
         color: onSurface,
         ...style,

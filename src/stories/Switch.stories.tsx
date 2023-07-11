@@ -4,6 +4,9 @@ import { Switch } from '../components/switch/Switch';
 
 export default {
   component: Switch,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof Switch>;
 
 const Template: StoryFn<typeof Switch> = (args) =>

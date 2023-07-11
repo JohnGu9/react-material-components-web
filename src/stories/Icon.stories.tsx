@@ -4,6 +4,9 @@ import { Icon } from '../components/icon/Icon';
 
 export default {
   component: Icon,
+  parameters: {
+    layout: 'centered',
+  }
 } as Meta<typeof Icon>;
 
 const Template: StoryFn<typeof Icon> = (args) =>

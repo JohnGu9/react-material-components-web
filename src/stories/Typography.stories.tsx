@@ -20,8 +20,8 @@ const Template: StoryFn<typeof Typography.FontFamily> = (args) =>
     <Typography.Headline6>Headline6</Typography.Headline6>
     <Typography.Subtitle1>Subtitle1</Typography.Subtitle1>
     <Typography.Subtitle2>Subtitle2</Typography.Subtitle2>
-    <Typography.Body1>Body1</Typography.Body1>
-    <Typography.Body2>Body2</Typography.Body2>
+    <Typography.Body1 style={{ display: 'block' }}>Body1</Typography.Body1>
+    <Typography.Body2 style={{ display: 'block' }}>Body2</Typography.Body2>
     <Typography.Caption>Caption</Typography.Caption>
     <Typography.Button>Button</Typography.Button>
     <Typography.Overline>Overline</Typography.Overline>
