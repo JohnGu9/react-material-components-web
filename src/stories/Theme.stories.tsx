@@ -207,6 +207,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
             graphic={<Icon>star</Icon>} />
           <ListDivider />
           <ListItem
+            activated
             disabled={selected}
             primaryText="ListItem"
             graphic={<Icon>star</Icon>} />

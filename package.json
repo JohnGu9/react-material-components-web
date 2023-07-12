@@ -1,6 +1,6 @@
 {
   "name": "rmcw",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "This library provide react wrapped material design components for web. ",
   "private": false,
   "main": "dist/index.js",
@@ -156,9 +156,11 @@
     "@storybook/addon-essentials": "^7.0.26",
     "@storybook/addon-interactions": "^7.0.26",
     "@storybook/addon-links": "^7.0.26",
+    "@storybook/builder-vite": "^7.0.26",
     "@storybook/node-logger": "^7.0.26",
     "@storybook/preset-create-react-app": "^7.0.26",
     "@storybook/react": "^7.0.26",
+    "@storybook/react-vite": "^7.0.26",
     "@storybook/react-webpack5": "^7.0.26",
     "@storybook/testing-library": "^0.2.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -169,6 +171,7 @@
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "@types/uuid": "^8.3.4",
+    "@vitejs/plugin-react": "^4.0.3",
     "animated-size": "*",
     "babel-plugin-named-exports-order": "^0.0.2",
     "copyfiles": "^2.4.1",
@@ -183,6 +186,7 @@
     "storybook-dark-mode": "^3.0.0",
     "typescript": "^5.0.4",
     "uuid": "*",
+    "vite": "^4.4.2",
     "web-vitals": "^2.1.4",
     "webpack": "^5.74.0"
   }

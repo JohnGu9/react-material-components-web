@@ -92,13 +92,15 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
 
     const [mediaDarkMode, setMediaDarkMode] = React.useState(media.matches);
     const isDark = enableDarkTheme ?? mediaDarkMode;
-    let snackbarSurface, snackbarOnSurface;
+    let snackbarSurface, snackbarOnSurface, snackbarPrimary;
     if (isDark) {
       snackbarSurface = surface;
       snackbarOnSurface = onSurface;
+      snackbarPrimary = primary;
     } else {
       snackbarSurface = darkTheme.surface;
       snackbarOnSurface = darkTheme.onSurface;
+      snackbarPrimary = darkTheme.primary;
     }
 
     if (isDark) {
@@ -145,6 +147,7 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
         '--mdc-top-app-bar-on-surface': isDark ? onSurface : onPrimary,
         '--mdc-snackbar-surface': snackbarSurface,
         '--mdc-snackbar-on-surface': snackbarOnSurface,
+        '--mdc-snackbar-primary': snackbarPrimary,
         backgroundColor: background,
         color: onSurface,
         ...style,

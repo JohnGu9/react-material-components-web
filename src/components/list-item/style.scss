@@ -210,7 +210,8 @@ $dense-item-primary-text-baseline-height: 24px;
 
 // "Selected" is ephemeral and likely to change soon. E.g., selecting one or more photos to share in Google Photos.
 // "Activated" is more permanent. E.g., the currently highlighted navigation destination in a drawer.
-.mdc-deprecated-list-item[activated] {
+.mdc-deprecated-list-item--selected,
+.mdc-deprecated-list-item--activated {
   @include list.deprecated-item-primary-text-ink-color(primary, $query);
   @include list.deprecated-item-graphic-ink-color(primary, $query);
 
