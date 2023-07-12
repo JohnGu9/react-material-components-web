@@ -47,3 +47,16 @@
         opacity: 0.04;
     }
 }
+
+.mdc-data-table__row--selected {
+    background-color: transparent;
+    .mdc-data-table__cell__background {
+        background-color: var(--mdc-theme-primary, #6200ee);
+        opacity: 0.12;
+    }
+
+    &:hover .mdc-data-table__cell__background {
+        background-color: var(--mdc-theme-primary, #6200ee);
+        opacity: 0.16;
+    }
+}

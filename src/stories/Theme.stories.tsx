@@ -235,6 +235,12 @@ const Template: StoryFn<typeof Theme> = (args) => {
                   </DataTableRow>
                 );
               })}
+
+            <DataTableRow selected>
+              {['Eclair', 24, 6.0, 'New filing flavor'].map((value, index) => {
+                return <DataTableCell key={index}>{value}</DataTableCell>;
+              })}
+            </DataTableRow>
           </DataTable>
           <div style={{ height: 300 }}></div>
         </TopAppBar>
