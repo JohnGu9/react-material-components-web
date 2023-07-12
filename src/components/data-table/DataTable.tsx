@@ -179,11 +179,13 @@ export const DataTableCell = createComponent<HTMLTableCellElement, DataTableCell
         className={classMap(classes, className)}
         scope={isRowHeader ? 'row' : undefined}
         {...props} >
+        <div className="mdc-data-table__cell__background" aria-hidden/>
         {children ?? (isCheckbox ? <Checkbox /> : undefined)}
       </th>;
     else
       return <td ref={ref}
         className={classMap(classes, className)} {...props} >
+        <div className="mdc-data-table__cell__background" aria-hidden/>
         {children ?? (isCheckbox ? <Checkbox /> : undefined)}
       </td>;
   }

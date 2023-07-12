@@ -89,67 +89,71 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
     style,
     ...props
   }, ref) {
+    const lightTheme: ThemeData = React.useMemo(() => Object.assign({},
+      defaultLightTheme,
+      Object.fromEntries(Object.entries({
+        primary,
+        secondary,
+        background,
+        surface,
+        onPrimary,
+        onSecondary,
+        onSurface,
+        textPrimaryOnBackground,
+        textSecondaryOnBackground,
+        textHintOnBackground,
+        textDisabledOnBackground,
+        textIconOnBackground,
+      }).filter(([k, v]) => v !== undefined))),
+      [background, onPrimary, onSecondary, onSurface, primary, secondary, surface, textDisabledOnBackground, textHintOnBackground, textIconOnBackground, textPrimaryOnBackground, textSecondaryOnBackground]);
 
-    const [mediaDarkMode, setMediaDarkMode] = React.useState(media.matches);
-    const isDark = enableDarkTheme ?? mediaDarkMode;
-    let snackbarSurface, snackbarOnSurface, snackbarPrimary;
-    if (isDark) {
-      snackbarSurface = surface;
-      snackbarOnSurface = onSurface;
-      snackbarPrimary = primary;
-    } else {
-      snackbarSurface = darkTheme.surface;
-      snackbarOnSurface = darkTheme.onSurface;
-      snackbarPrimary = darkTheme.primary;
-    }
-
-    if (isDark) {
-      primary = darkTheme.primary ?? primary;
-      secondary = darkTheme.secondary ?? secondary;
-      background = darkTheme.background ?? background;
-      surface = darkTheme.surface ?? surface;
-      onPrimary = darkTheme.onPrimary ?? onPrimary;
-      onSecondary = darkTheme.onSecondary ?? onSecondary;
-      onSurface = darkTheme.onSurface ?? onSurface;
-      textPrimaryOnBackground = darkTheme.textPrimaryOnBackground ?? textPrimaryOnBackground;
-      textSecondaryOnBackground = darkTheme.textSecondaryOnBackground ?? textSecondaryOnBackground;
-      textHintOnBackground = darkTheme.textHintOnBackground ?? textHintOnBackground;
-      textDisabledOnBackground = darkTheme.textDisabledOnBackground ?? textDisabledOnBackground;
-      textIconOnBackground = darkTheme.textIconOnBackground ?? textIconOnBackground;
-    }
-
+    const [, setMediaDarkMode] = React.useState(media.matches);
     React.useEffect(() => {
-      const listener = () => {
-        setMediaDarkMode(media.matches);
-      };
-      media.addEventListener('change', listener);
-      return () => {
-        media.removeEventListener('change', listener);
-      };
-    }, []);
+      if (enableDarkTheme === undefined) {
+        const listener = () => {
+          setMediaDarkMode(media.matches);
+        };
+        media.addEventListener('change', listener);
+        return () => {
+          media.removeEventListener('change', listener);
+        };
+      }
+    }, [enableDarkTheme]);
+    const mediaDarkMode = media.matches;
+
+    const isDark = enableDarkTheme ?? mediaDarkMode;
+    let targetTheme, reverseTheme;
+    if (isDark) {
+      targetTheme = darkTheme;
+      reverseTheme = lightTheme;
+    } else {
+      targetTheme = lightTheme;
+      reverseTheme = darkTheme;
+    }
 
     return (<div ref={ref}
       style={{
-        '--mdc-theme-primary': primary,
-        '--mdc-theme-secondary': secondary,
-        '--mdc-theme-background': background,
-        '--mdc-theme-surface': surface,
-        '--mdc-theme-on-primary': onPrimary,
-        '--mdc-theme-on-secondary': onSecondary,
-        '--mdc-theme-on-surface': onSurface,
-        '--mdc-theme-text-primary-on-background': textPrimaryOnBackground,
-        '--mdc-theme-text-secondary-on-background': textSecondaryOnBackground,
-        '--mdc-theme-text-hint-on-background': textHintOnBackground,
-        '--mdc-theme-text-disabled-on-background': textDisabledOnBackground,
-        '--mdc-theme-text-icon-on-background': textIconOnBackground,
-        '--mdc-ripple-color': onSurface,
-        '--mdc-top-app-bar-surface': isDark ? surface : primary,
-        '--mdc-top-app-bar-on-surface': isDark ? onSurface : onPrimary,
-        '--mdc-snackbar-surface': snackbarSurface,
-        '--mdc-snackbar-on-surface': snackbarOnSurface,
-        '--mdc-snackbar-primary': snackbarPrimary,
-        backgroundColor: background,
-        color: onSurface,
+        '--mdc-theme-primary': targetTheme.primary,
+        '--mdc-theme-secondary': targetTheme.secondary,
+        '--mdc-theme-background': targetTheme.background,
+        '--mdc-theme-surface': targetTheme.surface,
+        '--mdc-theme-on-primary': targetTheme.onPrimary,
+        '--mdc-theme-on-secondary': targetTheme.onSecondary,
+        '--mdc-theme-on-surface': targetTheme.onSurface,
+        '--mdc-theme-text-primary-on-background': targetTheme.textPrimaryOnBackground,
+        '--mdc-theme-text-secondary-on-background': targetTheme.textSecondaryOnBackground,
+        '--mdc-theme-text-hint-on-background': targetTheme.textHintOnBackground,
+        '--mdc-theme-text-disabled-on-background': targetTheme.textDisabledOnBackground,
+        '--mdc-theme-text-icon-on-background': targetTheme.textIconOnBackground,
+        '--mdc-ripple-color': targetTheme.onSurface,
+        '--mdc-top-app-bar-surface': isDark ? targetTheme.surface : targetTheme.primary,
+        '--mdc-top-app-bar-on-surface': isDark ? targetTheme.onSurface : targetTheme.onPrimary,
+        '--mdc-snackbar-surface': reverseTheme.surface,
+        '--mdc-snackbar-on-surface': reverseTheme.onSurface,
+        '--mdc-snackbar-primary': reverseTheme.primary,
+        '--mdc-snackbar-text-disabled-on-background': reverseTheme.textDisabledOnBackground,
+        backgroundColor: targetTheme.background,
+        color: targetTheme.onSurface,
         ...style,
       } as React.CSSProperties}
       {...props} />);

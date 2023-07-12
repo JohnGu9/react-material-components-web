@@ -144,7 +144,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
           <Typography.Subtitle1>Typography</Typography.Subtitle1>
           <div><Icon>more</Icon></div>
           <div><IconButton disabled={selected} onClick={() => setSnackbar(true)}><Icon>star</Icon></IconButton></div>
-          <Snackbar open={snackbar} action={<IconButton onClick={() => setSnackbar(false)}><Icon>close</Icon></IconButton>}>Snackbar</Snackbar>
+          <Snackbar open={snackbar} action={<IconButton disabled={selected} onClick={() => setSnackbar(false)}><Icon>close</Icon></IconButton>}>Snackbar</Snackbar>
           <Dialog open={dialog}
             onScrimClick={() => setDialog(false)}
             onEscapeKey={() => setDialog(false)}
