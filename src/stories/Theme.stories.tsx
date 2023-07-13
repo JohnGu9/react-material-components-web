@@ -30,6 +30,7 @@ import { Fab } from '../components/fab/Fab';
 import { ChipSet, Chip } from '../components/chip/Chip';
 import { DataTable, DataTableRow, DataTableCell } from '../components/data-table/DataTable';
 import { Snackbar } from '../components/snackbar/Snackbar';
+import { Tooltip } from '../components/tooltip/Tooltip';
 
 export default {
   component: Theme,
@@ -55,7 +56,8 @@ const Template: StoryFn<typeof Theme> = (args) => {
   const [radio, setRadio] = React.useState(false);
   const [checkbox, setCheckbox] = React.useState<boolean | "mixed">(true);
   const [menu, setMenu] = React.useState(false);
-  const [selected, setSwitch] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(false);
+  const [selected0, setSwitch0] = React.useState(false);
   const [snackbar, setSnackbar] = React.useState(false);
   const [slider, setSlider] = React.useState(50);
   const [textArea, setTextArea] = React.useState("");
@@ -81,7 +83,6 @@ const Template: StoryFn<typeof Theme> = (args) => {
         title="Mail"
         subtitle="email@material.io"
         content={<>
-          Drawer Content
           <ListItem primaryText="DrawItem" />
           <ListItem primaryText="DrawItem" />
           <ListItem primaryText="DrawItem" />
@@ -90,159 +91,171 @@ const Template: StoryFn<typeof Theme> = (args) => {
           navigationIcon={<IconButton aria-label="Open navigation menu" onClick={() => setDrawer(v => !v)}><Icon>menu</Icon></IconButton>}
           title="Title"
           actionItem={<>
-            <IconButton aria-label="Favorite"><Icon>favorite</Icon></IconButton>
-            <IconButton aria-label="Search"><Icon>search</Icon></IconButton>
+            <Tooltip label="Disable">
+              <Switch selected={disabled} onClick={() => setDisabled(v => !v)} />
+            </Tooltip>
             <IconButton ria-label="Options"><Icon>more_vert</Icon></IconButton>
           </>}>
-          <div style={{ margin: 16 }}>
-            <Switch selected={selected} onClick={() => setSwitch(v => !v)} />
-            Disable
-          </div>
-          <div><Button disabled={selected}
-            label="button"
-            leading={<Icon>bookmark</Icon>}
-            onClick={() => setDialog(true)} /></div>
-          <Menu
-            open={menu}
-            surface={<>
-              <ListItem primaryText="MenuItem" />
-              <ListItem primaryText="MenuItem" />
-              <ListItem primaryText="MenuItem" />
-            </>}>
-            <Button
-              id='menu-button'
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px 0' }}>
+            <Switch
+              disabled={disabled}
+              selected={selected0}
+              onClick={() => setSwitch0(v => !v)} />
+            <div><Button disabled={disabled}
               label="button"
-              buttonStyle="raised"
-              disabled={selected}
               leading={<Icon>bookmark</Icon>}
-              onClick={() => setMenu(true)} />
-          </Menu>
-          <div>
-            <FormField input={<Checkbox
-              disabled={selected}
-              checked={checkbox}
-              onChange={() => {
-                setCheckbox(v => {
-                  switch (v) {
-                    case true:
-                      return "mixed";
-                    case false:
-                      return true;
-                    case "mixed":
-                      return false;
-                  }
-                  return false;
-                })
-              }} />}>
-              Checkbox
-            </FormField>
+              onClick={() => setDialog(true)} /></div>
+            <Menu
+              open={menu}
+              surface={<>
+                <ListItem primaryText="MenuItem" />
+                <ListItem primaryText="MenuItem" />
+                <ListItem primaryText="MenuItem" />
+              </>}>
+              <Button
+                id='menu-button'
+                label="button"
+                buttonStyle="raised"
+                disabled={disabled}
+                leading={<Icon>bookmark</Icon>}
+                onClick={() => setMenu(true)} />
+            </Menu>
+            <div>
+              <FormField input={<Checkbox
+                disabled={disabled}
+                checked={checkbox}
+                onChange={() => {
+                  setCheckbox(v => {
+                    switch (v) {
+                      case true:
+                        return "mixed";
+                      case false:
+                        return true;
+                      case "mixed":
+                        return false;
+                    }
+                    return false;
+                  })
+                }} />}>
+                Checkbox
+              </FormField>
+            </div>
+            <div><Radio disabled={disabled} checked={radio} onChange={() => { }} onClick={() => setRadio(v => !v)} /></div>
+            <div><Fab exited={disabled}><Icon>add</Icon></Fab></div>
+            <ChipSet><Chip graphic={<Icon>favorite</Icon>}>Front</Chip><Chip selected={disabled}>Chip</Chip><Chip trailing={<Icon>favorite</Icon>}>Back</Chip></ChipSet>
+            <Slider style={{ width: '100%' }}
+              disabled={disabled} value={slider}
+              onChange={v => setSlider(v)} />
+            <Typography.Subtitle1>Typography</Typography.Subtitle1>
+            <div><Icon>more</Icon></div>
+            <div><IconButton disabled={disabled} onClick={() => setSnackbar(true)}><Icon>star</Icon></IconButton></div>
+            <Snackbar open={snackbar} action={<IconButton disabled={disabled} onClick={() => setSnackbar(false)}><Icon>close</Icon></IconButton>}>Snackbar</Snackbar>
+            <Dialog open={dialog}
+              onScrimClick={() => setDialog(false)}
+              onEscapeKey={() => setDialog(false)}
+              title="Title"
+              actions={<Button label="close" onClick={() => setDialog(false)} />}>
+              Content
+            </Dialog>
+            <Card
+              style={{ margin: 16 }}
+              primaryAction={
+                <div style={{ padding: 16 }}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+                  pretium vitae est et dapibus. Aenean sit amet felis eu lorem fermentum
+                  aliquam sit amet sit amet eros.
+                </div>}
+              actionButtons={<Button label="button" />}
+              actionIcons={<IconButton><Icon>star</Icon></IconButton>} />
+
+            <div style={{ margin: 16 }}>
+              <TextField
+                label="Label"
+                helper="Helper"
+                outlined
+                value={textField}
+                disabled={disabled}
+                onChange={e => setTextField(e.target.value)}
+              />
+            </div>
+            <div style={{ margin: 16 }}>
+              <TextArea
+                label="Label"
+                helper="Helper"
+                value={textArea}
+                disabled={disabled}
+                onChange={e => setTextArea(e.target.value)} />
+            </div>
+            <TabBar selected={tab} onSelected={v => setTab(v)}>
+              <Tab icon={<Icon>favorite</Icon>} label="Favorite"></Tab>
+              <Tab icon={<Icon>search</Icon>} label="Search"></Tab>
+              <Tab icon={<Icon>more_vert</Icon>} label="Options"></Tab>
+            </TabBar>
+            <SegmentedButton style={{ margin: 16 }} >
+              <Segment icon={<Icon>favorite</Icon>} />
+              <Segment icon={<Icon>favorite</Icon>} label="Sample Text" />
+              <Segment label="Sample Text" selected />
+            </SegmentedButton>
+
+            <LinearProgress />
+            <div style={{ height: 32 }} />
+            <LinearProgress
+              buffer={0.6}
+              progress={0.4} />
+            <CircularProgress />
+            <ListDivider />
+            <Ripple style={{
+              width: 300,
+              height: 300,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }} >
+              Ripple
+            </Ripple>
+            <ListDivider />
+            <ListItem
+              disabled={disabled}
+              primaryText="ListItem"
+              graphic={<Icon>star</Icon>} />
+            <ListDivider />
+            <ListItem
+              activated
+              disabled={disabled}
+              primaryText="ListItem"
+              graphic={<Icon>star</Icon>} />
+
+            <DataTable
+              headerColumn={0}
+              numericColumns={[1, 2]}
+              withSortColumns={{ 1: 'descending', 2: 'none' }}
+              header={<DataTableRow>
+                <DataTableCell>Dessert</DataTableCell>
+                <DataTableCell>Carbs (g)</DataTableCell>
+                <DataTableCell>Protein (g)</DataTableCell>
+                <DataTableCell>Comments</DataTableCell>
+              </DataTableRow>}>
+              {[
+                ['Frozen yogurt', 24, 4.0, 'Super tasty'],
+                ['Ice cream sandwich', 37, 4.33333333333, 'I like ice cream more'],
+                ['Eclair', 24, 6.0, 'New filing flavor']]
+                .map((value, index) => {
+                  return (
+                    <DataTableRow key={index}>
+                      {value.map((value, index) => {
+                        return <DataTableCell key={index}>{value}</DataTableCell>;
+                      })}
+                    </DataTableRow>
+                  );
+                })}
+
+              <DataTableRow selected>
+                {['Eclair', 24, 6.0, 'New filing flavor'].map((value, index) => {
+                  return <DataTableCell key={index}>{value}</DataTableCell>;
+                })}
+              </DataTableRow>
+            </DataTable>
           </div>
-          <div><Radio disabled={selected} checked={radio} onChange={() => { }} onClick={() => setRadio(v => !v)} /></div>
-          <div><Fab><Icon>add</Icon></Fab></div>
-          <ChipSet><Chip graphic={<Icon>favorite</Icon>}>Front</Chip><Chip selected={selected}>Chip</Chip><Chip trailing={<Icon>favorite</Icon>}>Back</Chip></ChipSet>
-          <Slider disabled={selected} value={slider} onChange={v => setSlider(v)} />
-          <Typography.Subtitle1>Typography</Typography.Subtitle1>
-          <div><Icon>more</Icon></div>
-          <div><IconButton disabled={selected} onClick={() => setSnackbar(true)}><Icon>star</Icon></IconButton></div>
-          <Snackbar open={snackbar} action={<IconButton disabled={selected} onClick={() => setSnackbar(false)}><Icon>close</Icon></IconButton>}>Snackbar</Snackbar>
-          <Dialog open={dialog}
-            onScrimClick={() => setDialog(false)}
-            onEscapeKey={() => setDialog(false)}
-            title="Title"
-            actions={<Button label="close" onClick={() => setDialog(false)} />}>
-            Content
-          </Dialog>
-          <Card
-            style={{ margin: 16 }}
-            primaryAction={
-              <div style={{ padding: 16 }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                pretium vitae est et dapibus. Aenean sit amet felis eu lorem fermentum
-                aliquam sit amet sit amet eros.
-              </div>}
-            actionButtons={<Button label="button" />}
-            actionIcons={<IconButton><Icon>star</Icon></IconButton>} />
-
-          <div style={{ margin: 16 }}>
-            <TextField
-              label="Label"
-              helper="Helper"
-              outlined
-              value={textField}
-              disabled={selected}
-              onChange={e => setTextField(e.target.value)}
-            />
-          </div>
-          <div style={{ margin: 16 }}>
-            <TextArea
-              label="Label"
-              helper="Helper"
-              value={textArea}
-              disabled={selected}
-              onChange={e => setTextArea(e.target.value)} />
-          </div>
-          <TabBar selected={tab} onSelected={v => setTab(v)}>
-            <Tab icon={<Icon>favorite</Icon>} label="Favorite"></Tab>
-            <Tab icon={<Icon>search</Icon>} label="Search"></Tab>
-            <Tab icon={<Icon>more_vert</Icon>} label="Options"></Tab>
-          </TabBar>
-          <SegmentedButton style={{ margin: 16 }} >
-            <Segment icon={<Icon>favorite</Icon>} />
-            <Segment icon={<Icon>favorite</Icon>} label="Sample Text" />
-            <Segment label="Sample Text" selected />
-          </SegmentedButton>
-
-          <LinearProgress />
-          <div style={{ height: 32 }} />
-          <LinearProgress
-            buffer={0.6}
-            progress={0.4} />
-          <CircularProgress />
-          <ListDivider />
-          <Ripple style={{ width: 300, height: 300 }} />
-          <ListDivider />
-          <ListItem
-            disabled={selected}
-            primaryText="ListItem"
-            graphic={<Icon>star</Icon>} />
-          <ListDivider />
-          <ListItem
-            activated
-            disabled={selected}
-            primaryText="ListItem"
-            graphic={<Icon>star</Icon>} />
-
-          <DataTable
-            headerColumn={0}
-            numericColumns={[1, 2]}
-            withSortColumns={{ 1: 'descending', 2: 'none' }}
-            header={<DataTableRow>
-              <DataTableCell>Dessert</DataTableCell>
-              <DataTableCell>Carbs (g)</DataTableCell>
-              <DataTableCell>Protein (g)</DataTableCell>
-              <DataTableCell>Comments</DataTableCell>
-            </DataTableRow>}>
-            {[
-              ['Frozen yogurt', 24, 4.0, 'Super tasty'],
-              ['Ice cream sandwich', 37, 4.33333333333, 'I like ice cream more'],
-              ['Eclair', 24, 6.0, 'New filing flavor']]
-              .map((value, index) => {
-                return (
-                  <DataTableRow key={index}>
-                    {value.map((value, index) => {
-                      return <DataTableCell key={index}>{value}</DataTableCell>;
-                    })}
-                  </DataTableRow>
-                );
-              })}
-
-            <DataTableRow selected>
-              {['Eclair', 24, 6.0, 'New filing flavor'].map((value, index) => {
-                return <DataTableCell key={index}>{value}</DataTableCell>;
-              })}
-            </DataTableRow>
-          </DataTable>
-          <div style={{ height: 300 }}></div>
         </TopAppBar>
       </Drawer>
 

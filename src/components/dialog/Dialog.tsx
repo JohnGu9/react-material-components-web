@@ -26,7 +26,7 @@ export const Dialog = createComponent<HTMLDivElement, DialogProps>(
     header,
     actions,
     fullscreen = false,
-    noContentPadding,
+    noContentPadding = false,
     stacked = false,
     onScrimClick,
     onEscapeKey,
@@ -45,7 +45,7 @@ export const Dialog = createComponent<HTMLDivElement, DialogProps>(
 
     injector.with('mdc-dialog', true);
     injector.with('mdc-dialog--fullscreen', fullscreen);
-    injector.with('mdc-dialog--no-content-padding', fullscreen);
+    injector.with('mdc-dialog--no-content-padding', noContentPadding);
     injector.with('mdc-dialog--stacked', stacked);
     injector.withClassName('0', className);
 

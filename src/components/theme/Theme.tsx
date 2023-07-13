@@ -24,18 +24,18 @@ export type ThemeProps = ThemeData & {
 };
 
 export const defaultLightTheme: ThemeData = {
-  primary: '#6200ee',
-  secondary: '#03dac4',
-  background: '#fff',
-  surface: '#fff',
-  onPrimary: 'rgba(255, 255, 255, 1)',
-  onSecondary: 'rgba(0, 0, 0, 0.87)',
-  onSurface: 'rgba(0, 0, 0, 0.87)',
-  textPrimaryOnBackground: 'rgba(0, 0, 0, 0.87)',
-  textSecondaryOnBackground: 'rgba(0, 0, 0, 0.54)',
-  textHintOnBackground: 'rgba(0, 0, 0, 0.38)',
-  textDisabledOnBackground: 'rgba(0, 0, 0, 0.38)',
-  textIconOnBackground: 'rgba(0, 0, 0, 0.38)',
+  primary: '#6200ee',// var(--mdc-theme-primary, #6200ee)
+  secondary: '#03dac4', // var(--mdc-theme-secondary, #03dac4)
+  background: '#fff',// var(--mdc-theme-background, #fff)
+  surface: '#fff',// var(--mdc-theme-surface, #fff)
+  onPrimary: 'rgba(255, 255, 255, 1)',// var(--mdc-theme-on-primary, rgba(255, 255, 255, 1))
+  onSecondary: 'rgba(0, 0, 0, 0.87)',// var(--mdc-theme-on-secondary, rgba(0, 0, 0, 0.87))
+  onSurface: 'rgba(0, 0, 0, 0.87)',// var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87))
+  textPrimaryOnBackground: 'rgba(0, 0, 0, 0.87)',// var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87))
+  textSecondaryOnBackground: 'rgba(0, 0, 0, 0.54)',// var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54))
+  textHintOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.38))
+  textDisabledOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38))
+  textIconOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38))
 }
 
 export const defaultDarkTheme: ThemeData = {

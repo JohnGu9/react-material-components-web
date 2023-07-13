@@ -1,6 +1,6 @@
 ## Use
 
-```js
+```jsx
 import { Button } from "rmcw";
 
 function MyComponent() {
@@ -83,11 +83,11 @@ npm run storybook
 - TopAppBar
 - Typography
 
-## Additional
+## Additional Components
 
 - Theme (Unified theme settings and better dark theme support)
 
-```tsx
+```jsx
 function ThemeSwitch() {
   /// false: force light theme
   /// true: force dark theme
@@ -99,6 +99,6 @@ function ThemeSwitch() {
 
 ## Development requirement
 
-If you use webpack, require sass loader to pack [.scss] file into project (the project that come from "create-react-app" script already have sass loader).
+If you use webpack, it require sass loader to pack [.scss] file into project (the project that come from "create-react-app" script already have sass loader).
 
 If you use vite, nothing is required to do.

@@ -47,12 +47,13 @@ export const Switch = createComponent<HTMLButtonElement, SwitchProps>(
         type="button" role="switch"
         aria-checked={selected}
         {...props}>
-        <div className="mdc-switch__track" aria-hidden></div>
+        <div className="mdc-switch__track" aria-hidden>
+          <div className="mdc-switch__track__background"></div>
+        </div>
         <div className="mdc-switch__handle-track" aria-hidden>
           <div className="mdc-switch__handle">
-            <div className="mdc-switch__shadow">
-              <div className="mdc-elevation-overlay"></div>
-            </div>
+            <div className="mdc-switch__shadow"><div className="mdc-elevation-overlay"></div></div>
+            <div className="mdc-switch__handle__foreground"></div>
             <div className="mdc-switch__ripple" ref={rippleElement}></div>
             <div className="mdc-switch__icons">
               {isDefined(on)
