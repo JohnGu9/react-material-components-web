@@ -104,10 +104,7 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
                 onBlur?.(e);
                 setInFocus(false);
               }}
-              onChange={e => {
-                onChange?.(e);
-                e.target.value = value;
-              }} />
+              onChange={onChange} />
             {charCounter === 'inner'
               ? <span className="mdc-text-field-character-counter">{value.length}{isDefined(maxLength) ? ` / ${maxLength}` : undefined}</span>
               : undefined}

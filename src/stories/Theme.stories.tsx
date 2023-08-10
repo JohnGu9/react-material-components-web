@@ -77,7 +77,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
     return () => { window.removeEventListener('click', listener) }
   }, []);
   return (
-    <Theme darkTheme={darkTheme} {...other} >
+    <Theme darkTheme={darkTheme} {...other} style={{ position: 'relative' }} >
       <Drawer
         open={drawer}
         title="Mail"
