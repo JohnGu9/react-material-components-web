@@ -36,6 +36,7 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
     placeholder,
     endAligned = false,
     resize = true,
+    autoFocus,
     value,
     onChange,
     onFocus,
@@ -95,6 +96,7 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
               readOnly={readOnly}
               name={name}
               placeholder={placeholder}
+              autoFocus={autoFocus}
               value={value}
               onFocus={e => {
                 onFocus?.(e);

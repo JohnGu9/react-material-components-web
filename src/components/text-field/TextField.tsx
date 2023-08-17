@@ -44,6 +44,7 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
     minLength,
     maxLength,
     readOnly,
+    autoFocus,
     multiple,
     name,
     placeholder,
@@ -123,6 +124,7 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
             multiple={multiple}
             name={name}
             placeholder={placeholder}
+            autoFocus={autoFocus}
             value={value}
             onFocus={e => {
               setInFocus(true);
