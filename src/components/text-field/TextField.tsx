@@ -47,6 +47,7 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
     autoFocus,
     multiple,
     name,
+    id,
     placeholder,
     endAligned = false,
     type = "text",
@@ -81,6 +82,7 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
       <>
         <label ref={composeRefs(innerRef, ref)}
           className={injector.toClassName()}
+          htmlFor={id ?? name}
           {...props}>
           {!outlined ? <span className="mdc-text-field--filled__background" aria-hidden></span> : <></>}
           <span className="mdc-text-field__ripple" aria-hidden></span>
@@ -123,6 +125,7 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
             readOnly={readOnly}
             multiple={multiple}
             name={name}
+            id={id}
             placeholder={placeholder}
             autoFocus={autoFocus}
             value={value}
