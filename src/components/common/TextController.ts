@@ -21,5 +21,6 @@ export type TextBaseProps<T extends { value: string }> = {
   readOnly?: boolean,
   autoFocus?: boolean,
   id?: string,
+  autoComplete?: string,
   onChange?: React.ChangeEventHandler<T>,
 };

@@ -43,6 +43,7 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
     step,
     minLength,
     maxLength,
+    autoComplete,
     readOnly,
     autoFocus,
     multiple,
@@ -125,6 +126,7 @@ export const TextField = createComponent<HTMLLabelElement, TextFieldProps>(
             readOnly={readOnly}
             multiple={multiple}
             name={name}
+            autoComplete={autoComplete}
             id={id}
             placeholder={placeholder}
             autoFocus={autoFocus}

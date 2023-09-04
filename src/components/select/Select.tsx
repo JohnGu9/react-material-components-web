@@ -6,6 +6,9 @@ import { useRefComposer } from "react-ref-composer";
 
 export type SelectProps = {
   open?: boolean,
+  anchorCorner?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right',
+  anchorQuadrant?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right',
+  quick?: boolean,
   activated?: boolean,
   onOpen?: () => any,
   onClose?: () => any,
@@ -111,8 +114,7 @@ export const Select = createComponent<HTMLDivElement, SelectProps>(
 
     return (
       <Menu fullWidth
-        surface={children}
-        open={opened}
+        {...props}
         value={value}
         onKeyDown={e => {
           const { keyCode, key } = e;
@@ -123,7 +125,7 @@ export const Select = createComponent<HTMLDivElement, SelectProps>(
           }
         }}
         onClick={onClick}
-        {...props}
+        surface={children}
         ref={composeRefs(innerRef, ref)}>
         <TextField
           aria-hidden

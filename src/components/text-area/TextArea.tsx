@@ -31,6 +31,7 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
     maxLength,
     readOnly,
     name,
+    autoComplete,
     id,
     cols,
     rows,
@@ -95,6 +96,7 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
               required={required}
               minLength={minLength}
               maxLength={maxLength}
+              autoComplete={autoComplete}
               readOnly={readOnly}
               name={name}
               id={id}

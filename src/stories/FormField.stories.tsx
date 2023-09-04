@@ -17,10 +17,10 @@ const Template: StoryFn<typeof FormField> = (args) =>
 
 export const WithCheckbox = Template.bind({});
 WithCheckbox.args = {
-  input: <Checkbox inputId='MyInput'></Checkbox>,
+  input: <Checkbox inputId='MyInput0'></Checkbox>,
 };
 
 export const WithRadio = Template.bind({});
 WithRadio.args = {
-  input: <Radio inputId='MyInput'></Radio>,
+  input: <Radio inputId='MyInput1'></Radio>,
 };

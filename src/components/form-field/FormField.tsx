@@ -12,7 +12,7 @@ export type FormFieldProps = {
   input?: React.ReactNode,
 };
 
-export const FormField = createComponent<HTMLDivElement, FormFieldProps>(
+export const FormField = createComponent<HTMLLabelElement, FormFieldProps>(
   function FormField({
     alignEnd = false,
     nowrap = false,
@@ -21,8 +21,7 @@ export const FormField = createComponent<HTMLDivElement, FormFieldProps>(
     children,
     ...props }, ref) {
     const composeRefs = useRefComposer();
-    const innerRef = React.useRef<HTMLDivElement>(null);
-    const labelRef = React.useRef<HTMLLabelElement>(null);
+    const innerRef = React.useRef<HTMLLabelElement>(null);
     const injector = useClassInjector(innerRef);
 
     injector.with('mdc-form-field', true);
@@ -36,12 +35,12 @@ export const FormField = createComponent<HTMLDivElement, FormFieldProps>(
     }, []);
 
     return (
-      <div ref={composeRefs(innerRef, ref)} className={injector.toClassName()} {...props} >
-        <FormFieldContext.Provider value={labelRef}>
+      <label ref={composeRefs(innerRef, ref)} className={injector.toClassName()} {...props} >
+        <FormFieldContext.Provider value={innerRef}>
           {input}
         </FormFieldContext.Provider>
-        <label ref={labelRef}>{children}</label>
-      </div>
+        {children}
+      </label>
     );
   }
 );
