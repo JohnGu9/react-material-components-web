@@ -69,17 +69,15 @@
     "@material/top-app-bar": "^14.0.0",
     "@material/touch-target": "^14.0.0",
     "@material/typography": "^14.0.0",
+    "tslib": "^2.1.0",
     "animated-size": "*",
     "react-ref-composer": "*",
     "sass": "*",
     "uuid": "*"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "npm run clean && npx tsc --project tsconfig.build.json && npx copyfiles -u 1 src/components/**/*.scss dist/",
     "clean": "node ./script/clean.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006 -s public",
     "build-storybook": "storybook build -s public"
   },
