@@ -1,6 +1,7 @@
 @use "@material/top-app-bar/mdc-top-app-bar.scss";
 
 .mdc-top-app-bar {
+    position: sticky;
     background-color: var(--mdc-top-app-bar-surface, var(--mdc-theme-primary, #6200ee));
     color: var(--mdc-top-app-bar-on-surface, var(--mdc-theme-on-primary, rgba(255, 255, 255, 1)));
     --mdc-ripple-color: var(--mdc-top-app-bar-on-surface, var(--mdc-theme-on-primary, rgba(255, 255, 255, 1)));
@@ -9,4 +10,8 @@
     .mdc-top-app-bar__navigation-icon {
         color: var(--mdc-top-app-bar-on-surface, var(--mdc-theme-on-primary, rgba(255, 255, 255, 1)));
     }
+}
+
+.mdc-top-app-bar--fixed {
+    top: 0;
 }

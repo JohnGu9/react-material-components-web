@@ -59,7 +59,7 @@ export const TopAppBar = createComponent<HTMLElement, TopAppBarProps>(
           </section>
         </div>
       </header>
-      <main className={`mdc-top-app-bar-${dense ? '-dense' : ''}${prominent ? '-prominent' : ''}-fixed-adjust`}>
+      <main>
         {children}
       </main>
     </>);
@@ -118,7 +118,7 @@ export const ShortTopAppBar = createComponent<HTMLElement, ShortTopAppBarProps>(
           </section>
         </div>
       </header>
-      <main className="mdc-top-app-bar--short-fixed-adjust">
+      <main>
         {children}
       </main>
     </>);

@@ -69,7 +69,6 @@
     "@material/top-app-bar": "^14.0.0",
     "@material/touch-target": "^14.0.0",
     "@material/typography": "^14.0.0",
-    "tslib": "^2.2.0",
     "animated-size": "*",
     "react-ref-composer": "*",
     "sass": "*",
