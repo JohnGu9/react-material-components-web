@@ -213,7 +213,9 @@ const Template: StoryFn<typeof Theme> = (args) => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-            }} >
+            }}
+              activated={segment}
+              onClick={() => setSegment(v => !v)}>
               Ripple
             </Ripple>
             <ListDivider />

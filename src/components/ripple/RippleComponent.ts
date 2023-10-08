@@ -191,8 +191,11 @@ export class RippleComponent extends MDCRipple {
       root.removeEventListener('blur', this.handleBlur);
     }
 
-    this.resizeObserver?.disconnect();
-    this.resizeObserver = undefined as unknown as ResizeObserver;
+    if (this._unbounded) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = undefined as unknown as ResizeObserver;
+      this._unbounded.eventTarget.removeEventListener('resize', this.layout);
+    }
     super.destroy();
 
     this.handleActivate = nullCallback;
