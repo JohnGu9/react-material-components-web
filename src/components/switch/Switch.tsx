@@ -35,8 +35,8 @@ export const Switch = createComponent<HTMLButtonElement, SwitchProps>(
     injector.withClassName('0', className);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector, eventTarget,
-        () => rippleElement.current!.getBoundingClientRect(), true);
+      const component = new RippleComponent(innerRef.current!, injector,
+        () => rippleElement.current!.getBoundingClientRect(), { eventTarget });
       component.init();
       return () => component.destroy();
     }, [eventTarget, injector]);

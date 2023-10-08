@@ -62,7 +62,7 @@ export const Checkbox = createComponent<HTMLDivElement, CheckboxProps>(
     }, [finalId, formField]);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector, eventTarget, undefined, true);
+      const component = new RippleComponent(innerRef.current!, injector, undefined, { eventTarget });
       component.init();
       return () => component.destroy();
     }, [eventTarget, injector]);

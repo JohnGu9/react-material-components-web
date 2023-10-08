@@ -6,7 +6,6 @@ import { RippleComponent } from "../ripple/RippleComponent";
 import { Icon } from "../icon/Icon";
 import styles from "./style.module.scss";
 import "./style.scss";
-import { RippleEventTarget } from "../ripple/Ripple";
 
 export const ListItemContext = React.createContext(false);
 
@@ -52,7 +51,6 @@ function SimpleListItem({ props: {
   const innerRef = React.useRef<HTMLLIElement>(null);
   const injector = useClassInjector(innerRef);
   const composeRefs = useRefComposer();
-  const eventTarget = React.useContext(RippleEventTarget);
 
   injector.with('mdc-deprecated-list-item', true);
   injector.with('mdc-deprecated-list-item--disabled', props.disabled ?? false);
@@ -63,11 +61,11 @@ function SimpleListItem({ props: {
 
   React.useEffect(() => {
     if (!nonInteractive) {
-      const component = new RippleComponent(innerRef.current!, injector, eventTarget);
+      const component = new RippleComponent(innerRef.current!, injector);
       component.init();
       return () => component.destroy();
     }
-  }, [eventTarget, injector, nonInteractive]);
+  }, [injector, nonInteractive]);
 
   return (
     <li ref={composeRefs(innerRef, forwardRef)}
@@ -123,7 +121,6 @@ function NestedListItem({ props: {
   const injector = useClassInjector(innerRef);
   const [opened, setOpened] = React.useState(defaultExpanded);
   const composeRefs = useRefComposer();
-  const eventTarget = React.useContext(RippleEventTarget);
 
   injector.with('mdc-deprecated-list-item', true);
   injector.with('mdc-deprecated-list-item--disabled', props.disabled ?? false);
@@ -134,11 +131,11 @@ function NestedListItem({ props: {
 
   React.useEffect(() => {
     if (!nonInteractive) {
-      const component = new RippleComponent(innerRef.current!, injector, eventTarget);
+      const component = new RippleComponent(innerRef.current!, injector);
       component.init();
       return () => component.destroy();
     }
-  }, [eventTarget, injector, nonInteractive]);
+  }, [injector, nonInteractive]);
 
   expanded ??= opened;
   meta ??= <Icon className={expanded ? styles['nested-open-icon'] : styles['nested-close-icon']}>chevron_right</Icon>;

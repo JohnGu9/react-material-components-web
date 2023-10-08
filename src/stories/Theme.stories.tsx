@@ -60,6 +60,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
   const [selected0, setSwitch0] = React.useState(false);
   const [snackbar, setSnackbar] = React.useState(false);
   const [slider, setSlider] = React.useState(50);
+  const [segment, setSegment] = React.useState(false);
   const [textArea, setTextArea] = React.useState("");
   const [textField, setTextField] = React.useState("");
   const { oled, ...other } = args as { oled?: boolean };
@@ -155,7 +156,9 @@ const Template: StoryFn<typeof Theme> = (args) => {
               onEscapeKey={() => setDialog(false)}
               title="Title"
               actions={<Button label="close" onClick={() => setDialog(false)} />}>
-              Content
+              <ListItem
+                primaryText="Content"
+                meta={<IconButton><Icon>star</Icon></IconButton>} />
             </Dialog>
             <Card
               style={{ margin: 16 }}
@@ -192,9 +195,9 @@ const Template: StoryFn<typeof Theme> = (args) => {
               <Tab icon={<Icon>more_vert</Icon>} label="Options"></Tab>
             </TabBar>
             <SegmentedButton style={{ margin: 16 }} >
-              <Segment icon={<Icon>favorite</Icon>} />
-              <Segment icon={<Icon>favorite</Icon>} label="Sample Text" />
-              <Segment label="Sample Text" selected />
+              <Segment icon={<Icon>favorite</Icon>} onClick={() => setSegment(v => !v)} />
+              <Segment icon={<Icon>favorite</Icon>} label="Sample Text" selected={segment} onClick={() => setSegment(v => !v)} />
+              <Segment label="Sample Text" selected onClick={() => setSegment(v => !v)} />
             </SegmentedButton>
 
             <LinearProgress />

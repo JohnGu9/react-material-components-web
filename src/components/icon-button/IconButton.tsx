@@ -38,7 +38,7 @@ export const IconButton = createComponent<HTMLButtonElement, IconButtonProps>(
     injector.withClassName('1', c1);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector, eventTarget, undefined, true);
+      const component = new RippleComponent(innerRef.current!, injector, undefined, { eventTarget });
       component.init();
       return () => component.destroy();
     });

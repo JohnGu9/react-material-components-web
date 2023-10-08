@@ -46,7 +46,7 @@ export const Radio = createComponent<HTMLDivElement, RadioProps>(
     injector.withClassName('0', className);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector, eventTarget, undefined, true);
+      const component = new RippleComponent(innerRef.current!, injector, undefined, { eventTarget });
       component.init();
       return () => component.destroy();
     }, [eventTarget, injector]);

@@ -5,7 +5,6 @@ import { RippleComponent } from "../ripple/RippleComponent";
 import { IconContext } from "../icon/Icon";
 import { TouchTargetWrapper } from "../touch-target-wrapper/TouchTargetWrapper";
 import "./style.scss";
-import { RippleEventTarget } from "../ripple/Ripple";
 
 const Context = React.createContext(undefined as unknown as { touch: boolean });
 
@@ -55,18 +54,25 @@ const SegmentNoWrapper = createComponent<HTMLButtonElement, SegmentProps>(
     const composeRefs = useRefComposer();
     const innerRef = React.useRef(null);
     const injector = useClassInjector(innerRef);
-    const eventTarget = React.useContext(RippleEventTarget);
+    const [component, setComponent] = React.useState<RippleComponent>();
 
     injector.with('mdc-segmented-button__segment', true);
     injector.with('mdc-segmented-button--touch', touch);
     injector.with('mdc-segmented-button__segment--selected', selected);
 
     React.useEffect(() => {
-      const component = new RippleComponent(innerRef.current!, injector, eventTarget);
+      const component = new RippleComponent(innerRef.current!, injector);
       component.init();
-      if (selected) component.activate();
+      setComponent(component);
       return () => component.destroy();
-    }, [eventTarget, injector, selected]);
+    }, [injector]);
+
+    React.useEffect(() => {
+      if (component) {
+        if (selected) component.activate();
+        else component.deactivate();
+      }
+    }, [selected, component]);
 
     return (
       <button ref={composeRefs(innerRef, ref)}

@@ -27,9 +27,8 @@ export const Ripple = createComponent<HTMLDivElement, RippleProps>(
       const component = new RippleComponent(
         innerRef.current!,
         injector,
-        eventTarget,
         undefined,
-        unbounded);
+        unbounded ? { eventTarget } : undefined);
       component.init();
       setComponent(component);
       return () => component.destroy();
