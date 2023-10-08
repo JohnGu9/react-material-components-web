@@ -26,13 +26,16 @@ export const TabBar = createComponent<HTMLDivElement, TabBarProps>(
     const innerRef = React.useRef<HTMLDivElement>(null);
     const [component, setComponent] = React.useState<TabBarComponent>();
     const state = React.useMemo<State>(() => { return {}; }, []);
+    const [currentTabs, setCurrentTabs] = React.useState(0);
     state.onSelected = onSelected;
 
     React.useEffect(() => {
-      const component = new TabBarComponent(innerRef.current!, state);
-      setComponent(component);
-      return () => component.destroy();
-    }, [state, children]);
+      if (currentTabs !== 0) {
+        const component = new TabBarComponent(innerRef.current!, state);
+        setComponent(component);
+        return () => component.destroy();
+      }
+    }, [state, currentTabs]);
 
     React.useEffect(() => {
       if (component && selected !== undefined) {
@@ -40,13 +43,17 @@ export const TabBar = createComponent<HTMLDivElement, TabBarProps>(
       }
     }, [component, selected]);
 
+    const context = React.useMemo(() => {
+      return { stacked, minWidth, setCurrentTabs };
+    }, [minWidth, stacked]);
+
     return (
       <div ref={composeRefs(innerRef, ref)}
         className="mdc-tab-bar" role="tablist" {...props}>
         <div className="mdc-tab-scroller">
           <div className="mdc-tab-scroller__scroll-area">
             <div className="mdc-tab-scroller__scroll-content">
-              <TabContext.Provider value={{ stacked, minWidth }}>
+              <TabContext.Provider value={context}>
                 {children}
               </TabContext.Provider>
             </div>

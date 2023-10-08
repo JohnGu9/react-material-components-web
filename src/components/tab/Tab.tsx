@@ -8,7 +8,8 @@ import { TabComponent } from "./Component";
 export const TabContext = React.createContext<React.HTMLProps<HTMLButtonElement> & {
   stacked?: boolean,
   minWidth?: boolean,
-}>({});
+  setCurrentTabs: React.Dispatch<React.SetStateAction<number>>,
+}>({ setCurrentTabs: function () { } as unknown as React.Dispatch<React.SetStateAction<number>> });
 
 export type TabProps = {
   icon?: React.ReactNode,
@@ -31,7 +32,7 @@ export const Tab = createComponent<HTMLButtonElement, TabProps>(
     const composeRefs = useRefComposer();
     const innerRef = React.useRef<HTMLButtonElement>(null);
     const injector = useClassInjector(innerRef);
-    const { className: c1, type, stacked: s1, minWidth: m1, ...context } = React.useContext(TabContext);
+    const { setCurrentTabs, className: c1, type, stacked: s1, minWidth: m1, ...context } = React.useContext(TabContext);
 
     stacked ??= s1 ?? false;
     minWidth ??= m1 ?? false;
@@ -44,8 +45,12 @@ export const Tab = createComponent<HTMLButtonElement, TabProps>(
 
     React.useEffect(() => {
       const component = new TabComponent(innerRef.current!, injector);
-      return () => component.destroy();
-    }, [injector]);
+      setCurrentTabs(v => v + 1);
+      return () => {
+        component.destroy();
+        setCurrentTabs(v => v + 1);
+      }
+    }, [injector, setCurrentTabs]);
 
     return (
       <button ref={composeRefs(innerRef, ref)}

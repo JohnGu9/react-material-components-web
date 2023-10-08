@@ -1,11 +1,16 @@
 import { MDCTab } from "@material/tab";
 import { ClassInjector } from "../common/Common";
+import { MDCRippleFoundation } from "@material/ripple";
 
 export class TabComponent extends MDCTab {
   injector: ClassInjector;
 
   constructor(root: Element, injector: ClassInjector) {
-    super(root);
+    super(root, undefined,
+      function (_: unknown, f: MDCRippleFoundation) {
+        f.destroy();
+        return { destroy: function () { } }
+      });
     this.injector = injector;
   }
 
