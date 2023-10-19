@@ -4,10 +4,18 @@ import { useRefComposer } from "react-ref-composer";
 import { createComponent, useClassInjector } from "../common/Common";
 import { animationDimensionPercentages as percents } from '@material/linear-progress/constants';
 
+// css transition
+export type Transition = {
+  duration: string,
+  delay?: string,
+  easingFunction?: string,
+}
 export type LinearProgressProps = {
   closed?: boolean,
   progress?: number,
   buffer?: number,
+  progressTransition?: Transition,
+  bufferTransition?: Transition,
 };
 
 export const LinearProgress = createComponent<HTMLDivElement, LinearProgressProps>(
@@ -15,6 +23,8 @@ export const LinearProgress = createComponent<HTMLDivElement, LinearProgressProp
     closed = false,
     progress,
     buffer = 1,
+    progressTransition,
+    bufferTransition,
     className,
     style,
     ...props }, ref) {
@@ -78,11 +88,17 @@ export const LinearProgress = createComponent<HTMLDivElement, LinearProgressProp
         {...props}>
         <div className="mdc-linear-progress__buffer" aria-hidden>
           <div className="mdc-linear-progress__buffer-bar"
-            style={{ flexBasis: `${buffer * 100}%` }}></div>
+            style={{
+              flexBasis: `${buffer * 100}%`,
+              transition: transitionToProperty('flex-basis', bufferTransition),
+            }}></div>
           <div className="mdc-linear-progress__buffer-dots"></div>
         </div>
         <div className="mdc-linear-progress__bar mdc-linear-progress__primary-bar"
-          style={{ transform: `scaleX(${progress ?? 1})` }} aria-hidden>
+          style={{
+            transform: `scaleX(${progress ?? 1})`,
+            transition: transitionToProperty('transform', progressTransition),
+          }} aria-hidden>
           <span className="mdc-linear-progress__bar-inner"></span>
         </div>
         <div className="mdc-linear-progress__bar mdc-linear-progress__secondary-bar" aria-hidden>
@@ -112,4 +128,12 @@ function calculateAndSetDimensions(width: number) {
     '--mdc-linear-progress-secondary-full': `${secondaryFull}px`,
     '--mdc-linear-progress-secondary-full-neg': `${- secondaryFull}px`,
   } as React.CSSProperties;
+}
+
+function transitionToProperty(property: string, transition?: Transition) {
+  if (transition === undefined) return;
+  const { duration, delay, easingFunction } = transition;
+  const delayString = delay === undefined ? '' : ` ${delay}`;
+  const easingFunctionString = easingFunction === undefined ? '' : ` ${easingFunction}`;
+  return `${property} ${duration}${delayString}${easingFunctionString}`;
 }

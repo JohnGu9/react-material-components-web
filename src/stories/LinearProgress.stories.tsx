@@ -27,3 +27,12 @@ Buffer.args = {
   progress: 0.4,
   buffer: 0.6,
 };
+
+export const ProgressTransition = Template.bind({});
+ProgressTransition.args = {
+  progress: 0.4,
+  progressTransition: {
+    duration: '3s',
+    easingFunction: 'ease',
+  }
+};
