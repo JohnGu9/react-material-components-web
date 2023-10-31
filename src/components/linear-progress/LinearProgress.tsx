@@ -61,7 +61,7 @@ export const LinearProgress = createComponent<HTMLDivElement, LinearProgressProp
             current.removeEventListener('transitionend', listener);
           }
         }
-        current.addEventListener('transitionend', listener);
+        current.addEventListener('transitionend', listener, { passive: true });
         return () => current.removeEventListener('transitionend', listener);
       } else {
         setAnimationOff(false);

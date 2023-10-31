@@ -93,8 +93,8 @@ export const Select = createComponent<HTMLDivElement, SelectProps>(
             close();
           }
         };
-        window.addEventListener('focusin', onFocusIn);
-        window.addEventListener('click', onClick);
+        window.addEventListener('focusin', onFocusIn, { passive: true });
+        window.addEventListener('click', onClick, { passive: true });
         return () => {
           window.removeEventListener('focusin', onFocusIn);
           window.removeEventListener('click', onClick);
@@ -107,8 +107,8 @@ export const Select = createComponent<HTMLDivElement, SelectProps>(
     React.useEffect(() => {
       const { current } = innerRef;
       if (current !== null) {
-        current.addEventListener('focusin', _ => setIsFocused(true));
-        current.addEventListener('focusout', _ => setIsFocused(false));
+        current.addEventListener('focusin', _ => setIsFocused(true), { passive: true });
+        current.addEventListener('focusout', _ => setIsFocused(false), { passive: true });
       }
     }, []);
 

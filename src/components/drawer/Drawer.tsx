@@ -41,7 +41,7 @@ export const Drawer = createComponent<HTMLElement, DrawerProps>(
         const { keyCode, key } = evt;
         if (key === 'Escape' || keyCode === 27) onEscapeKey?.(evt);
       };
-      window.addEventListener('keydown', listener);
+      window.addEventListener('keydown', listener, { passive: true });
       return () => window.removeEventListener('keydown', listener);
     }, [onEscapeKey]);
 
@@ -56,7 +56,7 @@ export const Drawer = createComponent<HTMLElement, DrawerProps>(
             current.removeEventListener('transitionend', listener);
           }
         };
-        current.addEventListener('transitionend', listener);
+        current.addEventListener('transitionend', listener, { passive: true });
         return () => current.removeEventListener('transitionend', listener);
       }
     }, [open]);

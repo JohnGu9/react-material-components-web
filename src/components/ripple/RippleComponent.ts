@@ -32,11 +32,14 @@ export class RippleComponent extends MDCRipple {
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.layout = this.layout.bind(this);
+    this._onMouseUp = this._onMouseUp.bind(this);
+    this._onTouchEnd = this._onTouchEnd.bind(this);
+    this._onPinterUp = this._onPinterUp.bind(this);
 
     if (unbounded !== undefined) {
       this.resizeObserver = new ResizeObserver(this.layout);
       this.resizeObserver.observe(this.root);
-      unbounded.eventTarget.addEventListener('resize', this.layout);
+      unbounded.eventTarget.addEventListener('resize', this.layout, { passive: true });
     } else {
       this.resizeObserver = undefined as unknown as ResizeObserver;
     }
@@ -45,6 +48,7 @@ export class RippleComponent extends MDCRipple {
 
   // should not change unbounded on fly
   protected override set unbounded(v) {
+    throw new Error();
   }
 
   override get unbounded() {
@@ -77,14 +81,32 @@ export class RippleComponent extends MDCRipple {
 
     if (browserCssVarsSupports) {
       const root = this.root as HTMLElement;
-      root.addEventListener('mousedown', this.handleActivate);
-      root.addEventListener('touchstart', this.handleActivate);
-      root.addEventListener('pointerdown', this.handleActivate);
-      root.addEventListener('keydown', this.handleActivate);
-      root.addEventListener('keyup', this.handleKeyup);
-      root.addEventListener('focus', this.handleFocus);
-      root.addEventListener('blur', this.handleBlur);
+      root.addEventListener('mousedown', this.handleActivate, { passive: true });
+      root.addEventListener('touchstart', this.handleActivate, { passive: true });
+      root.addEventListener('pointerdown', this.handleActivate, { passive: true });
+      root.addEventListener('keydown', this.handleActivate, { passive: true });
+      root.addEventListener('keyup', this.handleKeyup, { passive: true });
+      root.addEventListener('focus', this.handleFocus, { passive: true });
+      root.addEventListener('blur', this.handleBlur, { passive: true });
     }
+  }
+
+  protected _onMouseUp() {
+    this._activePort.mouse = false;
+    document.documentElement.removeEventListener('mouseup', this._onMouseUp);
+    this.handleDeactivate();
+  }
+
+  protected _onTouchEnd() {
+    this._activePort.touch = false;
+    document.documentElement.removeEventListener('touchend', this._onTouchEnd);
+    this.handleDeactivate();
+  }
+
+  protected _onPinterUp() {
+    this._activePort.pointer = false;
+    document.documentElement.removeEventListener('pointerup', this._onPinterUp);
+    this.handleDeactivate();
   }
 
   protected handleActivate(e: Event) {
@@ -93,32 +115,17 @@ export class RippleComponent extends MDCRipple {
     switch (e.type) {
       case 'mousedown': {
         this._activePort.mouse = true;
-        const listener = () => {
-          this._activePort.mouse = false;
-          doc.removeEventListener('mouseup', listener);
-          this.handleDeactivate();
-        };
-        doc.addEventListener('mouseup', listener);
+        doc.addEventListener('mouseup', this._onMouseUp, { passive: true, once: true });
         break;
       }
       case 'touchstart': {
         this._activePort.touch = true;
-        const listener = () => {
-          this._activePort.touch = false;
-          doc.removeEventListener('touchend', listener);
-          this.handleDeactivate();
-        };
-        doc.addEventListener('touchend', listener);
+        doc.addEventListener('touchend', this._onTouchEnd, { passive: true, once: true });
         break;
       }
       case 'pointerdown': {
         this._activePort.pointer = true;
-        const listener = () => {
-          this._activePort.pointer = false;
-          doc.removeEventListener('pointerup', listener);
-          this.handleDeactivate();
-        };
-        doc.addEventListener('pointerup', listener);
+        doc.addEventListener('pointerup', this._onPinterUp, { passive: true, once: true });
         break;
       }
       case 'keydown': {
@@ -135,8 +142,8 @@ export class RippleComponent extends MDCRipple {
   }
 
   protected handleDeactivate() {
-    const isActiveBefore = isActive(this._activePort);
-    if (!isActiveBefore) {
+    const isActiveNow = isActive(this._activePort);
+    if (!isActiveNow) {
       if (this._nextFrame !== null) cancelAnimationFrame(this._nextFrame);
       this._nextFrame = requestAnimationFrame(() => {
         this.foundation.deactivate();
@@ -191,6 +198,11 @@ export class RippleComponent extends MDCRipple {
       root.removeEventListener('blur', this.handleBlur);
     }
 
+    const doc = document.documentElement;
+    doc.removeEventListener('mouseup', this._onMouseUp);
+    doc.removeEventListener('touchend', this._onTouchEnd);
+    doc.removeEventListener('pointerup', this._onPinterUp);
+
     if (this._unbounded) {
       this.resizeObserver.disconnect();
       this.resizeObserver = undefined as unknown as ResizeObserver;
@@ -204,6 +216,10 @@ export class RippleComponent extends MDCRipple {
     this.handleFocus = nullCallback;
     this.handleBlur = nullCallback;
     this.layout = nullCallback;
+    this._onMouseUp = nullCallback;
+    this._onTouchEnd = nullCallback;
+    this._onPinterUp = nullCallback;
+
   }
 };
 

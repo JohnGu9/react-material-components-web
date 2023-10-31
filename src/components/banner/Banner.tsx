@@ -55,7 +55,7 @@ export const Banner = createComponent<HTMLDivElement, BannerProps>(
             current.removeEventListener('transitionend', listener);
           }
         }
-        current.addEventListener('transitionend', listener);
+        current.addEventListener('transitionend', listener, { passive: true });
         return () => current.removeEventListener('transitionend', listener);
       }
     }, [open]);

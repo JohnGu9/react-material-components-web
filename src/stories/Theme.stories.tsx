@@ -74,7 +74,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
         }
       }
     };
-    window.addEventListener('click', listener);
+    window.addEventListener('click', listener, { passive: true });
     return () => { window.removeEventListener('click', listener) }
   }, []);
   return (

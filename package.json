@@ -1,6 +1,6 @@
 {
   "name": "rmcw",
-  "version": "0.1.35",
+  "version": "0.1.36",
   "description": "This library provide a react wrapper for material design components. ",
   "private": false,
   "main": "dist/index.js",
@@ -177,7 +177,7 @@
     "react-dom": "^18.2.0",
     "react-ref-composer": "*",
     "react-scripts": "5.0.1",
-    "sass": "^1.54.9",
+    "sass": "^1.69.5",
     "storybook": "^7.4.6",
     "storybook-dark-mode": "^3.0.1",
     "typescript": "^5.0.4",

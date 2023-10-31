@@ -94,11 +94,11 @@ export const ShortTopAppBar = createComponent<HTMLElement, ShortTopAppBarProps>(
     React.useEffect(() => {
       const scrollTarget = window;
       const listener = () => {
-        const currentScroll = scrollTarget.pageYOffset;
+        const currentScroll = scrollTarget.scrollY ?? scrollTarget.pageYOffset;
         if (currentScroll <= 0) setMaybeCollapse(false);
         else setMaybeCollapse(true);
       }
-      scrollTarget.addEventListener('scroll', listener);
+      scrollTarget.addEventListener('scroll', listener, { passive: true });
       return () => scrollTarget.removeEventListener('scroll', listener);
     }, []);
 

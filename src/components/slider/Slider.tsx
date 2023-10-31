@@ -60,8 +60,8 @@ export const Slider = createComponent<HTMLDivElement, SliderProps>(
           onChangeEnd?.(mouseEventToValue(event, element, min, max));
           inputRef.current?.blur();
         };
-        window.addEventListener('mousemove', onMove);
-        window.addEventListener('mouseup', onUp, { once: true });
+        window.addEventListener('mousemove', onMove, { passive: true });
+        window.addEventListener('mouseup', onUp, { once: true, passive: true });
         return () => {
           window.removeEventListener('mousemove', onMove);
           window.removeEventListener('mouseup', onUp);
@@ -85,9 +85,9 @@ export const Slider = createComponent<HTMLDivElement, SliderProps>(
           onChangeCancel?.();
           inputRef.current?.blur();
         }
-        window.addEventListener('touchmove', onMove);
-        window.addEventListener('touchend', onUp, { once: true });
-        window.addEventListener('touchcancel', onCancel, { once: true });
+        window.addEventListener('touchmove', onMove, { passive: true });
+        window.addEventListener('touchend', onUp, { once: true, passive: true });
+        window.addEventListener('touchcancel', onCancel, { once: true, passive: true });
         return () => {
           window.removeEventListener('touchmove', onMove);
           window.removeEventListener('touchend', onUp);
