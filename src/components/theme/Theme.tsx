@@ -18,11 +18,6 @@ export type ThemeData = {
   textIconOnBackground?: string,
 }
 
-export type ThemeProps = ThemeData & {
-  darkTheme?: ThemeData,
-  enableDarkTheme?: boolean,
-};
-
 export const defaultLightTheme: ThemeData = {
   primary: '#6200ee',// var(--mdc-theme-primary, #6200ee)
   secondary: '#03dac4', // var(--mdc-theme-secondary, #03dac4)
@@ -70,6 +65,13 @@ export const oledDarkTheme: ThemeData = {
 
 const media = window.matchMedia('(prefers-color-scheme: dark)');
 
+export type ThemeProps = ThemeData & {
+  darkTheme?: ThemeData,
+  enableDarkTheme?: boolean,
+  withBackgroundColor?: boolean,
+  buildTopAppBarTheme?: (lightTheme: ThemeData, darkTheme: ThemeData, isDark: boolean) => ThemeData,
+};
+
 export const Theme = createComponent<HTMLDivElement, ThemeProps>(
   function Theme({
     primary,
@@ -86,6 +88,8 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
     textIconOnBackground,
     darkTheme = defaultDarkTheme,
     enableDarkTheme,
+    withBackgroundColor,
+    buildTopAppBarTheme = defaultBuildTopAppBarTheme,
     style,
     ...props
   }, ref) {
@@ -122,7 +126,7 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
     const mediaDarkMode = media.matches;
 
     const isDark = enableDarkTheme ?? mediaDarkMode;
-    let targetTheme, reverseTheme;
+    let targetTheme: ThemeData, reverseTheme: ThemeData;
     if (isDark) {
       targetTheme = darkTheme;
       reverseTheme = lightTheme;
@@ -131,31 +135,81 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
       reverseTheme = darkTheme;
     }
 
-    return (<div ref={ref}
-      style={{
-        '--mdc-theme-primary': targetTheme.primary,
-        '--mdc-theme-secondary': targetTheme.secondary,
-        '--mdc-theme-background': targetTheme.background,
-        '--mdc-theme-surface': targetTheme.surface,
-        '--mdc-theme-on-primary': targetTheme.onPrimary,
-        '--mdc-theme-on-secondary': targetTheme.onSecondary,
-        '--mdc-theme-on-surface': targetTheme.onSurface,
-        '--mdc-theme-text-primary-on-background': targetTheme.textPrimaryOnBackground,
-        '--mdc-theme-text-secondary-on-background': targetTheme.textSecondaryOnBackground,
-        '--mdc-theme-text-hint-on-background': targetTheme.textHintOnBackground,
-        '--mdc-theme-text-disabled-on-background': targetTheme.textDisabledOnBackground,
-        '--mdc-theme-text-icon-on-background': targetTheme.textIconOnBackground,
-        '--mdc-ripple-color': targetTheme.onSurface,
-        '--mdc-top-app-bar-surface': isDark ? targetTheme.surface : targetTheme.primary,
-        '--mdc-top-app-bar-on-surface': isDark ? targetTheme.onSurface : targetTheme.onPrimary,
-        '--mdc-snackbar-surface': reverseTheme.surface,
-        '--mdc-snackbar-on-surface': reverseTheme.onSurface,
-        '--mdc-snackbar-primary': reverseTheme.primary,
-        '--mdc-snackbar-text-disabled-on-background': reverseTheme.textDisabledOnBackground,
-        backgroundColor: targetTheme.background,
-        color: targetTheme.onSurface,
+    const context = React.useMemo(() => {
+      return {
+        isDark,
+        theme: targetTheme,
+        reverseTheme,
+        topAppBarTheme: buildTopAppBarTheme(lightTheme, darkTheme, isDark)
+      };
+    }, [buildTopAppBarTheme, darkTheme, isDark, lightTheme, reverseTheme, targetTheme]);
+
+    const mergeStyle = React.useMemo<React.CSSProperties>(() => {
+      if (withBackgroundColor)
+        return {
+          ...themeDataToCSSProperties(targetTheme),
+          backgroundColor: 'var(--mdc-theme-background)',
+          ...style,
+        };
+      return {
+        ...themeDataToCSSProperties(targetTheme),
         ...style,
-      } as React.CSSProperties}
-      {...props} />);
+      };
+    }, [style, targetTheme, withBackgroundColor]);
+
+    return (
+      <ThemeContext.Provider value={context}>
+        <div ref={ref}
+          style={mergeStyle}
+          {...props} />
+      </ThemeContext.Provider>
+    );
   }
 );
+
+export const ThemeContext = React.createContext<{
+  theme: ThemeData,
+  reverseTheme: ThemeData,
+  topAppBarTheme: ThemeData,
+  isDark: boolean,
+} | null>(null);
+
+export function themeDataToCSSProperties(targetTheme: ThemeData) {
+  return {
+    color: targetTheme.onSurface,
+    '--mdc-theme-primary': targetTheme.primary,
+    '--mdc-theme-secondary': targetTheme.secondary,
+    '--mdc-theme-background': targetTheme.background,
+    '--mdc-theme-surface': targetTheme.surface,
+    '--mdc-theme-on-primary': targetTheme.onPrimary,
+    '--mdc-theme-on-secondary': targetTheme.onSecondary,
+    '--mdc-theme-on-surface': targetTheme.onSurface,
+    '--mdc-theme-text-primary-on-background': targetTheme.textPrimaryOnBackground,
+    '--mdc-theme-text-secondary-on-background': targetTheme.textSecondaryOnBackground,
+    '--mdc-theme-text-hint-on-background': targetTheme.textHintOnBackground,
+    '--mdc-theme-text-disabled-on-background': targetTheme.textDisabledOnBackground,
+    '--mdc-theme-text-icon-on-background': targetTheme.textIconOnBackground,
+    '--mdc-ripple-color': targetTheme.onSurface,
+  } as React.CSSProperties;
+}
+
+function defaultBuildTopAppBarTheme(lightTheme: ThemeData,
+  darkTheme: ThemeData, isDark: boolean): ThemeData {
+  if (isDark) {
+    return darkTheme;
+  } else {
+    return {
+      ...lightTheme,
+      primary: lightTheme.secondary,
+      onPrimary: lightTheme.onSecondary,
+      surface: lightTheme.primary,
+      onSurface: lightTheme.onPrimary,
+      background: lightTheme.primary,
+      textDisabledOnBackground: darkTheme.textDisabledOnBackground,
+      textHintOnBackground: darkTheme.textHintOnBackground,
+      textIconOnBackground: darkTheme.textIconOnBackground,
+      textPrimaryOnBackground: darkTheme.textPrimaryOnBackground,
+      textSecondaryOnBackground: darkTheme.textSecondaryOnBackground,
+    };
+  }
+}

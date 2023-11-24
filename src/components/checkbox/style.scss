@@ -1,7 +1,8 @@
 @use "@material/checkbox/mdc-checkbox.scss";
 
 .mdc-checkbox {
-    --mdc-checkbox-ink-color: var(--mdc-theme-on-secondary, #fff);
+    --mdc-checkbox-ink-color: var(--mdc-theme-on-primary, #fff);
+    --mdc-checkbox-checked-color: var(--mdc-theme-primary);
     --mdc-checkbox-unchecked-color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
     --mdc-checkbox-disabled-color: var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38));
 }

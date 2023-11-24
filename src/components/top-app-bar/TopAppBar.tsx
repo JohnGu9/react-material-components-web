@@ -4,6 +4,7 @@ import { useRefComposer } from "react-ref-composer";
 import { createComponent, isDefined, useClassInjector } from "../common/Common";
 import { IconButtonContext } from "../icon-button/IconButton";
 import { TopAppBarComponent } from "./Component";
+import { ThemeContext, themeDataToCSSProperties } from "../theme/Theme";
 
 type BaseProps = {
   title?: React.ReactNode,
@@ -26,11 +27,13 @@ export const TopAppBar = createComponent<HTMLElement, TopAppBarProps>(
     navigationIcon,
     actionItem,
     className,
+    style,
     children,
     ...props }, ref) {
     const composeRefs = useRefComposer();
     const innerRef = React.useRef<HTMLElement>(null);
     const injector = useClassInjector(innerRef);
+    const themeContext = React.useContext(ThemeContext);
 
     injector.with('mdc-top-app-bar', true);
     injector.with('mdc-top-app-bar--fixed', fixed);
@@ -43,8 +46,16 @@ export const TopAppBar = createComponent<HTMLElement, TopAppBarProps>(
       return () => component.destroy();
     }, [fixed, injector]);
 
+    const mergeStyle = React.useMemo(() => {
+      if (themeContext === null) return style;
+      return { ...themeDataToCSSProperties(themeContext.topAppBarTheme), ...style };
+    }, [style, themeContext]);
+
     return (<>
-      <header ref={composeRefs(innerRef, ref)} className={injector.toClassName()} {...props}>
+      <header ref={composeRefs(innerRef, ref)}
+        className={injector.toClassName()}
+        style={mergeStyle}
+        {...props}>
         <div className="mdc-top-app-bar__row">
           <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <IconButtonContext.Provider value={{ className: 'mdc-top-app-bar__navigation-icon' }}>
@@ -78,12 +89,14 @@ export const ShortTopAppBar = createComponent<HTMLElement, ShortTopAppBarProps>(
     actionItem,
     className,
     children,
+    style,
     ...props
   }, ref) {
     const innerRef = React.useRef<HTMLElement>(null);
     const composeRefs = useRefComposer();
     const injector = useClassInjector(innerRef);
     const [maybeCollapse, setMaybeCollapse] = React.useState(false);
+    const themeContext = React.useContext(ThemeContext);
 
     injector.with('mdc-top-app-bar', true);
     injector.with('mdc-top-app-bar--short', true);
@@ -102,8 +115,16 @@ export const ShortTopAppBar = createComponent<HTMLElement, ShortTopAppBarProps>(
       return () => scrollTarget.removeEventListener('scroll', listener);
     }, []);
 
+    const mergeStyle = React.useMemo(() => {
+      if (themeContext === null) return style;
+      return { ...themeDataToCSSProperties(themeContext.topAppBarTheme), ...style };
+    }, [style, themeContext]);
+
     return (<>
-      <header ref={composeRefs(innerRef, ref)} className={injector.toClassName()} {...props}>
+      <header ref={composeRefs(innerRef, ref)}
+        className={injector.toClassName()}
+        style={mergeStyle}
+        {...props}>
         <div className="mdc-top-app-bar__row">
           <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
             <IconButtonContext.Provider value={{ className: 'mdc-top-app-bar__navigation-icon' }}>

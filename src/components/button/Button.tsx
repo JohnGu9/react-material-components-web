@@ -2,7 +2,7 @@ import "./style.scss";
 import React from "react";
 import { useRefComposer } from 'react-ref-composer';
 import { createComponent, isDefined, useClassInjector } from "../common/Common";
-import { RippleComponent } from "../ripple/RippleComponent";
+import { RippleComponent } from "../ripple/Component";
 import { IconContext } from "../icon/Icon";
 
 export const ButtonContext = React.createContext<React.HTMLProps<HTMLButtonElement>>({});

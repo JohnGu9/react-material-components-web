@@ -2,7 +2,7 @@ import { AnimatedSizeBuilder } from "animated-size";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { createComponent, isDefined, useClassInjector } from "../common/Common";
-import { RippleComponent } from "../ripple/RippleComponent";
+import { RippleComponent } from "../ripple/Component";
 import { Icon } from "../icon/Icon";
 import styles from "./style.module.scss";
 import "./style.scss";

@@ -130,5 +130,4 @@ export const TextArea = createComponent<HTMLLabelElement, TextAreaProps>(
       </>
     );
   }
-
 );

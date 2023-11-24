@@ -5,7 +5,7 @@ import { useUuidV4 } from "../common/Uuid";
 import { FormFieldContext } from "../form-field/FormField";
 import "./style.scss";
 import { MDCCheckboxFoundation } from "@material/checkbox";
-import { RippleComponent } from "../ripple/RippleComponent";
+import { RippleComponent } from "../ripple/Component";
 import { RippleEventTarget } from "../ripple/Ripple";
 import { ListItemContext } from "../list-item/ListItem";
 import { CompactWrapper } from "../common/CompactWrapper";

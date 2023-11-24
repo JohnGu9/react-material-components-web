@@ -2,7 +2,7 @@ import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { createComponent, useClassInjector } from "../common/Common";
-import { RippleComponent } from "../ripple/RippleComponent";
+import { RippleComponent } from "../ripple/Component";
 import { IconContext } from "../icon/Icon";
 import { RippleEventTarget } from "../ripple/Ripple";
 import { ListItemContext } from "../list-item/ListItem";

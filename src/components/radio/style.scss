@@ -1,6 +1,7 @@
 @use "@material/radio/mdc-radio.scss";
 
 .mdc-radio {
+    --mdc-theme-secondary: var(--mdc-theme-primary, #6200ee);
     .mdc-radio__native-control {
         &:not(:checked) {
             &:enabled,

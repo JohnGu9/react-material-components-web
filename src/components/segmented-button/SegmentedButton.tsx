@@ -1,7 +1,7 @@
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { classMap, createComponent, isDefined, useClassInjector } from "../common/Common";
-import { RippleComponent } from "../ripple/RippleComponent";
+import { RippleComponent } from "../ripple/Component";
 import { IconContext } from "../icon/Icon";
 import { TouchTargetWrapper } from "../touch-target-wrapper/TouchTargetWrapper";
 import "./style.scss";

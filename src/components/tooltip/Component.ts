@@ -9,5 +9,4 @@ export class TooltipComponent extends MDCTooltip {
 
   initialize(): void { }
   initialSyncWithDOM(): void { }
-
 };

@@ -31,4 +31,3 @@ export class SnackbarComponent extends MDCSnackbar {
     return foundation;
   }
 };
-

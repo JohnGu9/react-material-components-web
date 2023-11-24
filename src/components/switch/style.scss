@@ -1,18 +1,40 @@
 @use "@material/switch/styles.scss";
 
+@mixin assignValue($properties, $value) {
+    @each $property in $properties {
+        --mdc-switch-#{$property}: #{$value};
+    }
+}
+
 .mdc-switch {
-    --mdc-switch-disabled-unselected-track-color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
-    --mdc-switch-disabled-selected-track-color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
-    --mdc-switch-unselected-track-color: var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87));
-    --mdc-switch-selected-track-color: var(--mdc-theme-primary, #6200ee);
+    @include assignValue(
+        disabled-selected-handle-color disabled-selected-track-color disabled-unselected-handle-color
+            disabled-unselected-track-color unselected-focus-state-layer-color unselected-hover-state-layer-color
+            unselected-pressed-state-layer-color unselected-focus-track-color unselected-hover-track-color
+            unselected-pressed-track-color unselected-track-color,
+        var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87))
+    );
 
-    --mdc-switch-unselected-hover-track-color: var(--mdc-switch-unselected-track-color);
-    --mdc-switch-unselected-pressed-track-color: var(--mdc-switch-unselected-track-color);
-    --mdc-switch-unselected-focus-track-color: var(--mdc-switch-unselected-track-color);
+    @include assignValue(
+        disabled-selected-icon-color disabled-unselected-icon-color selected-icon-color unselected-icon-color,
+        var(--mdc-theme-on-primary, rgba(255, 255, 255, 1))
+    );
 
-    --mdc-switch-selected-hover-track-color: var(--mdc-switch-selected-track-color);
-    --mdc-switch-selected-pressed-track-color: var(--mdc-switch-selected-track-color);
-    --mdc-switch-selected-focus-track-color: var(--mdc-switch-selected-track-color);
+    @include assignValue(
+        selected-focus-state-layer-color selected-handle-color selected-hover-state-layer-color
+            selected-pressed-state-layer-color selected-focus-track-color selected-hover-track-color
+            selected-pressed-track-color selected-track-color selected-focus-handle-color selected-hover-handle-color
+            selected-pressed-handle-color,
+        var(--mdc-theme-primary, #6200ee)
+    );
+
+    @include assignValue(
+        unselected-focus-handle-color unselected-hover-handle-color unselected-pressed-handle-color
+            unselected-handle-color handle-shadow-color,
+        var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54))
+    );
+
+    --mdc-switch-handle-surface-color: var(--mdc-theme-surface, #fff);
 
     .mdc-switch__track::before,
     .mdc-switch__track::after {
@@ -33,44 +55,5 @@
 
     &:disabled .mdc-switch__track {
         opacity: 0.87;
-    }
-
-    --mdc-switch-unselected-handle-color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54));
-    --mdc-switch-selected-handle-color: var(--mdc-theme-primary, #6200ee);
-    --mdc-switch-disabled-unselected-handle-color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54));
-    --mdc-switch-disabled-selected-handle-color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54));
-
-    --mdc-switch-unselected-hover-handle-color: var(--mdc-switch-unselected-handle-color);
-    --mdc-switch-unselected-pressed-handle-color: var(--mdc-switch-unselected-handle-color);
-    --mdc-switch-unselected-focus-handle-color: var(--mdc-switch-unselected-handle-color);
-
-    --mdc-switch-selected-hover-handle-color: var(--mdc-switch-selected-handle-color);
-    --mdc-switch-selected-pressed-handle-color: var(--mdc-switch-selected-handle-color);
-    --mdc-switch-selected-focus-handle-color: var(--mdc-switch-selected-handle-color);
-
-    --mdc-switch-handle-surface-color: var(--mdc-theme-surface, #fff);
-
-    .mdc-switch__handle__foreground {
-        border: none;
-        border-radius: inherit;
-        box-sizing: border-box;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        position: absolute;
-        z-index: 0;
-        background-color: var(--mdc-theme-on-primary, rgba(255, 255, 255, 1));
-        opacity: 0;
-        transition: opacity 75ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
-        will-change: opacity;
-    }
-    &:not(:disabled) {
-        &:hover,
-        &:focus {
-            .mdc-switch__handle__foreground {
-                opacity: 0.12;
-            }
-        }
     }
 }

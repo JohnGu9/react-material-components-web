@@ -1,13 +1,7 @@
 @use "@material/snackbar/mdc-snackbar.scss";
 
 .mdc-snackbar__surface {
-    background-color: var(--mdc-snackbar-surface, #333333);
-    color: var(--mdc-snackbar-on-surface, rgba(255, 255, 255, 0.87));
-    --mdc-theme-primary: var(--mdc-snackbar-primary, #bb86fc);
-    --mdc-theme-surface: var(--mdc-snackbar-surface, #333333);
-    --mdc-theme-on-surface: var(--mdc-snackbar-on-surface, rgba(255, 255, 255, 0.87));
-    --mdc-theme-text-disabled-on-background: var(--mdc-snackbar-text-disabled-on-background, rgba(255, 255, 255, 0.5));
-    --mdc-ripple-color: var(--mdc-snackbar-on-surface, rgba(255, 255, 255, 0.87));
+    background-color: var(--mdc-theme-surface, #333333);
 }
 
 .mdc-snackbar__label {

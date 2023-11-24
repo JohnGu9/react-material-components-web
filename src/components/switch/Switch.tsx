@@ -3,7 +3,7 @@ import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { createComponent, isDefined, useClassInjector } from "../common/Common";
 import { IconContext } from "../icon/Icon";
-import { RippleComponent } from "../ripple/RippleComponent";
+import { RippleComponent } from "../ripple/Component";
 import { RippleEventTarget } from "../ripple/Ripple";
 
 export type SwitchProps = {
@@ -22,7 +22,8 @@ export const Switch = createComponent<HTMLButtonElement, SwitchProps>(
     focusRing = true,
     on, off,
     className,
-    ...props }, ref) {
+    ...props
+  }, ref) {
     const composeRefs = useRefComposer();
     const innerRef = React.useRef<HTMLButtonElement>(null);
     const rippleElement = React.useRef<HTMLDivElement>(null);
@@ -53,7 +54,7 @@ export const Switch = createComponent<HTMLButtonElement, SwitchProps>(
         <div className="mdc-switch__handle-track" aria-hidden>
           <div className="mdc-switch__handle">
             <div className="mdc-switch__shadow"><div className="mdc-elevation-overlay"></div></div>
-            <div className="mdc-switch__handle__foreground"></div>
+            {/* <div className="mdc-switch__handle__foreground"></div> */}
             <div className="mdc-switch__ripple" ref={rippleElement}></div>
             <div className="mdc-switch__icons">
               {isDefined(on)
@@ -94,4 +95,5 @@ export const Switch = createComponent<HTMLButtonElement, SwitchProps>(
         </span> : undefined}
       </button>
     );
-  });
+  }
+);

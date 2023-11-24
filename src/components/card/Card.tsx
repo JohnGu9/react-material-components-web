@@ -2,7 +2,7 @@ import "./style.scss";
 import React from "react";
 import { ButtonContext } from "../button/Button";
 import { classMap, createComponent, isDefined, useClassInjector } from "../common/Common";
-import { RippleComponent } from "../ripple/RippleComponent";
+import { RippleComponent } from "../ripple/Component";
 import { IconButtonContext } from "../icon-button/IconButton";
 
 export type CardProps = {

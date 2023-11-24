@@ -32,16 +32,15 @@ import { DataTable, DataTableRow, DataTableCell } from '../components/data-table
 import { Snackbar } from '../components/snackbar/Snackbar';
 import { Tooltip } from '../components/tooltip/Tooltip';
 
+const argTypes: { [key: string]: unknown } = {};
+for (const [key, value] of Object.entries(defaultLightTheme)) {
+  argTypes[key] = { control: { type: 'color', presetColors: [value] } };
+}
+
 export default {
   component: Theme,
   argTypes: {
-    primary: { control: { type: 'color', presetColors: [defaultLightTheme.primary] } },
-    secondary: { control: { type: 'color', presetColors: [defaultLightTheme.secondary] } },
-    background: { control: { type: 'color', presetColors: [defaultLightTheme.background] } },
-    surface: { control: { type: 'color', presetColors: [defaultLightTheme.surface] } },
-    onPrimary: { control: { type: 'color', presetColors: [defaultLightTheme.onPrimary] } },
-    onSecondary: { control: { type: 'color', presetColors: [defaultLightTheme.onSecondary] } },
-    onSurface: { control: { type: 'color', presetColors: [defaultLightTheme.onSurface] } },
+    ...argTypes,
     oled: { control: 'boolean' },
   },
   parameters: {
@@ -93,7 +92,11 @@ const Template: StoryFn<typeof Theme> = (args) => {
           title="Title"
           actionItem={<>
             <Tooltip label="Disable">
-              <Switch selected={disabled} onClick={() => setDisabled(v => !v)} />
+              <Switch style={{
+                '--mdc-theme-surface': 'gray',
+              } as React.CSSProperties}
+                selected={disabled}
+                onClick={() => setDisabled(v => !v)} />
             </Tooltip>
             <IconButton ria-label="Options"><Icon>more_vert</Icon></IconButton>
           </>}>
@@ -270,11 +273,6 @@ const Template: StoryFn<typeof Theme> = (args) => {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  primary: defaultLightTheme.primary,
-  secondary: defaultLightTheme.secondary,
-  background: defaultLightTheme.background,
-  surface: defaultLightTheme.surface,
-  onPrimary: defaultLightTheme.onPrimary,
-  onSecondary: defaultLightTheme.onSecondary,
-  onSurface: defaultLightTheme.onSurface,
+  ...defaultLightTheme,
+  withBackgroundColor: true,
 };

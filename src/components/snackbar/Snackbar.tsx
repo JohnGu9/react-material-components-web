@@ -6,6 +6,7 @@ import { createComponent, isDefined, useClassInjector } from "../common/Common";
 import { IconButtonContext } from "../icon-button/IconButton";
 import { SnackbarComponent, strings } from "./Component";
 import { RippleEventTarget } from "../ripple/Ripple";
+import { ThemeContext, themeDataToCSSProperties } from "../theme/Theme";
 
 export type SnackbarProps = {
   open?: boolean,
@@ -26,6 +27,7 @@ export const Snackbar = createComponent<HTMLElement, SnackbarProps>(
     onDismiss,
     className,
     children,
+    style,
     ...props
   }, ref) {
     const composeRefs = useRefComposer();
@@ -33,6 +35,7 @@ export const Snackbar = createComponent<HTMLElement, SnackbarProps>(
     const injector = useClassInjector(innerRef);
     const [component, setComponent] = React.useState<SnackbarComponent>();
     const eventTarget = React.useMemo(() => new EventTarget(), []);
+    const themeContext = React.useContext(ThemeContext);
 
     injector.with('mdc-snackbar', true);
     injector.with('mdc-snackbar--leading', leading);
@@ -58,9 +61,17 @@ export const Snackbar = createComponent<HTMLElement, SnackbarProps>(
         else component.close();
     }, [component, open]);
 
+    const mergeStyle = React.useMemo(() => {
+      if (themeContext === null) return style;
+      return { ...themeDataToCSSProperties(themeContext?.reverseTheme), ...style };
+    }, [style, themeContext]);
+
     return (
       <RippleEventTarget.Provider value={eventTarget}>
-        <aside ref={composeRefs(innerRef, ref)} className={injector.toClassName()} {...props}>
+        <aside ref={composeRefs(innerRef, ref)}
+          className={injector.toClassName()}
+          style={mergeStyle}
+          {...props}>
           <div className="mdc-snackbar__surface" role="status" aria-relevant="additions"
             onKeyDown={evt => {
               const isEscapeKey = evt.key === 'Escape' || evt.keyCode === 27;
