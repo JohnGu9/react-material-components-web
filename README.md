@@ -8,6 +8,11 @@ function MyComponent() {
 }
 ```
 
+## Sass bundle issue
+
+Recently you may receive warning message from sass.
+Just set your project sass version to `1.77.6` (in `dependencies` or `devDependencies`).
+
 ## What's the library for?
 
 This library provide react wrapper for material design components.
