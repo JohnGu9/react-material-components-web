@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import 'material-icons/iconfont/material-icons.css';
-import { DataTable, DataTableCell, DataTableRow } from '../components/data-table/DataTable';
+import { DataTable, DataTableBuilder, DataTableCell, DataTableRow } from '../components/data-table/DataTable';
 
 export default {
   component: DataTable,
@@ -73,10 +73,35 @@ const CheckboxTemplate: StoryFn<typeof DataTable> = (args) => {
           </DataTableRow>
         );
       })}
-
   </DataTable>;
 };
 
 export const CheckboxColumn = CheckboxTemplate.bind({});
 CheckboxColumn.args = {
+};
+
+
+const BuilderTemplate: StoryFn<typeof DataTable> = (args) => {
+  return <DataTableBuilder
+    itemCount={300000}
+    itemBuilder={(index: number) =>
+      <DataTableRow>
+        <DataTableCell>{index}</DataTableCell>
+        <DataTableCell>24</DataTableCell>
+        <DataTableCell>4.0</DataTableCell>
+        <DataTableCell>Super tasty</DataTableCell>
+      </DataTableRow>}
+    style={{ maxHeight: 400 }}
+    headerColumn={0}
+    header={<DataTableRow>
+      <DataTableCell>Index</DataTableCell>
+      <DataTableCell>Carbs (g)</DataTableCell>
+      <DataTableCell>Protein (g)</DataTableCell>
+      <DataTableCell>Comments</DataTableCell>
+    </DataTableRow>}
+    {...args} />;
+};
+export const Builder = BuilderTemplate.bind({});
+Builder.args = {
+  stickyHeader: true,
 };

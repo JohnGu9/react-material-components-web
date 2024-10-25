@@ -6,6 +6,8 @@ import { ListDivider } from '../components/list-divider/ListDivider';
 import { ListItem } from '../components/list-item/ListItem';
 import { Radio } from '../components/radio/Radio';
 import { IconButton } from '../components/icon-button/IconButton';
+import { ListViewBuilder } from '../components/common/ListViewBuilder';
+import { useEffect } from 'react';
 
 export default {
   component: ListItem,
@@ -93,3 +95,24 @@ const NestedTemplate: StoryFn<typeof ListItem> = (args) =>
   </>;
 
 export const Nested = NestedTemplate.bind({});
+
+function CustomItem({ primaryText }: { primaryText?: string }) {
+  useEffect(() => {
+    console.log(`${primaryText} attach`);
+    return () => console.log(`${primaryText} detach`);
+  }, [primaryText]);
+  return <ListItem primaryText={primaryText} />
+}
+
+const LongListTemplate: StoryFn<typeof ListItem> = (args) =>
+  <ListViewBuilder itemExtent={48} itemCount={100} style={{ maxHeight: 400 }}
+    childrenBuilder={(paddingStart, paddingEnd, childrenIndexes) => {
+      return (
+        <>
+          <div style={{ minHeight: paddingStart }} />
+          {childrenIndexes.map(index => <CustomItem key={index} primaryText={`ListItem-${index}`} />)}
+          <div style={{ minHeight: paddingEnd }} />
+        </>);
+    }} />
+
+export const LongList = LongListTemplate.bind({});

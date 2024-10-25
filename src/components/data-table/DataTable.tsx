@@ -3,6 +3,7 @@ import React from "react";
 import { Checkbox } from "../checkbox/Checkbox";
 import { classMap, createComponent } from "../common/Common";
 import { IconButton } from "../icon-button/IconButton";
+import { ListViewBuilder } from "../common/ListViewBuilder";
 
 const Context = React.createContext<{ isHeader?: boolean }>({ isHeader: false, });
 
@@ -69,6 +70,66 @@ export const DataTable = createComponent<HTMLDivElement, DataTableProps>(
             </RowContext.Provider>
           </table>
         </div>
+      </div>
+    );
+  }
+);
+
+export type DataTableBuilderProps = DataTableProps & {
+  itemExtent?: number,
+  itemCount: number,
+  itemBuilder: (index: number) => React.ReactNode,
+};
+
+export const DataTableBuilder = createComponent<HTMLDivElement, DataTableBuilderProps>(
+  function DataTableBuilder({
+    header,
+    stickyHeader,
+    headerColumn,
+    numericColumns,
+    checkboxColumns,
+    withSortColumns,
+    className,
+    itemExtent = 52,
+    itemCount,
+    itemBuilder,
+    children,
+    ...props
+  }, ref) {
+    const classes = {
+      'mdc-data-table': true,
+      'mdc-data-table--sticky-header': stickyHeader,
+    };
+
+    const rowContext = React.useMemo(() => {
+      return {
+        headerColumn,
+        numericColumns: new Set(numericColumns),
+        checkboxColumns: new Set(checkboxColumns),
+        withSortColumns,
+      };
+    }, [checkboxColumns, headerColumn, numericColumns, withSortColumns]);
+
+    return (
+      <div ref={ref} className={classMap(classes, className)} {...props}>
+        <ListViewBuilder className="mdc-data-table__table-container" itemCount={itemCount} itemExtent={itemExtent}
+          childrenBuilder={(paddingStart, paddingEnd, childrenIndexes) =>
+            <table className="mdc-data-table__table">
+              <RowContext.Provider value={rowContext}>
+                <thead>
+                  <Context.Provider value={{ isHeader: true }}>
+                    {header}
+                  </Context.Provider>
+                </thead>
+                <tbody className="mdc-data-table__content">
+                  <tr key={-1} aria-label="placeholder" style={{ display: "block", minHeight: paddingStart }} />
+                  {childrenIndexes.map(index => <React.Fragment key={index}>{itemBuilder(index)}</React.Fragment>)}
+                  <tr key={-2} aria-label="placeholder" style={{ display: "block", minHeight: paddingEnd }} />
+                </tbody>
+              </RowContext.Provider>
+            </table>
+          }>
+        </ListViewBuilder>
       </div>
     );
   }
@@ -179,13 +240,13 @@ export const DataTableCell = createComponent<HTMLTableCellElement, DataTableCell
         className={classMap(classes, className)}
         scope={isRowHeader ? 'row' : undefined}
         {...props} >
-        <div className="mdc-data-table__cell__background" aria-hidden/>
+        <div className="mdc-data-table__cell__background" aria-hidden />
         {children ?? (isCheckbox ? <Checkbox /> : undefined)}
       </th>;
     else
       return <td ref={ref}
         className={classMap(classes, className)} {...props} >
-        <div className="mdc-data-table__cell__background" aria-hidden/>
+        <div className="mdc-data-table__cell__background" aria-hidden />
         {children ?? (isCheckbox ? <Checkbox /> : undefined)}
       </td>;
   }

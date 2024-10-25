@@ -106,6 +106,28 @@ function ThemeSwitch() {
 }
 ```
 
+- ListViewBuilder (beta) and DataTableBuild (beta)
+  Lazy build component. They build their children lazily.
+
+```jsx
+<ListViewBuilder
+  itemExtent={48}
+  itemCount={100}
+  style={{ maxHeight: 400 }}
+  childrenBuilder={(paddingStart, paddingEnd, childrenIndexes) => {
+    return (
+      <>
+        <div style={{ minHeight: paddingStart }} />
+        {childrenIndexes.map((index) => (
+          <ListItem key={index} primaryText={`ListItem-${index}`} />
+        ))}
+        <div style={{ minHeight: paddingEnd }} />
+      </>
+    );
+  }}
+/>
+```
+
 ## Development requirement
 
 If you use webpack, it require sass loader to pack [.scss] file into project (the project that come from "create-react-app" script already have sass loader).
