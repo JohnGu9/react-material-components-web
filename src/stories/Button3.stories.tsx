@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
-import 'material-icons/iconfont/material-icons.css';
 import { Button } from '../components3/button/Button';
+import 'material-icons/iconfont/material-icons.css';
 
 export default {
   component: Button,
