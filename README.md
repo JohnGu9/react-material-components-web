@@ -106,7 +106,7 @@ function ThemeSwitch() {
 }
 ```
 
-- ListViewBuilder (beta) and DataTableBuild (beta)
+- ListViewBuilder (beta) and DataTableBuilder (beta)
   Lazy build component. They build their children lazily.
 
 ```jsx
@@ -127,6 +127,10 @@ function ThemeSwitch() {
   }}
 />
 ```
+* `childrenIndexes` is a number array. The range is `0 <= value < itemCount`
+* `itemCount` is the amount of children.
+* `itemExtent` is the every child element height. Should be fixed. For calculate the `paddingStart` and `paddingEnd` and `childrenIndexes`.
+
 
 ## Development requirement
 
