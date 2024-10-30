@@ -1,21 +1,19 @@
 import "@material/web/checkbox/checkbox"
-import { Checkbox as MdCheckbox } from "@material/web/checkbox/internal/checkbox"
+import { RmcwCheckbox, RmcwCheckboxComponent } from "./Component"
 import { createComponent } from "../../components/common/Component";
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'md-checkbox': React.HTMLProps<MdCheckbox> & Partial<Pick<MdCheckbox, "required" | "checked" | "indeterminate">>;
-    }
-  }
-}
-
 export type CheckboxProps = {
+  disabled?: boolean,
   checked?: boolean | "mixed";
+  value?: string;
 };
 
-export const Checkbox = createComponent<MdCheckbox, CheckboxProps>(
-  function Checkbox({ checked, ...props }, ref) {
+export const Checkbox = createComponent<RmcwCheckbox, CheckboxProps>(
+  function Checkbox({
+    checked,
+    disabled = false, // idk where is the bug, but `disabled` should be set to `false` by default. The `undefined` just mean `disabled`=`true`.
+    form,
+    ...props }, ref) {
     const current = { checked: false, indeterminate: false };
     switch (checked) {
       case true: {
@@ -34,10 +32,11 @@ export const Checkbox = createComponent<MdCheckbox, CheckboxProps>(
         break;
       }
     }
-    return (<md-checkbox ref={ref}
+    return (<RmcwCheckboxComponent touch-target="wrapper"
+      ref={ref as any}
+      disabled={disabled}
       checked={current.checked ? true : undefined}
       indeterminate={current.indeterminate ? true : undefined}
-      touch-target="wrapper"
       {...props} />);
   }
 );

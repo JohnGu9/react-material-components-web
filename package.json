@@ -70,6 +70,7 @@
     "@material/touch-target": "^14.0.0",
     "@material/typography": "^14.0.0",
     "@material/web": "^2.2.0",
+    "material-icons": "^1.11.11",
     "animated-size": "*",
     "react-ref-composer": "*",
     "sass": "*",
@@ -110,6 +111,7 @@
     ]
   },
   "devDependencies": {
+    "@lit/react": "^1.0.6",
     "@material/banner": "^14.0.0",
     "@material/button": "^14.0.0",
     "@material/card": "^14.0.0",

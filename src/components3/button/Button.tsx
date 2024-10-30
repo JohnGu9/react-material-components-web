@@ -5,20 +5,9 @@ import "@material/web/button/outlined-button"
 import "@material/web/button/text-button"
 import { createComponent } from "../../components/common/Component";
 import { Button as MdButton } from "@material/web/button/internal/button";
-
-type ButtonHTMLProps = React.HTMLProps<MdButton> & Partial<Pick<MdButton, "softDisabled" | "trailingIcon" | "hasIcon">>;
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'md-elevated-button': ButtonHTMLProps;
-      'md-filled-button': ButtonHTMLProps;
-      'md-filled-tonal-button': ButtonHTMLProps;
-      'md-outlined-button': ButtonHTMLProps;
-      'md-text-button': ButtonHTMLProps;
-    }
-  }
-}
+import { IconContext } from "../icon/Icon"
+import { MdElevatedButtonComponent, MdFilledButtonComponent, MdFilledTonalButtonComponent, MdOutlinedButtonComponent, MdTextButtonComponent } from "./Compoent"
+import { FormSubmitterType } from "@material/web/internal/controller/form-submitter"
 
 export type ButtonProps = {
   disabled?: boolean,
@@ -26,41 +15,37 @@ export type ButtonProps = {
   icon?: React.ReactNode,
   trailingIcon?: boolean,
   buttonStyle?: "elevated" | "filled" | "filled-tonal" | "outlined" | "text",
+  // 
+  target?: '_blank' | '_parent' | '_self' | '_top' | '',
+  form?: undefined,
+  type?: FormSubmitterType,
+  value?: string,
 };
 
 export const Button = createComponent<MdButton, ButtonProps>(
   function Button({ disabled, softDisabled, icon, trailingIcon, buttonStyle, children, ...props }, ref) {
-    if (!disabled) {
-      disabled = undefined;
-    }
-    if (!softDisabled) {
-      softDisabled = undefined;
-    }
-    if (!trailingIcon) {
-      trailingIcon = undefined;
-    }
     const hasIcon = icon ? true : undefined;
     const mergeChildren = <>
       {children}
       {icon
-        ? <div slot="icon">{icon}</div>
+        ? <IconContext.Provider value={{ style: { fontSize: 18 } }}><div slot="icon">{icon}</div></IconContext.Provider>
         : <></>}
     </>;
-    const mergeProps = { disabled, softDisabled, "trailing-icon": trailingIcon, hasIcon, children: mergeChildren, ...props };
+    const mergeProps = { disabled, "soft-disabled": softDisabled, "trailing-icon": trailingIcon, "has-icon": hasIcon, children: mergeChildren, ...props };
     switch (buttonStyle) {
       case "filled":
-        return (<md-filled-button ref={ref} {...mergeProps} />);
+        return (<MdFilledButtonComponent key={buttonStyle} ref={ref as any} {...mergeProps} />);
 
       case "filled-tonal":
-        return (<md-filled-tonal-button ref={ref} {...mergeProps} />);
+        return (<MdFilledTonalButtonComponent key={buttonStyle} ref={ref as any} {...mergeProps} />);
 
       case "outlined":
-        return (<md-outlined-button ref={ref} {...mergeProps} />);
+        return (<MdOutlinedButtonComponent key={buttonStyle} ref={ref as any} {...mergeProps} />);
 
       case "text":
-        return (<md-text-button ref={ref} {...mergeProps} />);
+        return (<MdTextButtonComponent key={buttonStyle} ref={ref as any} {...mergeProps} />);
 
     }
-    return (<md-elevated-button ref={ref} {...mergeProps} />);
+    return (<MdElevatedButtonComponent key={buttonStyle} ref={ref as any} {...mergeProps} />);
   }
 );
