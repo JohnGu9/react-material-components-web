@@ -5,15 +5,15 @@ import "@material/web/chips/input-chip";
 import "@material/web/chips/suggestion-chip";
 import { MdSuggestionChip } from "@material/web/chips/suggestion-chip";
 import { createComponent } from "../../components/common/Component";
-import { IconContext } from "../icon/Icon";
 
 
-function composeProps({ disabled, elevated, selected, removable, icon, children, ...props }: { [key: string]: any }) {
+function composeProps({ disabled, elevated, selected, removable, icon, style, children, ...props }: { [key: string]: any }) {
   return {
     disabled, elevated, selected, removable,
+    style: { "--md-icon-size": "18px", ...style },
     children: icon ? <>
       {children}
-      <IconContext.Provider value={{ style: { fontSize: 18 } }}><div slot="icon">{icon}</div></IconContext.Provider>
+      <div slot="icon">{icon}</div>
     </>
       : children,
     ...props

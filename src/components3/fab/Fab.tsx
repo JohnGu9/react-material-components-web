@@ -1,7 +1,7 @@
 import { FabSize, FabVariant, MdFab } from "@material/web/fab/fab";
 import { createComponent } from "../../components/common/Component";
 import { MdFabComponent } from "./Component";
-import { IconContext } from "../icon/Icon";
+import { CSSProperties } from "react";
 
 export type FabProps = {
   size?: FabSize,
@@ -11,15 +11,15 @@ export type FabProps = {
 };
 
 export const Fab = createComponent<MdFab, FabProps>(
-  function Fab({ size, icon, children, ...props }, ref) {
+  function Fab({ size, icon, style, children, ...props }, ref) {
     let iconSize = 24;
     if (size === "large") {
       iconSize = 36;
     }
 
     return (
-      <MdFabComponent ref={ref as any} size={size} {...props} >
-        {icon ? <IconContext.Provider value={{ style: { fontSize: iconSize } }}><div slot="icon">{icon}</div></IconContext.Provider> : <></>}
+      <MdFabComponent ref={ref as any} size={size} style={{ "--md-icon-size": `${iconSize}px`, ...style } as CSSProperties} {...props} >
+        {icon ? <div slot="icon">{icon}</div> : <></>}
         {children}
       </MdFabComponent>);
   }

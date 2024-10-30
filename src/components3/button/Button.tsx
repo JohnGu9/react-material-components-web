@@ -5,7 +5,6 @@ import "@material/web/button/outlined-button"
 import "@material/web/button/text-button"
 import { createComponent } from "../../components/common/Component";
 import { Button as MdButton } from "@material/web/button/internal/button";
-import { IconContext } from "../icon/Icon"
 import { MdElevatedButtonComponent, MdFilledButtonComponent, MdFilledTonalButtonComponent, MdOutlinedButtonComponent, MdTextButtonComponent } from "./Compoent"
 import { FormSubmitterType } from "@material/web/internal/controller/form-submitter"
 
@@ -25,15 +24,15 @@ export type ButtonProps = ButtonBaseProps & {
   buttonStyle?: "elevated" | "filled" | "filled-tonal" | "outlined" | "text",
 };
 
-function composeProps({ icon, children, ...props }: { [key: string]: any }) {
+function composeProps({ icon, children, style, ...props }: { [key: string]: any }) {
   const hasIcon = icon ? true : undefined;
   const mergeChildren = <>
     {children}
     {icon
-      ? <IconContext.Provider value={{ style: { fontSize: 18 } }}><div slot="icon">{icon}</div></IconContext.Provider>
+      ? <div slot="icon">{icon}</div>
       : <></>}
   </>;
-  return { hasIcon, children: mergeChildren, ...props };
+  return { hasIcon, style: { "--md-icon-size": "18px", ...style }, children: mergeChildren, ...props };
 }
 
 export const ElevatedButton = createComponent<MdButton, ButtonBaseProps>(

@@ -3,6 +3,8 @@ import 'material-icons/iconfont/material-icons.css';
 import React from "react";
 import { classMap, createComponent } from "../common/Common";
 
+// @TODO: split different icon style to different file
+
 export const IconContext = React.createContext<React.HTMLProps<HTMLElement>>({});
 
 export type IconProps = {
