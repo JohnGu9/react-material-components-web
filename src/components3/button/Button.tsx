@@ -11,8 +11,8 @@ import { FormSubmitterType } from "@material/web/internal/controller/form-submit
 
 export type ButtonBaseProps = {
   disabled?: boolean,
-  "soft-disabled"?: boolean,
-  "trailing-icon"?: boolean,
+  softDisabled?: boolean,
+  trailingIcon?: boolean,
   icon?: React.ReactNode,
   // 
   target?: '_blank' | '_parent' | '_self' | '_top' | '',
@@ -33,7 +33,7 @@ function composeProps({ icon, children, ...props }: { [key: string]: any }) {
       ? <IconContext.Provider value={{ style: { fontSize: 18 } }}><div slot="icon">{icon}</div></IconContext.Provider>
       : <></>}
   </>;
-  return { "has-icon": hasIcon, children: mergeChildren, ...props };
+  return { hasIcon, children: mergeChildren, ...props };
 }
 
 export const ElevatedButton = createComponent<MdButton, ButtonBaseProps>(
