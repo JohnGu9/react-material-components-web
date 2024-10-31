@@ -1,24 +1,27 @@
-import { ListItemType, MdListItem } from "@material/web/list/list-item";
+import { MdMenuItem } from "@material/web/menu/menu-item";
 import { createComponent } from "../../components/common/Component";
-import { MdListItemComponent } from "./Component";
-import { createSlotNode, SlotNode } from "../common/SlotNode";
+import { MdMenuItemComponent } from "./Component";
+import { MenuItemType } from "@material/web/menu/internal/controllers/menuItemController";
+import { SlotNode, createSlotNode } from "../common/SlotNode";
 
-export type ListItemProps = {
+export type MenuItemProps = {
+  selected?: boolean,
   start?: SlotNode,
   end?: SlotNode,
   overline?: SlotNode,
   headline?: SlotNode,
   supportingText?: SlotNode,
   trailingSupportingText?: SlotNode,
+
   //
-  target?: '_blank' | '_parent' | '_self' | '_top' | '',
-  type?: ListItemType,
+  target?: "" | "_blank" | "_parent" | "_self" | "_top",
+  type?: MenuItemType,
 };
 
-export const ListItem = createComponent<MdListItem, ListItemProps>(
-  function List({ start, end, overline, headline, supportingText, trailingSupportingText, children, ...props }, ref) {
+export const MenuItem = createComponent<MdMenuItem, MenuItemProps>(
+  function MenuItem({ start, end, overline, headline, supportingText, trailingSupportingText, children, ...props }, ref) {
     return (
-      <MdListItemComponent ref={ref as any} {...props} >
+      <MdMenuItemComponent ref={ref as any} keepOpen={true} {...props} >
         {children}
         {start ? createSlotNode(start, "start") : <></>}
         {end ? createSlotNode(end, "end") : <></>}
@@ -26,6 +29,6 @@ export const ListItem = createComponent<MdListItem, ListItemProps>(
         {headline ? createSlotNode(headline, "headline") : <></>}
         {supportingText ? createSlotNode(supportingText, "supporting-text") : <></>}
         {trailingSupportingText ? createSlotNode(trailingSupportingText, "trailing-supporting-text") : <></>}
-      </MdListItemComponent>);
+      </MdMenuItemComponent>);
   }
 );

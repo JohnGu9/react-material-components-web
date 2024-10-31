@@ -2,12 +2,13 @@ import { FabSize, FabVariant, MdFab } from "@material/web/fab/fab";
 import { createComponent } from "../../components/common/Component";
 import { MdFabComponent } from "./Component";
 import { CSSProperties } from "react";
+import { createSlotNode, SlotNode } from "../common/SlotNode";
 
 export type FabProps = {
   size?: FabSize,
   lowered?: boolean,
   variant?: FabVariant,
-  icon?: React.ReactNode,
+  icon?: SlotNode,
 };
 
 export const Fab = createComponent<MdFab, FabProps>(
@@ -19,7 +20,7 @@ export const Fab = createComponent<MdFab, FabProps>(
 
     return (
       <MdFabComponent ref={ref as any} size={size} style={{ "--md-icon-size": `${iconSize}px`, ...style } as CSSProperties} {...props} >
-        {icon ? <div slot="icon">{icon}</div> : <></>}
+        {icon ? createSlotNode(icon, "icon") : <></>}
         {children}
       </MdFabComponent>);
   }

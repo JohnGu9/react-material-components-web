@@ -7,12 +7,13 @@ import { createComponent } from "../../components/common/Component";
 import { Button as MdButton } from "@material/web/button/internal/button";
 import { MdElevatedButtonComponent, MdFilledButtonComponent, MdFilledTonalButtonComponent, MdOutlinedButtonComponent, MdTextButtonComponent } from "./Compoent"
 import { FormSubmitterType } from "@material/web/internal/controller/form-submitter"
+import { createSlotNode, SlotNode } from "../common/SlotNode"
 
 export type ButtonBaseProps = {
   disabled?: boolean,
   softDisabled?: boolean,
   trailingIcon?: boolean,
-  icon?: React.ReactNode,
+  icon?: SlotNode,
   // 
   target?: '_blank' | '_parent' | '_self' | '_top' | '',
   form?: undefined,
@@ -29,7 +30,7 @@ function composeProps({ icon, children, style, ...props }: { [key: string]: any 
   const mergeChildren = <>
     {children}
     {icon
-      ? <div slot="icon">{icon}</div>
+      ? createSlotNode(icon, "icon")
       : <></>}
   </>;
   return { hasIcon, style: { "--md-icon-size": "18px", ...style }, children: mergeChildren, ...props };

@@ -1,11 +1,14 @@
 import { createComponent } from "../../components/common/Component";
+import { createSlotNode, SlotNode } from "../common/SlotNode";
 import { RmcwDialog, RmcwDialogComponent } from "./Component";
 
 export type DialogProps = {
   open?: boolean,
-  icon?: React.ReactNode,
-  headline?: React.ReactNode,
-  actions?: React.ReactNode,
+  quick?: boolean,
+  noFocusTrap?: boolean,
+  icon?: SlotNode,
+  headline?: SlotNode,
+  actions?: SlotNode,
   onEscapeKey?: (e: Event) => unknown,
   onScrimClick?: (e: Event) => unknown,
   //
@@ -15,10 +18,10 @@ export type DialogProps = {
 export const Dialog = createComponent<RmcwDialog, DialogProps>(
   function Dialog({ icon, headline, actions, children, ...props }, ref) {
     const mergeChildren = <>
-      {icon ? <div slot="icon">{icon}</div> : <></>}
-      {headline ? <div slot="headline">{headline}</div> : <></>}
-      {children ? <div slot="content">{children}</div> : <></>}
-      {actions ? <div slot="actions">{actions}</div> : <></>}
+      {icon ? createSlotNode(icon, "icon") : <></>}
+      {headline ? createSlotNode(headline, "headline") : <></>}
+      {children ? createSlotNode(children, "content") : <></>}
+      {actions ? createSlotNode(actions, "actions") : <></>}
     </>
     return <RmcwDialogComponent ref={ref as any} {...props} >{mergeChildren}</RmcwDialogComponent>;
   }

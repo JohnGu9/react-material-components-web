@@ -5,6 +5,7 @@ import "@material/web/chips/input-chip";
 import "@material/web/chips/suggestion-chip";
 import { MdSuggestionChip } from "@material/web/chips/suggestion-chip";
 import { createComponent } from "../../components/common/Component";
+import { createSlotNode, SlotNode } from "../common/SlotNode";
 
 
 function composeProps({ disabled, elevated, selected, removable, icon, style, children, ...props }: { [key: string]: any }) {
@@ -13,7 +14,7 @@ function composeProps({ disabled, elevated, selected, removable, icon, style, ch
     style: { "--md-icon-size": "18px", ...style },
     children: icon ? <>
       {children}
-      <div slot="icon">{icon}</div>
+      {createSlotNode(icon, "icon")}
     </>
       : children,
     ...props
@@ -23,7 +24,7 @@ function composeProps({ disabled, elevated, selected, removable, icon, style, ch
 // AssistChip is simple chip type
 export type AssistChipProps = {
   elevated?: boolean,
-  icon?: React.ReactNode,
+  icon?: SlotNode,
   //
   target?: '_blank' | '_parent' | '_self' | '_top' | '',
 };
