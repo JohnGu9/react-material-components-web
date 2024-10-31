@@ -58,7 +58,19 @@ npm i
 npm run storybook
 ```
 
-## Components
+## Components (Material Design 3)
+
+```
+components3/
+```
+
+🛠️ Coming soon...
+
+## Components (Material Design 2)
+
+```
+components/
+```
 
 - Banner
 - Button
@@ -127,10 +139,10 @@ function ThemeSwitch() {
   }}
 />
 ```
-* `childrenIndexes` is a number array. The range is `0 <= value < itemCount`
-* `itemCount` is the amount of children.
-* `itemExtent` is the every child element height. Should be fixed. For calculate the `paddingStart` and `paddingEnd` and `childrenIndexes`.
 
+- `childrenIndexes` is a number array. The range is `0 <= value < itemCount`
+- `itemCount` is the amount of children.
+- `itemExtent` is the every child element height. Should be fixed. For calculate the `paddingStart` and `paddingEnd` and `childrenIndexes`.
 
 ## Development requirement
 
