@@ -2,7 +2,7 @@
 
 Material design 3 bases on `Web Component`.
 
-To use `Web Component`, the `Web Component` should be wrapped by `@lit/react`.
+To use `Web Component` in `React`, the `Web Component` should be wrapped by `@lit/react`.
 
 For example:
 
