@@ -2,18 +2,18 @@ import { createComponent } from "../../components/common/Component";
 import "./styles.scss";
 
 export type ThemeProps = {
-  darkMode?: boolean,
+  enableDarkTheme?: boolean,
 };
 
 export const Theme = createComponent<HTMLDivElement, ThemeProps>(
-  function Theme({ darkMode, ...props }, ref) {
+  function Theme({ enableDarkTheme, ...props }, ref) {
 
-    return <div data-dark-mode={`rmcw-dark-mode-${getModeString(darkMode)}`} ref={ref} {...props} />
+    return <div data-dark-mode={`rmcw-dark-mode-${getModeString(enableDarkTheme)}`} ref={ref} {...props} />
   }
 );
 
-function getModeString(darkMode?: boolean) {
-  switch (darkMode) {
+function getModeString(enableDarkTheme?: boolean) {
+  switch (enableDarkTheme) {
     case true:
       return 'on';
     case false:

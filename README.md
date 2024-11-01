@@ -64,7 +64,31 @@ npm run storybook
 components3/
 ```
 
-🛠️ Coming soon...
+- Button
+- Checkbox
+- Chip
+- Dialog
+- Divider
+- Elevation
+- Fab
+- Icon
+- IconButton
+- List
+- Menu
+- Progress
+- Radio
+- Ripple
+- Select
+- Slider
+- Switch
+- Tabs
+- TextField
+
+> `Material Design 3` - Early access
+
+> Some components are not no longer fully passive like before, you should keep trace the value change in the callback hook. (`Slider` and `Tabs`)
+
+> The components are not fully passive in `Material Design 2` still keep the same behavior like before. (`TextField`)
 
 ## Components (Material Design 2)
 
