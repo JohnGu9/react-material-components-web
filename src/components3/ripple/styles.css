@@ -1,0 +1,19 @@
+div:has(> md-ripple) {
+  position: relative;
+}
+
+div:has(> md-ripple.unbounded) {
+  /* Needed for unbounded ripple */
+  display: flex;
+  place-content: center;
+  place-items: center;
+  position: relative;
+}
+
+md-ripple.unbounded {
+  /* Needed for unbounded ripple */
+  border-radius: 50%;
+  inset: unset;
+  height: 100%;
+  width: 100%;
+}

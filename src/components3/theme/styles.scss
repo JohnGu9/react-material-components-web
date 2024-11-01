@@ -1,0 +1,23 @@
+@use "@material/web/color/color";
+
+div[data-dark-mode] {
+    // @TODO: Typography
+    --md-ref-typeface-brand: "Roboto";
+    --md-ref-typeface-plain: system-ui;
+}
+
+div[data-dark-mode="rmcw-dark-mode-auto"] {
+    @include color.light-theme;
+
+    @media (prefers-color-scheme: dark) {
+        @include color.dark-theme;
+    }
+}
+
+div[data-dark-mode="rmcw-dark-mode-on"] {
+    @include color.dark-theme;
+}
+
+div[data-dark-mode="rmcw-dark-mode-off"] {
+    @include color.light-theme;
+}

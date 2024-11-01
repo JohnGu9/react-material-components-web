@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Icon } from '../components/icon/Icon';
+import { Icon } from '../components3/icon/Icon';
 
 export default {
   component: Icon,
@@ -18,6 +18,5 @@ Primary.args = {
 
 export const IconStyle = Template.bind({});
 IconStyle.args = {
-  children: 'pie_chart',
-  iconStyle: "outlined",
+  children: 'settings',
 };

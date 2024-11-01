@@ -1,6 +1,6 @@
 {
   "name": "rmcw",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "This library provide a react wrapper for material design components. ",
   "private": false,
   "main": "dist/index.js",
@@ -69,7 +69,10 @@
     "@material/top-app-bar": "^14.0.0",
     "@material/touch-target": "^14.0.0",
     "@material/typography": "^14.0.0",
+    "@material/web": "^2.2.0",
     "animated-size": "*",
+    "material-icons": "latest",
+    "material-symbols": "latest",
     "react-ref-composer": "*",
     "sass": "*",
     "uuid": "*"
@@ -109,6 +112,7 @@
     ]
   },
   "devDependencies": {
+    "@lit/react": "^1.0.6",
     "@material/banner": "^14.0.0",
     "@material/button": "^14.0.0",
     "@material/card": "^14.0.0",
@@ -149,6 +153,7 @@
     "@material/top-app-bar": "^14.0.0",
     "@material/touch-target": "^14.0.0",
     "@material/typography": "^14.0.0",
+    "@material/web": "^2.2.0",
     "@storybook/addon-actions": "^7.4.6",
     "@storybook/addon-essentials": "^7.4.6",
     "@storybook/addon-interactions": "^7.4.6",
@@ -171,7 +176,8 @@
     "animated-size": "*",
     "babel-plugin-named-exports-order": "^0.0.2",
     "copyfiles": "^2.4.1",
-    "material-icons": "^1.11.11",
+    "material-icons": "latest",
+    "material-symbols": "latest",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
