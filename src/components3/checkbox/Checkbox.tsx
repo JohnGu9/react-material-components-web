@@ -40,3 +40,10 @@ export const Checkbox = createComponent<RmcwCheckbox, CheckboxProps>(
       {...props} />);
   }
 );
+
+export type CheckboxSupportedCssProps = {
+  "--md-checkbox-outline-color": string,
+  "--md-checkbox-selected-container-color": string,
+  "--md-checkbox-selected-icon-color": string,
+  "--md-checkbox-container-shape": string,
+};

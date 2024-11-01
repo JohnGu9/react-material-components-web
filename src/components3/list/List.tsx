@@ -9,3 +9,7 @@ export const List = createComponent<MdList, ListProps>(
     return <MdListComponent ref={ref as any} {...props} />;
   }
 );
+
+export type ListSupportedCssProps = {
+  "--md-list-container-color": string,
+};

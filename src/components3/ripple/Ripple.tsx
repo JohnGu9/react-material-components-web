@@ -17,3 +17,8 @@ export const Ripple = createComponent<HTMLDivElement, RippleProps>(
       </div>);
   }
 );
+
+export type RippleSupportedCssProps = {
+  "--md-ripple-hover-color": string,
+  "--md-ripple-pressed-color": string,
+};

@@ -24,3 +24,10 @@ export const BrandedFab = createComponent<MdBrandedFab, BrandedFabProps>(
       </MdBrandedFabComponent >);
   }
 );
+
+export type BrandedFabSupportedCssProps = {
+  "--md-fab-branded-container-color": string,
+  "--md-fab-branded-container-shape": string,
+  "--md-fab-branded-icon-size": string,
+  "--md-fab-branded-label-text-font": string,
+};

@@ -56,3 +56,16 @@ export const TextField = createComponent<MdTextField, TextFieldProps>(
     return <MdFilledTextFieldComponent ref={ref as any} children={mergeChildren} {...props} />;
   }
 );
+
+export type TextFieldSupportedCssProps = {
+  "--md-filled-text-field-container-shape": string,
+  "--md-filled-text-field-container-color": string,
+  "--md-filled-text-field-focus-active-indicator-color": string,
+  "--md-filled-text-field-input-text-font": string,
+  "--md-filled-text-field-label-text-font": string,
+
+  "--md-outlined-text-field-container-shape": string,
+  "--md-outlined-text-field-focus-outline-color": string,
+  "--md-outlined-text-field-input-text-font": string,
+  "--md-outlined-text-field-label-text-font": string,
+};

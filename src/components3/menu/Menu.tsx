@@ -62,3 +62,8 @@ export const Menu = createComponent<HTMLSpanElement, MenuProps>(
       </span>);
   }
 );
+
+export type MenuSupportedCssProps = {
+  "--md-menu-container-color": string,
+  "--md-menu-container-shape": string,
+};

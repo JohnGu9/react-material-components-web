@@ -59,3 +59,12 @@ export function getSliderRange(element: MdSlider) {
   const end = element.valueEnd as number;
   return { start, end };
 }
+
+export type SliderSupportedCssProps = {
+  "--md-slider-active-track-color": string,
+  "--md-slider-active-track-shape": string,
+  "--md-slider-inactive-track-color": string,
+  "--md-slider-inactive-track-shape": string,
+  "--md-slider-handle-color": string,
+  "--md-slider-handle-shape": string,
+};

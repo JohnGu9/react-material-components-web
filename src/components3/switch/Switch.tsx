@@ -27,3 +27,12 @@ export const Switch = createComponent<RmcwSwitch, SwitchProps>(
     return <RmcwSwitchComponent ref={ref as any} icons={icons} children={mergeChildren}  {...props} />;
   }
 );
+
+export type SwitchSupportedCssProps = {
+  "--md-switch-handle-color": string,
+  "--md-switch-handle-shape": string,
+  "--md-switch-track-color": string,
+  "--md-switch-track-shape": string,
+  "--md-switch-selected-handle-color": string,
+  "--md-switch-selected-track-color": string,
+};

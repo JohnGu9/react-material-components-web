@@ -26,3 +26,11 @@ export const Dialog = createComponent<RmcwDialog, DialogProps>(
     return <RmcwDialogComponent ref={ref as any} {...props} >{mergeChildren}</RmcwDialogComponent>;
   }
 );
+
+export type DialogSupportedCssProps = {
+  "--md-dialog-container-color": string,
+  "--md-dialog-headline-color": string,
+  "--md-dialog-headline-font": string,
+  "--md-dialog-supporting-text-color": string,
+  "--md-dialog-supporting-text-font": string,
+};

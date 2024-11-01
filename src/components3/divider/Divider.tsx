@@ -25,3 +25,8 @@ export const Divider = createComponent<MdDivider, DividerProps>(
     return <MdDividerComponent ref={ref as any} {...current} {...props} />;
   }
 );
+
+export type DividerSupportedCssProps = {
+  "--md-divider-color": string,
+  "--md-divider-thickness": string,
+};

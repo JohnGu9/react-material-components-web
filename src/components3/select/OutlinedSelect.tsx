@@ -8,3 +8,10 @@ export const OutlinedSelect = createComponent<RmcwOutlinedSelect, OutlinedSelect
     return <RmcwOutlinedSelectComponent ref={ref as any} {...props} />;
   }
 );
+
+export type OutlinedSelectSupportedCssProps = {
+  "--md-outlined-select-text-field-outline-color": string,
+  "--md-outlined-select-text-field-container-shape": string,
+  "--md-outlined-select-text-field-input-text-color": string,
+  "--md-outlined-select-text-field-input-text-font": string,
+};

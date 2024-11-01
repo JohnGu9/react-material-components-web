@@ -32,3 +32,8 @@ export const MenuItem = createComponent<MdMenuItem, MenuItemProps>(
       </MdMenuItemComponent>);
   }
 );
+
+export type MenuItemSupportedCssProps = {
+  "--md-menu-item-container-color": string,
+  "--md-menu-item-selected-container-color": string,
+};

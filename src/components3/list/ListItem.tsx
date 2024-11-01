@@ -29,3 +29,18 @@ export const ListItem = createComponent<MdListItem, ListItemProps>(
       </MdListItemComponent>);
   }
 );
+
+export type ListItemSupportedCssProps = {
+  "--md-list-item-container-shape": string,
+  "--md-list-item-label-text-color": string,
+  "--md-list-item-supporting-text-color": string,
+  "--md-list-item-trailing-supporting-text-color": string,
+  "--md-list-item-label-text-font": string,
+  "--md-list-item-supporting-text-font": string,
+  "--md-list-item-trailing-supporting-text-font": string,
+
+  "--md-list-item-leading-icon-color": string,
+  "--md-list-item-trailing-icon-color": string,
+  "--md-list-item-leading-icon-size": string,
+  "--md-list-item-trailing-icon-size": string,
+};

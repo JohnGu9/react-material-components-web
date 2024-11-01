@@ -61,3 +61,28 @@ export const Button = createComponent<MdButton, ButtonProps>(
     return (<ElevatedButton key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
   }
 );
+
+export type ButtonSupportedCssProps = {
+  "--md-elevated-button-container-color": string,
+  "--md-elevated-button-container-shape": string,
+  "--md-elevated-button-label-text-color": string,
+  "--md-elevated-button-label-text-font": string,
+
+  "--md-filled-button-container-color": string,
+  "--md-filled-button-container-shape": string,
+  "--md-filled-button-label-text-color": string,
+  "--md-filled-button-label-text-font": string,
+
+  "--md-filled-tonal-button-container-color": string,
+  "--md-filled-tonal-button-container-shape": string,
+  "--md-filled-tonal-button-label-text-color": string,
+  "--md-filled-tonal-button-label-text-font": string,
+
+  "--md-outlined-button-outline-color": string,
+  "--md-outlined-button-container-shape": string,
+  "--md-outlined-button-label-text-color": string,
+  "--md-outlined-button-label-text-font": string,
+
+  "--md-text-button-label-text-color": string,
+  "--md-text-button-label-text-font": string,
+};

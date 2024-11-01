@@ -13,3 +13,9 @@ export const Radio = createComponent<RmcwRadio, RadioProps>(
     return <RmcwRadioComponent ref={ref as any} {...props} />;
   }
 );
+
+export type RadioSupportedCssProps = {
+  "--md-radio-icon-color": string,
+  "--md-radio-selected-icon-color": string,
+  "--md-radio-icon-size": string,
+};

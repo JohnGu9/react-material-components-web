@@ -10,3 +10,9 @@ export const CircularProgress = createComponent<MdCircularProgress, CircularProg
     return <MdCircularProgressComponent ref={ref as any} indeterminate={indeterminate} value={value} {...props} />;
   }
 );
+
+export type CircularProgressSupportedCssProps = {
+  "--md-circular-progress-color": string,
+  "--md-circular-progress-size": string,
+  "--md-circular-progress-active-indicator-width": string,
+};

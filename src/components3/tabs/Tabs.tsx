@@ -28,3 +28,17 @@ export const Tabs = createComponent<MdTabs, TabsProps>(
 export function getActiveTabIndex(element: MdTabs) {
   return element.activeTabIndex;
 }
+
+export type TabsSupportedCssProps = {
+  "--md-primary-tab-container-color": string,
+  "--md-primary-tab-label-text-font": string,
+  "--md-primary-tab-active-indicator-color": string,
+  "--md-primary-tab-icon-color": string,
+  "--md-primary-tab-container-shape": string,
+
+  "--md-secondary-tab-container-color": string,
+  "--md-secondary-tab-label-text-font": string,
+  "--md-secondary-tab-active-indicator-color": string,
+  "--md-secondary-tab-icon-color": string,
+  "--md-secondary-tab-container-shape": string,
+};

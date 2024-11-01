@@ -12,3 +12,11 @@ export const LinearProgress = createComponent<MdCircularProgress, LinearProgress
     return <MdLinearProgressComponent ref={ref as any} indeterminate={indeterminate} value={value} {...(props as any)} />;
   }
 );
+
+export type LinearProgressSupportedCssProps = {
+  "--md-linear-progress-track-color": string,
+  "--md-linear-progress-track-height": string,
+  "--md-linear-progress-track-shape": string,
+  "--md-linear-progress-active-indicator-color": string,
+  "--md-linear-progress-active-indicator-height": string,
+};

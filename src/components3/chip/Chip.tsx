@@ -75,3 +75,30 @@ export const SuggestionChip = createComponent<MdSuggestionChip, SuggestionChipPr
 
 export type ClipProps = FilterChipProps;
 export const Clip = FilterChip;
+
+export type ChipSupportedCssProps = {
+  "--md-assist-chip-outline-color": string,
+  "--md-assist-chip-container-shape": string,
+  "--md-assist-chip-icon-size": string,
+  "--md-assist-chip-label-text-color": string,
+  "--md-assist-chip-label-text-font": string,
+
+  "--md-filter-chip-selected-container-color": string,
+  "--md-filter-chip-outline-color": string,
+  "--md-filter-chip-container-shape": string,
+  "--md-filter-chip-icon-size": string,
+  "--md-filter-chip-label-text-color": string,
+  "--md-filter-chip-label-text-font": string,
+
+  "--md-input-chip-outline-color": string,
+  "--md-input-chip-container-shape": string,
+  "--md-input-chip-icon-size": string,
+  "--md-input-chip-label-text-color": string,
+  "--md-input-chip-label-text-font": string,
+
+  "--md-suggestion-chip-outline-color": string,
+  "--md-suggestion-chip-container-shape": string,
+  "--md-suggestion-chip-icon-size": string,
+  "--md-suggestion-chip-label-text-color": string,
+  "--md-suggestion-chip-label-text-font": string,
+};

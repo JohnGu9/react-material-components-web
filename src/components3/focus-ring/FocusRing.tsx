@@ -26,3 +26,9 @@ export const FocusRing = createComponent<HTMLDivElement, FocusRingProps>(
       </div>);
   }
 );
+
+export type FocusRingSupportedCssProps = {
+  "--md-focus-ring-color": string,
+  "--md-focus-ring-shape": string,
+  "--md-focus-ring-width": string,
+};

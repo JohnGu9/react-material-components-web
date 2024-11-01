@@ -7,6 +7,9 @@ import { RoundedIcon } from "./RoundedIcon";
 import { SharpIcon } from "./SharpIcon";
 import React from "react";
 
+// To reduce bundle size, try to import "sub-file"
+// For example, just `import { OutlinedIcon } from "rmcw/components3/OutlinedIcon"` to limit bundle css files that only include `material-symbols/outlined.css`
+
 export const IconContext = React.createContext<React.HTMLProps<HTMLElement>>({});
 
 export type IconProps = {
@@ -28,3 +31,8 @@ export const Icon = createComponent<MdIcon, IconProps>(
     return <MdIconComponent ref={ref as any} {...mergeProps} />;
   }
 );
+
+export type IconSupportedCssProps = {
+  "--md-icon-font": string,
+  "--md-icon-size": string,
+};

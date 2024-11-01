@@ -19,3 +19,8 @@ export const Elevation = createComponent<HTMLDivElement, ElevationProps>(
       </div>);
   }
 );
+
+export type ElevationSupportedCssProps = {
+  "--md-elevation-level": "0" | "1" | "2" | "3" | "4" | "5"
+  "--md-elevation-shadow-color": string,
+};

@@ -25,3 +25,18 @@ export const Fab = createComponent<MdFab, FabProps>(
       </MdFabComponent>);
   }
 );
+
+export type FabSupportedCssProps = {
+  "--md-fab-container-color": string,
+  "--md-fab-lowered-container-color": string,
+  "--md-fab-container-shape": string,
+  "--md-fab-icon-color": string,
+  "--md-fab-icon-size": string,
+
+  "--md-fab-small-container-shape": string,
+  "--md-fab-small-icon-size": string,
+  "--md-fab-large-container-shape": string,
+  "--md-fab-large-icon-size": string,
+
+  "--md-fab-label-text-font": string,
+};
