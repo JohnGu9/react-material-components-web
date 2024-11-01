@@ -78,7 +78,7 @@
     "uuid": "*"
   },
   "scripts": {
-    "build": "npm run clean && npx tsc --project tsconfig.build.json && npx copyfiles -u 1 src/components/**/*.scss dist/",
+    "build": "npm run clean && npx tsc --project tsconfig.build.json && npx copyfiles -u 1 src/components/**/*.scss dist/ && npx copyfiles -u 1 src/components3/**/*.scss dist/",
     "clean": "node ./script/clean.js",
     "storybook": "storybook dev -p 6006 -s public",
     "build-storybook": "storybook build -s public"
