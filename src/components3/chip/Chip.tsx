@@ -8,9 +8,8 @@ import { createComponent } from "../../components/common/Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
 
 
-function composeProps({ disabled, elevated, selected, removable, icon, style, children, ...props }: { [key: string]: any }) {
+function composeProps({ icon, style, children, ...props }: { [key: string]: any }) {
   return {
-    disabled, elevated, selected, removable,
     style: { "--md-icon-size": "18px", ...style },
     children: icon ? <>
       {children}
@@ -30,7 +29,7 @@ export type AssistChipProps = {
 };
 export const AssistChip = createComponent<MdAssistChip, AssistChipProps>(
   function AssistChip(props, ref) {
-    return <MdAssistChipComponent ref={ref as any} {...props} />;
+    return <MdAssistChipComponent ref={ref as any} {...composeProps(props)} />;
   }
 );
 

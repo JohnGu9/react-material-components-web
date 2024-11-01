@@ -29,18 +29,6 @@ export const IconButton = createComponent<MdIconButton, IconButtonProps>(
   }
 );
 
-export const FilledIconButton = createComponent<MdIconButton, IconButtonBaseProps>(
-  function FilledIconButton(props, ref) {
-    return <MdFilledIconButtonComponent ref={ref as any} {...props} />
-  }
-);
-export const TonalIconButton = createComponent<MdIconButton, IconButtonBaseProps>(
-  function TonalIconButton(props, ref) {
-    return <MdFilledTonalIconButtonComponent ref={ref as any} {...props} />
-  }
-);
-export const OutlinedIconButton = createComponent<MdIconButton, IconButtonBaseProps>(
-  function OutlinedIconButton(props, ref) {
-    return <MdOutlinedIconButtonComponent ref={ref as any} {...props} />
-  }
-);
+export const FilledIconButton = MdFilledIconButtonComponent;
+export const TonalIconButton = MdFilledTonalIconButtonComponent;
+export const OutlinedIconButton = MdOutlinedIconButtonComponent;

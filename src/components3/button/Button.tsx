@@ -36,48 +36,28 @@ function composeProps({ icon, children, style, ...props }: { [key: string]: any 
   return { hasIcon, style: { "--md-icon-size": "18px", ...style }, children: mergeChildren, ...props };
 }
 
-export const ElevatedButton = createComponent<MdButton, ButtonBaseProps>(
-  function ElevatedButton(props, ref) {
-    return (<MdElevatedButtonComponent ref={ref as any} {...composeProps(props)} />);
-  }
-);
-export const FilledButton = createComponent<MdButton, ButtonBaseProps>(
-  function FilledButton(props, ref) {
-    return (<MdFilledButtonComponent ref={ref as any} {...composeProps(props)} />);
-  }
-);
-export const FilledTonalButton = createComponent<MdButton, ButtonBaseProps>(
-  function FilledTonalButton(props, ref) {
-    return (<MdFilledTonalButtonComponent ref={ref as any} {...composeProps(props)} />);
-  }
-);
-export const OutlinedButton = createComponent<MdButton, ButtonBaseProps>(
-  function OutlinedButton(props, ref) {
-    return (<MdOutlinedButtonComponent ref={ref as any} {...composeProps(props)} />);
-  }
-);
-export const TextButton = createComponent<MdButton, ButtonBaseProps>(
-  function TextButton(props, ref) {
-    return (<MdTextButtonComponent ref={ref as any} {...composeProps(props)} />);
-  }
-);
+export const ElevatedButton = MdElevatedButtonComponent;
+export const FilledButton = MdFilledButtonComponent;
+export const FilledTonalButton = MdFilledTonalButtonComponent;
+export const OutlinedButton = MdOutlinedButtonComponent;
+export const TextButton = MdTextButtonComponent;
 
 export const Button = createComponent<MdButton, ButtonProps>(
   function Button({ buttonStyle, ...props }, ref) {
     switch (buttonStyle) {
       case "filled":
-        return (<MdFilledButtonComponent key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
+        return (<FilledButton key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
 
       case "filled-tonal":
-        return (<MdFilledTonalButtonComponent key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
+        return (<FilledTonalButton key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
 
       case "outlined":
-        return (<MdOutlinedButtonComponent key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
+        return (<OutlinedButton key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
 
       case "text":
-        return (<MdTextButtonComponent key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
+        return (<TextButton key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
 
     }
-    return (<MdElevatedButtonComponent key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
+    return (<ElevatedButton key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
   }
 );
