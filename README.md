@@ -90,6 +90,14 @@ components3/
 
 > The components are not fully passive in `Material Design 2` still keep the same behavior like before. (`TextField`)
 
+System Requirement:
+| Browser | Version |
+| -------- | ------- |
+| Chrome | 120 + |
+| Edge | 120 + |
+| Firefox | 119 + |
+| Safari\* | 16.4 + |
+
 ## Components (Material Design 2)
 
 ```
