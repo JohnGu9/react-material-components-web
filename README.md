@@ -86,7 +86,7 @@ components3/
 
 > `Material Design 3` - Early access
 
-> Some components are not no longer fully passive like before, you should keep trace the value change in the callback hook. (`Slider` and `Tabs`)
+> Some components are not no longer fully passive like before, you should keep trace the value change in the callback hook. (`Slider`)
 
 > The components are not fully passive in `Material Design 2` still keep the same behavior like before. (`TextField`)
 
