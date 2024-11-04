@@ -12,6 +12,7 @@ function MyComponent() {
 
 Recently you may receive warning message from sass.
 Just set your project sass version to `1.77.6` (in `dependencies` or `devDependencies`).
+The Material Design 2 sass file will not be supported by sass 2.0. It has no effect on Material Design 3.
 
 ## What's the library for?
 
