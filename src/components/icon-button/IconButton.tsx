@@ -1,12 +1,12 @@
 import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { createComponent, useClassInjector } from "../common/Common";
+import { createComponent, useClassInjector } from "../../common/Common";
 import { RippleComponent } from "../ripple/Component";
 import { IconContext } from "../icon/Icon";
 import { RippleEventTarget } from "../ripple/Ripple";
 import { ListItemContext } from "../list-item/ListItem";
-import { CompactWrapper } from "../common/CompactWrapper";
+import { CompactWrapper } from "../../common/CompactWrapper";
 
 export const IconButtonContext = React.createContext<React.HTMLProps<HTMLButtonElement>>({});
 

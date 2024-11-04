@@ -6,7 +6,7 @@ div[data-dark-mode] {
     --md-ref-typeface-plain: system-ui;
 }
 
-div[data-dark-mode="rmcw-dark-mode-auto"] {
+div[data-dark-mode="rmcw3-dark-mode-auto"] {
     @include color.light-theme;
 
     @media (prefers-color-scheme: dark) {
@@ -14,10 +14,10 @@ div[data-dark-mode="rmcw-dark-mode-auto"] {
     }
 }
 
-div[data-dark-mode="rmcw-dark-mode-on"] {
+div[data-dark-mode="rmcw3-dark-mode-on"] {
     @include color.dark-theme;
 }
 
-div[data-dark-mode="rmcw-dark-mode-off"] {
+div[data-dark-mode="rmcw3-dark-mode-off"] {
     @include color.light-theme;
 }

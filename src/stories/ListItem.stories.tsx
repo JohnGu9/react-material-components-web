@@ -6,7 +6,7 @@ import { ListDivider } from '../components/list-divider/ListDivider';
 import { ListItem } from '../components/list-item/ListItem';
 import { Radio } from '../components/radio/Radio';
 import { IconButton } from '../components/icon-button/IconButton';
-import { ListViewBuilder } from '../components/common/ListViewBuilder';
+import { ListViewBuilder } from '../common/ListViewBuilder';
 import { useEffect } from 'react';
 
 export default {

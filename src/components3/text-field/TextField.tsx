@@ -1,4 +1,4 @@
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { TextField as MdTextField, TextFieldType, UnsupportedTextFieldType } from "@material/web/textfield/internal/text-field";
 import { MdFilledTextFieldComponent, MdOutlinedTextFieldComponent } from "./Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";

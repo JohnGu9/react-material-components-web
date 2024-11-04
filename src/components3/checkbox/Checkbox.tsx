@@ -1,6 +1,6 @@
 import "@material/web/checkbox/checkbox"
 import { RmcwCheckbox, RmcwCheckboxComponent } from "./Component"
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 
 export type CheckboxProps = {
   disabled?: boolean,

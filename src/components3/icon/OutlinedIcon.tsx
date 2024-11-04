@@ -1,5 +1,5 @@
 import { MdIcon } from "@material/web/icon/icon";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdIconComponent } from "./Component";
 import { CSSProperties } from "react";
 

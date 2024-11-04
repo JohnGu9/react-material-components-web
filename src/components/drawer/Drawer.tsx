@@ -1,6 +1,6 @@
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { classMap, createComponent, isDefined } from "../common/Common";
+import { classMap, createComponent, isDefined } from "../../common/Common";
 import "./style.scss";
 
 export type DrawerProps = {

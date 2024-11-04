@@ -1,5 +1,5 @@
 import "@material/elevation/mdc-elevation.scss";
-import { classMap, createComponent } from "../common/Common";
+import { classMap, createComponent } from "../../common/Common";
 
 type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
   ? Acc[number]

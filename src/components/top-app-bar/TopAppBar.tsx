@@ -1,7 +1,7 @@
 import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { createComponent, isDefined, useClassInjector } from "../common/Common";
+import { createComponent, isDefined, useClassInjector } from "../../common/Common";
 import { IconButtonContext } from "../icon-button/IconButton";
 import { TopAppBarComponent } from "./Component";
 import { ThemeContext, themeDataToCSSProperties } from "../theme/Theme";

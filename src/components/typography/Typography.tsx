@@ -1,6 +1,6 @@
 import "@material/typography/mdc-typography.scss";
 import React from "react";
-import { classMap, createComponent } from "../common/Common";
+import { classMap, createComponent } from "../../common/Common";
 
 export namespace Typography {
   export type Scale =

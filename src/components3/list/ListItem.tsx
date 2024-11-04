@@ -1,5 +1,5 @@
 import { ListItemType, MdListItem } from "@material/web/list/list-item";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdListItemComponent } from "./Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
 

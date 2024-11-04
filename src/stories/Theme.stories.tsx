@@ -266,7 +266,6 @@ const Template: StoryFn<typeof Theme> = (args) => {
           </div>
         </TopAppBar>
       </Drawer>
-
     </Theme>
   )
 };
@@ -274,5 +273,23 @@ const Template: StoryFn<typeof Theme> = (args) => {
 export const Primary = Template.bind({});
 Primary.args = {
   ...defaultLightTheme,
+  withBackgroundColor: true,
+};
+
+const NoArgumentTemplate: StoryFn<typeof Theme> = (args) => {
+  return <Theme {...args}>
+    <ListItem primaryText="Fruits" />
+    <ListDivider />
+    <ListItem primaryText="Apple" />
+    <ListItem primaryText="Banana" />
+  </Theme>
+};
+
+export const NoArgument = NoArgumentTemplate.bind({});
+NoArgument.args = {
+  // storybook bug: set the props with a function-type value for no reason
+  onPrimary: undefined,
+  onSecondary: undefined,
+  onSurface: undefined,
   withBackgroundColor: true,
 };

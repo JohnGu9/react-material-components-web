@@ -1,7 +1,7 @@
 import { MdIcon } from "@material/web/icon/icon";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { OutlinedIcon } from "./OutlinedIcon";
-import { classMap } from "../../components/common/ClassMap";
+import { classMap } from "../../common/ClassMap";
 import { MdIconComponent } from "./Component";
 import { RoundedIcon } from "./RoundedIcon";
 import { SharpIcon } from "./SharpIcon";

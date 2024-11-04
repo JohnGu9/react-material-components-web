@@ -1,4 +1,4 @@
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { RmcwFilledSelectComponent, RmcwOutlinedSelectComponent, SelectBaseProps } from "./Components";
 import { Select as MdSelect } from "@material/web/select/internal/select";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { createComponent } from "../common/Common";
+import { createComponent } from "../../common/Common";
 import { Menu } from "../menu/Menu";
 import { TextField } from "../text-field/TextField";
 import { useRefComposer } from "react-ref-composer";

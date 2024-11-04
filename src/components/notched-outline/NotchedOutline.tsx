@@ -1,6 +1,6 @@
 import { estimateScrollWidth } from "@material/dom/ponyfill";
 import React from "react";
-import { classMap, createComponent, isDefined } from "../common/Common";
+import { classMap, createComponent, isDefined } from "../../common/Common";
 import { FloatingLabel } from "../floating-label/FloatingLabel";
 
 export type NotchedOutlineProps = {

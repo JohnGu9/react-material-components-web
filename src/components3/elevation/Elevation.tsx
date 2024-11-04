@@ -1,4 +1,4 @@
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdElevationComponent } from "./Component";
 import { CSSProperties } from "react";
 

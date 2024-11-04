@@ -1,5 +1,5 @@
 import { MdDivider } from "@material/web/divider/divider";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdDividerComponent } from "./Component";
 
 export type DividerProps = {

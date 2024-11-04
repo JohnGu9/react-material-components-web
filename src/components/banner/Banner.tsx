@@ -1,7 +1,7 @@
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { ButtonContext } from "../button/Button";
-import { classMap, createComponent, isDefined, useSizeObserver } from "../common/Common";
+import { classMap, createComponent, isDefined, useSizeObserver } from "../../common/Common";
 import { IconContext } from "../icon/Icon";
 import "./style.scss";
 

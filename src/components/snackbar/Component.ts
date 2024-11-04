@@ -1,6 +1,6 @@
 import { MDCSnackbar, numbers, strings } from "@material/snackbar";
 import { MDCComponent } from "@material/base/component";
-import { ClassInjector } from "../common/Common";
+import { ClassInjector } from "../../common/Common";
 
 export { strings };
 

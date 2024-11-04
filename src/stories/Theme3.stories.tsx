@@ -11,10 +11,10 @@ export default {
 const Template: StoryFn<typeof Theme> = (args) =>
   <Theme  {...args}>
     <List>
-      <ListItem >Fruits</ListItem>
+      <ListItem type="button">Fruits</ListItem>
       <Divider />
-      <ListItem >Apple</ListItem>
-      <ListItem >Banana</ListItem>
+      <ListItem type="button">Apple</ListItem>
+      <ListItem type="button">Banana</ListItem>
     </List>
   </Theme>
   ;

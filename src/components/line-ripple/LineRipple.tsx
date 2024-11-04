@@ -1,5 +1,5 @@
 import "@material/line-ripple/mdc-line-ripple.scss";
-import { createComponent } from "../common/Common";
+import { createComponent } from "../../common/Common";
 
 export type LineRippleProps = {
   activated?: boolean,

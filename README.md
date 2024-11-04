@@ -90,7 +90,7 @@ components3/
 
 > The components are not fully passive in `Material Design 2` still keep the same behavior like before. (`TextField`)
 
-> Material Design 3 is not default import components. Material Design 2 would still be default for long time. You need to import Material Design 3 component3 from sub directory. For example `import { Button } from "rmcw/dist/components3/button/Button"` 
+> Material Design 3 is not default import components. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3/button/Button"` 
 
 System Requirement:
 | Browser | Version |

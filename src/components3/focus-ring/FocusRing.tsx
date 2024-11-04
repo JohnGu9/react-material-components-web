@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdFocusRingComponent } from "./Component";
 
 export type FocusRingProps = {

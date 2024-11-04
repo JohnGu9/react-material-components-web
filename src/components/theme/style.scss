@@ -1,2 +1,52 @@
 @use "@material/theme";
 @use "@material/theme/custom-properties";
+
+@mixin light-theme {
+    --mdc-theme-primary: #6200ee;
+    --mdc-theme-secondary: #03dac4;
+    --mdc-theme-background: #fff;
+    --mdc-theme-surface: #fff;
+    --mdc-theme-on-primary: rgba(255, 255, 255, 1);
+    --mdc-theme-on-secondary: rgba(0, 0, 0, 0.87);
+    --mdc-theme-on-surface: rgba(0, 0, 0, 0.87);
+    --mdc-theme-text-primary-on-background: rgba(0, 0, 0, 0.87);
+    --mdc-theme-text-secondary-on-background: rgba(0, 0, 0, 0.54);
+    --mdc-theme-text-hint-on-background: rgba(0, 0, 0, 0.38);
+    --mdc-theme-text-disabled-on-background: rgba(0, 0, 0, 0.38);
+    --mdc-theme-text-icon-on-background: rgba(0, 0, 0, 0.38);
+    --mdc-ripple-color: var(--mdc-theme-on-surface);
+    color: var(--mdc-theme-on-surface);
+}
+
+@mixin dark-theme {
+    --mdc-theme-primary: #bb86fc;
+    --mdc-theme-secondary: #03dac5;
+    --mdc-theme-background: #303030;
+    --mdc-theme-surface: #424242;
+    --mdc-theme-on-primary: rgba(0, 0, 0, 0.87);
+    --mdc-theme-on-secondary: rgba(0, 0, 0, 0.87);
+    --mdc-theme-on-surface: rgba(255, 255, 255, 0.87);
+    --mdc-theme-text-primary-on-background: rgba(255, 255, 255, 1);
+    --mdc-theme-text-secondary-on-background: rgba(255, 255, 255, 0.7);
+    --mdc-theme-text-hint-on-background: rgba(255, 255, 255, 0.5);
+    --mdc-theme-text-disabled-on-background: rgba(255, 255, 255, 0.5);
+    --mdc-theme-text-icon-on-background: rgba(255, 255, 255, 0.5);
+    --mdc-ripple-color: var(--mdc-theme-on-surface);
+    color: var(--mdc-theme-on-surface);
+}
+
+div[data-dark-mode="rmcw2-dark-mode-auto"] {
+    @include light-theme;
+
+    @media (prefers-color-scheme: dark) {
+        @include dark-theme;
+    }
+}
+
+div[data-dark-mode="rmcw2-dark-mode-on"] {
+    @include dark-theme;
+}
+
+div[data-dark-mode="rmcw2-dark-mode-off"] {
+    @include light-theme;
+}

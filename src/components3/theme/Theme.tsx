@@ -1,22 +1,6 @@
-import { createComponent } from "../../components/common/Component";
-import "./styles.scss";
+// If you want to use default roboto font, import this file
+// If you want to use custom roboto font, import the `ThemeWithoutFont.tsx`
 
-export type ThemeProps = {
-  enableDarkTheme?: boolean,
-};
+import "@fontsource/roboto";
 
-export const Theme = createComponent<HTMLDivElement, ThemeProps>(
-  function Theme({ enableDarkTheme, ...props }, ref) {
-    return <div data-dark-mode={`rmcw-dark-mode-${getModeString(enableDarkTheme)}`} ref={ref} {...props} />
-  }
-);
-
-function getModeString(enableDarkTheme?: boolean) {
-  switch (enableDarkTheme) {
-    case true:
-      return 'on';
-    case false:
-      return 'off';
-  }
-  return 'auto'
-}
+export * from "./ThemeWithoutFont";

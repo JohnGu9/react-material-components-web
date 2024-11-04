@@ -1,5 +1,5 @@
 import React from "react";
-import { classMap, createComponent, useSizeObserver } from "../common/Common";
+import { classMap, createComponent, useSizeObserver } from "../../common/Common";
 import "./style.scss";
 
 export type MenuProps = {

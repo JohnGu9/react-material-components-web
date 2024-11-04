@@ -1,4 +1,4 @@
-import { classMap, createComponent } from "../common/Common";
+import { classMap, createComponent } from "../../common/Common";
 import "../list-item/style.scss";
 
 export type ListDividerProps = {

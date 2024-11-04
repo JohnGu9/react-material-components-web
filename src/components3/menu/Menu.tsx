@@ -1,5 +1,5 @@
 import { Corner } from "@material/web/menu/menu";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { RmcwMenuComponent } from "./Component";
 import "./styles.scss"
 import React from "react";

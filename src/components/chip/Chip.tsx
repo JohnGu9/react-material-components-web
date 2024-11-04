@@ -1,6 +1,6 @@
 import { AnimatedSize } from "animated-size";
 import React from "react";
-import { classMap, createComponent, isDefined, useClassInjector } from "../common/Common";
+import { classMap, createComponent, isDefined, useClassInjector } from "../../common/Common";
 import { RippleComponent } from "../ripple/Component";
 import { IconContext } from "../icon/Icon";
 import styles from "./style.module.scss";

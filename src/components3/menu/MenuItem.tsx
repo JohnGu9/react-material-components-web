@@ -1,5 +1,5 @@
 import { MdMenuItem } from "@material/web/menu/menu-item";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdMenuItemComponent } from "./Component";
 import { MenuItemType } from "@material/web/menu/internal/controllers/menuItemController";
 import { SlotNode, createSlotNode } from "../common/SlotNode";

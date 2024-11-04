@@ -1,5 +1,5 @@
 import { MdList } from "@material/web/list/list";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdListComponent } from "./Component";
 
 export type ListProps = {};

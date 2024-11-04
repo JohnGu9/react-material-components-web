@@ -1,13 +1,13 @@
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { createComponent, useClassInjector } from "../common/Common";
-import { useUuidV4 } from "../common/Uuid";
+import { createComponent, useClassInjector } from "../../common/Common";
+import { useUuidV4 } from "../../common/Uuid";
 import { FormFieldContext } from "../form-field/FormField";
 import "./style.scss";
 import { RippleComponent } from "../ripple/Component";
 import { RippleEventTarget } from "../ripple/Ripple";
 import { ListItemContext } from "../list-item/ListItem";
-import { CompactWrapper } from "../common/CompactWrapper";
+import { CompactWrapper } from "../../common/CompactWrapper";
 
 export type RadioProps = {
   checked?: boolean,

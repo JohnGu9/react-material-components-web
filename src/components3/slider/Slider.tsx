@@ -1,5 +1,5 @@
 import { MdSlider } from "@material/web/slider/slider";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdSliderComponent } from "./Component";
 
 // Material Design 3 `Slider` is no longer block value change by user input like before.

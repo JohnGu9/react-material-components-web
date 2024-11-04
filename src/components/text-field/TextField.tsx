@@ -1,9 +1,9 @@
 import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { createComponent, isDefined, useClassInjector } from "../common/Common";
-import { TextBaseProps } from "../common/TextController";
-import { useUuidV4 } from "../common/Uuid";
+import { createComponent, isDefined, useClassInjector } from "../../common/Common";
+import { TextBaseProps } from "../../common/TextController";
+import { useUuidV4 } from "../../common/Uuid";
 import { FloatingLabel } from "../floating-label/FloatingLabel";
 import { IconContext } from "../icon/Icon";
 import { LineRipple } from "../line-ripple/LineRipple";

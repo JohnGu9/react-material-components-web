@@ -4,7 +4,7 @@ import { MdAssistChipComponent, MdSuggestionChipComponent, RmcwFilterChip, RmcwF
 import "@material/web/chips/input-chip";
 import "@material/web/chips/suggestion-chip";
 import { MdSuggestionChip } from "@material/web/chips/suggestion-chip";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
 
 

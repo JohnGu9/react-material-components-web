@@ -1,8 +1,8 @@
 import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { createComponent, isDefined, useClassInjector } from "../common/Common";
-import { useUuidV4 } from "../common/Uuid";
+import { createComponent, isDefined, useClassInjector } from "../../common/Common";
+import { useUuidV4 } from "../../common/Uuid";
 import { DialogComponent, State } from "./Component";
 import { RippleEventTarget } from "../ripple/Ripple";
 import { MDCDialogFoundation } from "@material/dialog";

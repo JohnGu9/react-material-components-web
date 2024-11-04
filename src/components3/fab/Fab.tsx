@@ -1,5 +1,5 @@
 import { FabSize, FabVariant, MdFab } from "@material/web/fab/fab";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdFabComponent } from "./Component";
 import { CSSProperties } from "react";
 import { createSlotNode, SlotNode } from "../common/SlotNode";

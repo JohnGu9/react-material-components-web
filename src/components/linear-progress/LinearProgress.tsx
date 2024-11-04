@@ -1,7 +1,7 @@
 import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { createComponent, useClassInjector } from "../common/Common";
+import { createComponent, useClassInjector } from "../../common/Common";
 import { animationDimensionPercentages as percents } from '@material/linear-progress/constants';
 
 // css transition

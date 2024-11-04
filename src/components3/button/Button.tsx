@@ -3,7 +3,7 @@ import "@material/web/button/filled-button"
 import "@material/web/button/filled-tonal-button"
 import "@material/web/button/outlined-button"
 import "@material/web/button/text-button"
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { Button as MdButton } from "@material/web/button/internal/button";
 import { MdElevatedButtonComponent, MdFilledButtonComponent, MdFilledTonalButtonComponent, MdOutlinedButtonComponent, MdTextButtonComponent } from "./Compoent"
 import { FormSubmitterType } from "@material/web/internal/controller/form-submitter"

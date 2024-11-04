@@ -1,5 +1,5 @@
 import { Tab as MdTab } from "@material/web/tabs/internal/tab";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
 import { MdPrimaryTabComponent, MdSecondaryTabComponent } from "./Component";
 import { TabsContext } from "./Tabs";

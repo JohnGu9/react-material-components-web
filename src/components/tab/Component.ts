@@ -1,5 +1,5 @@
 import { MDCTab } from "@material/tab";
-import { ClassInjector } from "../common/Common";
+import { ClassInjector } from "../../common/Common";
 import { MDCRippleFoundation } from "@material/ripple";
 
 export class TabComponent extends MDCTab {

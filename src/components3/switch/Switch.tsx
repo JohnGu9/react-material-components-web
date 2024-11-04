@@ -1,4 +1,4 @@
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
 import { RmcwSwitch, RmcwSwitchComponent } from "./Component";
 

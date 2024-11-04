@@ -1,5 +1,5 @@
 import { MDCDialog, strings } from "@material/dialog";
-import { ClassInjector } from "../common/Common";
+import { ClassInjector } from "../../common/Common";
 
 export type State = {
   onScrimClick?: (evt: MouseEvent) => any;

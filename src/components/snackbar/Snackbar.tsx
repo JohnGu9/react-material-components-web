@@ -2,7 +2,7 @@ import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { ButtonContext } from "../button/Button";
-import { createComponent, isDefined, useClassInjector } from "../common/Common";
+import { createComponent, isDefined, useClassInjector } from "../../common/Common";
 import { IconButtonContext } from "../icon-button/IconButton";
 import { SnackbarComponent, strings } from "./Component";
 import { RippleEventTarget } from "../ripple/Ripple";

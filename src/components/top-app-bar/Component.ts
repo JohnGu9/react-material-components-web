@@ -1,5 +1,5 @@
 import { MDCTopAppBar } from "@material/top-app-bar";
-import { ClassInjector } from "../common/Common";
+import { ClassInjector } from "../../common/Common";
 
 export class TopAppBarComponent extends MDCTopAppBar {
   injector: ClassInjector;

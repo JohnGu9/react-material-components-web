@@ -1,6 +1,6 @@
 import { MDCRipple, MDCRippleFoundation } from "@material/ripple";
 import { supportsCssVariables } from "@material/ripple/util";
-import { ClassInjector } from "../common/Common";
+import { ClassInjector } from "../../common/Common";
 
 const browserCssVarsSupports = supportsCssVariables(window);
 export class RippleComponent extends MDCRipple {

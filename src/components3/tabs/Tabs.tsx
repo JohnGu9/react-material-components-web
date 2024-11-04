@@ -1,5 +1,5 @@
 import { MdTabs } from "@material/web/tabs/tabs";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { RmcwTabsComponent } from "./Component";
 import React from "react";
 

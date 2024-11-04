@@ -1,7 +1,7 @@
 import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { clamp, createComponent, useClassInjector } from "../common/Common";
+import { clamp, createComponent, useClassInjector } from "../../common/Common";
 
 export type SliderProps = {
   min?: number,

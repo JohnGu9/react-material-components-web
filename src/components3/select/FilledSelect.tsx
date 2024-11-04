@@ -1,4 +1,4 @@
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { RmcwFilledSelect, RmcwFilledSelectComponent, SelectBaseProps } from "./Components";
 
 export type FilledSelectProps = SelectBaseProps;

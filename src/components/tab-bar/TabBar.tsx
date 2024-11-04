@@ -3,7 +3,7 @@ import "@material/tab-indicator/mdc-tab-indicator.scss";
 import "@material/tab-scroller/mdc-tab-scroller.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { createComponent } from "../common/Common";
+import { createComponent } from "../../common/Common";
 import { TabContext } from "../tab/Tab";
 import { State, TabBarComponent } from "./Component";
 

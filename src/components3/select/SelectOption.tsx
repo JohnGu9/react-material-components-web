@@ -1,5 +1,5 @@
 import { MdSelectOption } from "@material/web/select/select-option";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdSelectOptionComponent } from "./Components";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
 

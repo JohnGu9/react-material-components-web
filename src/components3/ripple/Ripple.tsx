@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdRippleComponent } from "./Component";
 import "./styles.scss"
 

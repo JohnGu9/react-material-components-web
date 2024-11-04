@@ -1,6 +1,8 @@
 import React from "react";
-import { createComponent } from "../common/Common";
+import { createComponent } from "../../common/Common";
 import "./style.scss";
+
+const media = window.matchMedia('(prefers-color-scheme: dark)');
 
 export type ThemeData = {
   /* css property */
@@ -17,53 +19,6 @@ export type ThemeData = {
   textDisabledOnBackground?: string,
   textIconOnBackground?: string,
 }
-
-export const defaultLightTheme: ThemeData = {
-  primary: '#6200ee',// var(--mdc-theme-primary, #6200ee)
-  secondary: '#03dac4', // var(--mdc-theme-secondary, #03dac4)
-  background: '#fff',// var(--mdc-theme-background, #fff)
-  surface: '#fff',// var(--mdc-theme-surface, #fff)
-  onPrimary: 'rgba(255, 255, 255, 1)',// var(--mdc-theme-on-primary, rgba(255, 255, 255, 1))
-  onSecondary: 'rgba(0, 0, 0, 0.87)',// var(--mdc-theme-on-secondary, rgba(0, 0, 0, 0.87))
-  onSurface: 'rgba(0, 0, 0, 0.87)',// var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87))
-  textPrimaryOnBackground: 'rgba(0, 0, 0, 0.87)',// var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87))
-  textSecondaryOnBackground: 'rgba(0, 0, 0, 0.54)',// var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54))
-  textHintOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.38))
-  textDisabledOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38))
-  textIconOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38))
-}
-
-export const defaultDarkTheme: ThemeData = {
-  primary: '#bb86fc',
-  secondary: '#03dac5',
-  background: '#303030',
-  surface: '#424242',
-  onPrimary: 'rgba(0,0,0,0.87)',
-  onSecondary: 'rgba(0,0,0,0.87)',
-  onSurface: 'rgba(255,255,255,.87)',
-  textPrimaryOnBackground: 'rgba(255, 255, 255, 1)',
-  textSecondaryOnBackground: 'rgba(255, 255, 255, 0.7)',
-  textHintOnBackground: 'rgba(255, 255, 255, 0.5)',
-  textDisabledOnBackground: 'rgba(255, 255, 255, 0.5)',
-  textIconOnBackground: 'rgba(255, 255, 255, 0.5)',
-}
-
-export const oledDarkTheme: ThemeData = {
-  primary: '#bb86fc',
-  secondary: '#03dac5',
-  background: '#000000',
-  surface: 'rgb(51,51,51)',
-  onPrimary: 'rgba(0,0,0,0.87)',
-  onSecondary: 'rgba(0,0,0,0.87)',
-  onSurface: 'rgba(255,255,255,.87)',
-  textPrimaryOnBackground: 'rgba(255, 255, 255, 1)',
-  textSecondaryOnBackground: 'rgba(255, 255, 255, 0.7)',
-  textHintOnBackground: 'rgba(255, 255, 255, 0.5)',
-  textDisabledOnBackground: 'rgba(255, 255, 255, 0.5)',
-  textIconOnBackground: 'rgba(255, 255, 255, 0.5)',
-}
-
-const media = window.matchMedia('(prefers-color-scheme: dark)');
 
 export type ThemeProps = ThemeData & {
   darkTheme?: ThemeData,
@@ -86,16 +41,15 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
     textHintOnBackground,
     textDisabledOnBackground,
     textIconOnBackground,
-    darkTheme = defaultDarkTheme,
+    darkTheme = {},
     enableDarkTheme,
     withBackgroundColor,
     buildTopAppBarTheme = defaultBuildTopAppBarTheme,
     style,
     ...props
   }, ref) {
-    const lightTheme: ThemeData = React.useMemo(() => Object.assign({},
-      defaultLightTheme,
-      Object.fromEntries(Object.entries({
+    const lightTheme: ThemeData = React.useMemo(() => {
+      return {
         primary,
         secondary,
         background,
@@ -108,7 +62,8 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
         textHintOnBackground,
         textDisabledOnBackground,
         textIconOnBackground,
-      }).filter(([k, v]) => v !== undefined))),
+      };
+    },
       [background, onPrimary, onSecondary, onSurface, primary, secondary, surface, textDisabledOnBackground, textHintOnBackground, textIconOnBackground, textPrimaryOnBackground, textSecondaryOnBackground]);
 
     const [, setMediaDarkMode] = React.useState(media.matches);
@@ -160,6 +115,7 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
     return (
       <ThemeContext.Provider value={context}>
         <div ref={ref}
+          data-dark-mode={`rmcw2-dark-mode-${getModeString(enableDarkTheme)}`}
           style={mergeStyle}
           {...props} />
       </ThemeContext.Provider>
@@ -212,4 +168,59 @@ function defaultBuildTopAppBarTheme(lightTheme: ThemeData,
       textSecondaryOnBackground: darkTheme.textSecondaryOnBackground,
     };
   }
+}
+
+function getModeString(enableDarkTheme?: boolean) {
+  switch (enableDarkTheme) {
+    case true:
+      return 'on';
+    case false:
+      return 'off';
+  }
+  return 'auto'
+}
+
+export const defaultLightTheme: ThemeData = {
+  primary: '#6200ee',// var(--mdc-theme-primary, #6200ee)
+  secondary: '#03dac4', // var(--mdc-theme-secondary, #03dac4)
+  background: '#fff',// var(--mdc-theme-background, #fff)
+  surface: '#fff',// var(--mdc-theme-surface, #fff)
+  onPrimary: 'rgba(255, 255, 255, 1)',// var(--mdc-theme-on-primary, rgba(255, 255, 255, 1))
+  onSecondary: 'rgba(0, 0, 0, 0.87)',// var(--mdc-theme-on-secondary, rgba(0, 0, 0, 0.87))
+  onSurface: 'rgba(0, 0, 0, 0.87)',// var(--mdc-theme-on-surface, rgba(0, 0, 0, 0.87))
+  textPrimaryOnBackground: 'rgba(0, 0, 0, 0.87)',// var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87))
+  textSecondaryOnBackground: 'rgba(0, 0, 0, 0.54)',// var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54))
+  textHintOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.38))
+  textDisabledOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38))
+  textIconOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38))
+}
+
+export const defaultDarkTheme: ThemeData = {
+  primary: '#bb86fc',
+  secondary: '#03dac5',
+  background: '#303030',
+  surface: '#424242',
+  onPrimary: 'rgba(0,0,0,0.87)',
+  onSecondary: 'rgba(0,0,0,0.87)',
+  onSurface: 'rgba(255,255,255,.87)',
+  textPrimaryOnBackground: 'rgba(255, 255, 255, 1)',
+  textSecondaryOnBackground: 'rgba(255, 255, 255, 0.7)',
+  textHintOnBackground: 'rgba(255, 255, 255, 0.5)',
+  textDisabledOnBackground: 'rgba(255, 255, 255, 0.5)',
+  textIconOnBackground: 'rgba(255, 255, 255, 0.5)',
+}
+
+export const oledDarkTheme: ThemeData = {
+  primary: '#bb86fc',
+  secondary: '#03dac5',
+  background: '#000000',
+  surface: 'rgb(51,51,51)',
+  onPrimary: 'rgba(0,0,0,0.87)',
+  onSecondary: 'rgba(0,0,0,0.87)',
+  onSurface: 'rgba(255,255,255,.87)',
+  textPrimaryOnBackground: 'rgba(255, 255, 255, 1)',
+  textSecondaryOnBackground: 'rgba(255, 255, 255, 0.7)',
+  textHintOnBackground: 'rgba(255, 255, 255, 0.5)',
+  textDisabledOnBackground: 'rgba(255, 255, 255, 0.5)',
+  textIconOnBackground: 'rgba(255, 255, 255, 0.5)',
 }

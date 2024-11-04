@@ -1,7 +1,7 @@
 import "@material/ripple/mdc-ripple.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { createComponent, useClassInjector } from "../common/Common";
+import { createComponent, useClassInjector } from "../../common/Common";
 import { RippleComponent } from "./Component";
 
 export const RippleEventTarget = React.createContext(new EventTarget());

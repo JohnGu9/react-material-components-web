@@ -1,7 +1,7 @@
 import "./style.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { createComponent, useClassInjector } from "../common/Common";
+import { createComponent, useClassInjector } from "../../common/Common";
 import { IconContext } from "../icon/Icon";
 import { TabComponent } from "./Component";
 

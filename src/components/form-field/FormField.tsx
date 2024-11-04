@@ -1,7 +1,7 @@
 import "@material/form-field/mdc-form-field.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
-import { createComponent, useClassInjector } from "../common/Common";
+import { createComponent, useClassInjector } from "../../common/Common";
 import { FormFieldComponent } from "./Component";
 
 export const FormFieldContext = React.createContext<React.RefObject<HTMLLabelElement> | undefined>(undefined);

@@ -1,6 +1,6 @@
 import "@material/web/chips/chip-set";
 import { MdChipSet } from "@material/web/chips/chip-set";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdChipSetComponent } from "./Component";
 
 export type ChipSetProps = {};

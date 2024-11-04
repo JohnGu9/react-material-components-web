@@ -1,5 +1,5 @@
 import "@material/touch-target/mdc-touch-target.scss";
-import { classMap, createComponent } from "../common/Common";
+import { classMap, createComponent } from "../../common/Common";
 
 export type TouchTargetWrapperProps = {};
 

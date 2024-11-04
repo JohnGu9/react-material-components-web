@@ -1,5 +1,5 @@
 import { IconButton as MdIconButton } from "@material/web/iconbutton/internal/icon-button";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdFilledIconButtonComponent, MdFilledTonalIconButtonComponent, MdIconButtonComponent, MdOutlinedIconButtonComponent } from "./Component";
 import { FormSubmitterType } from "@material/web/internal/controller/form-submitter";
 

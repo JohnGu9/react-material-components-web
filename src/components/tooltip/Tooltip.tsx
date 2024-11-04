@@ -2,7 +2,7 @@ import "@material/tooltip/styles.scss";
 import React from "react";
 import { useRefComposer } from "react-ref-composer";
 import { ButtonContext } from "../button/Button";
-import { classMap, createComponent, isDefined } from "../common/Common";
+import { classMap, createComponent, isDefined } from "../../common/Common";
 import { TooltipComponent } from "./Component";
 
 export type TooltipProps = {

@@ -8,6 +8,7 @@
   },
   "include": [
     "src/index.ts",
+    "src/common/",
     "src/components/",
     "src/components3/",
   ],

@@ -1,5 +1,5 @@
 import { MdSubMenu } from "@material/web/menu/sub-menu";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdMenuComponent, MdSubMenuComponent } from "./Component";
 import { Corner } from "@material/web/menu/menu";
 import React from "react";

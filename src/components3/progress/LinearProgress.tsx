@@ -1,5 +1,5 @@
 import { MdCircularProgress } from "@material/web/progress/circular-progress";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdLinearProgressComponent, ProgressProps } from "./Component";
 
 export type LinearProgressProps = ProgressProps & {

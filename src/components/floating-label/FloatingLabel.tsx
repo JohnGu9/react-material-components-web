@@ -1,5 +1,5 @@
 import React from "react";
-import { classMap, createComponent } from "../common/Common";
+import { classMap, createComponent } from "../../common/Common";
 
 export type FloatingLabelProps = {
   shake?: boolean,

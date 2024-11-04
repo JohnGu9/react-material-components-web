@@ -1,9 +1,9 @@
 import "./style.scss";
 import React from "react";
 import { Checkbox } from "../checkbox/Checkbox";
-import { classMap, createComponent } from "../common/Common";
+import { classMap, createComponent } from "../../common/Common";
 import { IconButton } from "../icon-button/IconButton";
-import { ListViewBuilder } from "../common/ListViewBuilder";
+import { ListViewBuilder } from "../../common/ListViewBuilder";
 
 const Context = React.createContext<{ isHeader?: boolean }>({ isHeader: false, });
 

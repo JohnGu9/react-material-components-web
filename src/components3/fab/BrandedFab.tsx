@@ -1,5 +1,5 @@
 import { FabSize, MdBrandedFab } from "@material/web/fab/branded-fab";
-import { createComponent } from "../../components/common/Component";
+import { createComponent } from "../../common/Component";
 import { MdBrandedFabComponent } from "./Component";
 import { CSSProperties } from "react";
 import { createSlotNode, SlotNode } from "../common/SlotNode";

@@ -1,6 +1,6 @@
 {
   "name": "rmcw",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "This library provide a react wrapper for material design components. ",
   "private": false,
   "main": "dist/index.js",
@@ -22,7 +22,6 @@
   "author": "johngu",
   "license": "MIT",
   "peerDependencies": {
-    "@lit/react": "^1.0.6",
     "@material/animation": "^14.0.0",
     "@material/banner": "^14.0.0",
     "@material/base": "^14.0.0",
@@ -71,15 +70,17 @@
     "@material/touch-target": "^14.0.0",
     "@material/typography": "^14.0.0",
     "@material/web": "^2.2.0",
+    "@fontsource/roboto": "*",
+    "@lit/react": "*",
     "animated-size": "*",
-    "material-icons": "latest",
-    "material-symbols": "latest",
+    "material-icons": "*",
+    "material-symbols": "*",
     "react-ref-composer": "*",
     "sass": "*",
     "uuid": "*"
   },
   "scripts": {
-    "build": "npm run clean && npx tsc --project tsconfig.build.json && npx copyfiles -u 1 src/components/**/*.scss dist/ && npx copyfiles -u 1 src/components3/**/*.scss dist/",
+    "build": "npm run clean && npx tsc --project tsconfig.build.json && npx copyfiles -u 1 src/**/*.scss dist/ && npx copyfiles -u 1 src/**/**/*.scss dist/",
     "clean": "node ./script/clean.js",
     "storybook": "storybook dev -p 6006 -s public",
     "build-storybook": "storybook build -s public"
@@ -113,6 +114,7 @@
     ]
   },
   "devDependencies": {
+    "@fontsource/roboto": "^5.1.0",
     "@lit/react": "^1.0.6",
     "@material/banner": "^14.0.0",
     "@material/button": "^14.0.0",

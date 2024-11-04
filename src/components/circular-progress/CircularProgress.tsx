@@ -1,5 +1,5 @@
 import "@material/circular-progress/mdc-circular-progress.scss";
-import { classMap, createComponent } from "../common/Common";
+import { classMap, createComponent } from "../../common/Common";
 
 type SizingProperties = {
   size: number,
