@@ -7,7 +7,6 @@ export type ThemeProps = {
 
 export const Theme = createComponent<HTMLDivElement, ThemeProps>(
   function Theme({ enableDarkTheme, ...props }, ref) {
-
     return <div data-dark-mode={`rmcw-dark-mode-${getModeString(enableDarkTheme)}`} ref={ref} {...props} />
   }
 );

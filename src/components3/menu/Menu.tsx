@@ -1,7 +1,7 @@
 import { Corner } from "@material/web/menu/menu";
 import { createComponent } from "../../components/common/Component";
 import { RmcwMenuComponent } from "./Component";
-import "./styles.css"
+import "./styles.scss"
 import React from "react";
 
 // auto detect sub-menu children

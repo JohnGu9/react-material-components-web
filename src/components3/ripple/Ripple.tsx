@@ -1,7 +1,7 @@
 import { CSSProperties } from "react";
 import { createComponent } from "../../components/common/Component";
 import { MdRippleComponent } from "./Component";
-import "./styles.css"
+import "./styles.scss"
 
 export type RippleProps = {
   unbounded?: boolean | ({ height?: string | number, width?: string | number } & CSSProperties),
