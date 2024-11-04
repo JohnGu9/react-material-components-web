@@ -10,7 +10,6 @@ export default {
 
 const Template: StoryFn<typeof Tabs> = (args) => {
   const [currentTab, setCurrentTab] = React.useState(1);
-  console.log(currentTab);
   return (
     <Tabs {...args} selected={currentTab}
       onSelected={index => setCurrentTab(index)}>
@@ -27,7 +26,6 @@ Primary.args = {
 
 const InlineIconTemplate: StoryFn<typeof Tabs> = (args) => {
   const [currentTab, setCurrentTab] = React.useState(1);
-  console.log(currentTab);
   return (
     <Tabs {...args} selected={currentTab}
       onSelected={index => setCurrentTab(index)}>

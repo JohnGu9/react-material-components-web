@@ -22,6 +22,7 @@
   "author": "johngu",
   "license": "MIT",
   "peerDependencies": {
+    "@lit/react": "^1.0.6",
     "@material/animation": "^14.0.0",
     "@material/banner": "^14.0.0",
     "@material/base": "^14.0.0",
