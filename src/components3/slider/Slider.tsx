@@ -14,15 +14,7 @@ export type SliderProps = {
   step?: number,
   ticks?: boolean,
   labeled?: boolean,
-  valueLabel?: string,
-  valueLabelStart?: string,
-  valueLabelEnd?: string,
-  ariaLabelStart?: string,
-  ariaValueTextStart?: string,
-  ariaLabelEnd?: string,
-  ariaValueTextEnd?: string,
   onChange?: ((e: Event) => void),
-  onInput?: ((e: Event) => void),
   //
   form?: never
 };
@@ -30,9 +22,23 @@ export type SliderProps = {
 export const Slider = createComponent<MdSlider, SliderProps>(
   function Slider({ value, ...props }, ref) {
     if (typeof value === 'object' && "start" in value && "end" in value) {
-      return <MdSliderComponent ref={ref as any} range valueStart={value.start as number} valueEnd={value.end as number} {...props} />;
+      return <MdSliderComponent ref={ref as any} range
+        ariaValueTextStart={value.start.toString()}
+        valueLabelStart={value.start.toString()}
+        valueStart={value.start as number}
+        ariaValueTextEnd={value.end.toString()}
+        valueLabelEnd={value.end.toString()}
+        valueEnd={value.end as number}
+        {...props} />;
+    } else if (typeof value === 'number') {
+      return <MdSliderComponent ref={ref as any}
+        ariaValueTextEnd={value.toString()}
+        valueLabelEnd={value.toString()}
+        valueLabel={value.toString()}
+        value={value}
+        {...props} />;
     }
-    return <MdSliderComponent ref={ref as any} value={value as number} {...props} />;
+    return <MdSliderComponent ref={ref as any} {...props} />;
   }
 );
 

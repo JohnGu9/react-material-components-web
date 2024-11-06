@@ -9,7 +9,6 @@ export default {
 
 const Template: StoryFn<typeof Slider> = (args) => {
   const [value, setValue] = React.useState(50);
-  console.log(value);
   return <Slider value={value}
     {...args}
     onChange={e => {
@@ -26,7 +25,6 @@ Primary.args = {
 
 const RangeTemplate: StoryFn<typeof Slider> = (args) => {
   const [value, setValue] = React.useState({ start: 20, end: 80 });
-  console.log(value);
   return <Slider value={value}
     {...args}
     onChange={e => {

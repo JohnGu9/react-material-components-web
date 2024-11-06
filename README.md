@@ -62,7 +62,7 @@ npm run storybook
 ## Components (Material Design 3)
 
 ```
-components3/
+rmcw/dist/components3/
 ```
 
 - Button
@@ -89,7 +89,7 @@ components3/
 
 > Some components are not no longer fully passive like before, you should keep trace the value change in the callback hook. (`Slider`)
 
-> The components are not fully passive in `Material Design 2` still keep the same behavior like before. (`TextField`)
+> `TextField` update its behavior like input in React 18. No onChange callback, no value change. https://react.dev/reference/react-dom/components/input
 
 > Material Design 3 is not default import components. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"` 
 
@@ -108,7 +108,7 @@ System Requirement:
 ## Components (Material Design 2)
 
 ```
-components/
+rmcw/dist/components/
 ```
 
 - Banner

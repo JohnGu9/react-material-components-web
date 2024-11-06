@@ -2,6 +2,8 @@ import { createComponent } from "../../common/Component";
 import { TextField as MdTextField, TextFieldType, UnsupportedTextFieldType } from "@material/web/textfield/internal/text-field";
 import { MdFilledTextFieldComponent, MdOutlinedTextFieldComponent } from "./Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
+import { FormEvent } from "react";
+import React from "react";
 
 export type TextFieldProps = {
   textFieldStyle?: "filled" | "outlined",
@@ -34,26 +36,47 @@ export type TextFieldProps = {
   autocomplete?: string,
   leadingIcon?: SlotNode,
   trailingIcon?: SlotNode,
+  defaultValue?: string,
   value?: string,
-  onChange?: (event: Event) => void,
-  onInput?: (event: Event) => void,
-  onSelect?: (event: Event) => void,
+  onChange?: React.ReactEventHandler<MdTextField>,
   //
   form?: never,
+  onSelect?: (event: Event) => void,
 };
 
 export const TextField = createComponent<MdTextField, TextFieldProps>(
-  function TextField({ textFieldStyle, leadingIcon, trailingIcon, children, ...props }, ref) {
+  function TextField({ textFieldStyle, leadingIcon, trailingIcon, children, defaultValue, value, onChange, onBeforeInput, ...props }, ref) {
     const mergeChildren = <>
       {children}
       {leadingIcon ? createSlotNode(leadingIcon, "leading-icon") : <></>}
       {trailingIcon ? createSlotNode(trailingIcon, "trailing-icon") : <></>}
     </>;
+    const onBeforeInputMerge = React.useMemo(() => {
+      return (e: FormEvent<MdTextField>) => {
+        onBeforeInput?.(e);
+        if (onChange) {
+          onChange(e);
+        } else if (defaultValue === undefined) {
+          e.preventDefault();
+        }
+      };
+    }, [defaultValue, onBeforeInput, onChange]);
+
     switch (textFieldStyle) {
       case "outlined":
-        return <MdOutlinedTextFieldComponent ref={ref as any} children={mergeChildren} {...props} />;
+        return <MdOutlinedTextFieldComponent
+          ref={ref as any}
+          value={value ?? defaultValue}
+          children={mergeChildren}
+          onBeforeInput={onBeforeInputMerge}
+          {...props} />;
     }
-    return <MdFilledTextFieldComponent ref={ref as any} children={mergeChildren} {...props} />;
+    return <MdFilledTextFieldComponent
+      ref={ref as any}
+      value={value ?? defaultValue}
+      children={mergeChildren}
+      onBeforeInput={onBeforeInputMerge}
+      {...props} />;
   }
 );
 

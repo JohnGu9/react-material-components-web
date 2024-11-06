@@ -9,7 +9,6 @@ export const MdFilledTextFieldComponent = createComponent({
     react: React,
     events: {
         onChange: "change",
-        onInput: "input",
         onSelect: "select",
     }
 });
@@ -20,7 +19,6 @@ export const MdOutlinedTextFieldComponent = createComponent({
     react: React,
     events: {
         onChange: "change",
-        onInput: "input",
         onSelect: "select",
     }
 });

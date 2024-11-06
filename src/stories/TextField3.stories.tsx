@@ -12,7 +12,7 @@ export default {
 
 const Template: StoryFn<typeof TextField> = (args) => {
   const [text, setText] = React.useState("");
-  return <TextField {...args} value={text} onChange={(e) => setText((e.target as HTMLInputElement).value)} />
+  return <TextField {...args} value={text} onChange={e => setText((e.target as HTMLInputElement).value)} />
 };
 
 export const Primary = Template.bind({});
@@ -25,3 +25,12 @@ Primary.args = {
   trailingIcon: <Icon>error</Icon>,
 };
 
+
+const NoOnChangeCallbackTemplate: StoryFn<typeof TextField> = (args) => {
+  const [text,] = React.useState("PreventDefault");
+  return <TextField {...args} value={text} onChange={undefined} />
+};
+
+export const NoOnChangeCallback = NoOnChangeCallbackTemplate.bind({});
+NoOnChangeCallback.args = {
+};

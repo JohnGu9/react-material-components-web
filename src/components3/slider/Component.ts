@@ -8,6 +8,5 @@ export const MdSliderComponent = createComponent({
     react: React,
     events: {
         onChange: "change",
-        onInput: "input"
     }
 });
