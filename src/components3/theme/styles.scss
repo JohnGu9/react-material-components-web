@@ -1,11 +1,5 @@
 @use "@material/web/color/color";
 
-div[data-dark-mode] {
-    // @TODO: Typography
-    --md-ref-typeface-brand: "Roboto";
-    --md-ref-typeface-plain: system-ui;
-}
-
 div[data-dark-mode="rmcw3-dark-mode-auto"] {
     @include color.light-theme;
 
