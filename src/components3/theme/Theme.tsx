@@ -3,4 +3,6 @@
 
 import "@fontsource/roboto";
 
-export * from "./ThemeWithoutFont";
+import { Theme } from "./ThemeWithoutFont";
+export { Theme };
+export { type ThemeData, type ThemeProps } from "./ThemeWithoutFont";

@@ -5,9 +5,13 @@ import "@material/web/button/outlined-button"
 import "@material/web/button/text-button"
 import { createComponent } from "../../common/Component";
 import { Button as MdButton } from "@material/web/button/internal/button";
-import { MdElevatedButtonComponent, MdFilledButtonComponent, MdFilledTonalButtonComponent, MdOutlinedButtonComponent, MdTextButtonComponent } from "./Compoent"
 import { FormSubmitterType } from "@material/web/internal/controller/form-submitter"
 import { createSlotNode, SlotNode } from "../common/SlotNode"
+import { FilledButton, FilledButtonSupportedCssProps } from "./FilledButton"
+import { FilledTonalButton, FilledTonalButtonSupportedCssProps } from "./FilledTonalButton"
+import { OutlinedButton, OutlinedButtonSupportedCssProps } from "./OutlinedButton"
+import { TextButton, TextButtonSupportedCssProps } from "./TextButton"
+import { ElevatedButton, ElevatedButtonSupportedCssProps } from "./ElevatedButton"
 
 export type ButtonBaseProps = {
   disabled?: boolean,
@@ -16,7 +20,7 @@ export type ButtonBaseProps = {
   icon?: SlotNode,
   // 
   target?: '_blank' | '_parent' | '_self' | '_top' | '',
-  form?: undefined,
+  form?: never,
   type?: FormSubmitterType,
   value?: string,
 };
@@ -36,11 +40,6 @@ function composeProps({ icon, children, style, ...props }: { [key: string]: any 
   return { hasIcon, style: { "--md-icon-size": "18px", ...style }, children: mergeChildren, ...props };
 }
 
-export const ElevatedButton = MdElevatedButtonComponent;
-export const FilledButton = MdFilledButtonComponent;
-export const FilledTonalButton = MdFilledTonalButtonComponent;
-export const OutlinedButton = MdOutlinedButtonComponent;
-export const TextButton = MdTextButtonComponent;
 
 export const Button = createComponent<MdButton, ButtonProps>(
   function Button({ buttonStyle, ...props }, ref) {
@@ -56,33 +55,14 @@ export const Button = createComponent<MdButton, ButtonProps>(
 
       case "text":
         return (<TextButton key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
-
     }
     return (<ElevatedButton key={buttonStyle} ref={ref as any} {...composeProps(props)} />);
   }
 );
 
-export type ButtonSupportedCssProps = {
-  "--md-elevated-button-container-color": string,
-  "--md-elevated-button-container-shape": string,
-  "--md-elevated-button-label-text-color": string,
-  "--md-elevated-button-label-text-font": string,
-
-  "--md-filled-button-container-color": string,
-  "--md-filled-button-container-shape": string,
-  "--md-filled-button-label-text-color": string,
-  "--md-filled-button-label-text-font": string,
-
-  "--md-filled-tonal-button-container-color": string,
-  "--md-filled-tonal-button-container-shape": string,
-  "--md-filled-tonal-button-label-text-color": string,
-  "--md-filled-tonal-button-label-text-font": string,
-
-  "--md-outlined-button-outline-color": string,
-  "--md-outlined-button-container-shape": string,
-  "--md-outlined-button-label-text-color": string,
-  "--md-outlined-button-label-text-font": string,
-
-  "--md-text-button-label-text-color": string,
-  "--md-text-button-label-text-font": string,
-};
+export type ButtonSupportedCssProps =
+  ElevatedButtonSupportedCssProps &
+  FilledButtonSupportedCssProps &
+  FilledTonalButtonSupportedCssProps &
+  OutlinedButtonSupportedCssProps &
+  TextButtonSupportedCssProps;

@@ -24,7 +24,7 @@ export type SliderProps = {
   onChange?: ((e: Event) => void),
   onInput?: ((e: Event) => void),
   //
-  form?: undefined
+  form?: never
 };
 
 export const Slider = createComponent<MdSlider, SliderProps>(

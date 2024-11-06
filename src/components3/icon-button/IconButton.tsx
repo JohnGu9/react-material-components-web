@@ -5,7 +5,7 @@ import { FormSubmitterType } from "@material/web/internal/controller/form-submit
 
 export type IconButtonBaseProps = {
   //
-  form?: undefined
+  form?: never
   target?: '_blank' | '_parent' | '_self' | '_top' | '',
   type?: FormSubmitterType,
   value?: string,

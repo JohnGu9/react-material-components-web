@@ -3,4 +3,5 @@
 
 import "@fontsource/roboto";
 
-export * from "./TypographyWithoutFont";
+import { Typography } from "./TypographyWithoutFont";
+export { Typography };

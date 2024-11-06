@@ -85,13 +85,17 @@ components3/
 - Tabs
 - TextField
 
-> `Material Design 3` - Early access
+> `Material Design 3` - Early access stage
 
 > Some components are not no longer fully passive like before, you should keep trace the value change in the callback hook. (`Slider`)
 
 > The components are not fully passive in `Material Design 2` still keep the same behavior like before. (`TextField`)
 
-> Material Design 3 is not default import components. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3/button/Button"` 
+> Material Design 3 is not default import components. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"` 
+
+> Font may not load properly. The way to work around is to import font file manually. Put `import "@fontsource/roboto";` in your own source file. This problem is caused by import side effect not working properly.
+
+> Material Design 3 is not completed yet. https://github.com/material-components/material-web/blob/main/docs/roadmap.md
 
 System Requirement:
 | Browser | Version |

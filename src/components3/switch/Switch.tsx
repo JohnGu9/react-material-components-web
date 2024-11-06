@@ -9,7 +9,7 @@ export type SwitchProps = {
   onIcon?: SlotNode, // size of 'the place to show icon' is 24 * 28px
   offIcon?: SlotNode,
   //
-  form?: undefined,
+  form?: never,
   value?: string,
 };
 

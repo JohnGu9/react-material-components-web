@@ -4,7 +4,7 @@ import { RmcwRadio, RmcwRadioComponent } from "./Component";
 export type RadioProps = {
   checked?: boolean,
   //
-  form?: undefined,
+  form?: never,
   value?: string,
 };
 

@@ -94,6 +94,6 @@ export type SelectBaseProps = {
     displayText?: string,
     menuAlign?: 'start' | 'end',
     //
-    form?: undefined,
+    form?: never,
     value?: string,
 };

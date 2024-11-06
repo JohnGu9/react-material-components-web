@@ -39,7 +39,7 @@ export type TextFieldProps = {
   onInput?: (event: Event) => void,
   onSelect?: (event: Event) => void,
   //
-  form?: undefined,
+  form?: never,
 };
 
 export const TextField = createComponent<MdTextField, TextFieldProps>(
