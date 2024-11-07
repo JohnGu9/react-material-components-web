@@ -45,7 +45,7 @@ EndAligned.args = {
 }
 
 const NoOnChangeCallbackTemplate: StoryFn<typeof TextField> = (args) => {
-  const [text,] = React.useState("");
+  const [text,] = React.useState("NoOnChangeCallback");
   return <TextField {...args} value={text} />
 };
 
