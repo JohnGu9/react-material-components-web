@@ -12,7 +12,7 @@ export default {
 
 const Template: StoryFn<typeof TextField> = (args) => {
   const [text, setText] = React.useState("");
-  return <TextField {...args} value={text} onChange={e => setText((e.target as HTMLInputElement).value)} onInput={e => console.log(e)} />
+  return <TextField {...args} value={text} onChange={e => setText(e.target.value)} />
 };
 
 export const Primary = Template.bind({});
@@ -25,6 +25,11 @@ Primary.args = {
   trailingIcon: <Icon>error</Icon>,
 };
 
+export const Number = Template.bind({});
+Number.args = {
+  type: "number",
+  step: "2",
+};
 
 const NoOnChangeCallbackTemplate: StoryFn<typeof TextField> = (args) => {
   const [text,] = React.useState("NoOnChangeCallback");

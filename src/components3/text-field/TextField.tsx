@@ -3,6 +3,7 @@ import { TextField as MdTextField, TextFieldType, UnsupportedTextFieldType } fro
 import { RmcwFilledTextFieldComponent, RmcwOutlinedTextFieldComponent } from "./Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
 import React from "react";
+import { createSyntheticEvent } from "../../common/CreateSyntheticEvent";
 
 export type TextFieldProps = {
   textFieldStyle?: "filled" | "outlined",
@@ -37,7 +38,7 @@ export type TextFieldProps = {
   trailingIcon?: SlotNode,
   defaultValue?: never, // not support defaultValue yet
   value?: string,
-  onChange?: (event: Event) => void,
+  onChange?: React.ChangeEventHandler<MdTextField>,
   //
   form?: never,
   onSelect?: (event: Event) => void,
@@ -50,6 +51,9 @@ export const TextField = createComponent<MdTextField, TextFieldProps>(
       {leadingIcon ? createSlotNode(leadingIcon, "leading-icon") : <></>}
       {trailingIcon ? createSlotNode(trailingIcon, "trailing-icon") : <></>}
     </>;
+    const mergeOnChange = React.useMemo(() => {
+      return (e: Event) => onChange?.(createSyntheticEvent(e) as React.ChangeEvent<MdTextField>)
+    }, [onChange]);
 
     switch (textFieldStyle) {
       case "outlined":
@@ -57,14 +61,14 @@ export const TextField = createComponent<MdTextField, TextFieldProps>(
           ref={ref as any}
           value={value}
           children={mergeChildren}
-          onChange={onChange}
+          onChange={mergeOnChange}
           {...props} />;
     }
     return <RmcwFilledTextFieldComponent
       ref={ref as any}
       value={value}
       children={mergeChildren}
-      onChange={onChange}
+      onChange={mergeOnChange}
       {...props} />;
   }
 );

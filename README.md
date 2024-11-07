@@ -87,11 +87,9 @@ rmcw/dist/components3/
 
 > `Material Design 3` - Early access stage
 
-> Some components are not no longer fully passive like before, you should keep trace the value change in the callback hook. (`Slider`)
+> `TextField` update its behavior like `input` in React 18. No onChange callback to change "value", no "value" change. https://react.dev/reference/react-dom/components/input
 
-> `TextField` update its behavior like input in React 18. No onChange callback, no value change. https://react.dev/reference/react-dom/components/input
-
-> Material Design 3 is not default import components. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"` 
+> Material Design 3 is not default import components. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"`
 
 > Font may not load properly. The way to work around is to import font file manually. Put `import "@fontsource/roboto";` in your own source file. This problem is caused by import side effect not working properly.
 

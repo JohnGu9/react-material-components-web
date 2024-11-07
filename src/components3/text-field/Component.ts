@@ -3,6 +3,7 @@ import { MdOutlinedTextField } from "@material/web/textfield/outlined-text-field
 import React from 'react';
 import { createComponent } from '@lit/react';
 import { customElement } from 'lit/decorators.js';
+import { PropertyValues } from "lit";
 
 @customElement('rmcw-filled-text-field')
 export class RmcwFilledTextField extends MdFilledTextField {
@@ -15,6 +16,13 @@ export class RmcwFilledTextField extends MdFilledTextField {
             this.value = (event.target as HTMLInputElement).value = preValue;
         };
     }
+
+    protected updated(changedProperties: PropertyValues): void { }
+
+    formResetCallback(): void { }
+    formStateRestoreCallback(state: string): void { }
+    stepDown(stepDecrement?: number): void { }
+    stepUp(stepIncrement?: number): void { }
 };
 
 @customElement('rmcw-outlined-text-field')
@@ -28,6 +36,13 @@ export class RmcwOutlinedTextField extends MdOutlinedTextField {
             this.value = (event.target as HTMLInputElement).value = preValue;
         };
     }
+
+    protected updated(changedProperties: PropertyValues): void { }
+
+    formResetCallback(): void { }
+    formStateRestoreCallback(state: string): void { }
+    stepDown(stepDecrement?: number): void { }
+    stepUp(stepIncrement?: number): void { }
 };
 
 
