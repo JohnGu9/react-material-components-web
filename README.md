@@ -1,14 +1,14 @@
-## Use
+## QuickStart
 
 ```jsx
 import { Button } from "rmcw";
 
 function MyComponent() {
-  return <Button />;
+  return <Button>MyComponent</Button>;
 }
 ```
 
-## Sass bundle issue
+## Sass bundle issue \*
 
 Recently you may receive warning message from sass.
 Just set your project sass version to `1.77.6` (in `dependencies` or `devDependencies`).
@@ -16,9 +16,9 @@ The Material Design 2 sass file will not be supported by sass 2.0. It has no eff
 
 ## What's the library for?
 
-This library provide react wrapper for material design components.
+This library provide react wrapper for Material Design components. Both Material Design 2 and 3. And the original design is almost intact.
 
-## What's different between other wrapper library?
+## What's different between other wrapper libraries?
 
 Under this library, the mdc's stats only follow react stats. This mean the mdc's stats would not change until react stats change. This library always sync the react stats and the mdc stats. (By default, mdc usually modify the element's stats automatically that make the mdc element out of control in react framework)
 
@@ -44,7 +44,7 @@ const [open, setOpen] = React.useState(false);
 
 This library will block most of mdc default behave that keep the dom state sync with react state. Including some input element, the state will keep sync without call Event.preventDefault() conditionally (Checkbox, Radio and etc).
 
-But TextArea and TextField still keep normal react input control style. Use Event.preventDefault() to prevent state change conditionally.
+But Material Design 2 `TextArea` and `TextField` still keep normal react input control style. Use Event.preventDefault() to prevent state change conditionally in React 16 or before. Material Design 3 `TextField` will keep `value` sync without call Event.preventDefault(). Just like React 18.
 
 ## Compatible with React 18
 
@@ -52,17 +52,18 @@ You can enable [StrictMode] without error or warning message whatever you want. 
 
 ## Demo
 
-Clone the repo and run the command
+Clone the repo and run storybook
 
 ```console
+git clone https://github.com/JohnGu9/react-material-components-web.git
 npm i
 npm run storybook
 ```
 
 ## Components (Material Design 3)
 
-```
-rmcw/dist/components3/
+```jsx
+import { Button } from "rmcw/dist/components3"; // quick start
 ```
 
 - Button
@@ -89,7 +90,7 @@ rmcw/dist/components3/
 
 > `TextField` update its behavior like `input` in React 18. No onChange callback to change "value", no "value" change. https://react.dev/reference/react-dom/components/input
 
-> Material Design 3 is not default import components. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"`
+> Material Design 3 is not default components for import. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"`
 
 > Font may not load properly. The way to work around is to import font file manually. Put `import "@fontsource/roboto";` in your own source file. This problem is caused by import side effect not working properly.
 
@@ -105,8 +106,14 @@ System Requirement:
 
 ## Components (Material Design 2)
 
+```jsx
+import { Button } from "rmcw"; // quick start
 ```
-rmcw/dist/components/
+
+or
+
+```jsx
+import { Button } from "rmcw/dist/components"; // quick start
 ```
 
 - Banner
@@ -143,27 +150,73 @@ rmcw/dist/components/
 
 ## Additional Components
 
-- Theme (Unified theme settings and better dark theme support)
+- `Theme` (Unified theme settings and better dark theme support)
 
 ```jsx
+import { Theme } from "rmcw"; // for Material Design 2
+
+// import { Theme } from "rmcw/dist/components3"; // for Material Design 3
+
 function ThemeSwitch() {
-  /// false: force light theme
-  /// true: force dark theme
-  /// undefined: automatically (state from 'window.matchMedia('(prefers-color-scheme: dark)')')
-  const [enableDarkTheme, setEnableDarkTheme] = React.useState(undefined);
+  const [enableDarkTheme, setEnableDarkTheme] =
+    (React.useState < undefined) | (boolean > undefined);
+
+  /* false: force light theme */
+  /* true: force dark theme */
+  /* undefined: automatically (state from 'window.matchMedia('(prefers-color-scheme: dark)')') */
   return <Theme enableDarkTheme={enableDarkTheme}>{myComponent}</Theme>;
 }
 ```
 
-- ListViewBuilder (beta) and DataTableBuilder (beta)
+- Material Design use `CSS custom properties` to custom color or font. You can just set CSS stylesheet of your project to custom your theme (Remember remove `Theme` from your project).
+
+- Or check out `type ThemeData` from this library. Set the properties of `<Theme />` and the `<Theme />` will help you to set the CSS properties.
+
+```jsx
+// Material Design 2
+import { Theme, ThemeData } from "rmcw/dist/components";
+
+const myCustomTheme: ThemeData = {
+ ...
+};
+const myCustomDarkTheme: ThemeData = {
+ ...
+};
+
+<Theme {...myCustomTheme} darkTheme={myCustomDarkTheme}></Theme>
+```
+
+```jsx
+// Material Design 3
+import { Theme, ThemeData } from "rmcw/dist/components3";
+
+const myCustomTheme: ThemeData = {
+ ...
+};
+const myCustomDarkTheme: ThemeData = {
+ ...
+};
+
+<Theme lightTheme={myCustomTheme} darkTheme={myCustomDarkTheme}></Theme>
+```
+
+---
+
+- `ListViewBuilder` (beta) and `DataTableBuilder` (beta).
   Lazy build component. They build their children lazily.
 
 ```jsx
+import { ListViewBuilder } from "rmcw/dist/common/ListViewBuilder";
+
 <ListViewBuilder
   itemExtent={48}
   itemCount={100}
   style={{ maxHeight: 400 }}
-  childrenBuilder={(paddingStart, paddingEnd, childrenIndexes) => {
+  childrenBuilder={(
+    paddingStart: number,
+    paddingEnd: number,
+    childrenIndexes: number[]
+  ) => {
     return (
       <>
         <div style={{ minHeight: paddingStart }} />
@@ -174,15 +227,17 @@ function ThemeSwitch() {
       </>
     );
   }}
-/>
+/>;
 ```
 
-- `childrenIndexes` is a number array. The range is `0 <= value < itemCount`
 - `itemCount` is the amount of children.
 - `itemExtent` is the every child element height. Should be fixed. For calculate the `paddingStart` and `paddingEnd` and `childrenIndexes`.
+- `paddingStart` / `paddingEnd` is the size padding inside the `ListViewBuilder`.
+- `childrenIndexes` is the index of child that should be render right now. The range is `0 <= value < itemCount`. Update when scrolling or size changing.
+- `ListViewBuilder` height should be set. It can change in real time.
 
 ## Development requirement
 
-If you use webpack, it require sass loader to pack [.scss] file into project (the project that come from "create-react-app" script already have sass loader).
+If you use `webpack`, it require `sass loader` to bundle [.scss] file into project (the project that come from "create-react-app" script already have `sass loader`).
 
-If you use vite, nothing is required to do.
+If you use `vite`, nothing is required to do.
