@@ -13,9 +13,10 @@ export type FocusRingProps = {
 
 export const FocusRing = createComponent<HTMLDivElement, FocusRingProps>(
   function FocusRing({ visible, inward, color, shape, width, activeWidth, style, children, ...props }, ref) {
-    style = { position: "relative", borderRadius: shape, ...style };
     return (
-      <div tabIndex={0} ref={ref} style={style} {...props}>
+      <div tabIndex={0} ref={ref}
+        style={{ position: "relative", borderRadius: shape, ...style }}
+        {...props}>
         <MdFocusRingComponent visible={visible} inward={inward} style={{
           "--md-focus-ring-color": color,
           "--md-focus-ring-shape": shape,

@@ -13,10 +13,8 @@ export class RmcwSwitch extends MdSwitch {
         };
     }
 
-    formResetCallback(): void {
-    }
-    formStateRestoreCallback(state: string): void {
-    }
+    formResetCallback(): void { }
+    formStateRestoreCallback(state: string): void { }
 };
 
 export const RmcwSwitchComponent = createComponent({

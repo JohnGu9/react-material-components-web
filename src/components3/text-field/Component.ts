@@ -17,12 +17,13 @@ export class RmcwFilledTextField extends MdFilledTextField {
         };
     }
 
-    protected updated(changedProperties: PropertyValues): void { }
+    protected override updated(changedProperties: PropertyValues): void { }
 
-    formResetCallback(): void { }
-    formStateRestoreCallback(state: string): void { }
-    stepDown(stepDecrement?: number): void { }
-    stepUp(stepIncrement?: number): void { }
+    override reset(): void { }
+    override formResetCallback(): void { }
+    override formStateRestoreCallback(state: string): void { }
+    override stepDown(stepDecrement?: number): void { }
+    override stepUp(stepIncrement?: number): void { }
 };
 
 @customElement('rmcw-outlined-text-field')

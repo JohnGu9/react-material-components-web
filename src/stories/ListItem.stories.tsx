@@ -1,5 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react';
-import 'material-icons/iconfont/material-icons.css';
 import { Checkbox } from '../components/checkbox/Checkbox';
 import { Icon } from '../components/icon/Icon';
 import { ListDivider } from '../components/list-divider/ListDivider';

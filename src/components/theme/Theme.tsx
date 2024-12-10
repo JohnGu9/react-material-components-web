@@ -1,7 +1,7 @@
 import React from "react";
 import { createComponent } from "../../common/Common";
 import "./style.scss";
-import { PrefersColorScheme } from "../../common/media";
+import { usePrefersColorSchemeDark } from "../../common/media";
 
 
 export type ThemeData = {
@@ -66,21 +66,9 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
     },
       [background, onPrimary, onSecondary, onSurface, primary, secondary, surface, textDisabledOnBackground, textHintOnBackground, textIconOnBackground, textPrimaryOnBackground, textSecondaryOnBackground]);
 
-    const [, setMediaDarkMode] = React.useState(PrefersColorScheme.matches);
-    React.useEffect(() => {
-      if (enableDarkTheme === undefined) {
-        const listener = () => {
-          setMediaDarkMode(PrefersColorScheme.matches);
-        };
-        PrefersColorScheme.addEventListener('change', listener);
-        return () => {
-          PrefersColorScheme.removeEventListener('change', listener);
-        };
-      }
-    }, [enableDarkTheme]);
-    const mediaDarkMode = PrefersColorScheme.matches;
+    const prefersDark = usePrefersColorSchemeDark(enableDarkTheme === undefined);
 
-    const isDark = enableDarkTheme ?? mediaDarkMode;
+    const isDark = enableDarkTheme ?? prefersDark;
     let targetTheme: ThemeData, reverseTheme: ThemeData;
     if (isDark) {
       targetTheme = darkTheme;

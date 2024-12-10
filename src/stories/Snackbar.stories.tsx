@@ -1,8 +1,8 @@
 import { Meta, StoryFn } from '@storybook/react';
-import 'material-icons/iconfont/material-icons.css';
 import { IconButton } from '../components/icon-button/IconButton';
 import { Icon } from '../components/icon/Icon';
-import { Snackbar } from '../components/snackbar/Snackbar';
+import { Snackbar, useSnackbarController } from '../components/snackbar/Snackbar';
+import { Button } from '../components';
 
 export default {
   component: Snackbar,
@@ -26,4 +26,33 @@ export const Stacked = Template.bind({});
 Stacked.args = {
   stacked: true,
   open: true,
+};
+
+
+const Template0: StoryFn<typeof Snackbar> = (args) => {
+  const { controller, props } = useSnackbarController();
+  return <div>
+    <Button buttonStyle='raised'
+      onClick={e => {
+        e.preventDefault();
+        controller.post({
+          children: "Message maybe delay",
+          action: <IconButton><Icon>close</Icon></IconButton>,
+        });
+      }}>Post</Button>
+    <div style={{ minWidth: 16 }} />
+    <Button buttonStyle='raised'
+      onClick={e => {
+        e.preventDefault();
+        controller.post({
+          children: "Message immediately",
+          action: <IconButton><Icon>close</Icon></IconButton>,
+        }, true);
+      }}>Post immediately</Button>
+    <Snackbar {...args} {...props} />
+  </div>;
+};
+
+export const SnackbarController = Template0.bind({});
+SnackbarController.args = {
 };

@@ -2,9 +2,9 @@
 
 import React from "react";
 import { createComponent } from "../../common/Component";
+import { usePrefersColorSchemeDark } from "../../common/media";
 import "../typography/TypographyWithoutFont"
 import "./styles.scss";
-import { PrefersColorScheme } from "../../common/media";
 
 export type ThemeData = {
   // color
@@ -81,20 +81,9 @@ export type ThemeProps = {
 
 export const Theme = createComponent<HTMLDivElement, ThemeProps>(
   function Theme({ enableDarkTheme, lightTheme, darkTheme, withBackgroundColor, style, ...props }, ref) {
-    const [, setMediaDarkMode] = React.useState(PrefersColorScheme.matches);
-    React.useEffect(() => {
-      if (enableDarkTheme === undefined) {
-        const listener = () => {
-          setMediaDarkMode(PrefersColorScheme.matches);
-        };
-        PrefersColorScheme.addEventListener('change', listener);
-        return () => {
-          PrefersColorScheme.removeEventListener('change', listener);
-        };
-      }
-    }, [enableDarkTheme]);
+    const prefersDark = usePrefersColorSchemeDark(enableDarkTheme === undefined);
 
-    const isDark = enableDarkTheme ?? PrefersColorScheme.matches;
+    const isDark = enableDarkTheme ?? prefersDark;
     const targetTheme = isDark ? darkTheme : lightTheme;
 
     const mergeStyle = React.useMemo<React.CSSProperties>(() => {

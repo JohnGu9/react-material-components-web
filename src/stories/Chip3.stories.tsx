@@ -28,4 +28,5 @@ const FilterChipTemplate: StoryFn<typeof FilterChip> = (args) =>
   <ChipSet><FilterChip label='FilterChip' icon={<Icon>bookmark</Icon>} {...args} /></ChipSet>;
 export const Clip = FilterChipTemplate.bind({});
 Clip.args = {
+  onRemoveClick: e => console.log(e)
 };

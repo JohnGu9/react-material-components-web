@@ -1,5 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react';
-import 'material-icons/iconfont/material-icons.css';
 import { Fab } from '../components/fab/Fab';
 import { Icon } from '../components/icon/Icon';
 

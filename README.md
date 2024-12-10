@@ -8,12 +8,6 @@ function MyComponent() {
 }
 ```
 
-## Sass bundle issue \*
-
-Recently you may receive warning message from sass.
-Just set your project sass version to `1.77.6` (in `dependencies` or `devDependencies`).
-The Material Design 2 sass file will not be supported by sass 2.0. It has no effect on Material Design 3.
-
 ## What's the library for?
 
 This library provide react wrapper for Material Design components. Both Material Design 2 and 3. And the original design is almost intact.
@@ -30,7 +24,7 @@ const [open, setOpen] = React.useState(false);
 <Dialog open={open}>{children}</Dialog>;
 ```
 
-The dialog would be open when [open] is true and closed when [open] is false. And when user click the scrim, this library just only invoke [onScrimClick] callback and do nothing (dialog will keep open if open is true after click). No one can force you to close the dialog on fixed callback in the library (for example, in rmwc library if you don't close dialog in [onClose] callback, your react state will out of sync with mwc and component behave will be unpredictable).
+The dialog would be open when `open` is true and closed when `open` is false. And when user click the scrim, this library just only invoke `onScrimClick` callback and do nothing (dialog will keep open if open is true after click). No one can force you to close the dialog on fixed callback in the library (for example, in rmwc library if you don't close dialog in `onClose` callback, your react state will out of sync with mwc and component behave will be unpredictable).
 
 If programmer want to close dialog when user click the scrim, the only way is:
 
@@ -42,13 +36,13 @@ const [open, setOpen] = React.useState(false);
 </Dialog>;
 ```
 
-This library will block most of mdc default behave that keep the dom state sync with react state. Including some input element, the state will keep sync without call Event.preventDefault() conditionally (Checkbox, Radio and etc).
+This library will block most of mdc default behave that keep the dom state sync with react state. Including some input element, the state will keep sync without call `Event.preventDefault()` conditionally (Checkbox, Radio and etc).
 
-But Material Design 2 `TextArea` and `TextField` still keep normal react input control style. Use Event.preventDefault() to prevent state change conditionally in React 16 or before. Material Design 3 `TextField` will keep `value` sync without call Event.preventDefault(). Just like React 18.
+But Material Design 2 `TextArea` and `TextField` still keep normal react input control style. Use `Event.preventDefault()` to prevent state change conditionally in React 16 or before. Material Design 3 `TextField` will keep `value` sync without call `Event.preventDefault()`. Just like React 18.
 
 ## Compatible with React 18
 
-You can enable [StrictMode] without error or warning message whatever you want. No legacy api use.
+You can enable [StrictMode](https://react.dev/reference/react/StrictMode) without error or warning message whatever you want. No legacy api use.
 
 ## Demo
 
@@ -86,15 +80,11 @@ import { Button } from "rmcw/dist/components3"; // quick start
 - Tabs
 - TextField
 
-> `Material Design 3` - Early access stage
-
-> `TextField` update its behavior like `input` in React 18. No onChange callback to change "value", no "value" change. https://react.dev/reference/react-dom/components/input
-
-> Material Design 3 is not default components for import. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"`
+> `Material Design 3` - Early access stage. Material Design 3 is not completed yet. https://github.com/material-components/material-web/blob/main/docs/roadmap.md
 
 > Font may not load properly. The way to work around is to import font file manually. Put `import "@fontsource/roboto";` in your own source file. This problem is caused by import side effect not working properly.
 
-> Material Design 3 is not completed yet. https://github.com/material-components/material-web/blob/main/docs/roadmap.md
+> Material Design 3 is not default components for import. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"`
 
 System Requirement:
 | Browser | Version |
@@ -138,7 +128,7 @@ import { Button } from "rmcw/dist/components"; // quick start
 - SegmentedButton
 - Select
 - Slider
-- Snackbar
+- Snackbar (with SnackbarController)
 - Switch
 - Tab
 - TabBar
@@ -158,8 +148,7 @@ import { Theme } from "rmcw"; // for Material Design 2
 // import { Theme } from "rmcw/dist/components3"; // for Material Design 3
 
 function ThemeSwitch() {
-  const [enableDarkTheme, setEnableDarkTheme] =
-    (React.useState < undefined) | (boolean > undefined);
+  const [enableDarkTheme, setEnableDarkTheme] = React.useState(undefined as (boolean | undefined));
 
   /* false: force light theme */
   /* true: force dark theme */
@@ -236,8 +225,20 @@ import { ListViewBuilder } from "rmcw/dist/common/ListViewBuilder";
 - `childrenIndexes` is the index of child that should be render right now. The range is `0 <= value < itemCount`. Update when scrolling or size changing.
 - `ListViewBuilder` height should be set. It can change in real time.
 
+## Note
+
+`Icon` always comes with static icon font file (Material Design 2 use [material-icons](https://www.npmjs.com/package/material-icons) and Material Design 3 use [material-symbols](https://www.npmjs.com/package/material-symbols)). If you don't want to bundle the font file into your project build, do not import and use the `Icon` components.
+
+Check out https://fonts.google.com/icons for available icons.
+
+## Sass bundle issue \*
+
+Recently you may receive warning message from sass.
+Just set your project sass version to `1.77.6` (in `dependencies` or `devDependencies`).
+The Material Design 2 sass file will not be supported by sass 2.0. It has no effect on Material Design 3.
+
 ## Development requirement
 
-If you use `webpack`, it require `sass loader` to bundle [.scss] file into project (the project that come from "create-react-app" script already have `sass loader`).
+If you use [webpack](https://webpack.js.org), it require [sass loader](https://www.npmjs.com/package/sass-loader) to bundle [.scss] file into project (the project that come from "create-react-app" script already have [sass loader](https://www.npmjs.com/package/sass-loader)).
 
-If you use `vite`, nothing is required to do.
+If you use [vite](https://vite.dev), nothing is required to do.

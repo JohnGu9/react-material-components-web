@@ -3,6 +3,10 @@ import { createComponent } from "../../common/Component";
 import { MdFilledIconButtonComponent, MdFilledTonalIconButtonComponent, MdIconButtonComponent, MdOutlinedIconButtonComponent } from "./Component";
 import { FormSubmitterType } from "@material/web/internal/controller/form-submitter";
 
+// Material Design IconButton provide icon toggle when Button was clicked.
+// But in React, you can just replace icon element by yourself. (This function is useless for React)
+// So in rmcw the icon toggle function is disabled implicitly.
+
 export type IconButtonBaseProps = {
   //
   form?: never

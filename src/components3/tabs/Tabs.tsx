@@ -24,9 +24,7 @@ export const Tabs = createComponent<MdTabs, TabsProps>(
         <RmcwTabsComponent
           key={secondary ? 1 : 0}
           activeTabIndex={selected}
-          onSelected={e => {
-            onSelected?.((e as CustomEvent<number>).detail);
-          }}
+          onSelected={e => onSelected?.((e as CustomEvent<number>).detail)}
           ref={ref as any} {...props} />
       </TabsContext.Provider>);
   }

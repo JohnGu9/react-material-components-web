@@ -41,11 +41,7 @@ export type FilterChipProps = AssistChipProps & {
 };
 export const FilterChip = createComponent<RmcwFilterChip, FilterChipProps>(
   function FilterChip({ onRemoveClick, ...props }, ref) {
-    let removable = undefined;
-    if (onRemoveClick) {
-      removable = true;
-    }
-    return <RmcwFilterChipComponent ref={ref as any} {...composeProps(props)} removable={removable} onRemoveClick={onRemoveClick} />;
+    return <RmcwFilterChipComponent ref={ref as any} {...composeProps(props)} removable={onRemoveClick !== undefined} onRemoveClick={onRemoveClick} />;
   }
 );
 

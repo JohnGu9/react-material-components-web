@@ -23,8 +23,8 @@ export class RmcwSlider extends MdSlider {
         };
     }
 
-    formResetCallback(): void { }
-    formStateRestoreCallback(state: string | Array<[string, string]> | null): void { }
+    override formResetCallback(): void { }
+    override formStateRestoreCallback(state: string | Array<[string, string]> | null): void { }
 };
 
 export const RmcwSliderComponent = createComponent({

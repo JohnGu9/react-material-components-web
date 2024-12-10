@@ -13,8 +13,8 @@ export type SnackbarProps = {
   leading?: boolean,
   stacked?: boolean,
   action?: React.ReactNode,
-  onAction?: () => any,
-  onDismiss?: () => any,
+  onAction?: () => unknown,
+  onDismiss?: () => unknown,
 };
 
 export const Snackbar = createComponent<HTMLElement, SnackbarProps>(
@@ -52,7 +52,7 @@ export const Snackbar = createComponent<HTMLElement, SnackbarProps>(
       return () => {
         component.unlisten(strings.OPENED_EVENT, listener);
         component.destroy();
-      }
+      };
     }, [eventTarget, injector]);
 
     React.useEffect(() => {
@@ -101,3 +101,91 @@ export const Snackbar = createComponent<HTMLElement, SnackbarProps>(
     );
   }
 );
+
+type Props = {
+  children?: React.ReactNode,
+  action?: React.ReactNode,
+  onAction?: () => unknown,
+  onDismiss?: () => unknown,
+};
+
+type SetProps = (props: { open: boolean; } & Props) => unknown;
+
+type QueueElement = {
+  props: Props,
+  duration: number,
+  immediatelyCancelCurrent: boolean,
+};
+
+export class SnackbarController {
+  protected _setProps: SetProps;
+  protected _open = false;
+  protected _openTimer = -1;
+  protected _isClosing = false;
+  protected _closingTimer = -1;
+  protected _queue: QueueElement[] = [];
+
+  constructor(setProps: SetProps) {
+    this._setProps = setProps;
+  }
+
+  get isOpened() { return this._open; }
+
+  post(props: {
+    children?: React.ReactNode,
+    action?: React.ReactNode,
+    onAction?: () => unknown,
+    onDismiss?: () => unknown,
+  },
+    immediatelyCancelCurrent = false, // whether or not post new message as quick as possible
+    duration = 1500, // for android standard, short duration = 1500 and long duration = 2750
+  ) {
+    this._queue.push({ props, duration, immediatelyCancelCurrent });
+    this._startPost();
+  }
+
+  protected get _minOpenDuration() { return 350; }
+
+  protected _startPost() {
+    const immediatelyCancelCurrent = this._queue.slice(1).find(e => e.immediatelyCancelCurrent) !== undefined;
+    if (immediatelyCancelCurrent && this._open) {
+      window.clearTimeout(this._openTimer);
+      this._closeCallback();
+      return;
+    }
+    if (this._queue.length === 0 || this._open || this._isClosing) return;
+    this._open = true;
+    const queueElement = this._queue[0];
+    const openDuration = immediatelyCancelCurrent ? this._minOpenDuration : Math.max(queueElement.duration, this._minOpenDuration);
+    this._openTimer = window.setTimeout(() => this._closeCallback(), openDuration);
+    this._setProps({
+      open: this._open,
+      ...queueElement.props,
+    });
+  }
+
+  protected get _closeDuration() { return 350; }
+
+  protected _closeCallback() {
+    this._open = false;
+    this._isClosing = true;
+    this._closingTimer = window.setTimeout(() => this._closedCallback(), this._closeDuration);
+    const queueElement = this._queue[0];
+    this._setProps({
+      open: this._open,
+      ...queueElement.props,
+    });
+  }
+
+  protected _closedCallback() {
+    this._isClosing = false;
+    this._queue.shift();
+    this._startPost();
+  }
+};
+
+export function useSnackbarController() {
+  const [props, setProps] = React.useState<{ open: boolean; } & Props>({ open: false });
+  const controller = React.useMemo(() => new SnackbarController(setProps), []);
+  return { controller, props };
+}

@@ -61,15 +61,6 @@ export const RmcwTabsComponent = createComponent({
     }
 });
 
-export const MdTabsComponent = createComponent({
-    tagName: 'md-tabs',
-    elementClass: MdTabs,
-    react: React,
-    events: {
-        onChange: 'change'
-    }
-});
-
 export const MdPrimaryTabComponent = createComponent({
     tagName: 'md-primary-tab',
     elementClass: MdPrimaryTab,

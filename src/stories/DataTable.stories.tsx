@@ -1,5 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react';
-import 'material-icons/iconfont/material-icons.css';
 import { DataTable, DataTableBuilder, DataTableCell, DataTableRow } from '../components/data-table/DataTable';
 
 export default {

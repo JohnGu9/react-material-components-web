@@ -1,5 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react';
-import 'material-icons/iconfont/material-icons.css';
 import { Elevation } from '../components/elevation/Elevation';
 import { Typography } from '../components/typography/Typography';
 

@@ -27,6 +27,7 @@ export class RmcwFilterChip extends MdFilterChip {
 
     protected override renderTrailingAction(focusListener: EventListener) {
         if (this.removable) {
+            // overwrite [renderRemoveButton]
             return renderRemoveButton({
                 focusListener,
                 ariaLabel: this.ariaLabelRemove,
@@ -49,7 +50,8 @@ export const RmcwFilterChipComponent = createComponent({
 
 @customElement('rmcw-input-chip')
 export class RmcwInputChip extends MdInputChip {
-    protected renderTrailingAction(focusListener: EventListener) {
+    protected override renderTrailingAction(focusListener: EventListener) {
+        // overwrite [renderRemoveButton]
         return renderRemoveButton({
             focusListener,
             ariaLabel: this.ariaLabelRemove,
@@ -113,6 +115,8 @@ function renderRemoveButton({
 }
 
 function handleRemoveClick(this: Chip, event: Event) {
+    // only dispatch event
+    // no longer remove chip actively
     this.dispatchEvent(new CustomEvent("remove-click", { detail: event }));
 }
 

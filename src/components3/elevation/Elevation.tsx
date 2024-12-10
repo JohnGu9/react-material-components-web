@@ -14,7 +14,7 @@ export const Elevation = createComponent<HTMLDivElement, ElevationProps>(
     const elevationStyle = { "--md-elevation-level": level, transition } as CSSProperties;
     return (
       <div ref={ref} style={{ position: "relative", ...style }} {...props} >
-        <MdElevationComponent style={elevationStyle} />
+        <MdElevationComponent style={elevationStyle} aria-hidden />
         {children}
       </div>);
   }

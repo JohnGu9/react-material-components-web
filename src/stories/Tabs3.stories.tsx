@@ -9,10 +9,8 @@ export default {
 } as Meta<typeof Tabs>;
 
 const Template: StoryFn<typeof Tabs> = (args) => {
-  const [currentTab, setCurrentTab] = React.useState(1);
   return (
-    <Tabs {...args} selected={currentTab}
-      onSelected={index => setCurrentTab(index)}>
+    <Tabs {...args}>
       <Tab icon={<Icon>favorite</Icon>}>Favorite</Tab>
       <Tab icon={<Icon>search</Icon>}>Search</Tab>
       <Tab icon={<Icon>more_vert</Icon>}>Options</Tab>
@@ -21,25 +19,26 @@ const Template: StoryFn<typeof Tabs> = (args) => {
 
 export const Primary = Template.bind({});
 Primary.args = {
+  selected: 1
 };
 
 
 const InlineIconTemplate: StoryFn<typeof Tabs> = (args) => {
-  const [currentTab, setCurrentTab] = React.useState(1);
   return (
-    <Tabs {...args} selected={currentTab}
-      onSelected={index => setCurrentTab(index)}>
+    <Tabs {...args}>
       <Tab icon={<Icon>favorite</Icon>} inlineIcon>Favorite</Tab>
       <Tab icon={<Icon>search</Icon>} inlineIcon>Search</Tab>
       <Tab icon={<Icon>more_vert</Icon>} inlineIcon>Options</Tab>
-    </Tabs>)
+    </Tabs>);
 };
 
 export const InlineIcon = InlineIconTemplate.bind({});
 InlineIcon.args = {
+  selected: 1
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
+  selected: 1,
   secondary: true
 };

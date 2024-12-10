@@ -13,15 +13,14 @@ export class RmcwRadio extends MdRadio {
         (this as any).selectionController = new RmcwSingleSelectionController(this);
     }
 
-    override formResetCallback(): void {
-    }
-
-    override formStateRestoreCallback(state: string): void {
-    }
+    override formResetCallback(): void { }
+    override formStateRestoreCallback(state: string): void { }
 };
 
 class RmcwSingleSelectionController extends SingleSelectionController {
-    override handleCheckedChange() { }
+    override hostConnected(): void { }
+    override hostDisconnected(): void { }
+    override handleCheckedChange(): void { }
 };
 
 export const RmcwRadioComponent = createComponent({

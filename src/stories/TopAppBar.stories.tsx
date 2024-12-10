@@ -1,5 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react';
-import 'material-icons/iconfont/material-icons.css';
 import { IconButton } from '../components/icon-button/IconButton';
 import { Icon } from '../components/icon/Icon';
 import { ShortTopAppBar, TopAppBar } from '../components/top-app-bar/TopAppBar';

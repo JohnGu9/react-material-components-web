@@ -8,7 +8,7 @@ import React from "react";
 export const MenuContext = React.createContext({ registerSubMenu: () => { }, deregisterSubMenu: () => { } });
 
 export type MenuProps = {
-  anchor: string, // recommend to set
+  anchor: string, // recommend to set, unique and fixed id
   open?: boolean,
   quick?: boolean,
   positioning?: 'absolute' | 'fixed' | 'document' | 'popover',
@@ -47,7 +47,7 @@ export const Menu = createComponent<HTMLSpanElement, MenuProps>(
           open={open}
           quick={quick}
           positioning={positioning}
-          hasOverflow={hasOverflow ?? (subCounter.counter !== 0 ? true : undefined)}
+          hasOverflow={hasOverflow ?? (subCounter.counter !== 0)}
           xOffset={xOffset}
           yOffset={yOffset}
           stayOpenOnOutsideClick

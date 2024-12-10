@@ -13,6 +13,9 @@ export class RmcwCheckbox extends MdCheckbox {
             target.indeterminate = this.indeterminate;
         };
     }
+
+    override formResetCallback(): void { }
+    override formStateRestoreCallback(state: string): void { }
 };
 
 export const RmcwCheckboxComponent = createComponent({

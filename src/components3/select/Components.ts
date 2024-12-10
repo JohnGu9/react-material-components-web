@@ -14,23 +14,12 @@ export class RmcwFilledSelect extends MdFilledSelect {
         (this as any).selectItem = () => { };
     }
 
-    override select(value: string): void {
-    }
-
-    override selectIndex(index: number): void {
-    }
-
-    override reset(): void {
-    }
-
-    override[onReportValidity]() {
-    }
-
-    override formResetCallback(): void {
-    }
-
-    override formStateRestoreCallback(state: string): void {
-    }
+    override select(value: string): void { }
+    override selectIndex(index: number): void { }
+    override reset(): void { }
+    override[onReportValidity]() { }
+    override formResetCallback(): void { }
+    override formStateRestoreCallback(state: string): void { }
 };
 
 export const RmcwFilledSelectComponent = createComponent({
@@ -47,23 +36,12 @@ export class RmcwOutlinedSelect extends MdOutlinedSelect {
         (this as any).selectItem = () => { };
     }
 
-    override select(value: string): void {
-    }
-
-    override selectIndex(index: number): void {
-    }
-
-    override reset(): void {
-    }
-
-    override[onReportValidity]() {
-    }
-
-    override formResetCallback(): void {
-    }
-
-    override formStateRestoreCallback(state: string): void {
-    }
+    override select(value: string): void { }
+    override selectIndex(index: number): void { }
+    override reset(): void { }
+    override[onReportValidity]() { }
+    override formResetCallback(): void { }
+    override formStateRestoreCallback(state: string): void { }
 };
 
 export const RmcwOutlinedSelectComponent = createComponent({
