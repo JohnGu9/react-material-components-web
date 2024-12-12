@@ -2,6 +2,8 @@ import React from "react";
 import { classMap, createComponent, useSizeObserver } from "../../common/Common";
 import "./style.scss";
 
+export * from "../../common/MenuController";
+
 export type MenuProps = {
   open?: boolean,
   anchorCorner?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right',

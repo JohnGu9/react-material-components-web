@@ -4,6 +4,8 @@ import { RmcwMenuComponent } from "./Component";
 import "./styles.scss"
 import React from "react";
 
+export * from "../../common/MenuController";
+
 // auto detect sub-menu children
 export const MenuContext = React.createContext({ registerSubMenu: () => { }, deregisterSubMenu: () => { } });
 

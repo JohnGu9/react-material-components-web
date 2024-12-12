@@ -1,8 +1,9 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Menu } from '../components3/menu/Menu';
+import { Menu, useMenuController } from '../components3/menu/Menu';
 import { MenuItem } from '../components3/menu/MenuItem';
 import { SubMenu } from '../components3/menu/SubMenu';
 import { Icon } from '../components3/icon/Icon';
+import { Button } from '../components3';
 
 export default {
   component: Menu,
@@ -52,3 +53,27 @@ export const SubMenuPrimary = SubMenuTemplate.bind({});
 SubMenuPrimary.args = {
   open: true,
 };
+
+const Template0: StoryFn<typeof Menu> = (args) => {
+  const { controller, props } = useMenuController();
+  return <Menu
+    surface={<>
+      <MenuItem headline="Apple" />
+      <MenuItem headline="Banana" />
+      <MenuItem headline="Cucumber" />
+    </>}
+    {...args} anchor="usage-anchor" {...props}>
+    <div style={{ width: 150, height: 100, border: "solid", borderRadius: 8 }}>
+      <Button onClick={e => {
+        e.preventDefault();
+        controller.open();
+      }}>open</Button>
+    </div>
+  </Menu>;
+};
+
+export const MenuController = Template0.bind({});
+MenuController.args = {
+};
+
+

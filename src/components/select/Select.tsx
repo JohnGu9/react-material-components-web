@@ -98,7 +98,6 @@ export const Select = createComponent<HTMLDivElement, SelectProps>(
         return () => {
           window.removeEventListener('focusin', onFocusIn);
           window.removeEventListener('click', onClick);
-
         };
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -115,6 +114,7 @@ export const Select = createComponent<HTMLDivElement, SelectProps>(
     return (
       <Menu fullWidth
         {...props}
+        open={opened}
         value={value}
         onKeyDown={e => {
           const { keyCode, key } = e;

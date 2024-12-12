@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Menu } from '../components/menu/Menu';
+import { Menu, useMenuController } from '../components/menu/Menu';
+import { Button } from '../components';
 
 export default {
   component: Menu,
@@ -23,3 +24,21 @@ FullWidth.args = {
   fullWidth: true,
   open: true,
 };
+
+const Template0: StoryFn<typeof Menu> = (args) => {
+  const { controller, props } = useMenuController();
+  return <Menu
+    surface={<div style={{ padding: 16, paddingBottom: 64 }}>Surface</div>}
+    style={{ width: 150, height: 100, borderStyle: 'dotted', margin: 32, marginBottom: 3000 }}
+    {...args} {...props}>
+    <Button onClick={e => {
+      e.preventDefault();
+      controller.open();
+    }}>open</Button>
+  </Menu>;
+};
+
+export const MenuController = Template0.bind({});
+MenuController.args = {
+};
+
