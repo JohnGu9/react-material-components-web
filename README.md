@@ -24,7 +24,7 @@ const [open, setOpen] = React.useState(false);
 <Dialog open={open}>{children}</Dialog>;
 ```
 
-The dialog would be open when `open` is true and closed when `open` is false. And when user click the scrim, this library just only invoke `onScrimClick` callback and do nothing (dialog will keep open if open is true after click). No one can force you to close the dialog on fixed callback in the library (for example, in rmwc library if you don't close dialog in `onClose` callback, your react state will out of sync with mwc and component behave will be unpredictable).
+The dialog would be open when `open` is true and closed when `open` is false. And when user click the scrim, this library just only invoke `onScrimClick` callback and do nothing (dialog will keep open if open is true after click). No one can force you to close the dialog on fixed callback in the library (for example, in rmwc library if you don't close dialog in `onClose` callback, your react state will out of sync with mwc and component behavior will be unpredictable).
 
 If programmer want to close dialog when user click the scrim, the only way is:
 
@@ -36,7 +36,7 @@ const [open, setOpen] = React.useState(false);
 </Dialog>;
 ```
 
-This library will block most of mdc default behave that keep the dom state sync with react state. Including some input element, the state will keep sync without call `Event.preventDefault()` conditionally (Checkbox, Radio and etc).
+This library will block most of mdc default behavior that keep the dom state sync with react state. Including some input element, the state will keep sync without call `Event.preventDefault()` conditionally (Checkbox, Radio and etc).
 
 But Material Design 2 `TextArea` and `TextField` still keep normal react input control style. Use `Event.preventDefault()` to prevent state change conditionally in React 16 or before. Material Design 3 `TextField` will keep `value` sync without call `Event.preventDefault()`. Just like React 18.
 
