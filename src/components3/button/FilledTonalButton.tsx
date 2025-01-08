@@ -1,4 +1,4 @@
-import { MdFilledTonalButtonComponent } from "./Compoent";
+import { MdFilledTonalButtonComponent } from "./Component";
 
 export const FilledTonalButton = MdFilledTonalButtonComponent;
 

@@ -61,6 +61,7 @@ import { Button } from "rmcw/dist/components3"; // quick start
 ```
 
 - Button
+- Card (preview version)
 - Checkbox
 - Chip
 - Dialog

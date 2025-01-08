@@ -1,14 +1,11 @@
-import "@material/web/chips/assist-chip";
 import { MdAssistChip } from "@material/web/chips/assist-chip";
-import { MdAssistChipComponent, MdSuggestionChipComponent, RmcwFilterChip, RmcwFilterChipComponent, RmcwInputChip, RmcwInputChipComponent } from "./Component"
-import "@material/web/chips/input-chip";
-import "@material/web/chips/suggestion-chip";
+import { MdAssistChipComponent, MdSuggestionChipComponent, RmcwFilterChip, RmcwFilterChipComponent, RmcwInputChip, RmcwInputChipComponent } from "./Component";
 import { MdSuggestionChip } from "@material/web/chips/suggestion-chip";
 import { createComponent } from "../../common/Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
 
 
-function composeProps({ icon, style, children, ...props }: { [key: string]: any }) {
+function composeProps({ icon, style, children, ...props }: { [key: string]: any; }) {
   return {
     style: { "--md-icon-size": "18px", ...style },
     children: icon ? <>

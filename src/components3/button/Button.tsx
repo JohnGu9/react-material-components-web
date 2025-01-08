@@ -1,17 +1,12 @@
-import "@material/web/button/elevated-button"
-import "@material/web/button/filled-button"
-import "@material/web/button/filled-tonal-button"
-import "@material/web/button/outlined-button"
-import "@material/web/button/text-button"
 import { createComponent } from "../../common/Component";
 import { Button as MdButton } from "@material/web/button/internal/button";
-import { FormSubmitterType } from "@material/web/internal/controller/form-submitter"
-import { createSlotNode, SlotNode } from "../common/SlotNode"
-import { FilledButton, FilledButtonSupportedCssProps } from "./FilledButton"
-import { FilledTonalButton, FilledTonalButtonSupportedCssProps } from "./FilledTonalButton"
-import { OutlinedButton, OutlinedButtonSupportedCssProps } from "./OutlinedButton"
-import { TextButton, TextButtonSupportedCssProps } from "./TextButton"
-import { ElevatedButton, ElevatedButtonSupportedCssProps } from "./ElevatedButton"
+import { FormSubmitterType } from "@material/web/internal/controller/form-submitter";
+import { createSlotNode, SlotNode } from "../common/SlotNode";
+import { FilledButton, FilledButtonSupportedCssProps } from "./FilledButton";
+import { FilledTonalButton, FilledTonalButtonSupportedCssProps } from "./FilledTonalButton";
+import { OutlinedButton, OutlinedButtonSupportedCssProps } from "./OutlinedButton";
+import { TextButton, TextButtonSupportedCssProps } from "./TextButton";
+import { ElevatedButton, ElevatedButtonSupportedCssProps } from "./ElevatedButton";
 
 export type ButtonBaseProps = {
   disabled?: boolean,
@@ -29,7 +24,7 @@ export type ButtonProps = ButtonBaseProps & {
   buttonStyle?: "elevated" | "filled" | "filled-tonal" | "outlined" | "text",
 };
 
-function composeProps({ icon, children, style, ...props }: { [key: string]: any }) {
+function composeProps({ icon, children, style, ...props }: { [key: string]: any; }) {
   const hasIcon = icon ? true : undefined;
   const mergeChildren = <>
     {children}

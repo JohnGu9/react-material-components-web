@@ -1,4 +1,4 @@
-import { MdTextButtonComponent } from "./Compoent";
+import { MdTextButtonComponent } from "./Component";
 
 export const TextButton = MdTextButtonComponent;
 

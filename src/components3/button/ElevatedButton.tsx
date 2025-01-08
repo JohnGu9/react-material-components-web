@@ -1,4 +1,4 @@
-import { MdElevatedButtonComponent } from "./Compoent";
+import { MdElevatedButtonComponent } from "./Component";
 
 export const ElevatedButton = MdElevatedButtonComponent;
 

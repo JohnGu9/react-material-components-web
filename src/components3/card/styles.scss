@@ -1,0 +1,16 @@
+md-elevated-card,
+md-filled-card,
+md-outlined-card {
+    & > .rmcw-card-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-between;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    & > img {
+        border-radius: inherit;
+    }
+}

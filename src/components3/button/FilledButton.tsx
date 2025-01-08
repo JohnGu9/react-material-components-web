@@ -1,4 +1,4 @@
-import { MdFilledButtonComponent } from "./Compoent";
+import { MdFilledButtonComponent } from "./Component";
 
 export const FilledButton = MdFilledButtonComponent;
 

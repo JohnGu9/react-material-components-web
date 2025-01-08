@@ -1,4 +1,4 @@
-import { MdOutlinedButtonComponent } from "./Compoent";
+import { MdOutlinedButtonComponent } from "./Component";
 
 export const OutlinedButton = MdOutlinedButtonComponent;
 
