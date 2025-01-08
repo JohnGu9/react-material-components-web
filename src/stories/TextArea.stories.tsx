@@ -22,7 +22,7 @@ Primary.args = {
 
 export const Resize = Template.bind({});
 Resize.args = {
-  resize: false,
+  resize: true,
   cols: 50,
   rows: 3,
   label: 'Hint Text',

@@ -14,7 +14,7 @@ This library provide react wrapper for Material Design components. Both Material
 
 ## What's different between other wrapper libraries?
 
-Under this library, the mdc's stats only follow react stats. This mean the mdc's stats would not change until react stats change. This library always sync the react stats and the mdc stats. (By default, mdc usually modify the element's stats automatically that make the mdc element out of control in react framework)
+Under this library, the mdc's status only follow react status. This mean the mdc's status would not change until react status change. This library always sync the react status and the mdc status. (By default, mdc usually modify the element's status automatically that make the mdc element out of control in react framework)
 
 For example:
 
