@@ -1,0 +1,8 @@
+rmcw-outlined-segmented-button {
+    --_icon-size: var(--md-icon-size, 24px);
+    div[slot="icon"] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

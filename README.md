@@ -75,6 +75,7 @@ import { Button } from "rmcw/dist/components3"; // quick start
 - Progress
 - Radio
 - Ripple
+- SegmentedButton (preview version)
 - Select
 - Slider
 - Switch
