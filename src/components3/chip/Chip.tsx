@@ -10,7 +10,7 @@ function composeProps({ icon, style, children, ...props }: { [key: string]: any;
     style: { "--md-icon-size": "18px", ...style },
     children: icon ? <>
       {children}
-      {createSlotNode(icon, "icon")}
+      {icon ? createSlotNode(icon, "icon") : <></>}
     </>
       : children,
     ...props

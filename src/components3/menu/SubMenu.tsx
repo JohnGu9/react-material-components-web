@@ -16,7 +16,7 @@ export type SubMenuProps = {
   hoverOpenDelay?: number,
   hoverCloseDelay?: number,
   surface?: React.ReactNode,
-  children?: SlotNode
+  children?: SlotNode;
 };
 
 export const SubMenu = createComponent<MdSubMenu, SubMenuProps>(
@@ -28,7 +28,7 @@ export const SubMenu = createComponent<MdSubMenu, SubMenuProps>(
     }, [ctx]);
     return (
       <MdSubMenuComponent ref={ref as any} {...props} >
-        {createSlotNode(children, "item")}
+        {children ? createSlotNode(children, "item") : <></>}
         <MdMenuComponent slot="menu">
           {surface}
         </MdMenuComponent>

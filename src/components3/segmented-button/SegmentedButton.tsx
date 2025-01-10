@@ -15,7 +15,7 @@ export const SegmentedButton = createComponent<RmcwOutlinedSegmentedButton, Segm
     // @TODO: merge button style
     // const buttonStyle = useContext(SegmentedButtonSetContext);
     return <RmcwOutlinedSegmentedButtonComponent ref={ref} {...props} >
-      {createSlotNode(icon, "icon")}
+      {icon ? createSlotNode(icon, "icon") : <></>}
       {children}
     </RmcwOutlinedSegmentedButtonComponent>;
   }

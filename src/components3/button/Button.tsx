@@ -28,9 +28,7 @@ function composeProps({ icon, children, style, ...props }: { [key: string]: any;
   const hasIcon = icon ? true : undefined;
   const mergeChildren = <>
     {children}
-    {icon
-      ? createSlotNode(icon, "icon")
-      : <></>}
+    {icon ? createSlotNode(icon, "icon") : <></>}
   </>;
   return { hasIcon, style: { "--md-icon-size": "18px", ...style }, children: mergeChildren, ...props };
 }

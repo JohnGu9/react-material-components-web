@@ -72,6 +72,7 @@ import { Button } from "rmcw/dist/components3"; // quick start
 - IconButton
 - List
 - Menu
+- NavigationBar (preview version)
 - Progress
 - Radio
 - Ripple
