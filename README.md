@@ -8,11 +8,11 @@ function MyComponent() {
 }
 ```
 
-## What's the library for?
+## What is the purpose of the project?
 
 This library provide react wrapper for Material Design components. Both Material Design 2 and 3. And the original design is almost intact.
 
-## What's different between other wrapper libraries?
+## What's different between other libraries?
 
 Under this library, the mdc's status only follow react status. This mean the mdc's status would not change until react status change. This library always sync the react status and the mdc status. (By default, mdc usually modify the element's status automatically that make the mdc element out of control in react framework)
 
@@ -71,8 +71,9 @@ import { Button } from "rmcw/dist/components3"; // quick start
 - Icon
 - IconButton
 - List
-- Menu
+- Menu (with MenuController)
 - NavigationBar (preview version)
+- NavigationDrawer (preview version)
 - Progress
 - Radio
 - Ripple
@@ -82,8 +83,11 @@ import { Button } from "rmcw/dist/components3"; // quick start
 - Switch
 - Tabs
 - TextField
+- Typography
 
-> `Material Design 3` - Early access stage. Material Design 3 is not completed yet. https://github.com/material-components/material-web/blob/main/docs/roadmap.md
+> `Material Design 3` - Early access stage. Material Design 3 is not completed yet. 
+https://github.com/material-components/material-web/blob/main/docs/roadmap.md
+https://github.com/material-components/material-web/discussions/5642
 
 > Font may not load properly. The way to work around is to import font file manually. Put `import "@fontsource/roboto";` in your own source file. This problem is caused by import side effect not working properly.
 
@@ -125,7 +129,7 @@ import { Button } from "rmcw/dist/components"; // quick start
 - LinearProgress
 - ListDivider
 - ListItem
-- Menu
+- Menu (with MenuController)
 - Radio
 - Ripple
 - SegmentedButton
@@ -191,42 +195,6 @@ const myCustomDarkTheme: ThemeData = {
 
 <Theme lightTheme={myCustomTheme} darkTheme={myCustomDarkTheme}></Theme>
 ```
-
----
-
-- `ListViewBuilder` (beta) and `DataTableBuilder` (beta).
-  Lazy build component. They build their children lazily.
-
-```jsx
-import { ListViewBuilder } from "rmcw/dist/common/ListViewBuilder";
-
-<ListViewBuilder
-  itemExtent={48}
-  itemCount={100}
-  style={{ maxHeight: 400 }}
-  childrenBuilder={(
-    paddingStart: number,
-    paddingEnd: number,
-    childrenIndexes: number[]
-  ) => {
-    return (
-      <>
-        <div style={{ minHeight: paddingStart }} />
-        {childrenIndexes.map((index) => (
-          <ListItem key={index} primaryText={`ListItem-${index}`} />
-        ))}
-        <div style={{ minHeight: paddingEnd }} />
-      </>
-    );
-  }}
-/>;
-```
-
-- `itemCount` is the amount of children.
-- `itemExtent` is the every child element height. Should be fixed. For calculate the `paddingStart` and `paddingEnd` and `childrenIndexes`.
-- `paddingStart` / `paddingEnd` is the size padding inside the `ListViewBuilder`.
-- `childrenIndexes` is the index of child that should be render right now. The range is `0 <= value < itemCount`. Update when scrolling or size changing.
-- `ListViewBuilder` height should be set. It can change in real time.
 
 ## Note
 

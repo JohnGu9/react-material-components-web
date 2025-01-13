@@ -58,9 +58,9 @@ const Template0: StoryFn<typeof Menu> = (args) => {
   const { controller, props } = useMenuController();
   return <Menu
     surface={<>
-      <MenuItem headline="Apple" />
-      <MenuItem headline="Banana" />
-      <MenuItem headline="Cucumber" />
+      <MenuItem headline="Apple" onClick={() => controller.close()} />
+      <MenuItem headline="Banana" onClick={() => controller.close()} />
+      <MenuItem headline="Cucumber" onClick={() => controller.close()} />
     </>}
     {...args} anchor="usage-anchor" {...props}>
     <div style={{ width: 150, height: 100, border: "solid", borderRadius: 8 }}>
