@@ -52,7 +52,7 @@ export const TextField = createComponent<MdTextField, TextFieldProps>(
       {trailingIcon ? createSlotNode(trailingIcon, "trailing-icon") : <></>}
     </>;
     const mergeOnChange = React.useMemo(() => {
-      return (e: Event) => onChange?.(createSyntheticEvent(e) as React.ChangeEvent<MdTextField>)
+      return (e: Event) => onChange?.(createSyntheticEvent(e) as React.ChangeEvent<MdTextField>);
     }, [onChange]);
 
     switch (textFieldStyle) {

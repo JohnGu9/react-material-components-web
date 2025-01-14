@@ -9,7 +9,7 @@ export type LinearProgressProps = ProgressProps & {
 export const LinearProgress = createComponent<MdCircularProgress, LinearProgressProps>(
   function LinearProgress({ value, ...props }, ref) {
     const indeterminate = (value === undefined);
-    return <MdLinearProgressComponent ref={ref as any} indeterminate={indeterminate} value={value} {...(props as any)} />;
+    return <MdLinearProgressComponent ref={ref} indeterminate={indeterminate} value={value} {...(props as any)} />;
   }
 );
 

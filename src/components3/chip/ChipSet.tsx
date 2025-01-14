@@ -6,6 +6,6 @@ import { MdChipSetComponent } from "./Component";
 export type ChipSetProps = {};
 export const ChipSet = createComponent<MdChipSet, ChipSetProps>(
   function ChipSet(props, ref) {
-    return <MdChipSetComponent ref={ref as any} {...props} />;
+    return <MdChipSetComponent ref={ref} {...props} />;
   }
 ); 

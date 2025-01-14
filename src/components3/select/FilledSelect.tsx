@@ -5,7 +5,7 @@ export type FilledSelectProps = SelectBaseProps;
 
 export const FilledSelect = createComponent<RmcwFilledSelect, FilledSelectProps>(
   function FilledSelect(props, ref) {
-    return <RmcwFilledSelectComponent ref={ref as any} {...props} />;
+    return <RmcwFilledSelectComponent ref={ref} {...props} />;
   }
 );
 

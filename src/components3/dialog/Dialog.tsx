@@ -22,8 +22,8 @@ export const Dialog = createComponent<RmcwDialog, DialogProps>(
       {headline ? createSlotNode(headline, "headline") : <></>}
       {children ? createSlotNode(children, "content") : <></>}
       {actions ? createSlotNode(actions, "actions") : <></>}
-    </>
-    return <RmcwDialogComponent ref={ref as any} {...props} >{mergeChildren}</RmcwDialogComponent>;
+    </>;
+    return <RmcwDialogComponent ref={ref} {...props} >{mergeChildren}</RmcwDialogComponent>;
   }
 );
 

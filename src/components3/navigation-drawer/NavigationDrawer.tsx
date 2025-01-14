@@ -2,8 +2,8 @@ import { MdNavigationDrawer } from "@material/web/labs/navigationdrawer/navigati
 import { createComponent } from "../../common/Component";
 import { RmcwNavigationDrawerModalComponent, RmcwNavigationDrawerModal, RmcwNavigationDrawerComponent } from "./Component";
 import { ReactNode } from "react";
-import "./styles.scss";
 import { classMap } from "../../common/Common";
+import "./styles.scss";
 
 export type NavigationDrawerModalProps = {
   opened?: boolean,
@@ -13,7 +13,7 @@ export type NavigationDrawerModalProps = {
 };
 
 export const NavigationDrawerModal = createComponent<RmcwNavigationDrawerModal, NavigationDrawerModalProps>(
-  function NavigationDrawer({ ref: _, ...props }, ref) {
+  function NavigationDrawer({ ...props }, ref) {
     return <RmcwNavigationDrawerModalComponent ref={ref} {...props} />;
   }
 );
@@ -24,7 +24,7 @@ export type NavigationDrawerProps = {
 };
 
 export const NavigationDrawer = createComponent<MdNavigationDrawer, NavigationDrawerProps>(
-  function NavigationDrawer({ ref: _, ...props }, ref) {
+  function NavigationDrawer({ ...props }, ref) {
     return <RmcwNavigationDrawerComponent ref={ref} {...props} />;
   }
 );
@@ -65,7 +65,7 @@ export const Drawer = createComponent<HTMLDivElement, DrawerProps>(
         </div>;
     }
     return <div className={classMap({ "rmcw-drawer": true }, className)}  {...props}>
-      <NavigationDrawer style={{ position: "absolute" }} opened={opened}>
+      <NavigationDrawer opened={opened}>
         {content}
       </NavigationDrawer>
       <NavigationDrawerPadding opened={opened}>

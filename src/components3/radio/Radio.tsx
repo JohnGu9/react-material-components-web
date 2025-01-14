@@ -10,7 +10,7 @@ export type RadioProps = {
 
 export const Radio = createComponent<RmcwRadio, RadioProps>(
   function Radio(props, ref) {
-    return <RmcwRadioComponent ref={ref as any} {...props} />;
+    return <RmcwRadioComponent ref={ref} {...props} />;
   }
 );
 

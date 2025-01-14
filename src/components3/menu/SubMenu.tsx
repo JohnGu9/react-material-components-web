@@ -27,7 +27,7 @@ export const SubMenu = createComponent<MdSubMenu, SubMenuProps>(
       return () => ctx.deregisterSubMenu();
     }, [ctx]);
     return (
-      <MdSubMenuComponent ref={ref as any} {...props} >
+      <MdSubMenuComponent ref={ref} {...props} >
         {children ? createSlotNode(children, "item") : <></>}
         <MdMenuComponent slot="menu">
           {surface}

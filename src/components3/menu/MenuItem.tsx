@@ -21,7 +21,7 @@ export type MenuItemProps = {
 export const MenuItem = createComponent<MdMenuItem, MenuItemProps>(
   function MenuItem({ start, end, overline, headline, supportingText, trailingSupportingText, children, ...props }, ref) {
     return (
-      <MdMenuItemComponent ref={ref as any} keepOpen={true} {...props} >
+      <MdMenuItemComponent ref={ref} keepOpen={true} {...props} >
         {children}
         {start ? createSlotNode(start, "start") : <></>}
         {end ? createSlotNode(end, "end") : <></>}

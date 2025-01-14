@@ -7,7 +7,7 @@ export type CircularProgressProps = ProgressProps;
 export const CircularProgress = createComponent<MdCircularProgress, CircularProgressProps>(
   function CircularProgress({ value, ...props }, ref) {
     const indeterminate = (value === undefined);
-    return <MdCircularProgressComponent ref={ref as any} indeterminate={indeterminate} value={value} {...props} />;
+    return <MdCircularProgressComponent ref={ref} indeterminate={indeterminate} value={value} {...props} />;
   }
 );
 

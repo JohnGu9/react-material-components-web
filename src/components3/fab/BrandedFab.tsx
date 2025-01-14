@@ -18,7 +18,7 @@ export const BrandedFab = createComponent<MdBrandedFab, BrandedFabProps>(
     }
 
     return (
-      <MdBrandedFabComponent ref={ref as any} size={size} style={{ "--md-icon-size": `${iconSize}px`, ...style } as CSSProperties} {...props} >
+      <MdBrandedFabComponent ref={ref} size={size} style={{ "--md-icon-size": `${iconSize}px`, ...style } as CSSProperties} {...props} >
         {icon ? createSlotNode(icon, "icon") : <></>}
         {children}
       </MdBrandedFabComponent >);

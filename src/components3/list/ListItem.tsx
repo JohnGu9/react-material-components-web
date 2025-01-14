@@ -18,7 +18,7 @@ export type ListItemProps = {
 export const ListItem = createComponent<MdListItem, ListItemProps>(
   function List({ start, end, overline, headline, supportingText, trailingSupportingText, children, ...props }, ref) {
     return (
-      <MdListItemComponent ref={ref as any} {...props} >
+      <MdListItemComponent ref={ref} {...props} >
         {children}
         {start ? createSlotNode(start, "start") : <></>}
         {end ? createSlotNode(end, "end") : <></>}

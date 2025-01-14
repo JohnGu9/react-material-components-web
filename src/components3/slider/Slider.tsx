@@ -16,16 +16,16 @@ export type SliderProps = {
   labeled?: boolean,
   onChange?: React.ChangeEventHandler<RmcwSlider>,
   //
-  form?: never
-} & ({ value?: number, valueStart?: never } | { valueStart?: number, valueEnd?: number, value?: never });
+  form?: never;
+} & ({ value?: number, valueStart?: never; } | { valueStart?: number, valueEnd?: number, value?: never; });
 
 export const Slider = createComponent<RmcwSlider, SliderProps>(
   function Slider({ onChange, ...props }, ref) {
     const mergeOnChange = React.useMemo(() => {
-      return (e: Event) => onChange?.(createSyntheticEvent(e) as React.ChangeEvent<RmcwSlider>)
+      return (e: Event) => onChange?.(createSyntheticEvent(e) as React.ChangeEvent<RmcwSlider>);
     }, [onChange]);
     const range = typeof props.valueStart === "number";
-    return <RmcwSliderComponent ref={ref as any} range={range} onChange={mergeOnChange} {...props} />;
+    return <RmcwSliderComponent ref={ref} range={range} onChange={mergeOnChange} {...props} />;
   }
 );
 

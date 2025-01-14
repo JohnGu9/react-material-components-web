@@ -10,7 +10,7 @@ export type NavigationTabProps = {
 };
 
 export const NavigationTab = createComponent<MdNavigationTab, NavigationTabProps>(
-  function NavigationBar({ icon, inactiveIcon, ref: _, ...props }, ref) {
+  function NavigationBar({ icon, inactiveIcon, ...props }, ref) {
     inactiveIcon ??= icon;
     return <MdNavigationTabComponent ref={ref} {...props} >
       {inactiveIcon ? createSlotNode(inactiveIcon, "inactive-icon") : <></>}

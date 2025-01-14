@@ -9,6 +9,6 @@ export type OutlinedIconProps = {};
 
 export const OutlinedIcon = createComponent<MdIcon, OutlinedIconProps>(
   function OutlinedIcon({ style, ...props }, ref) {
-    return <MdIconComponent ref={ref as any} style={{ "--md-icon-font": "Material Symbols Outlined", ...style } as CSSProperties} {...props} />;
+    return <MdIconComponent ref={ref} style={{ "--md-icon-font": "Material Symbols Outlined", ...style } as CSSProperties} {...props} />;
   }
 );

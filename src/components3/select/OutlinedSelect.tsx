@@ -5,7 +5,7 @@ export type OutlinedSelectProps = SelectBaseProps;
 
 export const OutlinedSelect = createComponent<RmcwOutlinedSelect, OutlinedSelectProps>(
   function OutlinedSelect(props, ref) {
-    return <RmcwOutlinedSelectComponent ref={ref as any} {...props} />;
+    return <RmcwOutlinedSelectComponent ref={ref} {...props} />;
   }
 );
 

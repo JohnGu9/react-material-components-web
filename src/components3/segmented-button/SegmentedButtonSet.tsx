@@ -7,7 +7,7 @@ export type SegmentedButtonSetProps = {
 };
 
 export const SegmentedButtonSet = createComponent<RmcwOutlinedSegmentedButtonSet, SegmentedButtonSetProps>(
-  function SegmentedButtonSet({ segmentedButtonStyle, ref: _, ...props }, ref) {
+  function SegmentedButtonSet({ segmentedButtonStyle, ...props }, ref) {
     return (
       <SegmentedButtonSetContext.Provider value={segmentedButtonStyle}>
         <RmcwOutlinedSegmentedButtonSetComponent ref={ref} {...props} />

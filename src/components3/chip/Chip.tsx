@@ -26,7 +26,7 @@ export type AssistChipProps = {
 };
 export const AssistChip = createComponent<MdAssistChip, AssistChipProps>(
   function AssistChip(props, ref) {
-    return <MdAssistChipComponent ref={ref as any} {...composeProps(props)} />;
+    return <MdAssistChipComponent ref={ref} {...composeProps(props)} />;
   }
 );
 
@@ -38,7 +38,7 @@ export type FilterChipProps = AssistChipProps & {
 };
 export const FilterChip = createComponent<RmcwFilterChip, FilterChipProps>(
   function FilterChip({ onRemoveClick, ...props }, ref) {
-    return <RmcwFilterChipComponent ref={ref as any} {...composeProps(props)} removable={onRemoveClick !== undefined} onRemoveClick={onRemoveClick} />;
+    return <RmcwFilterChipComponent ref={ref} {...composeProps(props)} removable={onRemoveClick !== undefined} onRemoveClick={onRemoveClick} />;
   }
 );
 
@@ -53,7 +53,7 @@ export type InputChipProps = {
 };
 export const InputChip = createComponent<RmcwInputChip, InputChipProps>(
   function InputChip(props, ref) {
-    return <RmcwInputChipComponent ref={ref as any} {...composeProps(props)} />;
+    return <RmcwInputChipComponent ref={ref} {...composeProps(props)} />;
   }
 );
 

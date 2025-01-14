@@ -7,7 +7,7 @@ export type NavigationBarProps = {
 };
 
 export const NavigationBar = createComponent<RmcwNavigationBar, NavigationBarProps>(
-  function NavigationBar({ activeIndex = 0, onInteraction, ref: _, ...props }, ref) {
+  function NavigationBar({ activeIndex = 0, onInteraction, ...props }, ref) {
     return <RmcwNavigationBarComponent ref={ref} activeIndex={activeIndex} onInteraction={onInteraction as (e: Event) => void} {...props} />;
   }
 );

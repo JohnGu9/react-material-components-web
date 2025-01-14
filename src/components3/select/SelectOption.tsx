@@ -20,7 +20,7 @@ export type SelectOptionProps = {
 export const SelectOption = createComponent<MdSelectOption, SelectOptionProps>(
   function SelectOption({ start, end, overline, headline, supportingText, trailingSupportingText, children, ...props }, ref) {
     return (
-      <MdSelectOptionComponent ref={ref as any} {...props} >
+      <MdSelectOptionComponent ref={ref} {...props} >
         {children}
         {start ? createSlotNode(start, "start") : <></>}
         {end ? createSlotNode(end, "end") : <></>}

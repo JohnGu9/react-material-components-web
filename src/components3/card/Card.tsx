@@ -24,13 +24,13 @@ export const Card = createComponent<MdCard, CardProps>(
   function Card({ cardStyle, ...props }, ref) {
     switch (cardStyle) {
       case "filled":
-        return <MdFilledCardComponent key={cardStyle} ref={ref as any} {...composeProps(props)} />;
+        return <MdFilledCardComponent key={cardStyle} ref={ref} {...composeProps(props)} />;
 
       case "outlined":
-        return <MdOutlinedCardComponent key={cardStyle} ref={ref as any} {...composeProps(props)} />;
+        return <MdOutlinedCardComponent key={cardStyle} ref={ref} {...composeProps(props)} />;
 
       default:
-        return <MdElevatedCardComponent key={cardStyle} ref={ref as any} {...composeProps(props)} />;
+        return <MdElevatedCardComponent key={cardStyle} ref={ref} {...composeProps(props)} />;
     }
   }
 );

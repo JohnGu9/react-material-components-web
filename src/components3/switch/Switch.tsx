@@ -22,9 +22,9 @@ export const Switch = createComponent<RmcwSwitch, SwitchProps>(
     </>;
     switch (icons) {
       case "show-only-selected-icon":
-        return <RmcwSwitchComponent ref={ref as any} icons showOnlySelectedIcon children={mergeChildren}  {...props} />;
+        return <RmcwSwitchComponent ref={ref} icons showOnlySelectedIcon children={mergeChildren}  {...props} />;
     }
-    return <RmcwSwitchComponent ref={ref as any} icons={icons} children={mergeChildren}  {...props} />;
+    return <RmcwSwitchComponent ref={ref} icons={icons} children={mergeChildren}  {...props} />;
   }
 );
 

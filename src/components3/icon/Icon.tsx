@@ -13,7 +13,7 @@ import React from "react";
 export const IconContext = React.createContext<React.HTMLProps<HTMLElement>>({});
 
 export type IconProps = {
-  iconStyle?: "outlined" | "round" | "sharp"
+  iconStyle?: "outlined" | "round" | "sharp";
 };
 
 export const Icon = createComponent<MdIcon, IconProps>(

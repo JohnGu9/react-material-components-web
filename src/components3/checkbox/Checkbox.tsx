@@ -32,7 +32,7 @@ export const Checkbox = createComponent<RmcwCheckbox, CheckboxProps>(
       }
     }
     return (<RmcwCheckboxComponent touch-target="wrapper"
-      ref={ref as any}
+      ref={ref}
       disabled={disabled}
       checked={current.checked ? true : undefined}
       indeterminate={current.indeterminate ? true : undefined}

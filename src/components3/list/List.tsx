@@ -6,7 +6,7 @@ export type ListProps = {};
 
 export const List = createComponent<MdList, ListProps>(
   function List(props, ref) {
-    return <MdListComponent ref={ref as any} {...props} />;
+    return <MdListComponent ref={ref} {...props} />;
   }
 );
 

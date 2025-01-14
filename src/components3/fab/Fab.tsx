@@ -19,7 +19,7 @@ export const Fab = createComponent<MdFab, FabProps>(
     }
 
     return (
-      <MdFabComponent ref={ref as any} size={size} style={{ "--md-icon-size": `${iconSize}px`, ...style } as CSSProperties} {...props} >
+      <MdFabComponent ref={ref} size={size} style={{ "--md-icon-size": `${iconSize}px`, ...style } as CSSProperties} {...props} >
         {icon ? createSlotNode(icon, "icon") : <></>}
         {children}
       </MdFabComponent>);

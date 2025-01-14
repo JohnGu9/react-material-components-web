@@ -22,7 +22,7 @@ export const Divider = createComponent<MdDivider, DividerProps>(
       default:
         break;
     }
-    return <MdDividerComponent ref={ref as any} {...current} {...props} />;
+    return <MdDividerComponent ref={ref} {...current} {...props} />;
   }
 );
 

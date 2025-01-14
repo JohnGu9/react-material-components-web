@@ -9,6 +9,6 @@ export type SharpIconProps = {};
 
 export const SharpIcon = createComponent<MdIcon, SharpIconProps>(
   function SharpIcon({ style, ...props }, ref) {
-    return <MdIconComponent ref={ref as any} style={{ "--md-icon-font": "Material Symbols Sharp", ...style } as CSSProperties} {...props} />;
+    return <MdIconComponent ref={ref} style={{ "--md-icon-font": "Material Symbols Sharp", ...style } as CSSProperties} {...props} />;
   }
 );

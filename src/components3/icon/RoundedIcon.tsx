@@ -9,6 +9,6 @@ export type RoundedIconProps = {};
 
 export const RoundedIcon = createComponent<MdIcon, RoundedIconProps>(
   function RoundedIcon({ style, ...props }, ref) {
-    return <MdIconComponent ref={ref as any} style={{ "--md-icon-font": "Material Symbols Rounded", ...style } as CSSProperties} {...props} />;
+    return <MdIconComponent ref={ref} style={{ "--md-icon-font": "Material Symbols Rounded", ...style } as CSSProperties} {...props} />;
   }
 );

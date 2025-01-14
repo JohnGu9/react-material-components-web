@@ -1,6 +1,5 @@
-import { MdTabs } from "@material/web/tabs/tabs";
 import { createComponent } from "../../common/Component";
-import { RmcwTabsComponent } from "./Component";
+import { RmcwTabs, RmcwTabsComponent } from "./Component";
 import React from "react";
 
 // Material Design 3 `Tabs` is no longer block value change by user input like before.
@@ -17,7 +16,7 @@ export type TabsProps = {
   onChange?: (event: Event) => void,
 };
 
-export const Tabs = createComponent<MdTabs, TabsProps>(
+export const Tabs = createComponent<RmcwTabs, TabsProps>(
   function Tabs({ secondary = false, selected, onSelected, ...props }, ref) {
     return (
       <TabsContext.Provider value={secondary}>
@@ -25,7 +24,7 @@ export const Tabs = createComponent<MdTabs, TabsProps>(
           key={secondary ? 1 : 0}
           activeTabIndex={selected}
           onSelected={e => onSelected?.((e as CustomEvent<number>).detail)}
-          ref={ref as any} {...props} />
+          ref={ref} {...props} />
       </TabsContext.Provider>);
   }
 );
