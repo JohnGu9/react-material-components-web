@@ -33,7 +33,7 @@ Number.args = {
 
 const NoOnChangeCallbackTemplate: StoryFn<typeof TextField> = (args) => {
   const [text,] = React.useState("NoOnChangeCallback");
-  return <TextField {...args} value={text} />
+  return <TextField {...args} value={text} />;
 };
 
 export const NoOnChangeCallback = NoOnChangeCallbackTemplate.bind({});

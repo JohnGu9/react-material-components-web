@@ -10,8 +10,10 @@ div[data-dark-mode="rmcw3-dark-mode-auto"] {
 
 div[data-dark-mode="rmcw3-dark-mode-on"] {
     @include color.dark-theme;
+    color: #fff;
 }
 
 div[data-dark-mode="rmcw3-dark-mode-off"] {
     @include color.light-theme;
+    color: #000;
 }

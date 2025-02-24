@@ -35,6 +35,7 @@ export const NavigationDrawerPadding = createComponent<HTMLDivElement, { opened?
     if (opened) {
       style = {
         paddingLeft: "var(--md-navigation-drawer-container-width, 360px)",
+        height: "100%",
         ...style,
       };
     }

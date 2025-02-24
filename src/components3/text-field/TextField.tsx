@@ -45,7 +45,7 @@ export type TextFieldProps = {
 };
 
 export const TextField = createComponent<MdTextField, TextFieldProps>(
-  function TextField({ textFieldStyle, leadingIcon, trailingIcon, children, value, onChange, ...props }, ref) {
+  function TextField({ textFieldStyle, leadingIcon, trailingIcon, children, value = "", onChange, ...props }, ref) {
     const mergeChildren = <>
       {children}
       {leadingIcon ? createSlotNode(leadingIcon, "leading-icon") : <></>}

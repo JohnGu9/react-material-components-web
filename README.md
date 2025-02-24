@@ -85,13 +85,17 @@ import { Button } from "rmcw/dist/components3"; // quick start
 - TextField
 - Typography
 
-> `Material Design 3` - Early access stage. Material Design 3 is not completed yet. 
+> `Material Design 3` - Early access stage. Material Design 3 is not completed yet.
+
 https://github.com/material-components/material-web/blob/main/docs/roadmap.md
+
 https://github.com/material-components/material-web/discussions/5642
 
 > Font may not load properly. The way to work around is to import font file manually. Put `import "@fontsource/roboto";` in your own source file. This problem is caused by import side effect not working properly.
 
-> Material Design 3 is not default components for import. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"`
+> Material Design 3 is not default components for import. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"`. Material Design 3 built on `Lit` and there are great stability risks with `React`. Material Design 2 is directly built on `React` and it would be fully compatible with `React`!
+
+> Known bug: `TextField` not working in React 19. `Button` inside `Menu` not working in Safari.
 
 System Requirement:
 | Browser | Version |

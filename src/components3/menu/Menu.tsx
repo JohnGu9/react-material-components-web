@@ -1,8 +1,8 @@
 import { Corner } from "@material/web/menu/menu";
 import { createComponent } from "../../common/Component";
 import { RmcwMenuComponent } from "./Component";
-import "./styles.scss"
 import React from "react";
+import "./styles.scss";
 
 export * from "../../common/MenuController";
 
@@ -26,8 +26,23 @@ export type MenuProps = {
 };
 
 export const Menu = createComponent<HTMLSpanElement, MenuProps>(
-  function Menu({ anchor, open, quick, positioning, hasOverflow, xOffset, yOffset, surface, onOutsideClick, onMenuFocusout, onClosableKey, children, ...props }, ref) {
-    const subCounter = React.useMemo(() => { return { counter: 0 } }, []);
+  function Menu({
+    anchor,
+    open,
+    quick,
+    positioning,
+    hasOverflow,
+    xOffset,
+    yOffset,
+    anchorCorner = Corner.END_START,
+    menuCorner = Corner.START_START,
+    surface,
+    onOutsideClick,
+    onMenuFocusout,
+    onClosableKey,
+    children,
+    ...props }, ref) {
+    const subCounter = React.useMemo(() => { return { counter: 0 }; }, []);
     const [, setSubCounter] = React.useState(0);
     const ctx = React.useMemo(() => {
       const registerSubMenu = () => {
@@ -45,6 +60,7 @@ export const Menu = createComponent<HTMLSpanElement, MenuProps>(
       <span ref={ref} {...props}>
         <div id={anchor}>{children}</div>
         <RmcwMenuComponent
+          key={`${anchorCorner} ${menuCorner}`}
           anchor={anchor}
           open={open}
           quick={quick}
@@ -52,6 +68,8 @@ export const Menu = createComponent<HTMLSpanElement, MenuProps>(
           hasOverflow={hasOverflow ?? (subCounter.counter !== 0)}
           xOffset={xOffset}
           yOffset={yOffset}
+          anchorCorner={anchorCorner}
+          menuCorner={menuCorner}
           stayOpenOnOutsideClick
           stayOpenOnFocusout
           onOutsideClick={onOutsideClick}

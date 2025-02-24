@@ -64,10 +64,12 @@ const Template0: StoryFn<typeof Menu> = (args) => {
     </>}
     {...args} anchor="usage-anchor" {...props}>
     <div style={{ width: 150, height: 100, border: "solid", borderRadius: 8 }}>
-      <Button onClick={e => {
-        e.preventDefault();
-        controller.open();
-      }}>open</Button>
+      <Button
+        icon={<Icon>bookmark</Icon>}
+        onClick={e => {
+          e.preventDefault();
+          controller.open();
+        }}>open</Button>
     </div>
   </Menu>;
 };
