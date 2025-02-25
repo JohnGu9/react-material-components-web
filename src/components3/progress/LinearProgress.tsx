@@ -1,15 +1,14 @@
-import { MdCircularProgress } from "@material/web/progress/circular-progress";
 import { createComponent } from "../../common/Component";
-import { MdLinearProgressComponent, ProgressProps } from "./Component";
+import { RmcwLinearProgressComponent, RmcwLinearProgress, ProgressProps } from "./Component";
 
 export type LinearProgressProps = ProgressProps & {
   buffer?: number,
 };
 
-export const LinearProgress = createComponent<MdCircularProgress, LinearProgressProps>(
+export const LinearProgress = createComponent<RmcwLinearProgress, LinearProgressProps>(
   function LinearProgress({ value, ...props }, ref) {
     const indeterminate = (value === undefined);
-    return <MdLinearProgressComponent ref={ref} indeterminate={indeterminate} value={value} {...(props as any)} />;
+    return <RmcwLinearProgressComponent ref={ref} indeterminate={indeterminate} value={value} {...(props as any)} />;
   }
 );
 

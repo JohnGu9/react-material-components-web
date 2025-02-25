@@ -21,3 +21,9 @@ Progress.args = {
   max: 1,
 };
 
+export const CustomTransition = Template.bind({});
+CustomTransition.args = {
+  value: 0.5,
+  max: 1,
+  style: { "--rmcw-circular-progress-transition": "none" } as React.CSSProperties,
+};

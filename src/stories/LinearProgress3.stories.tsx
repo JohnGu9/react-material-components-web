@@ -25,3 +25,10 @@ Buffer.args = {
   max: 1,
 };
 
+export const CustomTransition = Template.bind({});
+CustomTransition.args = {
+  value: 0.4,
+  max: 1,
+  style: { "--rmcw-linear-progress-transition": "none" } as React.CSSProperties,
+};
+

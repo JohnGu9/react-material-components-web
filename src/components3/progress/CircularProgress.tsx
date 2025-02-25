@@ -1,13 +1,12 @@
-import { MdCircularProgress } from "@material/web/progress/circular-progress";
 import { createComponent } from "../../common/Component";
-import { MdCircularProgressComponent, ProgressProps } from "./Component";
+import { RmcwCircularProgress, MmcwCircularProgressComponent, ProgressProps } from "./Component";
 
 export type CircularProgressProps = ProgressProps;
 
-export const CircularProgress = createComponent<MdCircularProgress, CircularProgressProps>(
+export const CircularProgress = createComponent<RmcwCircularProgress, CircularProgressProps>(
   function CircularProgress({ value, ...props }, ref) {
     const indeterminate = (value === undefined);
-    return <MdCircularProgressComponent ref={ref} indeterminate={indeterminate} value={value} {...props} />;
+    return <MmcwCircularProgressComponent ref={ref} indeterminate={indeterminate} value={value} {...props} />;
   }
 );
 
