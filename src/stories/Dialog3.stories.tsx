@@ -21,4 +21,3 @@ export const Primary = Template.bind({});
 Primary.args = {
   open: true,
 };
-
