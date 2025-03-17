@@ -22,11 +22,11 @@ export const RmcwOutlinedSegmentedButtonComponent = createComponent({
 @customElement('rmcw-outlined-segmented-button-set')
 export class RmcwOutlinedSegmentedButtonSet extends MdOutlinedSegmentedButtonSet {
 
-    override setButtonSelected(index: number, selected: boolean): void {
+    override setButtonSelected(): void {
 
     }
 
-    override setButtonDisabled(index: number, disabled: boolean): void {
+    override setButtonDisabled(): void {
 
     }
 };

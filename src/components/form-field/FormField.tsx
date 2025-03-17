@@ -4,6 +4,7 @@ import { useRefComposer } from "react-ref-composer";
 import { createComponent, useClassInjector } from "../../common/Common";
 import { FormFieldComponent } from "./Component";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const FormFieldContext = React.createContext<React.RefObject<HTMLLabelElement> | undefined>(undefined);
 
 export type FormFieldProps = {

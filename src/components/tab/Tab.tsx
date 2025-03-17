@@ -5,6 +5,7 @@ import { createComponent, useClassInjector } from "../../common/Common";
 import { IconContext } from "../icon/Icon";
 import { TabComponent } from "./Component";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const TabContext = React.createContext<React.HTMLProps<HTMLButtonElement> & {
   stacked?: boolean,
   minWidth?: boolean,
@@ -32,6 +33,7 @@ export const Tab = createComponent<HTMLButtonElement, TabProps>(
     const composeRefs = useRefComposer();
     const innerRef = React.useRef<HTMLButtonElement>(null);
     const injector = useClassInjector(innerRef);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { setCurrentTabs, className: c1, type, stacked: s1, minWidth: m1, ...context } = React.useContext(TabContext);
 
     stacked ??= s1 ?? false;

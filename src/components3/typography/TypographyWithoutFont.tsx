@@ -17,6 +17,7 @@ import { styles as typescaleStyles } from '@material/web/typography/md-typescale
 
 document.adoptedStyleSheets.push(typescaleStyles.styleSheet!);
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Typography {
   export type Scale =
     'display' |

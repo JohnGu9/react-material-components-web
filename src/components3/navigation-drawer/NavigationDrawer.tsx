@@ -55,17 +55,17 @@ export type DrawerProps = {
 };
 
 export const Drawer = createComponent<HTMLDivElement, DrawerProps>(
-  function Drawer({ type, opened, pivot, content, onEscapeKey, onScrimClick, className, children, ...props }, ref) {
+  function Drawer({ type, opened, content, onEscapeKey, onScrimClick, className, children, ...props }, ref) {
     switch (type) {
       case "modal":
-        return <div className={classMap({ "rmcw-drawer": true }, className)} {...props}>
+        return <div ref={ref} className={classMap({ "rmcw-drawer": true }, className)} {...props}>
           <NavigationDrawerModal opened={opened} onEscapeKey={onEscapeKey} onScrimClick={onScrimClick}>
             {content}
           </NavigationDrawerModal>
           {children}
         </div>;
     }
-    return <div className={classMap({ "rmcw-drawer": true }, className)}  {...props}>
+    return <div ref={ref} className={classMap({ "rmcw-drawer": true }, className)}  {...props}>
       <NavigationDrawer opened={opened}>
         {content}
       </NavigationDrawer>

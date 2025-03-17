@@ -1,7 +1,8 @@
+/* eslint-disable react-refresh/only-export-components */
 import React from "react";
 import { createComponent } from "../../common/Common";
 import "./style.scss";
-import { usePrefersColorSchemeDark } from "../../common/media";
+import { usePrefersColorSchemeDark } from "../../common/Media";
 
 
 export type ThemeData = {
@@ -18,7 +19,7 @@ export type ThemeData = {
   textHintOnBackground?: string,
   textDisabledOnBackground?: string,
   textIconOnBackground?: string,
-}
+};
 
 export type ThemeProps = ThemeData & {
   darkTheme?: ThemeData,
@@ -165,7 +166,7 @@ function getModeString(enableDarkTheme?: boolean) {
     case false:
       return 'off';
   }
-  return 'auto'
+  return 'auto';
 }
 
 export const defaultLightTheme: ThemeData = {
@@ -181,7 +182,7 @@ export const defaultLightTheme: ThemeData = {
   textHintOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.38))
   textDisabledOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-disabled-on-background, rgba(0, 0, 0, 0.38))
   textIconOnBackground: 'rgba(0, 0, 0, 0.38)',// var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38))
-}
+};
 
 export const defaultDarkTheme: ThemeData = {
   primary: '#bb86fc',
@@ -196,7 +197,7 @@ export const defaultDarkTheme: ThemeData = {
   textHintOnBackground: 'rgba(255, 255, 255, 0.5)',
   textDisabledOnBackground: 'rgba(255, 255, 255, 0.5)',
   textIconOnBackground: 'rgba(255, 255, 255, 0.5)',
-}
+};
 
 export const oledDarkTheme: ThemeData = {
   primary: '#bb86fc',
@@ -211,4 +212,4 @@ export const oledDarkTheme: ThemeData = {
   textHintOnBackground: 'rgba(255, 255, 255, 0.5)',
   textDisabledOnBackground: 'rgba(255, 255, 255, 0.5)',
   textIconOnBackground: 'rgba(255, 255, 255, 0.5)',
-}
+};

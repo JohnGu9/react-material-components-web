@@ -8,6 +8,7 @@ import { RippleEventTarget } from "../ripple/Ripple";
 import { ListItemContext } from "../list-item/ListItem";
 import { CompactWrapper } from "../../common/CompactWrapper";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const IconButtonContext = React.createContext<React.HTMLProps<HTMLButtonElement>>({});
 
 export type IconButtonProps = {
@@ -28,6 +29,7 @@ export const IconButton = createComponent<HTMLButtonElement, IconButtonProps>(
     const composeRefs = useRefComposer();
     const innerRef = React.useRef<HTMLButtonElement>(null);
     const injector = useClassInjector(innerRef);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { className: c1, ref: r0, type, ...context } = React.useContext(IconButtonContext);
     const eventTarget = React.useContext(RippleEventTarget);
     const isInListItem = React.useContext(ListItemContext);

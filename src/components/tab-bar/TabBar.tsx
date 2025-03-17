@@ -11,7 +11,7 @@ export type TabBarProps = {
   stacked?: boolean,
   minWidth?: boolean,
   selected?: number,
-  onSelected?: (index: number) => any,
+  onSelected?: (index: number) => unknown,
 };
 
 export const TabBar = createComponent<HTMLDivElement, TabBarProps>(

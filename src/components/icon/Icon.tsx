@@ -5,6 +5,7 @@ import { classMap, createComponent } from "../../common/Common";
 
 // @TODO: split different icon style to different file
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const IconContext = React.createContext<React.HTMLProps<HTMLElement>>({});
 
 export type IconProps = {

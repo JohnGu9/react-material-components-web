@@ -2,6 +2,7 @@ import React from "react";
 import { classMap, createComponent, useSizeObserver } from "../../common/Common";
 import "./style.scss";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export * from "../../common/MenuController";
 
 export type MenuProps = {

@@ -2,6 +2,10 @@ import { IconButton as MdIconButton } from "@material/web/iconbutton/internal/ic
 import { createComponent } from "../../common/Component";
 import { MdFilledIconButtonComponent, MdFilledTonalIconButtonComponent, MdIconButtonComponent, MdOutlinedIconButtonComponent } from "./Component";
 import { FormSubmitterType } from "@material/web/internal/controller/form-submitter";
+import { MdFilledIconButton } from "@material/web/iconbutton/filled-icon-button";
+import { MdFilledTonalIconButton } from "@material/web/iconbutton/filled-tonal-icon-button";
+import { MdOutlinedIconButton } from "@material/web/iconbutton/outlined-icon-button";
+import { MdIconButton as MdIconButtonType } from "@material/web/iconbutton/icon-button";
 
 // Material Design IconButton provide icon toggle when Button was clicked.
 // But in React, you can just replace icon element by yourself. (This function is useless for React)
@@ -9,7 +13,7 @@ import { FormSubmitterType } from "@material/web/internal/controller/form-submit
 
 export type IconButtonBaseProps = {
   //
-  form?: never
+  form?: never;
   target?: '_blank' | '_parent' | '_self' | '_top' | '',
   type?: FormSubmitterType,
   value?: string,
@@ -23,13 +27,13 @@ export const IconButton = createComponent<MdIconButton, IconButtonProps>(
   function IconButton({ buttonStyle, ...props }, ref) {
     switch (buttonStyle) {
       case "filled":
-        return <MdFilledIconButtonComponent key={buttonStyle} ref={ref as any} {...props} />
+        return <MdFilledIconButtonComponent key={buttonStyle} ref={ref as React.Ref<MdFilledIconButton>} {...props} />;
       case "filled-tonal":
-        return <MdFilledTonalIconButtonComponent key={buttonStyle} ref={ref as any} {...props} />
+        return <MdFilledTonalIconButtonComponent key={buttonStyle} ref={ref as React.Ref<MdFilledTonalIconButton>} {...props} />;
       case "outlined":
-        return <MdOutlinedIconButtonComponent key={buttonStyle} ref={ref as any} {...props} />
+        return <MdOutlinedIconButtonComponent key={buttonStyle} ref={ref as React.Ref<MdOutlinedIconButton>} {...props} />;
     }
-    return <MdIconButtonComponent key={buttonStyle} ref={ref as any} {...props} />
+    return <MdIconButtonComponent key={buttonStyle} ref={ref as React.Ref<MdIconButtonType>} {...props} />;
   }
 );
 

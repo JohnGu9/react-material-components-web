@@ -21,6 +21,7 @@ export class MenuController {
 
     // whether or not close menu
     // replace this value to custom your controller close menu behavior
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     shouldCloseMenu = (reason?: MenuCloseReason, event?: Event) => {
         return true;
     };
@@ -75,5 +76,5 @@ export function useMenuController() {
         }
     }, [controller]);
 
-    return { controller, props: { ref: ref as any, open } };
+    return { controller, props: { ref: ref, open } };
 }

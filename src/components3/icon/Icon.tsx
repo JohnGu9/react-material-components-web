@@ -10,6 +10,7 @@ import React from "react";
 // To reduce bundle size, try to import "sub-file"
 // For example, just `import { OutlinedIcon } from "rmcw/components3/OutlinedIcon"` to limit bundle css files that only include `material-symbols/outlined.css`
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const IconContext = React.createContext<React.HTMLProps<HTMLElement>>({});
 
 export type IconProps = {
@@ -18,17 +19,18 @@ export type IconProps = {
 
 export const Icon = createComponent<MdIcon, IconProps>(
   function Icon({ iconStyle, className: c0, ...props }, ref) {
-    const { className: c1, ...context } = React.useContext(IconContext);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { className: c1, ref: _, ...context } = React.useContext(IconContext);
     const mergeProps = { className: classMap({}, c0, c1), ...context, ...props };
     switch (iconStyle) {
       case "outlined":
-        return <OutlinedIcon ref={ref as any} {...mergeProps} />;
+        return <OutlinedIcon ref={ref} {...mergeProps} />;
       case "round":
-        return <RoundedIcon ref={ref as any} {...mergeProps} />;
+        return <RoundedIcon ref={ref} {...mergeProps} />;
       case "sharp":
-        return <SharpIcon ref={ref as any} {...mergeProps} />;
+        return <SharpIcon ref={ref} {...mergeProps} />;
     }
-    return <MdIconComponent ref={ref as any} {...mergeProps} />;
+    return <MdIconComponent ref={ref} {...mergeProps} />;
   }
 );
 

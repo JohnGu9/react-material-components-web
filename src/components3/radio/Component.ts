@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdRadio } from "@material/web/radio/radio";
 import { SingleSelectionController } from "@material/web/radio/internal/single-selection-controller";
 import React from 'react';
@@ -14,7 +15,7 @@ export class RmcwRadio extends MdRadio {
     }
 
     override formResetCallback(): void { }
-    override formStateRestoreCallback(state: string): void { }
+    override formStateRestoreCallback(): void { }
 };
 
 class RmcwSingleSelectionController extends SingleSelectionController {

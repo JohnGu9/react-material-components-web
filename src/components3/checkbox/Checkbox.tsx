@@ -11,6 +11,7 @@ export const Checkbox = createComponent<RmcwCheckbox, CheckboxProps>(
   function Checkbox({
     checked,
     disabled = false, // idk where is the bug, but `disabled` should be set to `false` by default. The `undefined` just mean `disabled`=`true`.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     form,
     ...props }, ref) {
     const current = { checked: false, indeterminate: false };

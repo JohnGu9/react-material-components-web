@@ -10,8 +10,8 @@ export type SelectProps = {
   anchorQuadrant?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right',
   quick?: boolean,
   activated?: boolean,
-  onOpen?: () => any,
-  onClose?: () => any,
+  onOpen?: () => unknown,
+  onClose?: () => unknown,
   label?: React.ReactNode,
   helper?: React.ReactNode,
   helperPersistent?: boolean,
@@ -75,7 +75,7 @@ export const Select = createComponent<HTMLDivElement, SelectProps>(
 
     React.useEffect(() => {
       if (opened) {
-        const onFocusIn = (event: FocusEvent) => {
+        const onFocusIn = () => {
           if (innerRef.current?.contains(document.activeElement) !== true) {
             close();
           }
@@ -106,8 +106,8 @@ export const Select = createComponent<HTMLDivElement, SelectProps>(
     React.useEffect(() => {
       const { current } = innerRef;
       if (current !== null) {
-        current.addEventListener('focusin', _ => setIsFocused(true), { passive: true });
-        current.addEventListener('focusout', _ => setIsFocused(false), { passive: true });
+        current.addEventListener('focusin', () => setIsFocused(true), { passive: true });
+        current.addEventListener('focusout', () => setIsFocused(false), { passive: true });
       }
     }, []);
 

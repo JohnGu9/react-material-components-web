@@ -84,11 +84,11 @@ export const Snackbar = createComponent<HTMLElement, SnackbarProps>(
               ? <div className="mdc-snackbar__actions" aria-atomic="true">
                 <ButtonContext.Provider value={{
                   className: 'mdc-snackbar__action',
-                  onClick: evt => onAction?.(),
+                  onClick: () => onAction?.(),
                 }}>
                   <IconButtonContext.Provider value={{
                     className: 'mdc-snackbar__action',
-                    onClick: evt => onDismiss?.(),
+                    onClick: () => onDismiss?.(),
                   }}>
                     {action}
                   </IconButtonContext.Provider>
@@ -184,6 +184,7 @@ export class SnackbarController {
   }
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useSnackbarController() {
   const [props, setProps] = React.useState<{ open: boolean; } & Props>({ open: false });
   const controller = React.useMemo(() => new SnackbarController(setProps), []);

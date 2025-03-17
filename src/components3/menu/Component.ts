@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdMenu } from "@material/web/menu/menu";
 import { MdMenuItem } from "@material/web/menu/menu-item";
 import { MdSubMenu } from "@material/web/menu/sub-menu";

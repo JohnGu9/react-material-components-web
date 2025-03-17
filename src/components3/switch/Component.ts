@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdSwitch } from "@material/web/switch/switch";
 import React from 'react';
 import { createComponent } from '@lit/react';
@@ -14,7 +15,7 @@ export class RmcwSwitch extends MdSwitch {
     }
 
     formResetCallback(): void { }
-    formStateRestoreCallback(state: string): void { }
+    formStateRestoreCallback(): void { }
 };
 
 export const RmcwSwitchComponent = createComponent({

@@ -1,7 +1,7 @@
 import { MDCTabBar } from "@material/tab-bar";
 
 export type State = {
-  onSelected?: (index: number) => any,
+  onSelected?: (index: number) => unknown,
 };
 
 export class TabBarComponent extends MDCTabBar {

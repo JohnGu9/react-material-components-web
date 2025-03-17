@@ -1,6 +1,6 @@
 import { createComponent } from "../../common/Component";
 import { TextField as MdTextField, TextFieldType, UnsupportedTextFieldType } from "@material/web/textfield/internal/text-field";
-import { RmcwFilledTextFieldComponent, RmcwOutlinedTextFieldComponent } from "./Component";
+import { RmcwFilledTextField, RmcwFilledTextFieldComponent, RmcwOutlinedTextField, RmcwOutlinedTextFieldComponent } from "./Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
 import React from "react";
 import { createSyntheticEvent } from "../../common/CreateSyntheticEvent";
@@ -58,14 +58,14 @@ export const TextField = createComponent<MdTextField, TextFieldProps>(
     switch (textFieldStyle) {
       case "outlined":
         return <RmcwOutlinedTextFieldComponent
-          ref={ref as any}
+          ref={ref as React.Ref<RmcwOutlinedTextField>}
           value={value}
           children={mergeChildren}
           onChange={mergeOnChange}
           {...props} />;
     }
     return <RmcwFilledTextFieldComponent
-      ref={ref as any}
+      ref={ref as React.Ref<RmcwFilledTextField>}
       value={value}
       children={mergeChildren}
       onChange={mergeOnChange}

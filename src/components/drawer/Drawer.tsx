@@ -9,8 +9,8 @@ export type DrawerProps = {
   content?: React.ReactNode,
   title?: React.ReactNode,
   subtitle?: React.ReactNode,
-  onScrimClick?: (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => any,
-  onEscapeKey?: (evt: KeyboardEvent) => any,
+  onScrimClick?: (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => unknown,
+  onEscapeKey?: (evt: KeyboardEvent) => unknown,
 };
 
 export const Drawer = createComponent<HTMLElement, DrawerProps>(

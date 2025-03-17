@@ -2,6 +2,7 @@ import "@material/typography/mdc-typography.scss";
 import React from "react";
 import { classMap, createComponent } from "../../common/Common";
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Typography {
   export type Scale =
     'headline1' | 'headline2' | 'headline3' | 'headline4' | 'headline5' | 'headline6' |
@@ -22,7 +23,7 @@ export namespace Typography {
     [E in Properties as `--mdc-typography-${T}-${E}`]?: string | number;
   };
 
-  export type FontFamilyProps = { family?: string } & { [T in Scale]?: ScaleProperties<T> };
+  export type FontFamilyProps = { family?: string; } & { [T in Scale]?: ScaleProperties<T> };
 
   export const FontFamily = createComponent<HTMLDivElement, FontFamilyProps>(
     function Render({
@@ -103,7 +104,7 @@ export namespace Typography {
 
   export function buildTypography<T extends keyof TagToScale, S extends Scale = TagToScale[T], Element = TagToElementType<T>>(tag: T, scale: S) {
     if (!isScale(scale)) throw Error("Parameter [scale]'s type is not [Scale]. ");
-    return createComponent<Element, { style?: ScaleProperties<S> & React.CSSProperties }>(
+    return createComponent<Element, { style?: ScaleProperties<S> & React.CSSProperties; }>(
       function Render({ className, ...props }, ref) {
         return React.createElement(tag, {
           className: classMap({ [`mdc-typography--${scale}`]: true }, className),

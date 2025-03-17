@@ -5,6 +5,7 @@ import { CSSProperties } from "react";
 
 import 'material-symbols/outlined.css';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type OutlinedIconProps = {};
 
 export const OutlinedIcon = createComponent<MdIcon, OutlinedIconProps>(

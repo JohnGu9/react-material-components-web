@@ -20,6 +20,7 @@ export const MdAssistChipComponent = createComponent({
 export class RmcwFilterChip extends MdFilterChip {
     constructor() {
         super();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (this as any).handleClickOnChild = function (event: Event) {
             redispatchEvent(this, event);
         };

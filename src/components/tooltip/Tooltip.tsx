@@ -83,7 +83,7 @@ export const RichTooltip = createComponent<HTMLDivElement, RichTooltipProps>(
   }
 );
 
-export const RichTooltipLink = createComponent<HTMLAnchorElement, {}>(
+export const RichTooltipLink = createComponent<HTMLAnchorElement, object>(
   function RichTooltipLink({ href, className, children, ...props }, ref) {
     const classes = { 'mdc-tooltip__content-link': true };
     return <a ref={ref} className={classMap(classes, className)} href={href} {...props}>{children}</a>;

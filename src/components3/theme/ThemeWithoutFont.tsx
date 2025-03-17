@@ -2,7 +2,7 @@
 
 import React from "react";
 import { createComponent } from "../../common/Component";
-import { usePrefersColorSchemeDark } from "../../common/media";
+import { usePrefersColorSchemeDark } from "../../common/Media";
 import "../typography/TypographyWithoutFont"
 import "./styles.scss";
 

@@ -5,6 +5,7 @@ import { CSSProperties } from "react";
 
 import 'material-symbols/rounded.css';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type RoundedIconProps = {};
 
 export const RoundedIcon = createComponent<MdIcon, RoundedIconProps>(

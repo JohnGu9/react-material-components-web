@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdSlider } from "@material/web/slider/slider";
 import React from 'react';
 import { createComponent } from '@lit/react';
@@ -24,7 +25,7 @@ export class RmcwSlider extends MdSlider {
     }
 
     override formResetCallback(): void { }
-    override formStateRestoreCallback(state: string | Array<[string, string]> | null): void { }
+    override formStateRestoreCallback(): void { }
 };
 
 export const RmcwSliderComponent = createComponent({

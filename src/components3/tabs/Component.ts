@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdTabs } from "@material/web/tabs/tabs";
 import { MdPrimaryTab } from "@material/web/tabs/primary-tab";
 import { MdSecondaryTab } from "@material/web/tabs/secondary-tab";
@@ -14,7 +15,7 @@ export class RmcwTabs extends MdTabs {
         super();
         this.superActivateTab = (this as any).activateTab;
         (this as any).activateTab = function (activeTab: Tab) {
-            const index = (this.tabs as Tab[]).indexOf(activeTab)
+            const index = (this.tabs as Tab[]).indexOf(activeTab);
             this.dispatchEvent(new CustomEvent("selected", { detail: index }));
         };
     }

@@ -10,14 +10,14 @@ export type CardProps = {
   cardStyle?: "elevated" | "filled" | "outlined",
 };
 
-function composeProps({ media, content, children, ...props }: { [key: string]: any; }) {
+function composeProps({ media, content, children, ...props }: { [key: string]: unknown; }) {
   if (media || content) {
     children = <>
       {media}
-      <div className="rmcw-card-content">{content}</div>
+      <div className="rmcw-card-content">{content as ReactNode}</div>
     </>;
   }
-  return { children, ...props };
+  return { children: (children as ReactNode), ...props };
 }
 
 export const Card = createComponent<MdCard, CardProps>(

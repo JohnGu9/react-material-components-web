@@ -7,12 +7,13 @@ import React from "react";
 // And value change behavior can`t be blocked useless disable it.
 // Just like `TextField`.
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const TabsContext = React.createContext(false);
 
 export type TabsProps = {
   secondary?: boolean,
   selected?: number,
-  onSelected?: (index: number) => any,
+  onSelected?: (index: number) => unknown,
   onChange?: (event: Event) => void,
 };
 

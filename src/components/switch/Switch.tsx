@@ -8,7 +8,6 @@ import { RippleEventTarget } from "../ripple/Ripple";
 
 export type SwitchProps = {
   selected?: boolean,
-  touch?: boolean,
   focusRing?: boolean,
   on?: React.ReactNode,
   off?: React.ReactNode,
@@ -18,7 +17,6 @@ export type SwitchProps = {
 export const Switch = createComponent<HTMLButtonElement, SwitchProps>(
   function Switch({
     selected = false,
-    touch = true,
     focusRing = true,
     on, off,
     className,

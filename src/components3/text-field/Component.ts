@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdFilledTextField } from "@material/web/textfield/filled-text-field";
 import { MdOutlinedTextField } from "@material/web/textfield/outlined-text-field";
 import React from 'react';
 import { createComponent } from '@lit/react';
 import { customElement } from 'lit/decorators.js';
-import { PropertyValues } from "lit";
 
 @customElement('rmcw-filled-text-field')
 export class RmcwFilledTextField extends MdFilledTextField {
@@ -17,13 +17,13 @@ export class RmcwFilledTextField extends MdFilledTextField {
         };
     }
 
-    protected override updated(changedProperties: PropertyValues): void { }
+    protected override updated(): void { }
 
     override reset(): void { }
     override formResetCallback(): void { }
-    override formStateRestoreCallback(state: string): void { }
-    override stepDown(stepDecrement?: number): void { }
-    override stepUp(stepIncrement?: number): void { }
+    override formStateRestoreCallback(): void { }
+    override stepDown(): void { }
+    override stepUp(): void { }
 };
 
 @customElement('rmcw-outlined-text-field')
@@ -38,12 +38,12 @@ export class RmcwOutlinedTextField extends MdOutlinedTextField {
         };
     }
 
-    protected updated(changedProperties: PropertyValues): void { }
+    protected override updated(): void { }
 
-    formResetCallback(): void { }
-    formStateRestoreCallback(state: string): void { }
-    stepDown(stepDecrement?: number): void { }
-    stepUp(stepIncrement?: number): void { }
+    override formResetCallback(): void { }
+    override formStateRestoreCallback(): void { }
+    override stepDown(): void { }
+    override stepUp(): void { }
 };
 
 

@@ -4,6 +4,7 @@ import { useRefComposer } from "react-ref-composer";
 import { createComponent, useClassInjector } from "../../common/Common";
 import { RippleComponent } from "./Component";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const RippleEventTarget = React.createContext(new EventTarget());
 
 export type RippleProps = {

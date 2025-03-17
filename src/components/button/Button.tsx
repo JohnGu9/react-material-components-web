@@ -5,6 +5,7 @@ import { createComponent, isDefined, useClassInjector } from "../../common/Commo
 import { RippleComponent } from "../ripple/Component";
 import { IconContext } from "../icon/Icon";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ButtonContext = React.createContext<React.HTMLProps<HTMLButtonElement>>({});
 
 export type ButtonStyle = "normal" | "outlined" | "raised" | "unelevated";
@@ -33,6 +34,7 @@ export const Button = createComponent<HTMLButtonElement, ButtonProps>(
     const composeRefs = useRefComposer();
     const innerRef = React.useRef<HTMLButtonElement>(null);
     const injector = useClassInjector(innerRef);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { className: c1, ref: r0, type, ...context } = React.useContext(ButtonContext);
 
     injector.with('mdc-button', true);

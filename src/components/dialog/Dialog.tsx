@@ -15,8 +15,8 @@ export type DialogProps = {
   fullscreen?: boolean,
   noContentPadding?: boolean,
   stacked?: boolean,
-  onScrimClick?: (evt: MouseEvent) => any,
-  onEscapeKey?: (evt: KeyboardEvent) => any,
+  onScrimClick?: (evt: MouseEvent) => unknown,
+  onEscapeKey?: (evt: KeyboardEvent) => unknown,
 };
 
 export const Dialog = createComponent<HTMLDivElement, DialogProps>(

@@ -2,8 +2,8 @@ import { MDCDialog, strings } from "@material/dialog";
 import { ClassInjector } from "../../common/Common";
 
 export type State = {
-  onScrimClick?: (evt: MouseEvent) => any;
-  onEscapeKey?: (evt: KeyboardEvent) => any;
+  onScrimClick?: (evt: MouseEvent) => unknown;
+  onEscapeKey?: (evt: KeyboardEvent) => unknown;
 };
 
 export class DialogComponent extends MDCDialog {

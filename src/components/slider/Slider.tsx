@@ -11,10 +11,10 @@ export type SliderProps = {
   indicator?: ((value: number) => React.ReactNode),
   tickMarks?: boolean,
   disabled?: boolean,
-  onChange?: (value: number) => any,
-  onChangeStart?: (value: number) => any,
-  onChangeEnd?: (value: number) => any,
-  onChangeCancel?: () => any,
+  onChange?: (value: number) => unknown,
+  onChangeStart?: (value: number) => unknown,
+  onChangeEnd?: (value: number) => unknown,
+  onChangeCancel?: () => unknown,
 };
 
 export const Slider = createComponent<HTMLDivElement, SliderProps>(
@@ -80,7 +80,7 @@ export const Slider = createComponent<HTMLDivElement, SliderProps>(
           onChangeEnd?.(touchEventToValue(event, element, min, max));
           inputRef.current?.blur();
         }
-        const onCancel = (_: TouchEvent) => {
+        const onCancel = () => {
           setOnTouch(false);
           onChangeCancel?.();
           inputRef.current?.blur();

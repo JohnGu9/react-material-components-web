@@ -4,9 +4,11 @@ import { RmcwMenuComponent } from "./Component";
 import React from "react";
 import "./styles.scss";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export * from "../../common/MenuController";
 
 // auto detect sub-menu children
+// eslint-disable-next-line react-refresh/only-export-components
 export const MenuContext = React.createContext({ registerSubMenu: () => { }, deregisterSubMenu: () => { } });
 
 export type MenuProps = {

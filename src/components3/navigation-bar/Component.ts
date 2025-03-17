@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createComponent } from '@lit/react';
 import { MdNavigationBar } from '@material/web/labs/navigationbar/navigation-bar';
 import { NavigationTab } from '@material/web/labs/navigationtab/internal/navigation-tab';

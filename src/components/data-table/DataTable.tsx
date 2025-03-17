@@ -5,7 +5,7 @@ import { classMap, createComponent } from "../../common/Common";
 import { IconButton } from "../icon-button/IconButton";
 import { ListViewBuilder } from "../../common/ListViewBuilder";
 
-const Context = React.createContext<{ isHeader?: boolean }>({ isHeader: false, });
+const Context = React.createContext<{ isHeader?: boolean; }>({ isHeader: false, });
 
 type SortedType = 'none' | 'ascending' | 'descending' | 'other';
 
@@ -13,7 +13,7 @@ const RowContext = React.createContext<{
   headerColumn?: number,
   numericColumns?: Set<number>,
   checkboxColumns?: Set<number>,
-  withSortColumns?: { [key: number]: SortedType },
+  withSortColumns?: { [key: number]: SortedType; },
 }>({});
 
 const CellContext = React.createContext<{
@@ -29,7 +29,7 @@ export type DataTableProps = {
   headerColumn?: number,
   numericColumns?: Iterable<number>,
   checkboxColumns?: Iterable<number>,
-  withSortColumns?: { [key: number]: SortedType },
+  withSortColumns?: { [key: number]: SortedType; },
 };
 
 export const DataTable = createComponent<HTMLDivElement, DataTableProps>(
@@ -93,7 +93,6 @@ export const DataTableBuilder = createComponent<HTMLDivElement, DataTableBuilder
     itemExtent = 52,
     itemCount,
     itemBuilder,
-    children,
     ...props
   }, ref) {
     const classes = {
@@ -171,6 +170,7 @@ export const DataTableRow = createComponent<HTMLTableRowElement, DataTableRowPro
   }
 );
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type DataTableCellProps = {
 };
 
@@ -187,7 +187,7 @@ export const DataTableCell = createComponent<HTMLTableCellElement, DataTableCell
         'mdc-data-table__header-cell': true,
         'mdc-data-table__header-cell--checkbox': isCheckbox,
         'mdc-data-table__header-cell--numeric': isNumeric,
-      }
+      };
 
       const extend = (() => {
         switch (isWithSort) {
@@ -215,10 +215,10 @@ export const DataTableCell = createComponent<HTMLTableCellElement, DataTableCell
             switch (isWithSort) {
               case 'ascending':
               case 'descending':
-                return <IconButton className="material-icons mdc-data-table__sort-icon-button">arrow_upward</IconButton>
+                return <IconButton className="material-icons mdc-data-table__sort-icon-button">arrow_upward</IconButton>;
               case 'other':
               case 'none':
-                return <IconButton className="material-icons mdc-data-table__sort-icon-button">sort</IconButton>
+                return <IconButton className="material-icons mdc-data-table__sort-icon-button">sort</IconButton>;
             }
             return undefined;
           })()}
@@ -233,7 +233,7 @@ export const DataTableCell = createComponent<HTMLTableCellElement, DataTableCell
       'mdc-data-table__cell': true,
       'mdc-data-table__cell--checkbox': isCheckbox,
       'mdc-data-table__cell--numeric': isNumeric,
-    }
+    };
 
     if (isRowHeader)
       return <th ref={ref}

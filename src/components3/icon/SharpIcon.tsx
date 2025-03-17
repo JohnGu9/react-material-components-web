@@ -5,6 +5,7 @@ import { CSSProperties } from "react";
 
 import 'material-symbols/sharp.css';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type SharpIconProps = {};
 
 export const SharpIcon = createComponent<MdIcon, SharpIconProps>(

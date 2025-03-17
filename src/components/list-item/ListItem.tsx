@@ -7,6 +7,7 @@ import { Icon } from "../icon/Icon";
 import styles from "./style.module.scss";
 import "./style.scss";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ListItemContext = React.createContext(false);
 
 export type ListItemProps = {
@@ -41,13 +42,10 @@ function SimpleListItem({ props: {
   selected = false,
   activated = false,
   nonInteractive = false,
-  expanded,
-  defaultExpanded,
   className,
   style,
-  children,
   ...props
-}, forwardRef }: { props: React.ComponentPropsWithoutRef<typeof ListItem>, forwardRef: React.ForwardedRef<HTMLLIElement> }) {
+}, forwardRef }: { props: Omit<React.ComponentPropsWithoutRef<typeof ListItem>, "expanded" | "defaultExpanded">, forwardRef: React.ForwardedRef<HTMLLIElement>; }) {
   const innerRef = React.useRef<HTMLLIElement>(null);
   const injector = useClassInjector(innerRef);
   const composeRefs = useRefComposer();
@@ -116,7 +114,7 @@ function NestedListItem({ props: {
   onClick,
   children,
   ...props
-}, forwardRef }: { props: React.ComponentPropsWithoutRef<typeof ListItem>, forwardRef: React.ForwardedRef<HTMLLIElement> }) {
+}, forwardRef }: { props: React.ComponentPropsWithoutRef<typeof ListItem>, forwardRef: React.ForwardedRef<HTMLLIElement>; }) {
   const innerRef = React.useRef<HTMLLIElement>(null);
   const injector = useClassInjector(innerRef);
   const [opened, setOpened] = React.useState(defaultExpanded);
@@ -141,7 +139,6 @@ function NestedListItem({ props: {
   meta ??= <Icon className={expanded ? styles['nested-open-icon'] : styles['nested-close-icon']}>chevron_right</Icon>;
 
   return (
-    // eslint-disable-next-line jsx-a11y/role-supports-aria-props
     <div className="mdc-deprecated-list-item__wrapper"
       role="presentation"
       aria-expanded={expanded}>

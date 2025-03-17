@@ -4,6 +4,8 @@ import { createSlotNode, SlotNode } from "../common/SlotNode";
 import { MdPrimaryTabComponent, MdSecondaryTabComponent } from "./Component";
 import { TabsContext } from "./Tabs";
 import React from "react";
+import { MdSecondaryTab } from "@material/web/tabs/secondary-tab";
+import { MdPrimaryTab } from "@material/web/tabs/primary-tab";
 
 export type TabProps = {
   icon?: SlotNode,
@@ -18,8 +20,8 @@ export const Tab = createComponent<MdTab, TabProps>(
       {children}
     </>;
     if (secondary) {
-      return <MdSecondaryTabComponent ref={ref as any} children={mergeChildren} {...props} />;
+      return <MdSecondaryTabComponent ref={ref as React.Ref<MdSecondaryTab>} children={mergeChildren} {...props} />;
     }
-    return <MdPrimaryTabComponent ref={ref as any} inlineIcon={inlineIcon} children={mergeChildren} {...props} />;
+    return <MdPrimaryTabComponent ref={ref as React.Ref<MdPrimaryTab>} inlineIcon={inlineIcon} children={mergeChildren} {...props} />;
   }
 );

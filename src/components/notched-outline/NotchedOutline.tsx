@@ -25,7 +25,7 @@ function WithLabel({ props: {
   children,
   className,
   ...props
-}, forwardRef }: { props: React.ComponentPropsWithoutRef<typeof NotchedOutline>, forwardRef: React.ForwardedRef<HTMLSpanElement> }) {
+}, forwardRef }: { props: React.ComponentPropsWithoutRef<typeof NotchedOutline>, forwardRef: React.ForwardedRef<HTMLSpanElement>; }) {
   const [label, setLabel] = React.useState<HTMLSpanElement | null>(null);
   const [width, setWidth] = React.useState(0);
 
@@ -43,7 +43,7 @@ function WithLabel({ props: {
     'mdc-notched-outline': true,
     'mdc-notched-outline--upgraded': true,
     'mdc-notched-outline--notched': notched,
-  }
+  };
 
   return (
     <span ref={forwardRef}
@@ -66,12 +66,9 @@ function WithLabel({ props: {
 }
 
 function WithoutLabel({ props: {
-  labelId,
-  required,
-  notched,
   className,
   ...props
-}, forwardRef }: { props: React.ComponentPropsWithoutRef<typeof NotchedOutline>, forwardRef: React.ForwardedRef<HTMLSpanElement> }) {
+}, forwardRef }: { props: Omit<React.ComponentPropsWithoutRef<typeof NotchedOutline>, "labelId" | "required" | "notched">, forwardRef: React.ForwardedRef<HTMLSpanElement>; }) {
 
   const classes = {
     'mdc-notched-outline': true,

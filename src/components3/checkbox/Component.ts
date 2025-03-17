@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdCheckbox } from "@material/web/checkbox/checkbox";
 import React from 'react';
 import { createComponent } from '@lit/react';
@@ -15,7 +16,7 @@ export class RmcwCheckbox extends MdCheckbox {
     }
 
     override formResetCallback(): void { }
-    override formStateRestoreCallback(state: string): void { }
+    override formStateRestoreCallback(): void { }
 };
 
 export const RmcwCheckboxComponent = createComponent({

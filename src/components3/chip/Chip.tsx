@@ -3,16 +3,17 @@ import { MdAssistChipComponent, MdSuggestionChipComponent, RmcwFilterChip, RmcwF
 import { MdSuggestionChip } from "@material/web/chips/suggestion-chip";
 import { createComponent } from "../../common/Component";
 import { createSlotNode, SlotNode } from "../common/SlotNode";
+import { ReactNode } from "react";
 
 
-function composeProps({ icon, style, children, ...props }: { [key: string]: any; }) {
+function composeProps({ icon, style, children, ...props }: { [key: string]: unknown; }) {
   return {
-    style: { "--md-icon-size": "18px", ...style },
+    style: { "--md-icon-size": "18px", ...(style as React.CSSProperties) },
     children: icon ? <>
       {children}
-      {icon ? createSlotNode(icon, "icon") : <></>}
+      {icon ? createSlotNode(icon as SlotNode, "icon") : <></>}
     </>
-      : children,
+      : children as ReactNode,
     ...props
   };
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdFilledSelect } from "@material/web/select/filled-select";
 import { MdOutlinedSelect } from "@material/web/select/outlined-select";
 import { MdSelectOption } from "@material/web/select/select-option";
@@ -14,12 +15,12 @@ export class RmcwFilledSelect extends MdFilledSelect {
         (this as any).selectItem = () => { };
     }
 
-    override select(value: string): void { }
-    override selectIndex(index: number): void { }
+    override select(): void { }
+    override selectIndex(): void { }
     override reset(): void { }
     override[onReportValidity]() { }
     override formResetCallback(): void { }
-    override formStateRestoreCallback(state: string): void { }
+    override formStateRestoreCallback(): void { }
 };
 
 export const RmcwFilledSelectComponent = createComponent({
@@ -36,12 +37,12 @@ export class RmcwOutlinedSelect extends MdOutlinedSelect {
         (this as any).selectItem = () => { };
     }
 
-    override select(value: string): void { }
-    override selectIndex(index: number): void { }
+    override select(): void { }
+    override selectIndex(): void { }
     override reset(): void { }
     override[onReportValidity]() { }
     override formResetCallback(): void { }
-    override formStateRestoreCallback(state: string): void { }
+    override formStateRestoreCallback(): void { }
 };
 
 export const RmcwOutlinedSelectComponent = createComponent({

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { customElement } from 'lit/decorators.js';
 import { MdNavigationDrawerModal } from '@material/web/labs/navigationdrawer/navigation-drawer-modal';
 import { MdNavigationDrawer } from '@material/web/labs/navigationdrawer/navigation-drawer';

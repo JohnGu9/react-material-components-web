@@ -8,7 +8,7 @@ export type LinearProgressProps = ProgressProps & {
 export const LinearProgress = createComponent<RmcwLinearProgress, LinearProgressProps>(
   function LinearProgress({ value, ...props }, ref) {
     const indeterminate = (value === undefined);
-    return <RmcwLinearProgressComponent ref={ref} indeterminate={indeterminate} value={value} {...(props as any)} />;
+    return <RmcwLinearProgressComponent ref={ref} indeterminate={indeterminate} value={value} {...props} />;
   }
 );
 

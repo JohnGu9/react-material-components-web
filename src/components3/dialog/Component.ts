@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdDialog } from "@material/web/dialog/dialog";
 import React from 'react';
 import { createComponent } from '@lit/react';
@@ -19,41 +20,41 @@ const style = css`
 
 @customElement('rmcw-dialog')
 export class RmcwDialog extends MdDialog {
-    static override styles = [...MdDialog.styles, style];
+  static override styles = [...MdDialog.styles, style];
 
-    constructor() {
-        super();
-        this.removeEventListener('submit', (this as any).handleSubmit);
-        (this as any).handleCancel = (e: Event) => { e.preventDefault(); };
-        (this as any).handleClose = () => { this.close(); };
-        (this as any).handleDialogClick = (event: Event) => {
-            this.dispatchEvent(new CustomEvent("scrim-click", { detail: event }));
-        };
-        (this as any).handleKeydown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
-                event.preventDefault();
-                this.dispatchEvent(new CustomEvent("escape-key", { detail: event }));
-                return;
-            }
-        };
-    }
+  constructor() {
+    super();
+    this.removeEventListener('submit', (this as any).handleSubmit);
+    (this as any).handleCancel = (e: Event) => { e.preventDefault(); };
+    (this as any).handleClose = () => { this.close(); };
+    (this as any).handleDialogClick = (event: Event) => {
+      this.dispatchEvent(new CustomEvent("scrim-click", { detail: event }));
+    };
+    (this as any).handleKeydown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        this.dispatchEvent(new CustomEvent("escape-key", { detail: event }));
+        return;
+      }
+    };
+  }
 
-    protected override render() {
-        const scrollable =
-            this.open && !((this as any).isAtScrollTop && (this as any).isAtScrollBottom);
-        const classes = {
-            'has-headline': (this as any).hasHeadline,
-            'has-actions': (this as any).hasActions,
-            'has-icon': (this as any).hasIcon,
-            'scrollable': scrollable,
-            'show-top-divider': scrollable && !(this as any).isAtScrollTop,
-            'show-bottom-divider': scrollable && !(this as any).isAtScrollBottom,
-        };
+  protected override render() {
+    const scrollable =
+      this.open && !((this as any).isAtScrollTop && (this as any).isAtScrollBottom);
+    const classes = {
+      'has-headline': (this as any).hasHeadline,
+      'has-actions': (this as any).hasActions,
+      'has-icon': (this as any).hasIcon,
+      'scrollable': scrollable,
+      'show-top-divider': scrollable && !(this as any).isAtScrollTop,
+      'show-bottom-divider': scrollable && !(this as any).isAtScrollBottom,
+    };
 
-        // The focus trap sentinels are only added after the dialog opens, since
-        // dialog.showModal() will try to autofocus them, even with tabindex="-1".
-        const showFocusTrap = this.open && !this.noFocusTrap;
-        const focusTrap = html`
+    // The focus trap sentinels are only added after the dialog opens, since
+    // dialog.showModal() will try to autofocus them, even with tabindex="-1".
+    const showFocusTrap = this.open && !this.noFocusTrap;
+    const focusTrap = html`
           <div
             class="focus-trap"
             tabindex="0"
@@ -61,8 +62,8 @@ export class RmcwDialog extends MdDialog {
             @focus=${(this as any).handleFocusTrapFocus}></div>
         `;
 
-        const { ariaLabel } = this;
-        return html`
+    const { ariaLabel } = this;
+    return html`
           <div class="scrim"></div>
           <dialog
             class=${classMap(classes)}
@@ -102,15 +103,15 @@ export class RmcwDialog extends MdDialog {
             ${showFocusTrap ? focusTrap : nothing}
           </dialog>
         `;
-    }
+  }
 };
 
 export const RmcwDialogComponent = createComponent({
-    tagName: 'rmcw-dialog',
-    elementClass: RmcwDialog,
-    react: React,
-    events: {
-        onEscapeKey: 'escape-key',
-        onScrimClick: 'scrim-click',
-    }
+  tagName: 'rmcw-dialog',
+  elementClass: RmcwDialog,
+  react: React,
+  events: {
+    onEscapeKey: 'escape-key',
+    onScrimClick: 'scrim-click',
+  }
 });
