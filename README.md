@@ -212,6 +212,15 @@ Recently you may receive warning message from sass.
 Just set your project sass version to `1.77.6` (in `dependencies` or `devDependencies`).
 The Material Design 2 sass file will not be supported by sass 2.0. It has no effect on Material Design 3.
 
+## Caution
+
+Before version 0.4.0, the build target is `es5`.
+
+After version 0.4.0, the build target is `esnext`. You should use some bundle tool to help your bundle this project code into your own project (like `esbuild`). Set your tsconfig file `"module": "ESNext"` and build system (like `vite` config file `build.target`) to convert your code to target platform compatible code.
+
+Why `esnext`?
+Using `esnext` to compile this project and preform minimal transpiling. This can product less redundant code and reduce the package size for download.
+
 ## Development requirement
 
 If you use [webpack](https://webpack.js.org), it require [sass loader](https://www.npmjs.com/package/sass-loader) to bundle [.scss] file into project (the project that come from "create-react-app" script already have [sass loader](https://www.npmjs.com/package/sass-loader)).
