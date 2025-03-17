@@ -12,7 +12,7 @@
 // Use the Typography.getClass. Example:
 // <div className={`${Typography.getClass('headline', 'medium')} my-class`}>Hello</div>
 
-import "@fontsource/roboto";
+import "@fontsource/roboto/index.css";
 
 import { Typography } from "./TypographyWithoutFont";
 export { Typography };

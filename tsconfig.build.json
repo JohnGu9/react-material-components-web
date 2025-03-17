@@ -1,10 +1,14 @@
 {
-  "extends": "./tsconfig",
   "compilerOptions": {
+    "strict": true,
+    "jsx": "react-jsx",
     "declaration": true,
-    "noEmit": false,
-    "sourceMap": false,
-    "outDir": "dist"
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler"
   },
   "include": [
     "src/index.ts",
