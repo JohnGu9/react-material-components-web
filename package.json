@@ -1,6 +1,6 @@
 {
   "name": "rmcw",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "This library provide a react wrapper for material design components. ",
   "private": false,
   "type": "module",

@@ -3,8 +3,6 @@ import { createComponent } from "../../common/Component";
 import { MdIconComponent } from "./Component";
 import { CSSProperties } from "react";
 
-import 'material-symbols/rounded.css';
-
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type RoundedIconProps = {};
 

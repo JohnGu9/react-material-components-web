@@ -1,5 +1,4 @@
 import "@material/icon-button/styles.scss";
-import "material-icons/iconfont/material-icons.css";
 import React from "react";
 import { classMap, createComponent } from "../../common/Common";
 

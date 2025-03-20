@@ -202,7 +202,17 @@ const myCustomDarkTheme: ThemeData = {
 
 ## Note
 
-`Icon` always comes with static icon font file (Material Design 2 use [material-icons](https://www.npmjs.com/package/material-icons) and Material Design 3 use [material-symbols](https://www.npmjs.com/package/material-symbols)). If you don't want to bundle the font file into your project build, do not import and use the `Icon` components.
+Material Design 2 Icon use [material-icons](https://www.npmjs.com/package/material-icons) and Material Design 3 Icon use [material-symbols](https://www.npmjs.com/package/material-symbols)
+
+`material-icons` source files (over 100KB each font file) and `material-symbols` source files (over 3MB each font file) is too large . So rmcw no longer import `material-icons` and `material-symbols`. You should import the font source files manually in your own source file.
+
+```jsx
+import "material-icons/iconfont/material-icons.css"; // import material-icons
+
+import "material-symbols/rounded.css"; // import material-symbols round style, for RoundedIcon
+import "material-symbols/outlined.css"; // import material-symbols outlined style, for OutlinedIcon
+import "material-symbols/sharp.css"; // import material-symbols sharp style, for SharpIcon
+```
 
 Check out https://fonts.google.com/icons for available icons.
 
@@ -216,7 +226,7 @@ The Material Design 2 sass file will not be supported by sass 2.0. It has no eff
 
 Before version 0.4.0, the build target is `es5`.
 
-Version 0.4.0, the build target is `esnext`. It is too aggressive and will not be support by many toolchains. Sorry.
+Version 0.4.0, the build target is `esnext`. It is too aggressive and will not be supported by many toolchains. Sorry.
 
 After version 0.4.1, the build target is `es2020`. You should use some bundle tool to help your bundle this project code into your own project (like `esbuild`). Set your tsconfig file `"module": "ESNext"` and build system (like `vite` config file `build.target`) to convert your code to target platform compatible code.
 
