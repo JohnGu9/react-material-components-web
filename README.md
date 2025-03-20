@@ -216,10 +216,12 @@ The Material Design 2 sass file will not be supported by sass 2.0. It has no eff
 
 Before version 0.4.0, the build target is `es5`.
 
-After version 0.4.0, the build target is `esnext`. You should use some bundle tool to help your bundle this project code into your own project (like `esbuild`). Set your tsconfig file `"module": "ESNext"` and build system (like `vite` config file `build.target`) to convert your code to target platform compatible code.
+Version 0.4.0, the build target is `esnext`. It is too aggressive and will not be support by many toolchains. Sorry.
 
-Why `esnext`?
-Using `esnext` to compile this project and preform minimal transpiling. This can product less redundant code and reduce the package size for download.
+After version 0.4.1, the build target is `es2020`. You should use some bundle tool to help your bundle this project code into your own project (like `esbuild`). Set your tsconfig file `"module": "ESNext"` and build system (like `vite` config file `build.target`) to convert your code to target platform compatible code.
+
+Why `es2020`?
+Using `es2020` to compile this project and preform minimal transpiling. This can product less redundant code and reduce the package size for download.
 
 ## Development requirement
 
