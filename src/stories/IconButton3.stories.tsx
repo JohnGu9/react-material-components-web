@@ -1,7 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { IconButton } from '../components3/icon-button/IconButton';
 import { Icon } from '../components3/icon/Icon';
-import "material-symbols/outlined.css";
 
 export default {
   component: IconButton,

@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "target": "ES2022",
+    "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": [
-      "ES2022",
+      "ESNext",
       "DOM",
       "DOM.Iterable"
     ],
     "module": "ESNext",
     "skipLibCheck": true,
+    "experimentalDecorators": true, // many toolchains not support decorators
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

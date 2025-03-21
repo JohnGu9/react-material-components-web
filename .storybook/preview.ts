@@ -1,4 +1,6 @@
 import type { Preview } from '@storybook/react';
+import "material-symbols/outlined.css";
+import "material-icons/iconfont/material-icons.css";
 
 const preview: Preview = {
   parameters: {
