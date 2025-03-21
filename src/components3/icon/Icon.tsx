@@ -10,19 +10,21 @@ import React from "react";
 // To reduce bundle size, try to import "sub-file"
 // For example, just `import { OutlinedIcon } from "rmcw/components3/OutlinedIcon"` to limit bundle css files that only include `material-symbols/outlined.css`
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const IconContext = React.createContext<React.HTMLProps<HTMLElement>>({});
+export type IconStyle = "outlined" | "round" | "sharp";
 
 export type IconProps = {
-  iconStyle?: "outlined" | "round" | "sharp";
+  iconStyle?: IconStyle;
 };
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const IconContext = React.createContext<React.HTMLProps<HTMLElement> & IconProps>({});
 
 export const Icon = createComponent<MdIcon, IconProps>(
   function Icon({ iconStyle, className: c0, ...props }, ref) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { className: c1, ref: _, ...context } = React.useContext(IconContext);
+    const { className: c1, ref: _, iconStyle: iconStyleFromContext, ...context } = React.useContext(IconContext);
     const mergeProps = { className: classMap({}, c0, c1), ...context, ...props };
-    switch (iconStyle) {
+    switch (iconStyle ?? iconStyleFromContext) {
       case "outlined":
         return <OutlinedIcon ref={ref} {...mergeProps} />;
       case "round":
