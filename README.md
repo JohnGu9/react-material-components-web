@@ -209,8 +209,8 @@ Material Design 2 Icon use [material-icons](https://www.npmjs.com/package/materi
 ```jsx
 import "material-icons/iconfont/material-icons.css"; // import material-icons
 
+import "material-symbols/outlined.css"; // import material-symbols outlined style, for OutlinedIcon (default style for material icon)
 import "material-symbols/rounded.css"; // import material-symbols round style, for RoundedIcon
-import "material-symbols/outlined.css"; // import material-symbols outlined style, for OutlinedIcon
 import "material-symbols/sharp.css"; // import material-symbols sharp style, for SharpIcon
 ```
 

@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { Icon } from '../components3/icon/Icon';
+import "material-symbols/outlined.css";
 
 export default {
   component: Icon,
