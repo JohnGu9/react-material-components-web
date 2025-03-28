@@ -2,7 +2,6 @@ import { Meta, StoryFn } from '@storybook/react';
 import { Tabs } from '../components3/tabs/Tabs';
 import { Icon } from '../components3/icon/Icon';
 import { Tab } from '../components3/tabs/Tab';
-import React from 'react';
 
 export default {
   component: Tabs,
@@ -21,7 +20,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   selected: 1
 };
-
 
 const InlineIconTemplate: StoryFn<typeof Tabs> = (args) => {
   return (

@@ -6,9 +6,10 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "outDir": "dist",
-    "target": "ES2020",
+    "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "experimentalDecorators": true, // many toolchains not support decorators
   },
   "include": [
     "src/index.ts",

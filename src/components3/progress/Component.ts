@@ -30,7 +30,8 @@ const linearProgressStyle = css`
 :host {
     --_linear-progress-transition: var(--rmcw-linear-progress-transition, transform 250ms cubic-bezier(0.4, 0, 0.6, 1));
     .inactive-track,
-    .bar {
+    .bar,
+    .bar-inner {
         transition: var(--_linear-progress-transition);
     }
 }
