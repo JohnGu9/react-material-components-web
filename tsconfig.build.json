@@ -9,7 +9,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "experimentalDecorators": true, // many toolchains not support decorators
+    "experimentalDecorators": true, // many toolchains not support decorators, convert decorators to native js code
   },
   "include": [
     "src/index.ts",
