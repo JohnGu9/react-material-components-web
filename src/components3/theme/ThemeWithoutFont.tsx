@@ -3,7 +3,7 @@
 import React from "react";
 import { createComponent } from "../../common/Component";
 import { usePrefersColorSchemeDark } from "../../common/Media";
-import "../typography/TypographyWithoutFont"
+import "../typography/TypographyWithoutFont";
 import "./styles.scss";
 
 export type ThemeData = {
@@ -74,8 +74,8 @@ export type ThemeData = {
 
 export type ThemeProps = {
   enableDarkTheme?: boolean,
-  lightTheme?: ThemeData,
-  darkTheme?: ThemeData,
+  lightTheme?: Partial<ThemeData>,
+  darkTheme?: Partial<ThemeData>,
   withBackgroundColor?: boolean,
 };
 
@@ -99,7 +99,7 @@ export const Theme = createComponent<HTMLDivElement, ThemeProps>(
       };
     }, [style, targetTheme, withBackgroundColor]);
 
-    return <div data-dark-mode={`rmcw3-dark-mode-${getModeString(enableDarkTheme)}`} style={mergeStyle} ref={ref} {...props} />
+    return <div data-dark-mode={`rmcw3-dark-mode-${getModeString(enableDarkTheme)}`} data-current-dark-mode={isDark ? "on" : "off"} style={mergeStyle} ref={ref} {...props} />;
   }
 );
 
@@ -110,5 +110,5 @@ function getModeString(enableDarkTheme?: boolean) {
     case false:
       return 'off';
   }
-  return 'auto'
+  return 'auto';
 }
