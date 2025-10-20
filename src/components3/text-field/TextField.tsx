@@ -48,8 +48,8 @@ export const TextField = createComponent<MdTextField, TextFieldProps>(
   function TextField({ textFieldStyle, leadingIcon, trailingIcon, children, value = "", onChange, ...props }, ref) {
     const mergeChildren = <>
       {children}
-      {leadingIcon ? createSlotNode(leadingIcon, "leading-icon") : <></>}
-      {trailingIcon ? createSlotNode(trailingIcon, "trailing-icon") : <></>}
+      {leadingIcon ? createSlotNode(leadingIcon, "leading-icon") : undefined}
+      {trailingIcon ? createSlotNode(trailingIcon, "trailing-icon") : undefined}
     </>;
     const mergeOnChange = React.useMemo(() => {
       return (e: Event) => onChange?.(createSyntheticEvent(e) as React.ChangeEvent<MdTextField>);

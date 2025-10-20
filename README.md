@@ -82,7 +82,7 @@ import { Button } from "rmcw/dist/components3"; // quick start
 - Slider
 - Switch
 - Tabs
-- TextField
+- TextField (Possibly not work, use material design 2 TextField)
 - Typography
 
 > `Material Design 3` - Early access stage. Material Design 3 is not completed yet.

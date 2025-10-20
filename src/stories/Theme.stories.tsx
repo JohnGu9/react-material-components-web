@@ -31,7 +31,7 @@ import { DataTable, DataTableRow, DataTableCell } from '../components/data-table
 import { Snackbar } from '../components/snackbar/Snackbar';
 import { Tooltip } from '../components/tooltip/Tooltip';
 
-const argTypes: { [key: string]: unknown } = {};
+const argTypes: { [key: string]: unknown; } = {};
 for (const [key, value] of Object.entries(defaultLightTheme)) {
   argTypes[key] = { control: { type: 'color', presetColors: [value] } };
 }
@@ -61,7 +61,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
   const [segment, setSegment] = React.useState(false);
   const [textArea, setTextArea] = React.useState("");
   const [textField, setTextField] = React.useState("");
-  const { oled, ...other } = args as { oled?: boolean };
+  const { oled, ...other } = args as { oled?: boolean; };
   const darkTheme = oled ? oledDarkTheme : defaultDarkTheme;
   React.useEffect(() => {
     const listener = ({ target }: MouseEvent) => {
@@ -73,7 +73,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
       }
     };
     window.addEventListener('click', listener, { passive: true });
-    return () => { window.removeEventListener('click', listener) }
+    return () => { window.removeEventListener('click', listener); };
   }, []);
   return (
     <Theme darkTheme={darkTheme} {...other} style={{ position: 'relative' }} >
@@ -138,7 +138,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
                         return false;
                     }
                     return false;
-                  })
+                  });
                 }} />}>
                 Checkbox
               </FormField>
@@ -177,6 +177,9 @@ const Template: StoryFn<typeof Theme> = (args) => {
               <TextField
                 label="Label"
                 helper="Helper"
+                prefix="Prefix"
+                suffix="Suffix"
+                helperPersistent
                 outlined
                 value={textField}
                 disabled={disabled}
@@ -187,6 +190,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
               <TextArea
                 label="Label"
                 helper="Helper"
+                helperPersistent
                 value={textArea}
                 disabled={disabled}
                 onChange={e => setTextArea(e.target.value)} />
@@ -266,7 +270,7 @@ const Template: StoryFn<typeof Theme> = (args) => {
         </TopAppBar>
       </Drawer>
     </Theme>
-  )
+  );
 };
 
 export const Primary = Template.bind({});
@@ -281,7 +285,7 @@ const NoArgumentTemplate: StoryFn<typeof Theme> = (args) => {
     <ListDivider />
     <ListItem primaryText="Apple" />
     <ListItem primaryText="Banana" />
-  </Theme>
+  </Theme>;
 };
 
 export const NoArgument = NoArgumentTemplate.bind({});

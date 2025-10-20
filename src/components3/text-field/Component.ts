@@ -13,7 +13,8 @@ export class RmcwFilledTextField extends MdFilledTextField {
             const preValue = this.value;
             this.value = (event.target as HTMLInputElement).value;
             this.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
-            this.value = (event.target as HTMLInputElement).value = preValue;
+            event.preventDefault();
+            this.value = preValue;
         };
     }
 
@@ -34,7 +35,8 @@ export class RmcwOutlinedTextField extends MdOutlinedTextField {
             const preValue = this.value;
             this.value = (event.target as HTMLInputElement).value;
             this.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
-            this.value = (event.target as HTMLInputElement).value = preValue;
+            event.preventDefault();
+            this.value = preValue;
         };
     }
 
