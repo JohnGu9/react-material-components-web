@@ -25,6 +25,7 @@ export class RmcwFilledTextField extends MdFilledTextField {
 
     protected override updated(): void {
         this.newDirty = false;
+        (this as any).getInputOrTextarea().value = this.value; // @FIX: react19 onChange may be called before this line
     }
 
     override reset(): void { }
@@ -54,6 +55,7 @@ export class RmcwOutlinedTextField extends MdOutlinedTextField {
 
     protected override updated(): void {
         this.newDirty = false;
+        (this as any).getInputOrTextarea().value = this.value; // @FIX: react19 onChange may be called before this line
     }
 
     override formResetCallback(): void { }
