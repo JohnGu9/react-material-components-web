@@ -1,4 +1,4 @@
-export function createSyntheticEvent<T extends Element, E extends Event>(event: E, type?: string): React.SyntheticEvent<T, E> {
+export function createSyntheticEvent<T extends Element, E extends Event>(event: E, type?: string) {
     let isDefaultPrevented = false;
     let isPropagationStopped = false;
     const preventDefault = () => {

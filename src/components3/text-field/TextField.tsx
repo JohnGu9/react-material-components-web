@@ -54,47 +54,52 @@ export const TextField = createComponent<MdTextField, TextFieldProps>(
     const state = React.useMemo(() => { return { value: "" }; }, []);
     state.value = value;
     const mergeOnChange = React.useMemo(() => {
-      return (event: Event) => {
-        if ("detail" in event) {
-          const { currentTarget, target } = event;
-          function createSyntheticEvent(event: InputEvent) {
-            let isDefaultPrevented = false;
-            let isPropagationStopped = false;
-            return {
-              nativeEvent: event,
-              currentTarget: currentTarget as EventTarget & MdTextField,
-              target: target as EventTarget & MdTextField,
-              bubbles: event.bubbles,
-              cancelable: event.cancelable,
-              defaultPrevented: event.defaultPrevented,
-              eventPhase: event.eventPhase,
-              isTrusted: event.isTrusted,
-              preventDefault: function () {
-                isDefaultPrevented = true;
-                this.defaultPrevented = true;
-                event.preventDefault();
-                (target as MdTextField).value = state.value;
-                (event.target as HTMLInputElement).value = state.value;
-              },
-              isDefaultPrevented: () => isDefaultPrevented,
-              stopPropagation: function () {
-                isPropagationStopped = true;
-                event.stopPropagation();
-                (target as MdTextField).value = state.value;
-                (event.target as HTMLInputElement).value = state.value;
-              },
-              isPropagationStopped: () => isPropagationStopped,
-              persist: () => { },
-              timeStamp: event.timeStamp,
-              type: "change",
-            };
+      if (onChange)
+        return (event: Event) => {
+          if ("detail" in event) {
+            const { currentTarget, target } = event;
+            function createSyntheticEvent(event: Event) {
+              let isDefaultPrevented = false;
+              let isPropagationStopped = false;
+              return {
+                nativeEvent: event,
+                currentTarget: currentTarget as EventTarget & MdTextField,
+                target: target as EventTarget & MdTextField,
+                bubbles: event.bubbles,
+                cancelable: event.cancelable,
+                defaultPrevented: event.defaultPrevented,
+                eventPhase: event.eventPhase,
+                isTrusted: event.isTrusted,
+                preventDefault: function () {
+                  isDefaultPrevented = true;
+                  this.defaultPrevented = true;
+                  event.preventDefault();
+                  (target as MdTextField).value = state.value;
+                  (event.target as HTMLInputElement).value = state.value;
+                },
+                isDefaultPrevented: () => isDefaultPrevented,
+                stopPropagation: function () {
+                  isPropagationStopped = true;
+                  event.stopPropagation();
+                  (target as MdTextField).value = state.value;
+                  (event.target as HTMLInputElement).value = state.value;
+                },
+                isPropagationStopped: () => isPropagationStopped,
+                persist: () => { },
+                timeStamp: event.timeStamp,
+                type: "change",
+              };
+            }
+            event.stopPropagation();
+            if (event.detail === null) {
+              onChange(createSyntheticEvent(event));
+            } else {
+              onChange(createSyntheticEvent(event.detail as Event));
+            }
+          } else {
+            onChange(createSyntheticEvent(event, "change"));
           }
-          event.stopPropagation();
-          onChange?.(createSyntheticEvent((event as CustomEvent<InputEvent>).detail) as React.ChangeEvent<MdTextField>);
-        } else {
-          onChange?.(createSyntheticEvent(event, "change") as React.ChangeEvent<MdTextField>);
-        }
-      };
+        };
     }, [onChange, state]);
 
     switch (textFieldStyle) {
