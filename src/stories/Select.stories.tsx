@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { ListDivider } from '../components/list-divider/ListDivider';
 import { ListItem } from '../components/list-item/ListItem';
 import { Select } from '../components/select/Select';

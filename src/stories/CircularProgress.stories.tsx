@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { CircularProgress } from '../components/circular-progress/CircularProgress';
 
 export default {

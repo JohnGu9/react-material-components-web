@@ -38,7 +38,7 @@ const [open, setOpen] = React.useState(false);
 
 This library will block most of mdc default behavior that keep the dom state sync with react state. Including some input element, the state will keep sync without call `Event.preventDefault()` conditionally (Checkbox, Radio and etc).
 
-But Material Design 2 `TextArea` and `TextField` still keep normal react input control style. Use `Event.preventDefault()` to prevent state change conditionally in React 16 or before. Material Design 3 `TextField` will keep `value` sync without call `Event.preventDefault()`. Just like React 18.
+But `TextArea` and `TextField` still keep normal react input control style. Use `Event.preventDefault()` to prevent state change conditionally.
 
 ## Compatible with React 18
 
@@ -82,7 +82,7 @@ import { Button } from "rmcw/dist/components3"; // quick start
 - Slider
 - Switch
 - Tabs
-- TextField (Possibly not work, use material design 2 TextField)
+- TextField
 - Typography
 
 > `Material Design 3` - Early access stage. Material Design 3 is not completed yet.
@@ -95,7 +95,7 @@ https://github.com/material-components/material-web/discussions/5642
 
 > Material Design 3 is not default components for import. Material Design 2 would still be default for long time. You need to import Material Design 3 components from sub directory. For example `import { Button } from "rmcw/dist/components3"`. Material Design 3 is built on `Lit` and there are great stability risks with `React`. Material Design 2 is directly built on `React` and it would be fully compatible with `React`!
 
-> Known bug: `TextField` not working in React 19. `Button` inside `Menu` not working in Safari.
+> Known bug: `Button` inside `Menu` not working in Safari.
 
 System Requirement:
 | Browser | Version |

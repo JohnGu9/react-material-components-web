@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { LinearProgress } from '../components3/progress/LinearProgress';
 
 export default {

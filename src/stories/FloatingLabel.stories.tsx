@@ -1,5 +1,5 @@
 import "@material/floating-label/mdc-floating-label.scss";
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { FloatingLabel } from '../components/floating-label/FloatingLabel';
 
 export default {

@@ -5,34 +5,17 @@ import React from 'react';
 import { createComponent } from '@lit/react';
 import { customElement } from 'lit/decorators.js';
 
+// @BUG: undo/redo no change event emit
+
 @customElement('rmcw-filled-text-field')
 export class RmcwFilledTextField extends MdFilledTextField {
     constructor() {
         super();
         (this as any).handleInput = (event: InputEvent) => {
-            const preValue = this.value;
             this.value = (event.target as HTMLInputElement).value;
-            event.preventDefault();
-            this.newDirty = true;
-            this.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
-            if (this.newDirty) {
-                this.value = preValue; // @FIX: react19 onChange may be called before this line
-            }
+            this.dispatchEvent(new CustomEvent('change', { bubbles: true, cancelable: true, detail: event }));
         };
     }
-
-    protected newDirty = false;
-
-    protected override updated(): void {
-        this.newDirty = false;
-        (this as any).getInputOrTextarea().value = this.value; // @FIX: react19 onChange may be called before this line
-    }
-
-    override reset(): void { }
-    override formResetCallback(): void { }
-    override formStateRestoreCallback(): void { }
-    override stepDown(): void { }
-    override stepUp(): void { }
 };
 
 @customElement('rmcw-outlined-text-field')
@@ -40,28 +23,10 @@ export class RmcwOutlinedTextField extends MdOutlinedTextField {
     constructor() {
         super();
         (this as any).handleInput = (event: InputEvent) => {
-            const preValue = this.value;
             this.value = (event.target as HTMLInputElement).value;
-            event.preventDefault();
-            this.newDirty = true;
             this.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
-            if (this.newDirty) {
-                this.value = preValue; // @FIX: react19 onChange may be called before this line
-            }
         };
     }
-
-    protected newDirty = false;
-
-    protected override updated(): void {
-        this.newDirty = false;
-        (this as any).getInputOrTextarea().value = this.value; // @FIX: react19 onChange may be called before this line
-    }
-
-    override formResetCallback(): void { }
-    override formStateRestoreCallback(): void { }
-    override stepDown(): void { }
-    override stepUp(): void { }
 };
 
 

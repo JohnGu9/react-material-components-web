@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import "material-symbols/outlined.css";
 import "material-icons/iconfont/material-icons.css";
 

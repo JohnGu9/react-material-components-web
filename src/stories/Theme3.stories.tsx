@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { Theme } from '../components3/theme/Theme';
 import { List } from '../components3/list/List';
 import { Divider } from '../components3/divider/Divider';

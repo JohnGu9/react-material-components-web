@@ -5,6 +5,7 @@
     "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "useDefineForClassFields": false,
     "outDir": "dist",
     "target": "ESNext",
     "module": "ESNext",

@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { Menu, useMenuController } from '../components3/menu/Menu';
 import { MenuItem } from '../components3/menu/MenuItem';
 import { SubMenu } from '../components3/menu/SubMenu';

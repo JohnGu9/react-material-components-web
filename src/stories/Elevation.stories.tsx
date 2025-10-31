@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { Elevation } from '../components/elevation/Elevation';
 import { Typography } from '../components/typography/Typography';
 

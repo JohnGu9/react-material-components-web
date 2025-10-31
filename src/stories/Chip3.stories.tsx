@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { AssistChip, FilterChip, InputChip, SuggestionChip } from '../components3/chip/Chip';
 import { ChipSet } from '../components3/chip/ChipSet';
 import { Icon } from '../components3/icon/Icon';

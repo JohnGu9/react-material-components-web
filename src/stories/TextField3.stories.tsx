@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { TextField } from '../components3/text-field/TextField';
 import React from 'react';
 import { Icon } from '../components3/icon/Icon';
@@ -12,7 +12,7 @@ export default {
 
 const Template: StoryFn<typeof TextField> = (args) => {
   const [text, setText] = React.useState("");
-  return <TextField {...args} value={text} onChange={e => setText(e.target.value)} />
+  return <TextField {...args} value={text} onChange={e => { console.log(e); setText(e.target.value); }} />;
 };
 
 export const Primary = Template.bind({});
@@ -38,4 +38,16 @@ const NoOnChangeCallbackTemplate: StoryFn<typeof TextField> = (args) => {
 
 export const NoOnChangeCallback = NoOnChangeCallbackTemplate.bind({});
 NoOnChangeCallback.args = {
+};
+
+const PreventDefaultTemplate: StoryFn<typeof TextField> = (args) => {
+  const [text,] = React.useState("PreventDefault");
+  return <TextField {...args} value={text} onChange={e => {
+    console.log(e);
+    e.preventDefault();
+  }} />;
+};
+
+export const PreventDefault = PreventDefaultTemplate.bind({});
+PreventDefault.args = {
 };

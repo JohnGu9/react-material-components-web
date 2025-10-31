@@ -1,14 +1,14 @@
-export function createSyntheticEvent<T extends Element, E extends Event>(event: E): React.SyntheticEvent<T, E> {
+export function createSyntheticEvent<T extends Element, E extends Event>(event: E, type?: string): React.SyntheticEvent<T, E> {
     let isDefaultPrevented = false;
     let isPropagationStopped = false;
     const preventDefault = () => {
         isDefaultPrevented = true;
         event.preventDefault();
-    }
+    };
     const stopPropagation = () => {
         isPropagationStopped = true;
         event.stopPropagation();
-    }
+    };
     return {
         nativeEvent: event,
         currentTarget: event.currentTarget as EventTarget & T,
@@ -24,6 +24,6 @@ export function createSyntheticEvent<T extends Element, E extends Event>(event: 
         isPropagationStopped: () => isPropagationStopped,
         persist: () => { },
         timeStamp: event.timeStamp,
-        type: event.type,
+        type: type ?? event.type,
     };
 }

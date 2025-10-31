@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { NavigationDrawer, NavigationDrawerModal, NavigationDrawerPadding, Drawer as RmcwDrawer } from '../components3/navigation-drawer/NavigationDrawer';
 import { List } from '../components3/list/List';
 import { Divider } from '../components3/divider/Divider';
